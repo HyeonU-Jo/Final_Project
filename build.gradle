@@ -6,7 +6,7 @@ plugins {
     id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10' //동적 쿼리를 위한 추가
 }
 
-group = 'com.jhu'
+group = 'com.work'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
