@@ -1,5 +1,6 @@
 package com.work.finalproject.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 
 @MappedSuperclass
 @EntityListeners(value = {AuditingEntityListener.class})
-@Getter
+@Data
 abstract class BaseEntity {
 
     @CreatedDate
