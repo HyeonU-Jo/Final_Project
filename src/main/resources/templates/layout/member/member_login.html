@@ -2,9 +2,48 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>로그인</title>
 </head>
+
+<style>
+    .input-box > input{
+        border:none;
+        border-bottom:solid 1px #ccc;
+        margin:10px 0;
+    }
+    .member_login{
+        text-align: center;
+        border: 1px solid black;
+        width : 300px;
+        height: 230px;
+    }
+</style>
+
 <body>
+
+<div class="member_login">
+    <header>
+        <h2>Login</h2>
+    </header>
+
+    <form action="#" method="POST">
+        <div class="input-box">
+            <input id="username" type="text" name="username" placeholder="아이디">
+        </div>
+        <div class="input-box">
+            <input id="password" type="password" name="password" placeholder="비밀번호">
+
+        </div>
+
+        <input type="submit" value="로그인">
+        <input type="button" value="회원가입">
+
+        <div>
+            <label>카카오 로그인</label>
+        </div>
+
+    </form>
+</div>
 
 </body>
 </html>
