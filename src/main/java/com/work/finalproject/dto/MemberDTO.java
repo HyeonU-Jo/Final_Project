@@ -1,4 +1,4 @@
-package com.work.finalproject.DTO;
+package com.work.finalproject.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class LoginDTO {
+public class MemberDTO {
     private String id;
     private String password;
     private String email;
