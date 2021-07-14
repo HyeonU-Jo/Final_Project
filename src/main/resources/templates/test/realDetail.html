@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr th:each="dto : ${list}">
+        <td>eventplace</td><td th:text="${dto.eventplace}"></td>
+        <td>연령제한</td><td th:text="${dto.agelimit}"></td>
+        <td>연락처</td><td th:text="${dto.sponsor1tel}"></td>
+    </tr>
+</table>
+</body>
+</html>

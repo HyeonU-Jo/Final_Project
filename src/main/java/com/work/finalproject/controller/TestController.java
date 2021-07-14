@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.work.finalproject.dto.XmlDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +40,77 @@ public class TestController {
 
     @GetMapping("/searchPage")
     public void searchPage(){
+
+    }
+
+    @GetMapping("/realDetail")
+    public void realDetail(String contentId, Model model) throws IOException{
+        System.out.println(contentId);
+        StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro"); /*URL*/
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=AdNZDr5s3Wzlh%2BB%2FzHMNCVsu8Z7SH6qH1MLVmEDcQ%2Fi7ZNvtm8C1%2F%2FEjAoxzrBRSrC%2BXS8W0m2AOGcP0rzV5xQ%3D%3D"); /*Service Key*/
+        urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + URLEncoder.encode("AdNZDr5s3Wzlh%2BB%2FzHMNCVsu8Z7SH6qH1MLVmEDcQ%2Fi7ZNvtm8C1%2F%2FEjAoxzrBRSrC%2BXS8W0m2AOGcP0rzV5xQ%3D%3D", "UTF-8")); /*공공데이터포털에서 발급받은 인증키*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과수*/
+        urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
+        urlBuilder.append("&" + URLEncoder.encode("MobileOS", "UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS (아이폰), AND (안드로이드), WIN (원도우폰), ETC*/
+        urlBuilder.append("&" + URLEncoder.encode("MobileApp", "UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
+        urlBuilder.append("&" + URLEncoder.encode("contentId", "UTF-8") + "=" + URLEncoder.encode(contentId, "UTF-8")); /*콘텐츠 ID*/
+        urlBuilder.append("&" + URLEncoder.encode("contentTypeId", "UTF-8") + "=" + URLEncoder.encode("15", "UTF-8")); /*관광타입(관광지, 숙박 등) ID*/
+        URL url = new URL(urlBuilder.toString());
+        System.out.println(url);
+        String sUrl = url.toString();
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        System.out.println("Response code: " + conn.getResponseCode());
+        BufferedReader rd;
+
+        try{
+
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(sUrl);
+            doc.getDocumentElement().normalize();
+            System.out.println("element : " + doc.getDocumentElement().getNodeName());
+            NodeList nodeList = doc.getElementsByTagName("item");
+            System.out.println("파싱할 리스트 수 : " + nodeList.getLength());
+
+            List<XmlDTO> xmlList = new ArrayList<XmlDTO>();
+
+
+
+
+            for (int temp = 0; temp<nodeList.getLength(); temp++){
+                Node nNode = nodeList.item(temp);
+                if(nNode.getNodeType()==Node.ELEMENT_NODE){
+                    XmlDTO dto = new XmlDTO();
+                    Element element = (Element) nNode;
+
+                    dto.setEventplace(getTagValue("eventplace", element));
+                    dto.setAgelimit(getTagValue("agelimit", element));
+                    dto.setSponsor1tel(getTagValue("sponsor1tel", element));
+                    xmlList.add(dto);
+
+
+                }
+            }
+            model.addAttribute("list", xmlList);
+        }catch (Exception e){
+            System.out.println("xml읽기 오류");
+        }
+
+        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        } else {
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+        }
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = rd.readLine()) != null) {
+            sb.append(line);
+        }
+        rd.close();
+        conn.disconnect();
+        System.out.println(sb.toString());
 
     }
 
@@ -80,20 +152,26 @@ public class TestController {
             NodeList nodeList = doc.getElementsByTagName("item");
             System.out.println("파싱할 리스트 수 : " + nodeList.getLength());
 
+            List<XmlDTO> xmlList = new ArrayList<XmlDTO>();
+
 
             List<String> tourList = new ArrayList<String>();
 
             for (int temp = 0; temp<nodeList.getLength(); temp++){
                 Node nNode = nodeList.item(temp);
                 if(nNode.getNodeType()==Node.ELEMENT_NODE){
+                    XmlDTO dto = new XmlDTO();
                     Element element = (Element) nNode;
                     System.out.println("################");
                     System.out.println("축제 :" +getTagValue("title" ,element));
+                    dto.setKeyword(getTagValue("title", element));
+                    dto.setContentId(getTagValue("contentid", element));
+                    xmlList.add(dto);
                     tourList.add(getTagValue("title", element));
 
                 }
             }
-            model.addAttribute("list", tourList);
+            model.addAttribute("list", xmlList);
         }catch (Exception e){
             System.out.println("xml읽기 오류");
         }
