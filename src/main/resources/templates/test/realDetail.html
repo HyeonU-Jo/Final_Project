@@ -7,10 +7,23 @@
 <body>
 <table border="1">
     <tr th:each="dto : ${list}">
-        <td>eventplace</td><td th:text="${dto.eventplace}"></td>
+        <td>eventplace</td><td th:text="${dto.eventplace}"><input type="hidden" name="contentId" th:value="${dto.contentId}"></td>
         <td>연령제한</td><td th:text="${dto.agelimit}"></td>
         <td>연락처</td><td th:text="${dto.sponsor1tel}"></td>
     </tr>
 </table>
+<form action="/test/reviewWrite" method="post">
+<table border="2">
+    <tr>
+        <td>리뷰 작성</td><td><input type="text" name="r_content"> </td>
+    </tr>
+    <tr>
+        <td>평점 입력</td><td><input type="number" name="r_rating"></td>
+    </tr>
+    <tr>
+        <td colspan="2"><input value="입력" type="submit"></td>
+    </tr>
+</table>
+</form>
 </body>
 </html>

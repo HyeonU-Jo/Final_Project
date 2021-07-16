@@ -9,11 +9,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.work.finalproject.dto.ReviewDTO;
 import com.work.finalproject.dto.XmlDTO;
+import com.work.finalproject.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -28,6 +31,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 @RequestMapping("/test")
 @RequiredArgsConstructor
 public class TestController {
+
+    private final ReviewService service;
 
     //getTagValue는 반드시 필요 ㅎㅎ;
     private static String getTagValue(String tag, Element eElement) {
@@ -88,6 +93,7 @@ public class TestController {
                     dto.setEventplace(getTagValue("eventplace", element));
                     dto.setAgelimit(getTagValue("agelimit", element));
                     dto.setSponsor1tel(getTagValue("sponsor1tel", element));
+                    dto.setContentId(contentId);
                     xmlList.add(dto);
 
 
@@ -167,7 +173,7 @@ public class TestController {
                     dto.setKeyword(getTagValue("title", element));
                     dto.setContentId(getTagValue("contentid", element));
                     xmlList.add(dto);
-                    tourList.add(getTagValue("title", element));
+
 
                 }
             }
@@ -197,6 +203,18 @@ public class TestController {
 
     @GetMapping("/")
     public String index(){return "redirect:/test/searchPage";}
+
+    @PostMapping("/reviewWrite")
+    public String reviewWrite(ReviewDTO dto){
+        System.out.println("dto 값 확인한다 -------" + dto.getR_content());
+        System.out.println("dto값 확인한다. ㅁㄴㅇㅁㄴㅇ" + dto.getR_num());
+
+        service.reviewWrite(dto);
+
+
+
+        return "redirect:/test/searchPage";
+    }
 
 //    @GetMapping("/detail")
 //    public void detail(Model model) throws IOException{
