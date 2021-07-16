@@ -2,9 +2,56 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>관광지</title>
 </head>
+
+<style>
+    body{
+        text-align: center;
+    }
+    .header{
+        background-color: #5cc4ef;
+        height: 100px;
+
+    }
+    .map{
+        background-color: #a1a1a1;
+        width: 20%;
+        height: 300px;
+        float: left;
+    }
+    .content{
+        background-color: aquamarine;
+        width: 80%;
+        height: 300px;
+        float: left;
+    }
+    .footer{
+        background-color: burlywood;
+        height: 100px;
+        clear: both;
+    }
+    .header.footer{
+        line-height: 100px;
+    }
+    .content.map{
+        line-height: 240px;
+    }
+</style>
+
 <body>
+<div class="header">
+    <h4>header 파트</h4>
+</div>
+<div class="content">
+    <h4>content 파트</h4>
+</div>
+<div class="map">
+    <h4>map 파트</h4>
+</div>
+<div class="footer">
+    <h4>footer 파트</h4>
+</div>
 
 </body>
 </html>
