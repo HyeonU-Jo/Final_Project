@@ -30,28 +30,28 @@ public class MemberController {
     @GetMapping("/join")
     public String join(Model model){
 
-        return "join";
+        return "member/join";
     }
     //회원가입 페이지 처리
     @PostMapping("/join")
-    public String joinPost(MemberDTO dto, RedirectAttributes redirectAttributes){
+    public String joinPost(MemberDTO dto){
         String id = memberService.join(dto);
-        redirectAttributes.addFlashAttribute("msg",id);
-        return "redirect:/member/login";
+
+        return "/member/login";
     }
 
 
     //로그인 페이지
     @GetMapping("/login")
-    public String memberLogin(Model model){
+    public String login(Model model){
 
         return "/member/login";
     }
     //로그인 페이지 처리
     @PostMapping("/login")
-    public String memberLoginProc(){
+    public String loginPost(){
 
-        return "redirect:/main";
+        return "main";
     }
 
 
