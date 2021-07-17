@@ -12,7 +12,9 @@
     .header{
         background-color: #5cc4ef;
         height: 100px;
-
+    }
+    .header > p{
+        float: right;
     }
     .map{
         background-color: #a1a1a1;
@@ -43,10 +45,12 @@
     <div class="header">
         <h4>header 파트</h4>
         <p>링크 <a th:href="@{/menu/plan}">플랜으로</a> </p>
+        <p>링크 <a th:href="@{/member/login}">로그인</a> </p>
+        <p>링크 <a th:href="@{/member/mypage}">마이페이지</a> </p>
     </div>
     <div class="content">
         <h4>content 파트</h4>
-        <p>링크 <a th:href="@{/user}">유저페이지로</a> </p>
+        <p>링크 <a th:href="@{/member/user}">유저페이지로</a> </p>
     </div>
     <div class="map">
         <h4>map 파트</h4>
