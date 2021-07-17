@@ -201,6 +201,10 @@ public class TestController {
 
     }
 
+    @GetMapping("/kakaoMapApi")
+    public void kakaoMapApi(){
+
+    }
 
 
     @GetMapping("/")
