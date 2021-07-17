@@ -31,7 +31,7 @@
         <h2>Login</h2>
     </header>
 
-    <form action="#" method="POST">
+    <form th:action="@{/member/login}" th:method="POST">
         <div class="input-box">
             <input id="username" type="text" name="username" placeholder="아이디">
         </div>
@@ -40,8 +40,8 @@
 
         </div>
 
-        <button type="submit" value="로그인" class="btn btn-login"></button><!--"loginCheck()" 를 만들어서 아이디 확인 -->
-        <button type="button" value="회원가입" class="btn btn-join"></button>
+        <input type="submit" value="로그인"> <!--"loginCheck()" 를 만들어서 아이디 확인 -->
+        <input type="button" value="회원가입" onclick="location.href='/member/join'";>
 
         <div>
             <ul>
@@ -126,6 +126,12 @@
     }
     function onSignInFailure(t){
         console.log(t);
+    }
+</script>
+
+<script>
+    function joinBtn() {
+
     }
 </script>
 
