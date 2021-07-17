@@ -24,3 +24,4 @@ public class festa_tbl {
     @Column(length = 1000, nullable = true)
     private String f_review;
 }
+
