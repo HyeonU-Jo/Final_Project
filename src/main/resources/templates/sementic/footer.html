@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="setFoot(foot)">
+
     <div class="footer">
-        <h1>footer</h1>
+        <h4>footer 파트</h4>
+        <p>링크 <a th:href="@{/menu/notice}">공지사항으로</a></p>
     </div>
+
+</th:block>
 </html>

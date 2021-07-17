@@ -24,6 +24,7 @@ function createDiv(sDay, eDay) {
 
         //2-1. 이벤트 발생
         newBtn.addEventListener('click', function () {
+            alert("눌렀지롱");
             url="plan_popup";
             window.open(url, "get", "width=600,height=400");
         });

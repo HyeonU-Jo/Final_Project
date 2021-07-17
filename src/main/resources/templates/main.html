@@ -1,66 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="setHead(head)"></th:block>
+<th:block th:fragment="setFoot(foot)"></th:block>
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 
 <style>
-    body{
+    body {
         text-align: center;
     }
-    .header{
+
+    .header {
         background-color: #5cc4ef;
         height: 100px;
     }
-    .header > p{
+
+    .header > p {
         float: right;
     }
-    .map{
+
+    .map {
         background-color: #a1a1a1;
         width: 20%;
         height: 300px;
         float: left;
     }
-    .content{
+
+    .content {
         background-color: aquamarine;
         width: 80%;
         height: 300px;
         float: left;
     }
-    .footer{
+
+    .footer {
         background-color: burlywood;
         height: 100px;
         clear: both;
     }
-    .header.footer{
+
+    .header.footer {
         line-height: 100px;
     }
-    .content.map{
+
+    .content.map {
         line-height: 240px;
     }
 </style>
 
 <body>
-    <div class="header">
-        <h4>header 파트</h4>
-        <p>링크 <a th:href="@{/menu/plan}">플랜으로</a> </p>
-        <p>링크 <a th:href="@{/member/login}">로그인</a> </p>
-        <p>링크 <a th:href="@{/member/mypage}">마이페이지</a> </p>
+<!--Header-->
+<th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
+<!--Content-->
+<div class="header">
+    <h4>header 파트</h4>
+    <p>링크 <a th:href="@{/menu/plan}">플랜으로</a> </p>
+    <p>링크 <a th:href="@{/member/login}">로그인</a> </p>
+    <p>링크 <a th:href="@{/member/mypage}">마이페이지</a> </p>
 
-    </div>
-    <div class="content">
-        <h4>content 파트</h4>
-        <p>링크 <a th:href="@{/member/user}">유저페이지로</a> </p>
-    </div>
-    <div class="map">
-        <h4>map 파트</h4>
-    </div>
-    <div class="footer">
-        <h4>footer 파트</h4>
-        <p>링크 <a th:href="@{/menu/notice}">공지사항으로</a> </p>
-    </div>
+</div>
+<div class="content">
+    <h4>content 파트</h4>
+    <p>링크 <a th:href="@{/member/user}">유저페이지로</a></p>
+</div>
+
+<!--Map-->
+<div class="map">
+    <h4>map 파트</h4>
+</div>
+
+<!--Footer-->
+<th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 
 </body>
 </html>
