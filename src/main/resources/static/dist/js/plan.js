@@ -1,13 +1,4 @@
-/*function dayMath(sDay, eDay) {
-    var x = $('#sDay').val()
-    var y = $('#eDay').val()
-    day1 = new Date(x)
-    day2 = new Date(y)
-    var day = Math.ceil(day2.getTime() - day1.getTime());
-    var dayday = day / (1000 * 3600 * 24) + 1;
-    console.log(dayday)
-
-}*/
+/**onclick이벤트 **/
 function createDiv(sDay, eDay) {
     var x = $('#sDay').val();
     var y = $('#eDay').val();
@@ -25,16 +16,27 @@ function createDiv(sDay, eDay) {
 
         // 2. <div>에 들어갈 text node 만들기
         const newDiv = document.createElement('div');
-        const newHr= document.createElement('hr');
+        const newBtn = document.createElement('button');
+        newDiv.id="num";
+        newDiv.classList.add(i);
+        newBtn.innerText="+";
         const newText = document.createTextNode((i+1) + 'Day');
+
+        //2-1. 이벤트 발생
+        newBtn.addEventListener('click', function () {
+            url="plan_popup";
+            window.open(url, "get", "width=600,height=400");
+        });
+
         // 3. <div>에 text node 붙이기
         newDiv.appendChild(newText);
+        newDiv.appendChild(newBtn);
+
         // 4. <body>에 1에서 만든 <div> element 붙이기
         document.body.appendChild(newDiv);
-        document.body.appendChild(newHr);
     }
 }
-
+/**달력 **/
 function datePickerSet(sDate, eDate, flag) {
     //시작 ~ 종료 2개 짜리 달력 datepicker
     if (!isValidStr(sDate) && !isValidStr(eDate) && sDate.length > 0 && eDate.length > 0) {
