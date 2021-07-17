@@ -1,3 +1,4 @@
+/**onclick이벤트 **/
 function createDiv(sDay, eDay) {
     var x = $('#sDay').val();
     var y = $('#eDay').val();
@@ -24,6 +25,8 @@ function createDiv(sDay, eDay) {
         //2-1. 이벤트 발생
         newBtn.addEventListener('click', function () {
             alert("눌렀지롱");
+            url="plan_popup";
+            window.open(url, "get", "width=600,height=400");
         });
 
         // 3. <div>에 text node 붙이기
@@ -34,7 +37,7 @@ function createDiv(sDay, eDay) {
         document.body.appendChild(newDiv);
     }
 }
-
+/**달력 **/
 function datePickerSet(sDate, eDate, flag) {
     //시작 ~ 종료 2개 짜리 달력 datepicker
     if (!isValidStr(sDate) && !isValidStr(eDate) && sDate.length > 0 && eDate.length > 0) {
