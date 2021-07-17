@@ -26,7 +26,7 @@ public class ReviewServiceImpl implements ReviewService{
 
     @Override
     public List<ReviewDTO> rlist2(String content_id) {
-//        List<ReviewDTO> rlist = repository.findByContent_id(content_id);
+
 
 
         return null;
