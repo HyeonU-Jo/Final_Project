@@ -1,0 +1,9 @@
+button{
+    width: 30px;
+    height: 30px;
+}
+
+#num{
+    border: solid 1px;
+    border-radius: 2px;
+}

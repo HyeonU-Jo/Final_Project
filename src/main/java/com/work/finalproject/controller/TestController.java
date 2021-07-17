@@ -43,6 +43,10 @@ public class TestController {
         return nValue.getNodeValue();
     }
 
+    @GetMapping("/kakaoMapApi")
+    public void kakaoMapApi(){
+
+    }
     @GetMapping("/searchPage")
     public void searchPage(){
 
@@ -105,6 +109,11 @@ public class TestController {
         }catch (Exception e){
             System.out.println("xml읽기 오류");
         }
+
+//        List<ReviewDTO> reviewDTOList = service.rlist2(content_id);
+//        for(int i = 0; i<reviewDTOList.size(); i++){
+//            System.out.println(reviewDTOList.get(i).getR_content());
+//        }
 
         if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
             rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -290,3 +299,14 @@ public class TestController {
 //    }
 
 }
+
+
+
+
+
+
+
+
+
+
+

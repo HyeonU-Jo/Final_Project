@@ -24,4 +24,12 @@ public class MenuController {
 
         return "menu/notice";
     }
+
+    @GetMapping({"/plan_popup"})
+    public String popup() {
+
+        log.info("notice...");
+
+        return "menu/plan_popup";
+    }
 }

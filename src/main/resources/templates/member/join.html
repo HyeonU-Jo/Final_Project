@@ -21,13 +21,12 @@
 
 <body>
 
-<form action="@{/member/join}" method="post">
   <div class="member_insert">
-    <div class="content">
         <header>
             <h2>회원가입</h2>
         </header>
 
+        <form th:action="@{/member/join}" th:method="POST">
         <div class="input-box">
             <input type="text" name="id" placeholder="아이디">
          </div>
@@ -43,10 +42,9 @@
 
         <input type="submit" value="회원가입">
         <input type="reset" value="다시쓰기">
+        </form>
 
-    </div>
   </div>
-</form>
 
 </body>
 </html>
