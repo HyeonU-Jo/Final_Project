@@ -6,7 +6,7 @@ import com.work.finalproject.entity.member_tbl;
 public interface MemberService {
 
     //로그인
-
+    //테스트
     //회원가입
 
     //마이페이지
