@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class ReviewDTO {
 
     private int r_num;
-    private String contentId;
+    private String content_id;
     private String r_content;
     private int r_rating;
 

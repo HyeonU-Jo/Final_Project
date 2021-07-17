@@ -49,8 +49,8 @@ public class TestController {
     }
 
     @GetMapping("/realDetail")
-    public void realDetail(String contentId, Model model) throws IOException{
-        System.out.println(contentId);
+    public void realDetail(String content_id, Model model) throws IOException{
+        System.out.println(content_id);
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=AdNZDr5s3Wzlh%2BB%2FzHMNCVsu8Z7SH6qH1MLVmEDcQ%2Fi7ZNvtm8C1%2F%2FEjAoxzrBRSrC%2BXS8W0m2AOGcP0rzV5xQ%3D%3D"); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + URLEncoder.encode("AdNZDr5s3Wzlh%2BB%2FzHMNCVsu8Z7SH6qH1MLVmEDcQ%2Fi7ZNvtm8C1%2F%2FEjAoxzrBRSrC%2BXS8W0m2AOGcP0rzV5xQ%3D%3D", "UTF-8")); /*공공데이터포털에서 발급받은 인증키*/
@@ -58,7 +58,7 @@ public class TestController {
         urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
         urlBuilder.append("&" + URLEncoder.encode("MobileOS", "UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS (아이폰), AND (안드로이드), WIN (원도우폰), ETC*/
         urlBuilder.append("&" + URLEncoder.encode("MobileApp", "UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
-        urlBuilder.append("&" + URLEncoder.encode("contentId", "UTF-8") + "=" + URLEncoder.encode(contentId, "UTF-8")); /*콘텐츠 ID*/
+        urlBuilder.append("&" + URLEncoder.encode("contentId", "UTF-8") + "=" + URLEncoder.encode(content_id, "UTF-8")); /*콘텐츠 ID*/
         urlBuilder.append("&" + URLEncoder.encode("contentTypeId", "UTF-8") + "=" + URLEncoder.encode("15", "UTF-8")); /*관광타입(관광지, 숙박 등) ID*/
         URL url = new URL(urlBuilder.toString());
         System.out.println(url);
@@ -93,13 +93,15 @@ public class TestController {
                     dto.setEventplace(getTagValue("eventplace", element));
                     dto.setAgelimit(getTagValue("agelimit", element));
                     dto.setSponsor1tel(getTagValue("sponsor1tel", element));
-                    dto.setContentId(contentId);
+                    dto.setContent_id(content_id);
+                    System.out.println(dto.getContent_id()+" 컨텐츠 아이디 찾기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                     xmlList.add(dto);
 
 
                 }
             }
             model.addAttribute("list", xmlList);
+            model.addAttribute("contentId", content_id);
         }catch (Exception e){
             System.out.println("xml읽기 오류");
         }
@@ -171,7 +173,7 @@ public class TestController {
                     System.out.println("################");
                     System.out.println("축제 :" +getTagValue("title" ,element));
                     dto.setKeyword(getTagValue("title", element));
-                    dto.setContentId(getTagValue("contentid", element));
+                    dto.setContent_id(getTagValue("contentid", element));
                     xmlList.add(dto);
 
 
@@ -206,6 +208,7 @@ public class TestController {
 
     @PostMapping("/reviewWrite")
     public String reviewWrite(ReviewDTO dto){
+        System.out.println("reviewwrite 컨텐츠 아이디 : " + dto.getContent_id());
         System.out.println("dto 값 확인한다 -------" + dto.getR_content());
         System.out.println("dto값 확인한다. ㅁㄴㅇㅁㄴㅇ" + dto.getR_num());
 

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class XmlDTO {
     private String keyword;
-    private String contentId;
+    private String content_id;
     private String eventplace;
     private String agelimit;
     private String sponsor1tel;

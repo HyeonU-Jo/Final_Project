@@ -9,7 +9,7 @@
 <table border="1">
     <tr th:each="list : ${list}">
         <td>
-            <a th:href="@{/test/realDetail(contentId=${list.contentId})}">[[${list.keyword}]]</a>
+            <a th:href="@{/test/realDetail(content_id=${list.content_id})}">[[${list.keyword}]]</a>
         </td>
     </tr>
 </table>

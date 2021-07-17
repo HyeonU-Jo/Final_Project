@@ -17,8 +17,7 @@ public class review_tbl {
     private int r_num;
 
     @Column(length = 500, nullable = true)
-    private String contentId;
-
+    private String content_id;
 
     @Column(length = 500, nullable = true)
     private String r_content;
