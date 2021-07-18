@@ -30,11 +30,15 @@
 
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
-<div class="double">
+<div class="palnday testclass">
     <h3>여행날짜선택</h3>
     <input id="sDay" type="text" name="sDay">-
     <input id="eDay" type="text" name="eDay">
     <input id="once" type="button" name="check" value="확인" onclick="createDiv('${datepicker1}','${datepicker2}'); this.onclick=null;"/>
+</div>
+
+<!--js에서 plandiv2가 들어오게됨-->
+<div class="plandiv1">
 </div>
 
 <!--Map-->
@@ -56,6 +60,3 @@ datePickerSet($("#sDay"), $("#eDay"), true); //다중은 시작하는 달력 먼
 </body>
 </html>
 
-
-</body>
-</html>

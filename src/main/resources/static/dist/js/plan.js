@@ -5,38 +5,37 @@ function createDiv(sDay, eDay) {
     day1 = new Date(x);
     day2 = new Date(y);
     var day = Math.ceil(day2.getTime() - day1.getTime());
-
     var dayday2 = day / (1000 * 3600 * 24); //박
     var dayday = day / (1000 * 3600 * 24) + 1; //일
     console.log(dayday2 + "박" + dayday + "일");
 
+    /*plandiv1안으로 들어가짐*/
+    const plandiv2 = document.createElement('div');
+    plandiv2.classList.add('infobox');
 
-    // 1. <div> element 만들기
     for (var i = 0; i < dayday; i++) {
-
-        // 2. <div>에 들어갈 text node 만들기
         const newDiv = document.createElement('div');
-        const newBtn = document.createElement('button');
-        newDiv.id="num";
+        newDiv.id = "num";
         newDiv.classList.add(i);
-        newBtn.innerText="+";
-        const newText = document.createTextNode((i+1) + 'Day');
 
-        //2-1. 이벤트 발생
+        const newBtn = document.createElement('button');
+        newBtn.innerText = "+";
         newBtn.addEventListener('click', function () {
             alert("눌렀지롱");
-            url="plan_popup";
+            url = "plan_popup";
             window.open(url, "get", "width=600,height=400");
         });
 
-        // 3. <div>에 text node 붙이기
+        const newText = document.createTextNode((i + 1) + 'Day');
+
         newDiv.appendChild(newText);
         newDiv.appendChild(newBtn);
-
-        // 4. <body>에 1에서 만든 <div> element 붙이기
-        document.body.appendChild(newDiv);
+        plandiv2.appendChild(newDiv);
     }
+    var targetDiv = document.getElementsByClassName("plandiv1")[0];
+    targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);
 }
+
 /**달력 **/
 function datePickerSet(sDate, eDate, flag) {
     //시작 ~ 종료 2개 짜리 달력 datepicker
