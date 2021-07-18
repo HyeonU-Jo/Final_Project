@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Log4j2
 public class MenuController {
 
+    /*plan화면*/
     @GetMapping({"/plan"})
     public String plan() {
-
         log.info("plan...");
-
         return "menu/plan";
     }
+
+    /*찜목록가기*/
+    @GetMapping({"/plan_popup"})
+    public String popup() {
+        log.info("notice...");
+        return "menu/plan_popup";
+    }
+
+    /*공지사항*/
     @GetMapping({"/notice"})
     public String notice() {
-
         log.info("notice...");
-
         return "menu/notice";
     }
 
-    @GetMapping({"/plan_popup"})
-    public String popup() {
 
-        log.info("notice...");
-
-        return "menu/plan_popup";
-    }
 }

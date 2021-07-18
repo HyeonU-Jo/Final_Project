@@ -36,7 +36,7 @@ function createDiv(sDay, eDay) {
     targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);
 }
 
-/**달력 **/
+/**달력**/
 function datePickerSet(sDate, eDate, flag) {
     //시작 ~ 종료 2개 짜리 달력 datepicker
     if (!isValidStr(sDate) && !isValidStr(eDate) && sDate.length > 0 && eDate.length > 0) {
@@ -77,9 +77,9 @@ function datePickerSet(sDate, eDate, flag) {
         //한개짜리 달력 datepicker
     } else if (!isValidStr(sDate)) {
         var sDay = sDate.val();
-        if (flag && !isValidStr(sDay)) { //처음 입력 날짜 설정, update...
+        if (flag && !isValidStr(sDay)) {
             var sdp = sDate.datepicker().data("datepicker");
-            sdp.selectDate(new Date(sDay.replace(/-/g, "/"))); //익스에서는 그냥 new Date하면 -을 인식못함 replace필요
+            sdp.selectDate(new Date(sDay.replace(/-/g, "/")));
         }
         sDate.datepicker({
             language: 'ko',
