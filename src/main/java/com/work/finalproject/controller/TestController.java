@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -41,7 +42,7 @@ public class TestController {
     public void kakaoMapApi(){
 
     }
-    
+
     @GetMapping("/searchPage")
     public void searchPage(){
 
@@ -81,16 +82,17 @@ public class TestController {
     public String index(){return "redirect:/test/searchPage";}
 
     @PostMapping("/reviewWrite")
-    public String reviewWrite(ReviewDTO dto){
+    public String reviewWrite(ReviewDTO dto, RedirectAttributes redirectAttributes){
         System.out.println("reviewwrite 컨텐츠 아이디 : " + dto.getContent_id());
         System.out.println("dto 값 확인한다 -------" + dto.getR_content());
         System.out.println("dto값 확인한다. ㅁㄴㅇㅁㄴㅇ" + dto.getR_num());
 
         service.reviewWrite(dto);
+        redirectAttributes.addAttribute("content_id", dto.getContent_id());
 
 
 
-        return "redirect:/test/searchPage";
+        return "redirect:/test/realDetail";
     }
 
 

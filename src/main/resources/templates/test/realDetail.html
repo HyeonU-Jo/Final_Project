@@ -6,19 +6,31 @@
 </head>
 <body>
 <table border="1">
-    <tr th:each="dto : ${list}">
-        <td>eventplace</td><td th:text="${dto.eventplace}"></td>
-        <td>연령제한</td><td th:text="${dto.agelimit}"></td>
-        <td>연락처</td><td th:text="${dto.sponsor1tel}"></td>
+    <tr>
+        <td>이벤트 플레이스</td>
+        <td>연령제한</td>
+        <td>연락처</td>
     </tr>
+    <tr th:each="dto : ${list}">
+        <td th:text="${dto.eventplace}"></td>
+        <td th:text="${dto.agelimit}"></td>
+        <td th:text="${dto.sponsor1tel}"></td>
+    </tr>
+
 </table>
 
 <table border="1">
+    <tr>
+        <td>번호</td>
+        <td>컨텐츠아이디</td>
+        <td>내용</td>
+        <td>평점</td>
+    </tr>
     <tr th:each="list : ${reviewList}">
-        <td>번호</td><td th:text="${list.r_num}"></td>
-        <td>컨텐츠 아이디</td><td th:text="${list.content_id}"></td>
-        <td>내용</td><td th:text="${list.r_content}"></td>
-        <td>평점</td><td th:text="${list.r_rating}"></td>
+        <td th:text="${list.r_num}"></td>
+        <td th:text="${list.content_id}"></td>
+        <td th:text="${list.r_content}"></td>
+        <td th:text="${list.r_rating}"></td>
     </tr>
 </table>
 
