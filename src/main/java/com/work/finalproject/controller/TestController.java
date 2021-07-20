@@ -44,7 +44,7 @@ public class TestController {
 
         PublicAPI realDetail = new PublicAPI();
 
-        List<XmlDTO> xmlList = realDetail.realDetail(content_id, model);
+        List<XmlDTO> xmlList = realDetail.detail(content_id);
 
         model.addAttribute("list", xmlList);
         model.addAttribute("contentId", xmlList.get(0).getContent_id());
