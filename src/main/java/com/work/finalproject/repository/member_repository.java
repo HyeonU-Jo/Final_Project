@@ -5,7 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface member_repository extends JpaRepository<member_tbl, String>, QuerydslPredicateExecutor<member_tbl> {
+import java.util.Optional;
 
+@Repository
+public interface member_repository extends JpaRepository<member_tbl, String>{
+    static Optional<member_tbl> findByusername(String username) {
+        return null;
+    }
 }
