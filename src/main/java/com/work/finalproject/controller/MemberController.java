@@ -22,22 +22,23 @@ public class MemberController {
     @GetMapping("/")
     public String main(Model model){
 
-        return "main";
+        return "redirect:/";
     }
 
 
     //회원가입 페이지
     @GetMapping("/join")
     public String join(Model model){
+        model.addAttribute("member",new MemberDTO());
 
         return "member/join";
     }
     //회원가입 페이지 처리
     @PostMapping("/join")
-    public String joinPost(MemberDTO dto){
-        String id = memberService.join(dto);
+    public String joinPost(MemberDTO memberDTO){
+        memberService.join(memberDTO);
 
-        return "/member/login";
+        return "redirect:/";
     }
 
 

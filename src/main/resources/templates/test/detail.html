@@ -7,11 +7,13 @@
 <body>
 
 <table border="1">
-    <tr th:each="list : ${list}">
+    <div th:each="list : ${list}">
+    <tr>
         <td>
             <a th:href="@{/test/realDetail(content_id=${list.content_id})}">[[${list.keyword}]]</a>
         </td>
     </tr>
+    </div>
 </table>
 
 </body>
