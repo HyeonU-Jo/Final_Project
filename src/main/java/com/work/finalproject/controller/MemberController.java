@@ -28,10 +28,10 @@ public class MemberController {
 
     //회원가입 페이지
     @GetMapping("/join")
-    public String join(Model model){
-        model.addAttribute("member",new MemberDTO());
+    public void join(Model model){
+//        model.addAttribute("member",new MemberDTO());
 
-        return "member/join";
+
     }
     //회원가입 페이지 처리
     @PostMapping("/join")
