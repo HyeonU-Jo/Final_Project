@@ -5,14 +5,22 @@
   <title>kakaoMapApi</title>
 </head>
 <body>
-<div id="map" style="width:100%;height:350px;"></div>
+<div id="map" style="width:80%;height:500px;"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3b7d40e80fb8c0abb9d63a590f43fba0"></script>
 <script>
-
+  /*================== 변수 임시 처리 ====================================*/
+  /* 1.공공데이터 중 원하는 장소 서치 후 확인 2. 그 데이터가 저장된 DTO중 mapx,mapy(위도경도),addr1(실주소값) 불러오기 3. var a,b,infowindowText에 대입 */
   // var a,b 좌표 변수 지정 test
   var a=37.2872039225;  // <mapy>37.2872039225</mapy>
   var b=127.0120008348; // <mapx>127.0120008348</mapx>
+  // 인포 윈도우 설정
+  var infowindowText = "경기도 수원시 장안구 영화동 320-2"; //<addr1>경기도 수원시 장안구 영화동 320-2</addr1>
+
+  /*================== 변수 임시 처리 ====================================*/
+
+
+
 
   var mapContainer = document.getElementById('map'), // 지도를 표시할 div
           mapOption = {
@@ -33,8 +41,11 @@
   // 마커가 지도 위에 표시되도록 설정합니다
   marker.setMap(map);
 
-  var iwContent = '<div style="padding:5px;">Hello World! <br>' +
-          '<a href="https://map.kakao.com/link/map/Hello World!,'+a+','+b+'" '
+  var iwContent =
+          '<div style="padding:5px; width: 100%;">'+infowindowText+'<br>' +
+          '<a href="'+a+','+b+'" '
+
+          // '<a href="https://map.kakao.com/link/map/Hello World!,'+a+','+b+'" '
           // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
           iwPosition = new kakao.maps.LatLng(a, b); //인포윈도우 표시 위치입니다
 
