@@ -10,7 +10,7 @@ import org.springframework.data.domain.Sort;
 @Builder
 @AllArgsConstructor
 @Data
-public class ReviewPageRequestDTO {
+public class PageRequestDTO {
 
     private int page;
 
@@ -19,7 +19,7 @@ public class ReviewPageRequestDTO {
     private String type;
     private String content_id;
 
-    public ReviewPageRequestDTO(){
+    public PageRequestDTO(){
         this.page = 1;
         this.size = 10;
 

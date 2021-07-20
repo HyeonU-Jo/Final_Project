@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/plan")
 @Log4j2
-public class MenuController {
+public class PlanController {
 
     /*plan화면*/
     @GetMapping({"/plan"})

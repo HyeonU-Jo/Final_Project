@@ -2,18 +2,15 @@ package com.work.finalproject.service;
 
 
 import com.work.finalproject.dto.ReviewDTO;
-import com.work.finalproject.dto.ReviewPageRequestDTO;
-import com.work.finalproject.dto.ReviewPageResultDTO;
+import com.work.finalproject.dto.PageRequestDTO;
+import com.work.finalproject.dto.PageResultDTO;
 import com.work.finalproject.entity.review_tbl;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public interface ReviewService {
 
     void reviewWrite(ReviewDTO dto);
 
-    ReviewPageResultDTO<ReviewDTO, review_tbl> rlist2(ReviewPageRequestDTO requestDTO);
+    PageResultDTO<ReviewDTO, review_tbl> rlist2(PageRequestDTO requestDTO);
 
 
 

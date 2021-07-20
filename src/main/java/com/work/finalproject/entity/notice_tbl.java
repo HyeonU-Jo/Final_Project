@@ -23,4 +23,11 @@ public class notice_tbl extends BaseEntity {
 
     @Column(length = 4000, nullable = false)
     private String n_content;
+
+    public void changeTitle(String title){
+        this.n_title=title;
+    }
+    public void changeContent(String content){
+        this.n_content=content;
+    }
 }

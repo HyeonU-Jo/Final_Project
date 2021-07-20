@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Data
-public class ReviewPageResultDTO<DTO, EN> {
+public class PageResultDTO<DTO, EN> {
     private List<DTO> dtoList;
     // 총 페이지
     private int totalPage;
@@ -36,7 +36,7 @@ public class ReviewPageResultDTO<DTO, EN> {
     // 다음 버튼 링크 여부
     private boolean next;
 
-    public ReviewPageResultDTO(Page<EN> result, Function<EN, DTO> fn){
+    public PageResultDTO(Page<EN> result, Function<EN, DTO> fn){
         dtoList = result.stream().map(fn).collect(Collectors.toList());
         totalPage = result.getTotalPages();
         makePageList(result.getPageable());

@@ -3,8 +3,8 @@ package com.work.finalproject.service;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.work.finalproject.dto.ReviewDTO;
-import com.work.finalproject.dto.ReviewPageRequestDTO;
-import com.work.finalproject.dto.ReviewPageResultDTO;
+import com.work.finalproject.dto.PageRequestDTO;
+import com.work.finalproject.dto.PageResultDTO;
 import com.work.finalproject.entity.Qreview_tbl;
 import com.work.finalproject.entity.review_tbl;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +33,7 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     @Override
-    public ReviewPageResultDTO<ReviewDTO, review_tbl> rlist2(ReviewPageRequestDTO requestDTO) {
+    public PageResultDTO<ReviewDTO, review_tbl> rlist2(PageRequestDTO requestDTO) {
         Pageable pageable = requestDTO.getPageable(Sort.by("r_num"));
 
         BooleanBuilder booleanBuilder = getSearch(requestDTO);
@@ -43,11 +43,11 @@ public class ReviewServiceImpl implements ReviewService{
 
 
 
-        return new ReviewPageResultDTO<>(result, fn);
+        return new PageResultDTO<>(result, fn);
     }
 
 
-    private BooleanBuilder getSearch(ReviewPageRequestDTO requestDTO){
+    private BooleanBuilder getSearch(PageRequestDTO requestDTO){
 
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         Qreview_tbl qreview_tbl = Qreview_tbl.review_tbl;
