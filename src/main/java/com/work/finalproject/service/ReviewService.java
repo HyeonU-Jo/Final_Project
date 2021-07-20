@@ -15,6 +15,8 @@ public interface ReviewService {
 
     ReviewPageResultDTO<ReviewDTO, review_tbl> rlist2(ReviewPageRequestDTO requestDTO);
 
+    List<ReviewDTO> reviewList(String content_id);
+
 
 
     default review_tbl reviewToEntity(ReviewDTO dto){

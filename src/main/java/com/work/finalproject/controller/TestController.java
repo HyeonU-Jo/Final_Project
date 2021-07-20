@@ -54,7 +54,11 @@ public class TestController {
 
     @GetMapping("/realDetail")
     public void realDetail(String content_id, Model model) throws IOException{
-        System.out.println(content_id);
+        List<ReviewDTO> list = service.reviewList(content_id);
+        model.addAttribute("reviewList", list);
+
+
+
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=AdNZDr5s3Wzlh%2BB%2FzHMNCVsu8Z7SH6qH1MLVmEDcQ%2Fi7ZNvtm8C1%2F%2FEjAoxzrBRSrC%2BXS8W0m2AOGcP0rzV5xQ%3D%3D"); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + URLEncoder.encode("AdNZDr5s3Wzlh%2BB%2FzHMNCVsu8Z7SH6qH1MLVmEDcQ%2Fi7ZNvtm8C1%2F%2FEjAoxzrBRSrC%2BXS8W0m2AOGcP0rzV5xQ%3D%3D", "UTF-8")); /*공공데이터포털에서 발급받은 인증키*/
