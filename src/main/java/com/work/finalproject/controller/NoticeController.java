@@ -12,9 +12,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class NoticeController {
 
     /*공지사항*/
-    @GetMapping({"/notice"})
-    public String notice() {
-        log.info("notice...");
-        return "menu/notice";
+    @GetMapping({"/list"})
+    public String list() {
+        log.info("list...");
+        return "/notice/list";
     }
+
+    /*글쓰기*/
+    @GetMapping({"/register"})
+    public String register(){
+        log.info("register....");
+        return "/notice/register";
+    }
+    /*글수정*/
+    @GetMapping({"/modify"})
+    public String modify(){
+        log.info("modify....");
+        return "/notice/modify";
+    }
+    /*상세보기*/
+    @GetMapping({"/read"})
+    public String read(){
+        log.info("read....");
+        return "/notice/read";
+    }
+
 }
