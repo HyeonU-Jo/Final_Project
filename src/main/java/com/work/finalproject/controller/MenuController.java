@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/menu")
+@RequestMapping("/plan")
 @Log4j2
 public class MenuController {
 
@@ -14,21 +14,14 @@ public class MenuController {
     @GetMapping({"/plan"})
     public String plan() {
         log.info("plan...");
-        return "menu/plan";
+        return "plan/plan";
     }
 
     /*찜목록가기*/
     @GetMapping({"/plan_popup"})
     public String popup() {
         log.info("notice...");
-        return "menu/plan_popup";
-    }
-
-    /*공지사항*/
-    @GetMapping({"/notice"})
-    public String notice() {
-        log.info("notice...");
-        return "menu/notice";
+        return "plan/plan_popup";
     }
 
 
