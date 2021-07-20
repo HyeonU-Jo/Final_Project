@@ -15,10 +15,10 @@
 
 <table border="1">
     <tr th:each="list : ${reviewList}">
-        <td>r_num</td><td th:text="${list.r_num}"></td>
-        <td>content_id</td><td th:text="${list.content_id}"></td>
-        <td>r_content</td><td th:text="${list.r_content}"></td>
-        <td>r_rating</td><td th:text="${list.r_rating}"></td>
+        <td>번호</td><td th:text="${list.r_num}"></td>
+        <td>컨텐츠 아이디</td><td th:text="${list.content_id}"></td>
+        <td>내용</td><td th:text="${list.r_content}"></td>
+        <td>평점</td><td th:text="${list.r_rating}"></td>
     </tr>
 </table>
 
