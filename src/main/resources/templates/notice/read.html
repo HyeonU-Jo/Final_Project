@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="setHead(head)"></th:block>
+<th:block th:fragment="setFoot(foot)"></th:block>
 <head>
     <meta charset="UTF-8">
     <title>상세보기</title>
 </head>
 <body>
-<h1>상세보기</h1>
+<!--header영역-->
+    <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
+
+<!--content영역-->
+    <h1>상세보기</h1>
         <div>
             <label>번호</label>
             <input type="text" name="n_no" th:value="${dto.n_no}" readonly>
@@ -31,5 +37,20 @@
 
             <button type="button" th:onclick="|location.href='/notice/modify'|">수정하기</button>
             <button type="button" th:onclick="|location.href='/notice/list'|">목록으로</button>
+
+<!--content영역끝-->
+
+
+<!--Map영역-->
+    <div class="map">
+        <h4>map 파트</h4>
+    </div>
+
+
+
+
+<!--footer영역-->
+    <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
+
 </body>
 </html

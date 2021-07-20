@@ -6,6 +6,8 @@ import com.work.finalproject.dto.PageRequestDTO;
 import com.work.finalproject.dto.PageResultDTO;
 import com.work.finalproject.entity.review_tbl;
 
+import java.util.List;
+
 public interface ReviewService {
 
     void reviewWrite(ReviewDTO dto);
