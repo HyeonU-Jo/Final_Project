@@ -20,7 +20,7 @@ public class PlanController {
     /*찜목록가기*/
     @GetMapping({"/plan_popup"})
     public String popup() {
-        log.info("notice...");
+        log.info("popup...");
         return "plan/plan_popup";
     }
 

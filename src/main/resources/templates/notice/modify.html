@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>글수정</title>
+</head>
+<body>
+<form action="/notice/update" method="post">
+
+<h1>수정페이지</h1>
+    <!--수정페이지-->
+    <div>
+        <label>번호</label>
+        <input type="text" name="n_no" th:value="${dto.n_no}" readonly>
+    </div>
+
+    <div>
+        <label>제목</label>
+        <input type="text" name="n_title" th:value="${dto.n_title}">
+    </div>
+    <div>
+        <label>내용</label>
+        <textarea rows="5" name="n_content">수정내용</textarea>
+    </div>
+    <div class="form-group">
+        <label>작성자</label>
+        <input type="text"  name="n_writer" th:value="${dto.n_writer}" readonly>
+    </div>
+    <div>
+        <label>작성일자</label>
+        <input type="text" th:value="${#temporals.format(dto.n_regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+    </div>
+
+</form>
+
+<button type="submit" >수정하기</button>
+<button type="button" th:onclick="|location.href='/notice/list'|" >목록으로</button>
+
+
+</body>
+</html>

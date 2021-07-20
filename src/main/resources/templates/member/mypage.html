@@ -70,7 +70,9 @@
     </div>
 
     <div class="footer">
-        <a href="login.html"><h2>로그인</h2></a>
+        <a sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a>
+        <a sec:authorize="isAnonymous()" th:href="@{/member/join}">회원가입</a>
     </div>
 
 

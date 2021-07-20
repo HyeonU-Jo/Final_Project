@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import com.work.finalproject.repository.review_repository;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 
 @Service
@@ -32,6 +34,8 @@ public class ReviewServiceImpl implements ReviewService{
         repository.save(entity);
     }
 
+
+
     @Override
     public PageResultDTO<ReviewDTO, review_tbl> rlist2(PageRequestDTO requestDTO) {
         Pageable pageable = requestDTO.getPageable(Sort.by("r_num"));
@@ -44,6 +48,23 @@ public class ReviewServiceImpl implements ReviewService{
 
 
         return new PageResultDTO<>(result, fn);
+    }
+
+    @Override
+    public List<ReviewDTO> reviewList(String content_id) {
+        List<review_tbl> list = repository.findByContent_id(content_id);
+        List<ReviewDTO> dtoList = new ArrayList<ReviewDTO>();
+
+        for(int i = 0; i<list.size(); i++){
+            ReviewDTO dto = new ReviewDTO();
+            dto.setR_num(list.get(i).getR_num());
+            dto.setContent_id(list.get(i).getContent_id());
+            dto.setR_content(list.get(i).getR_content());
+            dto.setR_rating(list.get(i).getR_rating());
+            dtoList.add(dto);
+        }
+
+        return dtoList;
     }
 
 

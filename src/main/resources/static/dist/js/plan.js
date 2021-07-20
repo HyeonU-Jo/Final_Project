@@ -36,6 +36,10 @@ function createDiv(sDay, eDay) {
     targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);
 }
 
+function test(){
+
+}
+
 /**달력**/
 function datePickerSet(sDate, eDate, flag) {
     //시작 ~ 종료 2개 짜리 달력 datepicker
