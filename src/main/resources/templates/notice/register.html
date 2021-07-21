@@ -10,12 +10,9 @@
 <!--header영역-->
     <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
-
-
-
 <!--content영역-->
     <h1>글작성</h1>
-        <form th:action="@{/notice/writer}" th:method="post">
+        <form th:action="@{/notice/register}">
             <div>
                 <label >제목</label>
                 <input type="text" name="n_title">
