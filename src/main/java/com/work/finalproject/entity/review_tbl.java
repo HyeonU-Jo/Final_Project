@@ -25,7 +25,8 @@ public class review_tbl {
     @Column(length = 500, nullable = true)
     private int r_rating;
 
-
+    @Column(length = 80, nullable = true)
+    private int contentType;
 
 
 }

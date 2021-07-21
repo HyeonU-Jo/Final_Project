@@ -37,33 +37,38 @@ public class TestController {
 
     }
 
+    @GetMapping("/detail")
+    public void search(String keyword, Model model, String contentType) throws IOException{
+        PublicAPI publicAPI = new PublicAPI();
+
+        List<XmlDTO> xmlList = publicAPI.search(keyword, model, contentType);
+
+        for (int i = 0; i<xmlList.size(); i++){
+            xmlList.get(i).setContentType(contentType);
+        }
+
+        model.addAttribute("list", xmlList);
+
+    }
+
     @GetMapping("/realDetail")
-    public void realDetail(String content_id, Model model) throws IOException{
+    public void realDetail(String content_id, Model model, String contentType) throws IOException{
         List<ReviewDTO> list = service.reviewList(content_id);
         model.addAttribute("reviewList", list);
 
         PublicAPI realDetail = new PublicAPI();
 
-        List<XmlDTO> xmlList = realDetail.detail(content_id);
-
+        List<XmlDTO> xmlList = realDetail.detail(content_id, contentType);
+        List<XmlDTO> xmlDTOList = realDetail.imageDetail(content_id);
+        xmlList.get(0).setFirstimage(xmlDTOList.get(0).getOriginimgurl());
         model.addAttribute("list", xmlList);
-        model.addAttribute("contentId", xmlList.get(0).getContent_id());
+        model.addAttribute("contentId", content_id);
 
 
 
     }
 
-    @GetMapping("/detail")
-    public void search(String keyword, Model model) throws IOException{
 
-        PublicAPI publicAPI = new PublicAPI();
-
-        List<XmlDTO> xmlList = publicAPI.search(keyword, model);
-
-        model.addAttribute("list", xmlList);
-
-
-    }
 
 
 
@@ -72,9 +77,6 @@ public class TestController {
 
     @PostMapping("/reviewWrite")
     public String reviewWrite(ReviewDTO dto, RedirectAttributes redirectAttributes){
-        System.out.println("reviewwrite 컨텐츠 아이디 : " + dto.getContent_id());
-        System.out.println("dto 값 확인한다 -------" + dto.getR_content());
-        System.out.println("dto값 확인한다. ㅁㄴㅇㅁㄴㅇ" + dto.getR_num());
 
         service.reviewWrite(dto);
         redirectAttributes.addAttribute("content_id", dto.getContent_id());

@@ -28,6 +28,8 @@ public class XmlDTO {
 
     private String originimgurl;
 
+    private String contentType;
+
 
 
 }
