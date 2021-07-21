@@ -59,8 +59,9 @@ public class TestController {
         PublicAPI realDetail = new PublicAPI();
 
         List<XmlDTO> xmlList = realDetail.detail(content_id, contentType);
-        List<XmlDTO> xmlDTOList = realDetail.imageDetail(content_id);
-        xmlList.get(0).setFirstimage(xmlDTOList.get(0).getOriginimgurl());
+        System.out.println("이것은 확인용!!!!!!!!!!!!!!!!!"+xmlList.get(0).getMapx());
+/*        List<XmlDTO> xmlDTOList = realDetail.imageDetail(content_id);
+        xmlList.get(0).setFirstimage(xmlDTOList.get(0).getOriginimgurl());*/
         model.addAttribute("list", xmlList);
         model.addAttribute("contentId", content_id);
 

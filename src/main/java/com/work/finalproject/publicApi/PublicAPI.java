@@ -21,7 +21,9 @@ import java.util.List;
 public class PublicAPI {
 
     private static String getTagValue(String tag, Element eElement) {
+        eElement.getElementsByTagName(tag);
         NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
+        System.out.println("한번 확인용 ------"+nlList);
         Node nValue = (Node) nlList.item(0);
         if(nValue == null)
             return null;
@@ -115,7 +117,7 @@ public class PublicAPI {
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
         urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
         urlBuilder.append("&" + URLEncoder.encode("listYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")); /*목록 구분 (Y=목록, N=개수)*/
-        urlBuilder.append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("A", "UTF-8")); /*(A=제목순, B=조회순, C=수정일순, D=생성일순) 대표이미지가 반드시 있는 정렬(O=제목순, P=조회순, Q=수정일순, R=생성일순)*/
+        urlBuilder.append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("R", "UTF-8")); /*(A=제목순, B=조회순, C=수정일순, D=생성일순) 대표이미지가 반드시 있는 정렬(O=제목순, P=조회순, Q=수정일순, R=생성일순)*/
         urlBuilder.append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode(contentType, "UTF-8")); /*관광타입(관광지, 숙박 등) ID*/
         urlBuilder.append("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*지역코드*/
         urlBuilder.append("&" + URLEncoder.encode("sigunguCode","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*시군구코드(areaCode 필수)*/
@@ -229,7 +231,7 @@ public class PublicAPI {
                     XmlDTO dto = new XmlDTO();
                     Element element = (Element) nNode;
                     System.out.println("################");
-
+                    dto.setFirstimage("null");
                     dto.setTitle(getTagValue("title", element));
                     System.out.println(getTagValue("title", element));
                     dto.setContent_id(getTagValue("contentid", element));
@@ -240,11 +242,10 @@ public class PublicAPI {
                     System.out.println(getTagValue("mapx", element));
                     dto.setMapy(getTagValue("mapy",element));
                     System.out.println(getTagValue("mapy",element));
-                    if(getTagValue("firstimage", element)==null || getTagValue("firstimage", element).equals("")){
-                        dto.setFirstimage("이미지가 없습니다.");
-                    }else {
-                        dto.setFirstimage(getTagValue("firstimage",element));
-                    }
+
+                    System.out.println("이미지 받기 전에 작성했습니다.");
+                    dto.setFirstimage(getTagValue("firstimage",element));
+
 
 
                     dto.setContentType(getTagValue("contenttypeid", element));
