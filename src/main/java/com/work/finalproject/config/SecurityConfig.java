@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public void configure(WebSecurity web) throws Exception{
         //static 디렉터리 하위 파일 목록은 인증 무시 (=자동통과)
-        web.ignoring().antMatchers("/css/**","/js/**","/img/**","/lib/**","/test");
+        web.ignoring().antMatchers("/css/**","/js/**","/img/**","/lib/**","/test/**");
     }
 
     @Override
