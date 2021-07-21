@@ -26,26 +26,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     public void configure(WebSecurity web) throws Exception{
+        //static 디렉터리 하위 파일 목록은 인증 무시 (=자동통과)
         web.ignoring().antMatchers("/css/**","/js/**","/img/**","/lib/**","/test");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/**").permitAll()
+            //각 페이지 권한설정
+                //.antMatchers("/admin/**").hasRole("ADMIN")        //admin 으로 시작하는 경로는 ADMIN 롤을 가진 사용자만 접근 가능
+                //.antMatchers("/member/mypage").hasRole("MEMBER")  //user/myinfo 경로는 MEMBER 롤을 가진 사용자만 접근 가능
+                .antMatchers("/**").permitAll()          //모든 경로에 대해서는 권한없이 접근 가능
                 .and()
-
+            //로그인설정
                 .formLogin()
                 .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
-
+             //로그아웃 설정
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
                 .and()
-
+             //403 예외처리 핸들링
                 .exceptionHandling();
     }
 

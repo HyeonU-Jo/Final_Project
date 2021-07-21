@@ -20,7 +20,7 @@ public class MemberController {
     private MemberService memberService;
 
     @GetMapping("/")
-    public String main(Model model){
+    public String main(){
 
         return "redirect:/";
     }
@@ -28,29 +28,29 @@ public class MemberController {
 
     //회원가입 페이지
     @GetMapping("/join")
-    public void join(Model model){
-//        model.addAttribute("member",new MemberDTO());
+    public String join(){
 
-
+        return "/member/join";
     }
     //회원가입 페이지 처리
     @PostMapping("/join")
     public String joinPost(MemberDTO memberDTO){
         memberService.join(memberDTO);
 
-        return "redirect:/";
+        return "redirect:/member/login";
     }
 
 
     //로그인 페이지
     @GetMapping("/login")
-    public String login(Model model){
+    public String login(){
 
         return "/member/login";
     }
     //로그인 페이지 처리
     @PostMapping("/login")
     public String loginPost(){
+        //데이터정보 확인하는 처리
 
         return "main";
     }
