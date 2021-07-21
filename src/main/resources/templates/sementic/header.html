@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <th:block th:fragment="setHead(head)">
 
     <div class="header">
+
         <h4>header 파트</h4>
-        <p>링크 <a th:href="@{/templates/plan/plan}">플랜으로</a></p>
-        <p>링크 <a th:href="@{/member/login}">로그인</a></p>
-        <p>링크 <a th:href="@{/member/mypage}">마이페이지</a></p>
+
+        <a sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a> <!-- 익명의 사용자일 경우 -->
+        <a sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a> <!-- 인증된 사용자일 경우 -->
+        <a sec:authorize="isAnonymous()" th:href="@{/member/join}">회원가입</a> <!-- 익명의 사용자일 경우 -->
+        <a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/member/mypage}">마이페이지</a> <!-- ROLE 이 member 인 경우 -->
+        <!-- sec:authorize="isAuthenticated()"  나중에 로그인처리 되고나면 추가 -->
+        <a th:href="@{/plan/plan}">플랜으로</a>
+
+        <br>
+
+        <!-- sec:authorize="isAuthenticated()"  나중에 로그인처리 되고나면 추가 -->
+        <span  sec:authentication="name"></span>님 환영합니다~
+
     </div>
+
 
 </th:block>
 </html>
