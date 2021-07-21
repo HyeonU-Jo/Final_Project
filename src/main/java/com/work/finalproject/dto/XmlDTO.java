@@ -26,5 +26,8 @@ public class XmlDTO {
     private String homepage;
     private String tel;
 
+    private String originimgurl;
+
+
 
 }

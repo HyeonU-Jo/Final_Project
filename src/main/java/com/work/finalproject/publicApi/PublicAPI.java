@@ -28,6 +28,7 @@ public class PublicAPI {
         return nValue.getNodeValue();
     }
 
+    // 디테일 인트로 하지만 안씀
     public List<XmlDTO> realDetail(String content_id, Model model) throws IOException {
 
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro"); /*URL*/
@@ -103,6 +104,7 @@ public class PublicAPI {
         return xmlList;
     }
 
+    // 키워드로 검색
     public List<XmlDTO> search(String keyword, Model model) throws IOException{
 
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword"); /*URL*/
@@ -179,6 +181,8 @@ public class PublicAPI {
         return xmlList;
     }
 
+
+    // 공통적 정보를 뽑아오기 가능
     public List<XmlDTO> detail(String content_id) throws IOException{
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=AdNZDr5s3Wzlh%2BB%2FzHMNCVsu8Z7SH6qH1MLVmEDcQ%2Fi7ZNvtm8C1%2F%2FEjAoxzrBRSrC%2BXS8W0m2AOGcP0rzV5xQ%3D%3D"); /*Service Key*/
@@ -264,5 +268,73 @@ public class PublicAPI {
         return xmlList;
     }
 
+    // 추가 이미지 가져오기
+    public List<XmlDTO> imageDetail(String content_id) throws IOException{
+        StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage"); /*URL*/
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=AdNZDr5s3Wzlh%2BB%2FzHMNCVsu8Z7SH6qH1MLVmEDcQ%2Fi7ZNvtm8C1%2F%2FEjAoxzrBRSrC%2BXS8W0m2AOGcP0rzV5xQ%3D%3D"); /*Service Key*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
+        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
+        urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS(아이폰),AND(안드로이드),WIN(원도우폰),ETC*/
+        urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
+        urlBuilder.append("&" + URLEncoder.encode("contentId","UTF-8") + "=" + URLEncoder.encode(content_id, "UTF-8")); /*콘텐츠 ID*/
+        urlBuilder.append("&" + URLEncoder.encode("imageYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")); /*Y=콘텐츠 이미지 조회, N='음식점'타입의 음식메뉴 이미지*/
+        urlBuilder.append("&" + URLEncoder.encode("subImageYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")); /*Y=원본,썸네일 이미지 조회 N=Null*/
+
+        URL url = new URL(urlBuilder.toString());
+        System.out.println(url);
+        System.out.println("유알엘!!!!!!!!!!!!!!!!!!" + url);
+        String sUrl = url.toString();
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        System.out.println("Response code: " + conn.getResponseCode());
+        BufferedReader rd;
+        List<XmlDTO> xmlList = new ArrayList<XmlDTO>();
+
+        try{
+
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(sUrl);
+            doc.getDocumentElement().normalize();
+            System.out.println("element : " + doc.getDocumentElement().getNodeName());
+            NodeList nodeList = doc.getElementsByTagName("item");
+
+
+
+
+            for (int temp = 0; temp<nodeList.getLength(); temp++){
+                Node nNode = nodeList.item(temp);
+                if(nNode.getNodeType()==Node.ELEMENT_NODE){
+                    XmlDTO dto = new XmlDTO();
+                    Element element = (Element) nNode;
+                    System.out.println("################");
+                    dto.setOriginimgurl(getTagValue("originimgurl", element));
+                    xmlList.add(dto);
+
+
+                }
+            }
+
+        }catch (Exception e){
+            System.out.println("xml읽기 오류");
+        }
+
+        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        } else {
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+        }
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = rd.readLine()) != null) {
+            sb.append(line);
+        }
+        rd.close();
+        conn.disconnect();
+        System.out.println(sb.toString());
+
+        return xmlList;
+    }
 
 }
