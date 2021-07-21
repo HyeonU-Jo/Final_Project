@@ -3,6 +3,7 @@
 
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
+<th:block th:fragment="setMap(map)"></th:block>
 
 <head>
     <meta charset="UTF-8">
@@ -22,7 +23,7 @@
 
 <!--Map-->
 <div class="map">
-    <h4>map 파트</h4>
+    <th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
 </div>
 
 <!--Footer-->
