@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 public class MemberController {
 
-    private MemberService memberService;
+    private final MemberService memberService;
 
     @GetMapping("/")
     public String main(){
@@ -34,8 +34,10 @@ public class MemberController {
     }
     //회원가입 페이지 처리
     @PostMapping("/join")
-    public String joinPost(MemberDTO memberDTO){
+    public String joinPost(MemberDTO memberDTO, RedirectAttributes redirectAttributes){
+
         memberService.join(memberDTO);
+        redirectAttributes.addAttribute("username", memberDTO.getId());
 
         return "redirect:/member/login";
     }

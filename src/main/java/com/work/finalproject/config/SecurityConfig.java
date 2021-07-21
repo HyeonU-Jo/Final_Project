@@ -31,26 +31,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests()
-            //각 페이지 권한설정
-                //.antMatchers("/admin/**").hasRole("ADMIN")        //admin 으로 시작하는 경로는 ADMIN 롤을 가진 사용자만 접근 가능
-                //.antMatchers("/member/mypage").hasRole("MEMBER")  //user/myinfo 경로는 MEMBER 롤을 가진 사용자만 접근 가능
-                .antMatchers("/**").permitAll()          //모든 경로에 대해서는 권한없이 접근 가능
-                .and()
-            //로그인설정
-                .formLogin()
-                .defaultSuccessUrl("/")
-                .permitAll()
-                .and()
-             //로그아웃 설정
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
-                .logoutSuccessUrl("/")
-                .invalidateHttpSession(true)
-                .and()
-             //403 예외처리 핸들링
-                .exceptionHandling();
+    protected void configure(HttpSecurity security) throws Exception{
+        //각 페이지 권한설정
+        security.authorizeRequests().antMatchers("/**").permitAll();  //모든 경로에 대해서는 권한없이 접근 가능
+        //security.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");                //admin 으로 시작하는 경로는 ADMIN 롤을 가진 사용자만 접근 가능
+        //security.authorizeRequests().antMatchers("/member/mypage").hasRole("MEMBER");          //user/myinfo 경로는 MEMBER 롤을 가진 사용자만 접근 가능
+
+        //로그인설정
+        security.formLogin().defaultSuccessUrl("/").permitAll();
+
+        //로그아웃 설정
+        security.logout().logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
+            .logoutSuccessUrl("/")
+            .invalidateHttpSession(true);
+
+        //403 예외처리 핸들링
+        security.exceptionHandling();
     }
 
     @Override
