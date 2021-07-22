@@ -9,7 +9,7 @@
 </head>
 <body>
 <!--header영역-->
-    <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
+<th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 <!--content영역-->
 <div class="content">
@@ -26,28 +26,58 @@
         </thead>
         <tbody>
 
-        <tr>
-            <td>#수정할부분</td>
-            <td><a th:href="@{/notice/read}">#수정할부분(클릭시상세보기)</a></td>
-            <td>#수정할부분</td>
-            <td>#수정할부분</td>
+        <tr th:each="dto : ${result.dtoList}">
+            <th scope="row">
+                <a th:href="@{/notice/read(no = ${dto.no},
+                    page= ${result.page},
+                    type= ${pageRequestDTO.type} ,
+                    keyword = ${pageRequestDTO.keyword})}">
+                    [[${dto.no}]]
+                </a>
+            </th>
+            <td>[[${dto.n_title}]]</td>
+            <td>[[${dto.n_writer}]]</td>
+            <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
         </tr>
         </tbody>
     </table>
+
+    <ul class="pagination h-100 justify-content-center align-items-center">
+
+        <li class="page-item " th:if="${result.prev}">
+            <a class="page-link" th:href="@{/notice/list(page= ${result.start -1},
+                    type=${pageRequestDTO.type} ,
+                    keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">Previous</a>
+        </li>
+
+        <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
+            <a class="page-link" th:href="@{/notice/list(page = ${page} ,
+                   type=${pageRequestDTO.type} ,
+                   keyword = ${pageRequestDTO.keyword}  )}">
+                [[${page}]]
+            </a>
+        </li>
+
+        <li class="page-item" th:if="${result.next}">
+            <a class="page-link" th:href="@{/notice/list(page= ${result.end + 1} ,
+                    type=${pageRequestDTO.type} ,
+                    keyword = ${pageRequestDTO.keyword} )}">Next</a>
+        </li>
+
+    </ul>
+
     <button type="button" th:onclick="|location.href='/notice/register'|">글쓰기</button>
 </div>
 <!--content영역끝-->
 
 
 <!--Map영역-->
-    <div class="map">
-        <h4>map 파트</h4>
-    </div>
-
-
+<div class="map">
+    <h4>map 파트</h4>
+</div>
 
 
 <!--footer영역-->
-    <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
+<th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 </body>
 </html>
