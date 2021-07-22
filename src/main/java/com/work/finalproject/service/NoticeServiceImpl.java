@@ -37,7 +37,7 @@ public class NoticeServiceImpl implements NoticeService {
 
         repository.save(entity);
 
-        return entity.getN_no();
+        return entity.getNo();
     }
 
 
@@ -45,7 +45,7 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public PageResultDTO<NoticeDTO, notice_tbl> getList(PageRequestDTO requestDTO) {
 
-        Pageable pageable = requestDTO.getPageable(Sort.by("n_no").descending());
+        Pageable pageable = requestDTO.getPageable(Sort.by("no").descending());
 
         //검색 조건 처리 : getSearch()의 반환 타입 BooleanBuilder
         BooleanBuilder booleanBuilder = getSearch(requestDTO);
@@ -60,8 +60,8 @@ public class NoticeServiceImpl implements NoticeService {
 
     //조회관련
     @Override
-    public NoticeDTO read(int n_no) {
-        Optional<notice_tbl> result = repository.findById(n_no);
+    public NoticeDTO read(int no) {
+        Optional<notice_tbl> result = repository.findById(no);
 
         return result.isPresent() ? entityToDto(result.get()) : null;
     }
@@ -70,7 +70,7 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public void modify(NoticeDTO dto) {
         //업데이트 항목: 제목 / 내용
-        Optional<notice_tbl> result = repository.findById(dto.getN_no());
+        Optional<notice_tbl> result = repository.findById(dto.getNo());
         if (result.isPresent()) {
             notice_tbl entity = result.get();
             entity.changeTitle(dto.getN_title());
@@ -82,9 +82,9 @@ public class NoticeServiceImpl implements NoticeService {
 
     //삭제관련련
     @Override
-    public void remove(int n_no) {
+    public void remove(int no) {
 
-        repository.deleteById(n_no);
+        repository.deleteById(no);
     }
 
     //검색 관련: NoticeServiceImpl자체선언메서드
@@ -98,7 +98,7 @@ public class NoticeServiceImpl implements NoticeService {
         //검색
         String keyword = requestDTO.getContent_id();
 
-        BooleanExpression expression = qnotice_tbl.n_no.gt(0);
+        BooleanExpression expression = qnotice_tbl.no.gt(0);
         booleanBuilder.and(expression);
 
         //검색 조건이 없을 경우

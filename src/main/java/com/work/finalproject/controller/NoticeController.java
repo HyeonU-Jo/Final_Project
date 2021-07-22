@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -30,8 +27,9 @@ public class NoticeController {
     /*공지사항*/
     @GetMapping({"/list"})
     public void list(PageRequestDTO pageRequestDTO, Model model) {
-        log.info("list..." + pageRequestDTO);
+        model.addAttribute("result", service.getList(pageRequestDTO));
 
+        System.out.println(service.getList(pageRequestDTO));
     }
 
     /*글쓰기*/
@@ -45,8 +43,8 @@ public class NoticeController {
     public String registerPost(NoticeDTO dto, RedirectAttributes redirectAttributes) {
         log.info("dto~~~" + dto);
         //새로 추가된 엔티티의 번호
-        int n_no = service.register(dto);
-        redirectAttributes.addFlashAttribute("msg", n_no);
+        int no = service.register(dto);
+        redirectAttributes.addFlashAttribute("msg", no);
         return "redirect:/notice/list";
     }
 
@@ -64,17 +62,26 @@ public class NoticeController {
         redirectAttributes.addAttribute("page", requestDTO.getPage());
         redirectAttributes.addAttribute("type", requestDTO.getType());
         redirectAttributes.addAttribute("keyword", requestDTO.getKeyword());
-        redirectAttributes.addAttribute("n_no", dto.getN_no());
+        redirectAttributes.addAttribute("no", dto.getNo());
 
         return "redirect:/notice/read";
     }
 
     /*상세보기*/
     @GetMapping({"/read", "/modify"})
-    public void read(int n_no, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model) {
-        log.info("n_no:~~~" + n_no);
-        NoticeDTO dto = service.read(n_no);
+    public void read(int no, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model) {
+        log.info("no:~~~" + no);
+        NoticeDTO dto = service.read(no);
         model.addAttribute("dto", dto);
+    }
+
+    /*삭제처리*/
+    @PostMapping("/remove")
+    public String remove(int no, RedirectAttributes redirectAttributes) {
+        log.info("no~~~" + no);
+        service.remove(no);
+        redirectAttributes.addFlashAttribute("msg", no);
+        return "redirect:/notice/list";
     }
 
 }

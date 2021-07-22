@@ -15,17 +15,17 @@ public interface NoticeService {
     PageResultDTO<NoticeDTO, notice_tbl> getList(PageRequestDTO requestDTO);
 
     //조회관련
-    NoticeDTO read(int n_no);
+    NoticeDTO read(int no);
     //수정관련
     void modify(NoticeDTO dto);
     //삭제관련
-    void remove(int n_no);
+    void remove(int no);
 
 
     //DTO => Entity
     default notice_tbl dtoToEntity(NoticeDTO dto) {
         notice_tbl entity = notice_tbl.builder()
-                .n_no(dto.getN_no())
+                .no(dto.getNo())
                 .n_title(dto.getN_title())
                 .n_content(dto.getN_content())
                 .n_writer(dto.getN_writer())
@@ -37,7 +37,7 @@ public interface NoticeService {
     //Entity => DTO
     default NoticeDTO entityToDto(notice_tbl entity) {
         NoticeDTO dto = NoticeDTO.builder()
-                .n_no(entity.getN_no())
+                .no(entity.getNo())
                 .n_title(entity.getN_title())
                 .n_content(entity.getN_content())
                 .n_writer(entity.getN_writer())
