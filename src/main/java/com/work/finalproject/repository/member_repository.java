@@ -9,7 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface member_repository extends JpaRepository<member_tbl, String>{
-    static Optional<member_tbl> findByusername(String username) {
-        return null;
-    }
+
 }

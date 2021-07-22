@@ -28,10 +28,9 @@ public class MemberController {
 
     //회원가입 페이지
     @GetMapping("/join")
-    public void join(Model model){
-//        model.addAttribute("member",new MemberDTO());
+    public String join(Model model){
 
-
+        return "/member/join";
     }
     //회원가입 페이지 처리
     @PostMapping("/join")
@@ -58,12 +57,12 @@ public class MemberController {
 
     //마이페이지 페이지
     @GetMapping("/mypage")
-    public String memberMypage(Model model){
+    public String mypage(Model model){
 
         return "/member/mypage";
     }
     //마이페이지 처리
-    public String memberMypageProc(){
+    public String mypageProc(){
 
         return "redirect:/main";
     }
