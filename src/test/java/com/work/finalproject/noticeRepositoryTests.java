@@ -24,7 +24,7 @@ public class noticeRepositoryTests {
                     .n_writer("writer~~~~"+(i%10))
                     .build();
             System.out.println(noticeRepository.save(noticeTbl));
-            System.out.println(good);
+            System.out.println("good");
         });
     }
 
