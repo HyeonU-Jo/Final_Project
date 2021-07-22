@@ -5,18 +5,19 @@
     <title>찜한목록</title>
 </head>
 <body>
-<form name="like">
+<form action="#" name="like">
     <h2>찜페이지이지롱</h2>
-    <table>
-        <tr>
-            <td>찜목록번호</td>
-        </tr>
+    <fieldset>
+        <legend>찜목록번호</legend>
+
         <tr th:each="like:${likeList}">
             <td>
                 <span th:text="${like.no}"></span>
+                <input type="checkbox" name="likeList"/>
             </td>
         </tr>
-    </table>
+    </fieldset>
+    <input type="submit" value="등록하기" />
 </form>
 </body>
 </html>
