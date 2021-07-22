@@ -12,9 +12,11 @@
 
 
 <!--content영역-->
-        <form action="/notice/modify">
-            <h1>수정페이지</h1>
+        <form action="/notice/update" method="post">
 
+
+            <h1>수정페이지</h1>
+            <!--수정페이지-->
             <div>
                 <label>번호</label>
                 <input type="text" name="n_no" th:value="${dto.n_no}" readonly>

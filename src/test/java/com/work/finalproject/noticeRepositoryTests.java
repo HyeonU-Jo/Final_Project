@@ -13,9 +13,9 @@ public class noticeRepositoryTests {
 
     @Autowired
     private notice_repository noticeRepository;
-/*
 
     @Test
+
     public void insertNotice() {
         IntStream.rangeClosed(1, 20).forEach(i -> {
             notice_tbl noticeTbl = notice_tbl.builder()
@@ -26,6 +26,5 @@ public class noticeRepositoryTests {
             System.out.println(noticeRepository.save(noticeTbl));
         });
     }
-*/
 
 }
