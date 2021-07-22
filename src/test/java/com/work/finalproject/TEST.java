@@ -6,27 +6,23 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDateTime;
 import java.util.stream.IntStream;
 
 @SpringBootTest
-public class noticeRepositoryTests {
+public class TEST {
 
     @Autowired
     private notice_repository noticeRepository;
 
     @Test
-
-    public void insertNotice() {
-        IntStream.rangeClosed(1, 10).forEach(i -> {
+    public void insertDummies(){
+        IntStream.rangeClosed(1,300).forEach(i -> {
             notice_tbl noticeTbl = notice_tbl.builder()
-                    .n_title(" Title..." + i)
-                    .n_content("Content...." + i)
-                    .n_writer("writer~~~~"+(i%10))
+                    .n_title("Title...." + i)
+                    .n_content("Content..." +i)
+                    .n_writer("user" + (i % 10))
                     .build();
             System.out.println(noticeRepository.save(noticeTbl));
-            System.out.println("good");
         });
     }
-
 }

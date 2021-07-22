@@ -3,7 +3,6 @@ package com.work.finalproject.service;
 import com.work.finalproject.dto.NoticeDTO;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.work.finalproject.dto.NoticeDTO;
 import com.work.finalproject.dto.PageRequestDTO;
 import com.work.finalproject.dto.PageResultDTO;
 import com.work.finalproject.entity.Qnotice_tbl;
@@ -46,7 +45,7 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public PageResultDTO<NoticeDTO, notice_tbl> getList(PageRequestDTO requestDTO) {
 
-        Pageable pageable = requestDTO.getPageable(Sort.by("gno").descending());
+        Pageable pageable = requestDTO.getPageable(Sort.by("n_no").descending());
 
         //검색 조건 처리 : getSearch()의 반환 타입 BooleanBuilder
         BooleanBuilder booleanBuilder = getSearch(requestDTO);
