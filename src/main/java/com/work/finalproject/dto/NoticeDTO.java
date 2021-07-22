@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 public class NoticeDTO {
-    private int no;
+    private int n_no;
     private String n_title;
     private String n_writer;
     private String n_content;
