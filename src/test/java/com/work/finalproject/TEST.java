@@ -1,6 +1,8 @@
 package com.work.finalproject;
 
+import com.work.finalproject.entity.like_tbl;
 import com.work.finalproject.entity.notice_tbl;
+import com.work.finalproject.repository.like_repository;
 import com.work.finalproject.repository.notice_repository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,10 @@ public class TEST {
 
     @Autowired
     private notice_repository noticeRepository;
+    @Autowired
+    private like_repository repository;
 
+/*
     @Test
     public void insertDummies(){
         IntStream.rangeClosed(1,300).forEach(i -> {
@@ -23,6 +28,19 @@ public class TEST {
                     .n_writer("user" + (i % 10))
                     .build();
             System.out.println(noticeRepository.save(noticeTbl));
+        });
+    }
+*/
+
+    @Test
+    public void insertDummies(){
+        IntStream.rangeClosed(1,5).forEach(i -> {
+            like_tbl like = like_tbl.builder()
+                    .t_like(i+10)
+                    .s_like(i+20)
+                    .f_like(i+30)
+                    .build();
+            System.out.println(repository.save(like));
         });
     }
 }

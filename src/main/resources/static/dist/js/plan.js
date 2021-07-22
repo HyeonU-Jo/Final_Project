@@ -21,8 +21,8 @@ function createDiv(sDay, eDay) {
         const newBtn = document.createElement('button');
         newBtn.innerText = "+";
         newBtn.addEventListener('click', function () {
-            alert("눌렀지롱");
-            url = "plan_popup";
+            alert("찜 목록으로 이동하겠습니다.");
+            url = "planLikeList";
             window.open(url, "get", "width=600,height=400");
         });
 
