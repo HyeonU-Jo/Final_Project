@@ -12,6 +12,7 @@
     <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 <!--content영역-->
+<div class="content">
     <h1>상세보기</h1>
         <div>
             <label>번호</label>
@@ -38,7 +39,7 @@
 
             <button type="button" th:onclick="|location.href='/notice/modify'|">수정하기</button>
             <button type="button" th:onclick="|location.href='/notice/list'|">목록으로</button>
-
+</div>
 <!--content영역끝-->
 
 
