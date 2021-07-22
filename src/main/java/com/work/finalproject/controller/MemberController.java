@@ -1,7 +1,6 @@
 package com.work.finalproject.controller;
 
 import com.work.finalproject.dto.MemberDTO;
-import com.work.finalproject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 public class MemberController {
 
-    private MemberService memberService;
 
     @GetMapping("/")
     public String main(Model model){
@@ -35,7 +33,6 @@ public class MemberController {
     //회원가입 페이지 처리
     @PostMapping("/join")
     public String joinPost(MemberDTO memberDTO){
-        memberService.join(memberDTO);
 
         return "redirect:/";
     }

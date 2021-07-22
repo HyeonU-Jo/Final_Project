@@ -1,6 +1,5 @@
 package com.work.finalproject.config;
 
-import com.work.finalproject.service.MemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

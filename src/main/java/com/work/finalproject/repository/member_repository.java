@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface member_repository extends JpaRepository<member_tbl, String>{
 
+    Optional<member_tbl> findById(String id);
 }

@@ -1,34 +1,29 @@
 package com.work.finalproject.service;
 
-import com.work.finalproject.dto.MemberDTO;
+
 import com.work.finalproject.entity.member_tbl;
+import com.work.finalproject.repository.member_repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public interface MemberService {
+import javax.transaction.Transactional;
 
-    //회원가입
-    String join(MemberDTO memberDTO);
+@Service
+public class MemberService{
 
-    // DTO -> Entity
-    default member_tbl dtoToEntity(MemberDTO dto) {
-        member_tbl entity = member_tbl.builder()
-                .id(dto.getId())
-                .password(dto.getPassword())
-                .email(dto.getEmail())
-                .name(dto.getName())
-                .build();
-        return entity;
+    @Autowired
+    private member_repository member_repository;
+
+    @Transactional
+    public int join(member_tbl member_tbl){
+        try{
+            member_repository.save(member_tbl);
+            return 1;
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("MemberService:join():"+e.getMessage());
+        }
+        return -1;
     }
-
-    // Entity -> DTO
-    default MemberDTO entityToDto(member_tbl entity){
-        MemberDTO dto = MemberDTO.builder()
-                .id(entity.getId())
-                .password(entity.getPassword())
-                .email(entity.getEmail())
-                .name(entity.getName())
-                .build();
-        return dto;
-    }
-
 
 }

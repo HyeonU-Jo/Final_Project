@@ -1,4 +1,4 @@
-package com.work.finalproject.service;
+/*package com.work.finalproject.service;
 
 import com.work.finalproject.dto.MemberDTO;
 import com.work.finalproject.entity.member_tbl;
@@ -29,4 +29,4 @@ public class MemberServiceImpl implements MemberService{
         return entity.getId();
     }
 
-}
+}*/
