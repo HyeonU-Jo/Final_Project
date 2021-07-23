@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+<th:block th:fragment="setSearch(search)"></th:block>
+
 <th:block th:fragment="setHead(head)">
 
     <div class="header">
         <h4>header 파트</h4>
-        <p><a th:href="@{/plan/plan}">플랜으로  </a></p>
-        <p><a th:href="@{/member/login}">로그인 / </a></p>
-        <p><a th:href="@{/member/mypage}">마이페이지 / </a></p>
+        <div>
+            <div id="main_title">
+                <a th:href="@{/}"><h1>놀먹날먹</h1></a>
+            </div>
+            <div id="user-tag">
+                <a th:href="@{/plan/plan}">플랜짜기 / </a>
+                <a th:href="@{/member/login}">로그인 / </a>
+                <a th:href="@{/member/mypage}">마이페이지 </a>
+            </div>
+        </div>
+        <div>
+            <th:block th:replace="~{/test/searchPage :: setSearch(~{this::search} )}"></th:block>
+        </div>
     </div>
 
 </th:block>

@@ -5,19 +5,25 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/test/detail">
-    관광지 검색
-    <select name="contentType">
-        <option value="">전체</option>
-        <option value="12">관광지</option>
-        <option value="14">문화시설</option>
-        <option value="15">축제/공연/행사</option>
-        <option value="39">맛집</option>
-    </select>
-    <input type="text" name="keyword">
-    <input type="submit" value="검색">
-</form>
 
+<th:block th:fragment="setSearch(search)">
+
+<div>
+    <form action="/test/detail">
+        <p>관광지 검색</p>
+        <select name="contentType">
+            <option value="">전체</option>
+            <option value="12">관광지</option>
+            <option value="14">문화시설</option>
+            <option value="15">축제/공연/행사</option>
+            <option value="39">맛집</option>
+        </select>
+        <input type="text" name="keyword">
+        <input type="submit" value="검색">
+    </form>
+</div>
+
+</th:block>
 
 </body>
 </html>
