@@ -6,16 +6,24 @@
 </head>
 <body>
 <table border="1">
-    <tr>
-        <td>이벤트 플레이스</td>
-        <td>연령제한</td>
-        <td>연락처</td>
-    </tr>
-    <tr th:each="dto : ${list}">
-        <td th:text="${dto.eventplace}"></td>
-        <td th:text="${dto.agelimit}"></td>
-        <td th:text="${dto.sponsor1tel}"></td>
-    </tr>
+
+        <tr>
+            <td>이름</td><td th:text="${dto.title}"></td>
+        </tr>
+        <tr>
+            <td>설명</td><td th:text="${dto.overview}"></td>
+        </tr>
+        <tr>
+            <td>연락처</td><td th:text="${dto.tel}"></td>
+        </tr>
+        <tr>
+            <td>홈페이지</td><td><div th:text="${dto.homepage}"></div></td>
+        </tr>
+        <tr>
+            <td>사진1</td><td><img th:src="${dto.firstimage}"></td>
+        </tr>
+
+
 
 </table>
 
@@ -37,7 +45,12 @@
 <form action="/test/reviewWrite" method="post">
 <table border="2">
     <tr>
-        <td>리뷰 작성</td><td><input type="text" name="r_content"><input type="hidden" name="content_id" th:value="${contentId}"></td>
+        <td>리뷰 작성</td>
+        <td>
+            <input type="text" name="r_content">
+            <input type="hidden" name="content_id" th:value="${dto.content_id}">
+            <input type="hidden" name="contentType" th:value="${dto.contentType}">
+        </td>
     </tr>
     <tr>
         <td>평점 입력</td><td><input type="range" name="r_rating" min="1" max="5"></td>
