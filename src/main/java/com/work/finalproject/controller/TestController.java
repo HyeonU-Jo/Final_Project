@@ -2,13 +2,18 @@ package com.work.finalproject.controller;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.querydsl.core.BooleanBuilder;
+import com.work.finalproject.dto.PageRequestDTO;
 import com.work.finalproject.dto.ReviewDTO;
 import com.work.finalproject.dto.XmlDTO;
 import com.work.finalproject.publicApi.PublicAPI;
 import com.work.finalproject.service.ReviewService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,29 +30,37 @@ public class TestController {
 
     private final ReviewService service;
 
-
+    @GetMapping("/")
+    public String index(){return "redirect:/test/searchPage";}
 
     @GetMapping("/kakaoMapApi")
     public String kakaoMapApi(){
         return "/test/kakaoMapApi";
-
     }
 
     @GetMapping("/searchPage")
     public String searchPage(){
-
         return "/test/searchPage";
 
     }
 
     @GetMapping("/detail")
-    public String search(String keyword, Model model, String contentType) throws IOException{
+    public String search(String keyword, Model model, String contentType, String page) throws IOException{
 
         PublicAPI publicAPI = new PublicAPI();
-
-        List<XmlDTO> xmlList = publicAPI.search(keyword, contentType);
-
+        List<XmlDTO> xmlList = publicAPI.search(keyword, contentType, page);
         model.addAttribute("list", xmlList);
+
+        List<Integer> pageList = new ArrayList<Integer>();
+        for(int i = 0; i<xmlList.get(0).getTotalPage(); i++){
+            pageList.add(i+1);
+        }
+        model.addAttribute("pageList", pageList);
+        model.addAttribute("keyword", keyword);
+        System.out.println();
+        model.addAttribute("contentType", contentType);
+        model.addAttribute("page2", page);
+
 
 
         return "/test/detail";
@@ -59,35 +72,20 @@ public class TestController {
         model.addAttribute("reviewList", list);
 
         PublicAPI realDetail = new PublicAPI();
-
         XmlDTO xmlDTO = realDetail.detail(content_id, contentType);
         xmlDTO.setFirstimage2(firstimage2);
-
-        System.out.println(firstimage2);
         model.addAttribute("dto", xmlDTO);
-
         return "/test/realDetail";
     }
 
 
 
-
-
-    @GetMapping("/")
-    public String index(){return "redirect:/test/searchPage";}
-
     @PostMapping("/reviewWrite")
     public String reviewWrite(ReviewDTO dto, RedirectAttributes redirectAttributes, String contentType){
-        System.out.println("reviewwrite 컨텐츠 아이디 : " + dto.getContent_id());
-        System.out.println("dto 값 확인한다 -------" + dto.getR_content());
-        System.out.println("dto값 확인한다. ㅁㄴㅇㅁㄴㅇ" + dto.getR_num());
 
         service.reviewWrite(dto);
         redirectAttributes.addAttribute("content_id", dto.getContent_id());
         redirectAttributes.addAttribute("contentType", contentType);
-
-
-
 
         return "redirect:/test/realDetail";
     }

@@ -5,7 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-
+<form action="/test/detail">
+    <select name="contentType">
+        <option value="">전체</option>
+        <option value="12">관광지</option>
+        <option value="14">문화시설</option>
+        <option value="15">축제/공연/행사</option>
+        <option value="39">맛집</option>
+    </select>
+    <input type="text" name="keyword">
+    <input type="hidden" name="page" th:value="${page2}">
+    <input type="submit" value="검색">
+</form>
 <table border="1">
     <div th:each="list : ${list}">
     <tr>
@@ -23,7 +34,27 @@
     </tr>
     </div>
 
+
 </table>
+<div th:each="page : ${pageList}" style="float: left">
+
+
+    <th:block th:if="${page.toString().equals(page2)}">
+    [[${page}]]&nbsp;
+    </th:block>
+    <th:block th:unless="${page.toString().equals(page2)}">
+        <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page})}">[[${page}]]</a>&nbsp;
+    </th:block>
+</div>
+<br>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 </body>
 </html>
