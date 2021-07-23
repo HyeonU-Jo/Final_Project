@@ -11,23 +11,23 @@
             <td>이름</td><td th:text="${dto.title}"></td>
         </tr>
         <tr>
-            <td>설명</td><td th:text="${dto.overview}"></td>
+            <td>설명</td><td width="400" th:utext="${dto.overview}"></td>
         </tr>
         <tr>
             <td>연락처</td><td th:text="${dto.tel}"></td>
         </tr>
         <tr>
-            <td>홈페이지</td><td><div th:text="${dto.homepage}"></div></td>
+            <td>홈페이지</td><td th:utext="${dto.homepage}" ></td>
         </tr>
         <tr>
-            <td>사진1</td><td><img th:src="${dto.firstimage}"></td>
+            <td>사진1</td><td><img th:src="${dto.firstimage2}"></td>
         </tr>
         <tr>
             <td>위치</td>
             <td>
                 <input type="hidden" name="mapx" id="mapx" th:value="${dto.mapx}">
                 <input type="hidden" name="mapy" id="mapy" th:value="${dto.mapy}">
-                <div id="map" style="width:100%;height:350px;"></div>
+                <div id="map" style="width:100%;height:200px;"></div>
             </td>
         </tr>
 
@@ -81,45 +81,34 @@
     var mapy = Number(document.getElementById('mapy').value);
     var title = document.getElementById('title').value;
 
-    console.log(mapx);
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new kakao.maps.LatLng(mapy, mapx), // 지도의 중심좌표
             level: 3 // 지도의 확대 레벨
         };
 
-    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
 
-    // 마커를 표시할 위치입니다
-    var position =  new kakao.maps.LatLng(mapy, mapx);
+    // 마커가 표시될 위치입니다
+    var markerPosition  = new kakao.maps.LatLng(mapy, mapx);
 
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
-        position: position
+        position: markerPosition
     });
 
-    // 마커를 지도에 표시합니다.
+    // 마커가 지도 위에 표시되도록 설정합니다
     marker.setMap(map);
 
-    // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-    var iwContent = '<div style="padding:5px;">'+title+'</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    var iwContent = '<div style="padding:5px;">'+title+' <br><a href="https://map.kakao.com/link/map/'+title+','+mapy+','+mapx +'" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/'+title+','+mapy+','+mapx+'" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+        iwPosition = new kakao.maps.LatLng(mapy, mapx); //인포윈도우 표시 위치입니다
 
     // 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow({
+        position : iwPosition,
         content : iwContent
     });
-
-    // 마커에 마우스오버 이벤트를 등록합니다
-    kakao.maps.event.addListener(marker, 'mouseover', function() {
-        // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-        infowindow.open(map, marker);
-    });
-
-    // 마커에 마우스아웃 이벤트를 등록합니다
-    kakao.maps.event.addListener(marker, 'mouseout', function() {
-        // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-        infowindow.close();
-    });
+    infowindow.open(map, marker);
 </script>
 </body>
 </html>

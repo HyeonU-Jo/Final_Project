@@ -24,4 +24,6 @@ public class XmlDTO {
 
     private String contentType;
 
+    private int totalPage;
+
 }
