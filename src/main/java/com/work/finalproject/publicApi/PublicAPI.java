@@ -21,12 +21,24 @@ import java.util.List;
 public class PublicAPI {
 
     private static String getTagValue(String tag, Element eElement) {
-        NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
-        Node nValue = (Node) nlList.item(0);
-        if(nValue == null)
-            return null;
-        return nValue.getNodeValue();
+        try {
+            NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
+            Node nValue = (Node) nlList.item(0);
+            if (nValue == null) {
+                return null;
+            }
+            return nValue.getNodeValue();
+        } catch (Exception e) {
+            return "";
+        }
+
     }
+
+
+
+
+
+
     // 검색
     public List<XmlDTO> search(String keyword, String contentType) throws IOException{
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword"); /*URL*/
@@ -55,7 +67,6 @@ public class PublicAPI {
         BufferedReader rd;
         List<XmlDTO> xmlList = new ArrayList<XmlDTO>();
 
-
         try{
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -66,15 +77,11 @@ public class PublicAPI {
             NodeList nodeList = doc.getElementsByTagName("item");
             System.out.println("파싱할 리스트 수 : " + nodeList.getLength());
 
-
-
             for (int temp = 0; temp<nodeList.getLength(); temp++){
                 Node nNode = nodeList.item(temp);
                 if(nNode.getNodeType()==Node.ELEMENT_NODE){
                     XmlDTO dto = new XmlDTO();
                     Element element = (Element) nNode;
-
-
 
                     dto.setKeyword(getTagValue("title", element));
                     dto.setContent_id(getTagValue("contentid", element));
@@ -82,11 +89,11 @@ public class PublicAPI {
                     dto.setFirstimage2(getTagValue("firstimage2" ,element));
                     dto.setMapx(getTagValue("mapx",element));
                     dto.setMapy(getTagValue("mapy",element));
+                    dto.setTel(getTagValue("tel", element));
+
 
 
                     xmlList.add(dto);
-
-
                 }
             }
 
@@ -148,9 +155,6 @@ public class PublicAPI {
             System.out.println("element : " + doc.getDocumentElement().getNodeName());
             NodeList nodeList = doc.getElementsByTagName("item");
 
-
-
-
             for (int temp = 0; temp<nodeList.getLength(); temp++){
                 Node nNode = nodeList.item(temp);
                 if(nNode.getNodeType()==Node.ELEMENT_NODE){
@@ -164,6 +168,8 @@ public class PublicAPI {
                     xmlDTO.setOverview(getTagValue("overview", element));
                     xmlDTO.setMapx(getTagValue("mapx",element));
                     xmlDTO.setMapy(getTagValue("mapy", element));
+                    xmlDTO.setTel(getTagValue("tel", element));
+                    xmlDTO.setHomepage(getTagValue("homepage", element));
 
                 }
             }

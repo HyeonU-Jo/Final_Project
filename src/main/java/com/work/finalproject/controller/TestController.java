@@ -54,14 +54,16 @@ public class TestController {
     }
 
     @GetMapping("/realDetail")
-    public String realDetail(String content_id, Model model, String contentType) throws IOException{
+    public String realDetail(String content_id, Model model, String contentType, String firstimage2) throws IOException{
         List<ReviewDTO> list = service.reviewList(content_id);
         model.addAttribute("reviewList", list);
 
         PublicAPI realDetail = new PublicAPI();
 
         XmlDTO xmlDTO = realDetail.detail(content_id, contentType);
+        xmlDTO.setFirstimage2(firstimage2);
 
+        System.out.println(firstimage2);
         model.addAttribute("dto", xmlDTO);
 
         return "/test/realDetail";
