@@ -30,6 +30,7 @@ public class TestController {
     @GetMapping("/kakaoMapApi")
     public String kakaoMapApi(){
         return "/test/kakaoMapApi";
+
     }
 
     @GetMapping("/searchPage")

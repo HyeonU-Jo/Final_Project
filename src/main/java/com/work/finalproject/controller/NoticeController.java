@@ -84,4 +84,17 @@ public class NoticeController {
         return "redirect:/notice/list";
     }
 
+
+    /*개인정보처리*/
+    @GetMapping("/personalinfo")
+    public void personalinfo() {
+        log.info("personalinfo~~~" );
+    }
+
+    /*이용약관*/
+    @GetMapping("/provisions")
+    public void provisions() {
+        log.info("provisions~~~") ;
+    }
+
 }
