@@ -5,7 +5,8 @@
 
     <div class="content">
         <h4>content 파트</h4>
-        <p> <a th:href="@{/member/user}">유저페이지로</a></p>
+        <th:block th:replace="~{/test/searchPage :: setSearch(~{this::search} )}"></th:block>
+        <p><a th:href="@{/member/user}">유저페이지로</a></p>
     </div>
 
 </th:block>

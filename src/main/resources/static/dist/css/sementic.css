@@ -35,6 +35,22 @@ body {
     line-height: 240px;
 }
 
-#user-tag {
+.user-tag {
+    float: left;
     text-align: right;
+    width: 50%;
+}
+
+.logo{
+    float: left;
+    text-align: left;
+    width: 50%;
+}
+
+.top{
+    float: left;
+}
+
+.search{
+    float: left;
 }
