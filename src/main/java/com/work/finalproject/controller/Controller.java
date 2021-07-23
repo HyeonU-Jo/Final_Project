@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Controller {
 
     @GetMapping({"/"})
-    public String main() {
+    public String test() {
 
-        return "main";
+        return "test";
     }
 }
