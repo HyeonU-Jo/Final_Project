@@ -58,10 +58,15 @@ public class MemberController {
 
         return "/member/mypage";
     }
-    //마이페이지 처리
-    public String mypageProc(){
+    @GetMapping("/mypage_myinfo")
+    public String mypage_myinfo(Model model){
 
-        return "redirect:/main";
+        return "/member/mypage_myinfo";
+    }
+    @GetMapping("/mypage_like")
+    public String mypage_like(Model model){
+
+        return "/member/mypage_like";
     }
 
 

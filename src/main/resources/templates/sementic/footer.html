@@ -4,8 +4,9 @@
 <th:block th:fragment="setFoot(foot)">
 
     <div class="footer">
-        <h4>footer 파트</h4>
-        <p><a th:href="@{/notice/list}">공지사항으로</a></p>
+        <a th:href="@{/notice/list}">||&nbsp;&nbsp;공지사항으로</a>
+        <a th:href="@{/notice/personalinfo}">||&nbsp;&nbsp;개인정보처리방침</a>
+        <a th:href="@{/notice/provisions}">||&nbsp;&nbsp;이용약관</a>
     </div>
 
 </th:block>

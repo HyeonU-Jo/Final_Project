@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="setHead(head)"></th:block>
+<th:block th:fragment="setContent(content)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
 
 <head>
@@ -12,14 +13,10 @@
 
 <body>
 <!--Header-->
-<th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
+<th:block th:replace="~{/sementic/mainHeader :: setMainHead(~{this::mainHead} )}"></th:block>
 
 <!--Content-->
-<div class="content">
-    <h4>content 파트</h4>
-
-    <p> <a th:href="@{/member/user}">유저페이지로</a></p>
-</div>
+<th:block th:replace="~{/sementic/content :: setContent(~{this::content} )}"></th:block>
 
 <!--Map-->
 <div class="map">

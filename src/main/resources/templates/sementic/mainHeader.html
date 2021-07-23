@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/dist/css/sementic.css}">
+
+<th:block th:fragment="setSearch(search)"></th:block>
+
+<th:block th:fragment="setMainHead(mainHead)">
+
+    <div class="header">
+        <div>
+            <div class="logo">
+                <img th:src="@{/image/logo.png}" width="150px" height="150px">
+            </div>
+            <div class="user-tag">
+                <a th:href="@{/plan/plan}">플랜짜기 / </a>
+                <a th:href="@{/member/login}">로그인 / </a>
+                <a th:href="@{/member/mypage}">마이페이지 </a>
+            </div>
+        </div>
+    </div>
+
+</th:block>
+</html>
