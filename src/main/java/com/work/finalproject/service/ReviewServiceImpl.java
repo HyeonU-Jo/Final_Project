@@ -19,6 +19,7 @@ import com.work.finalproject.repository.review_repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 @Service
@@ -32,6 +33,13 @@ public class ReviewServiceImpl implements ReviewService{
     public void reviewWrite(ReviewDTO dto){
         review_tbl entity = reviewToEntity(dto);
         repository.save(entity);
+    }
+
+    @Override
+    public ReviewDTO read(int r_num){
+        Optional<review_tbl> result = repository.findById(r_num);
+
+        return result.isPresent() ? EntityToReview(result.get()): null;
     }
 
 

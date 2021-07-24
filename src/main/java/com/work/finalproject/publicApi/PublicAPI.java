@@ -68,6 +68,8 @@ public class PublicAPI {
         List<XmlDTO> xmlList = new ArrayList<XmlDTO>();
         int totalCount = 0;
         int countList = 10;
+        int countPage = 10;
+        int page2 = 5;
         try{
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -108,10 +110,31 @@ public class PublicAPI {
         }catch (Exception e){
             System.out.println("xml읽기 오류");
         }
+
+
+        // 페이지 처리 계산식
         int totalPage = totalCount / countList;
-        if(totalCount > countList * totalPage){
+
+        if(totalCount % countList > 0){
             totalPage++;
         }
+
+        if(totalPage< page2){
+            page2 = totalPage;
+        }
+
+        int startPage = ((page2 -1) / 10) * 10 + 1;
+        int endPage = startPage + countPage - 1;
+
+        if(endPage > totalPage){
+            endPage = totalPage;
+        }
+
+        for(int iCount = startPage; iCount <= endPage; iCount++){
+            System.out.println("아이 카운트 : "+iCount);
+        }
+
+
 
         xmlList.get(0).setTotalPage(totalPage);
 

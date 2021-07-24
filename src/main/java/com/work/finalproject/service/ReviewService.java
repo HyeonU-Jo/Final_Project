@@ -16,7 +16,7 @@ public interface ReviewService {
 
     List<ReviewDTO> reviewList(String content_id);
 
-
+    ReviewDTO read(int r_num);
 
     default review_tbl reviewToEntity(ReviewDTO dto){
         System.out.println("리뷰 투 엔티티 값 확인" + dto.getContent_id());
