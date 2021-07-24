@@ -38,10 +38,15 @@ h1 {
 }
 
 .intro_bg {
-    background-image: url("image/jeju.png");
     width: 100%;
-    height: 681px;
+    height: 720px;
 
+}
+
+header{
+    width: 100%;
+    margin: auto;
+    /*position:fixed;top:0;left:0;*/
 }
 
 .header {
@@ -60,7 +65,7 @@ h1 {
     margin-top: 24px;
 }
 
-.searchArea > form > input {
+.searchArea input {
     border: none;
     width: 250px;
     height: 40px;
@@ -69,11 +74,39 @@ h1 {
     padding-left: 10px;
 }
 
-.searchArea > form > span {
-    width: 50px;
+.searchArea input:last-child {
+    width: 40px;
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+}
+
+.searchMain {
+    margin: auto;
+    width: 800px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    margin-top: 24px;
+}
+
+.searchMain input {
+    width: 500px;
+    border: none;
+    height: 60px;
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
+}
+
+.searchMain input:last-child {
+    width: 60px;
+}
+
+.searchMain select {
+    border: none;
+    height: 60px;
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
 }
 
 .nav {
@@ -94,7 +127,7 @@ h1 {
 
 .intro_text {
     width: 100%;
-    margin: 231px auto 231px auto; /*상하좌우*/
+    margin: 231px auto 231px auto; /*ìƒí•˜ì¢Œìš°*/
     text-align: center;
 
 }
@@ -169,6 +202,11 @@ h1 {
     margin-top: 28px;
 }
 
+.icons > li > .icon_img > img {
+    width: 150px;
+    height: 150px;
+}
+
 .icons > li:not(:last-child) {
     margin-right: 20px;
 }
@@ -221,8 +259,6 @@ h1 {
 .main_text2 {
     width: 100%;
     height: 418px;
-    background-image: url("image/contact.png");
-
 }
 
 .main_text2 > ul {
@@ -239,7 +275,7 @@ h1 {
 
 .main_text2 > ul > li > div,
 .main_text2 > ul > li > div > h1 {
-    color: white;
+    color: black;
 }
 
 .more2 {
@@ -250,13 +286,15 @@ h1 {
     line-height: 40px;
     margin: 16px auto;
 }
-#link_header{
 
-}
 footer {
     display: flex;
-    background: #1f1f1f;
+    background: #e1e1e1;
     padding: 30px;
+}
+
+footer > div > a {
+    color: black;
 }
 
 footer > div:first-child {
@@ -270,3 +308,4 @@ footer > div:last-child {
     color: #fff;
 
 }
+

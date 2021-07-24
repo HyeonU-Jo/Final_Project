@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" th:href="@{/dist/css/sementic.css}">
-
-<th:block th:fragment="setSearch(search)"></th:block>
-
 <th:block th:fragment="setHead(head)">
-
-    <div class="header">
-        <div class="top" >
-            <img class="logo" th:src="@{/image/logo.png}">
-            <th:block class="search" th:replace="~{/test/searchPage :: setSearch(~{this::search} )}"></th:block>
-            <section class="menu">
-            <a th:href="@{/plan/plan}">플랜짜기 / </a>
-            <a th:href="@{/member/login}">로그인 / </a>
-            <a th:href="@{/member/mypage}">마이페이지 </a>
-            </section>
-        </div>
-
-    </div>
-
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/dist/css/style.css}">
+    <header>
+        <form action="/test/detail">
+            <div class="header">
+                <div class="searchArea">
+                    <form>
+                        <input type="search" name="keyword" placeholder="Search">
+                        <input type="hidden" name="page" value="1">
+                        <input type="hidden" name="contentType" value="">
+                        <input type="submit" value="검색">
+                    </form>
+                </div>
+                <ul class="nav">
+                    <li><a th:href="@{/}">HOME</a></li>
+                    <li><a th:href="@{/plan/plan}">PLAN</a></li>
+                    <li><a th:href="@{/member/login}">LOGIN</a></li>
+                    <li><a th:href="@{/member/mypage}">MYPAGE</a></li>
+                </ul>
+            </div>
+        </form>
+    </header>
 </th:block>
-</html>
