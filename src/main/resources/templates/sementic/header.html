@@ -4,6 +4,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/dist/css/style.css}">
+    <script th:src="@{/dist/js/sementic.js}"></script>
+    <script th:src="@{/jquery-3.1.1.min.js}"></script>
     <header>
         <form action="/test/detail">
             <div class="header">
@@ -23,5 +25,6 @@
                 </ul>
             </div>
         </form>
+            <div id="goingTop" onclick="window.scrollTo(0,0);"> ↑ </div>
     </header>
 </th:block>
