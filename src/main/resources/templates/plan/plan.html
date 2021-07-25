@@ -12,6 +12,8 @@
     <script th:src="@{/dist/js/datepicker.min.js}"></script>
     <script th:src="@{/dist/js/i18n/datepicker.ko.js}"></script>
     <script th:src="@{/dist/js/plan.js}"></script>
+    <link rel="stylesheet" th:href="@{/dist/css/style.css}">
+
 
     <style>
         * {
@@ -32,11 +34,13 @@
 
 
 <!--content영역시작-->
-            <!--날짜선택 div-->
-<div class="content">
-            <div class="palnday">
+
+<div class="section">
+    <!--날짜선택 div-->
+    <div class="content">
+            <div class="planday">
                 <h3>여행날짜선택</h3>
-                <input id="sDay" type="text" name="sDay">-
+                <input id="sDay" type="text" name="sDay">&nbsp;-&nbsp;
                 <input id="eDay" type="text" name="eDay">
                 <input id="once" type="button" name="check" value="확인"
                        onclick="createDiv('${datepicker1}','${datepicker2}'); this.onclick=null;"/>
@@ -52,8 +56,8 @@
                 });
                 datePickerSet($("#sDay"), $("#eDay"), true);
             </script>
-</div>
-<!--content영역끝-->
+    </div>
+
 
 
 
@@ -62,7 +66,8 @@
                 <h4>map 파트</h4>
             </div>
 
-
+</div>
+<!--content영역끝-->
 
 <!--footer영역-->
             <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>

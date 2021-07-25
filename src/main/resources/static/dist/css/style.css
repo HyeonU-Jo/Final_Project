@@ -6,7 +6,6 @@
     padding: 0px;
     color: #000;
     font-family: 'Noto Sans KR', sans-serif;
-
 }
 
 h1 {
@@ -51,7 +50,7 @@ header{
 
 .header {
     display: flex;
-    width: 1280px;
+    width: 100%;
     margin: auto;
     height: 86px;
 }
@@ -62,6 +61,7 @@ header{
     background: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     margin-top: 24px;
+    margin-left: 20px;
 }
 
 .searchArea input {

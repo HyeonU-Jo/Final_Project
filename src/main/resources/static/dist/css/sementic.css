@@ -6,19 +6,23 @@ body {
     background-color: #5cc4ef;
     height: 250px;
 }
-
+.section{
+    display: flex;
+}
 .map {
-    background-color: #a1a1a1;
+    min-height: 500px;
     width: 20%;
-    height: 500px;
+    background-color: #a1a1a1;
     float: left;
+    margin-top: 100px;
+
 }
 
 .content {
-    background-color: aquamarine;
+    min-height: 500px;
     width: 80%;
-    height: 500px;
     float: left;
+    margin-top: 100px;
 }
 
 .footer {

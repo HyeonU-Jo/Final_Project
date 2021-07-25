@@ -13,9 +13,9 @@
 
 
 
-
-<!--content영역-->
-<div class="content">
+<div class="section">
+    <!--content영역-->
+    <div class="content">
     <h1>글작성</h1>
         <form th:action="@{/notice/register}" th:method="post">
             <div>
@@ -43,7 +43,7 @@
     <div class="map">
         <h4>map 파트</h4>
     </div>
-
+</div>
 
 <!--footer영역-->
     <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
