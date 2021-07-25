@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>찜한목록</title>
+    <script th:src="@{/dist/js/plan.js}"></script>
+
 </head>
 <body>
-<form action="plan.html" name="like">
     <h2>찜페이지이지롱</h2>
     <fieldset>
         <legend>찜목록번호</legend>
@@ -13,11 +14,10 @@
         <tr th:each="like:${likeList}">
             <td>
                 <span th:text="${like.no}"></span>
-                <input type="checkbox" name="likeList"/>
+                <input type="checkbox" name="likeList" id="likeList" th:value="${like.no}"/>
             </td>
         </tr>
     </fieldset>
-    <input type="submit" value="등록하기" />
-</form>
+    <button  onclick="run(likeList)">등록하기</button>
 </body>
 </html>

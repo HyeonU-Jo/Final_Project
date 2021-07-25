@@ -5,9 +5,8 @@ function createDiv(sDay, eDay) {
     day1 = new Date(x);
     day2 = new Date(y);
     var day = Math.ceil(day2.getTime() - day1.getTime());
-    var dayday2 = day / (1000 * 3600 * 24); //박
     var dayday = day / (1000 * 3600 * 24) + 1; //일
-    console.log(dayday2 + "박" + dayday + "일");
+
 
     /*plandiv1안으로 들어가짐*/
     const plandiv2 = document.createElement('div');
@@ -20,6 +19,7 @@ function createDiv(sDay, eDay) {
 
         const newBtn = document.createElement('button');
         newBtn.innerText = "+";
+
         newBtn.addEventListener('click', function () {
             alert("찜 목록으로 이동하겠습니다.");
             url = "planLikeList";
@@ -36,13 +36,20 @@ function createDiv(sDay, eDay) {
     targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);
 }
 
-
+/*새로고침기능*/
 function refreshPage() {
     window.location.reload();
     alert("날짜를 다시 선택하여 주세요")
     return;
-
 }
+/*값전달*/
+function run(test){
+ console.log(test.value);
+}
+
+
+
+
 
 /**달력**/
 function datePickerSet(sDate, eDate, flag) {

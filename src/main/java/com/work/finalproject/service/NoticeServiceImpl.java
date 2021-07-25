@@ -44,15 +44,11 @@ public class NoticeServiceImpl implements NoticeService {
     //목록 관련(검색 추가)
     @Override
     public PageResultDTO<NoticeDTO, notice_tbl> getList(PageRequestDTO requestDTO) {
-
         Pageable pageable = requestDTO.getPageable(Sort.by("no").descending());
-
         //검색 조건 처리 : getSearch()의 반환 타입 BooleanBuilder
         BooleanBuilder booleanBuilder = getSearch(requestDTO);
-
         //Querydsl 사용하기 위한 수정
         Page<notice_tbl> result = repository.findAll(booleanBuilder, pageable);
-
         Function<notice_tbl, NoticeDTO> fn = (entity -> entityToDto(entity));
         return new PageResultDTO<>(result, fn);
 
