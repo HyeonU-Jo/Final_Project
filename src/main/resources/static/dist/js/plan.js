@@ -36,7 +36,11 @@ function createDiv(sDay, eDay) {
     targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);
 }
 
-function test(){
+
+function refreshPage() {
+    window.location.reload();
+    alert("날짜를 다시 선택하여 주세요")
+    return;
 
 }
 

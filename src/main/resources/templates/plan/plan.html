@@ -27,50 +27,50 @@
     </style>
 
 </head>
+
 <body>
 <!--header영역-->
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 
-
 <!--content영역시작-->
-
 <div class="section">
     <!--날짜선택 div-->
     <div class="content">
-            <div class="planday">
-                <h3>여행날짜선택</h3>
-                <input id="sDay" type="text" name="sDay">&nbsp;-&nbsp;
-                <input id="eDay" type="text" name="eDay">
-                <input id="once" type="button" name="check" value="확인"
-                       onclick="createDiv('${datepicker1}','${datepicker2}'); this.onclick=null;"/>
-            </div>
-            <!--div palnday의 날짜에 따라 추가되는 div-->
-            <div class="plandiv1">
-                <!--js에서 plandiv2가 들어오게됨-->
-            </div>
-            <!--jquery:자리이동x-->
-            <script>
-                $("#datepicker").datepicker({
-                    language: 'ko'
-                });
-                datePickerSet($("#sDay"), $("#eDay"), true);
-            </script>
+        <div class="planday">
+            <h3>여행날짜선택</h3>
+            <input id="sDay" type="text" name="sDay">&nbsp;-&nbsp;
+            <input id="eDay" type="text" name="eDay">
+            <input  type="button" id="reconfirm" name="reconfirm" value=" 날짜 재확인 " onclick="refreshPage()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input  type="button" id="once" name="check" value=" 확인 " onclick="createDiv('${datepicker1}','${datepicker2}'); this.onclick=null;"/>
+        </div>
+        <!--div palnday의 날짜에 따라 추가되는 div-->
+        <div class="plandiv1">
+            <!--js에서 plandiv2가 들어오게됨-->
+        </div>
+
+
+
+        <!--jquery:자리이동x-->
+        <script>
+            $("#datepicker").datepicker({
+                language: 'ko'
+            });
+            datePickerSet($("#sDay"), $("#eDay"), true);
+        </script>
     </div>
 
 
-
-
-<!--Map영역-->
-            <div class="map">
-                <h4>map 파트</h4>
-            </div>
+    <!--Map영역-->
+    <div class="map">
+        <h4>map 파트</h4>
+    </div>
 
 </div>
 <!--content영역끝-->
 
 <!--footer영역-->
-            <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
+<th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 
 
 </body>
