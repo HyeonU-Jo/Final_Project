@@ -18,9 +18,9 @@ public class member_tbl {
     private int num;    // 시퀀스, auto_increment
 
     @Column(length = 20, nullable = false)
-    private String id;    // 아이디
+    private String username;    // 아이디
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 100, nullable = false)
     private String password;
 
     @Column(length = 50, nullable = false)

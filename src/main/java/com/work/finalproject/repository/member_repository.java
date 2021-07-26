@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface member_repository extends JpaRepository<member_tbl, String>{
+public interface member_repository extends JpaRepository<member_tbl, Integer>{
 
-    Optional<member_tbl> findById(String id);
+    //SELECT * FROM member_tbl WHERE id=1?
+    Optional<member_tbl> findByUsername(String username);
+
 }
+

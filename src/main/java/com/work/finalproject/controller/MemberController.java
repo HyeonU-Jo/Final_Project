@@ -17,15 +17,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class MemberController {
 
 
-    @GetMapping("/")
-    public String main(Model model){
 
-        return "redirect:/";
-    }
 
 
     //회원가입 페이지
-    @GetMapping("/join")
+    @GetMapping("/auth/join")
     public String join(Model model){
 
         return "/member/join";
@@ -39,7 +35,7 @@ public class MemberController {
 
 
     //로그인 페이지
-    @GetMapping("/login")
+    @GetMapping("/auth/login")
     public String login(Model model){
 
         return "/member/login";
@@ -48,7 +44,7 @@ public class MemberController {
     @PostMapping("/login")
     public String loginPost(){
 
-        return "main";
+        return "/main";
     }
 
 
