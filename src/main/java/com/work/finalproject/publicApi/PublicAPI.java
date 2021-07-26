@@ -130,9 +130,13 @@ public class PublicAPI {
             endPage = totalPage;
         }
 
+
+
         for(int iCount = startPage; iCount <= endPage; iCount++){
             System.out.println("아이 카운트 : "+iCount);
         }
+        xmlList.get(0).setStartPage(startPage);
+        xmlList.get(0).setEndPage(endPage);
 
 
 

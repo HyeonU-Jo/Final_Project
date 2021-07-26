@@ -46,21 +46,33 @@ public class TestController {
     }
 
     @GetMapping("/detail")
-    public String search(String keyword, Model model, String contentType, String page) throws IOException{
-
-        PublicAPI publicAPI = new PublicAPI();
-        List<XmlDTO> xmlList = publicAPI.search(keyword, contentType, page);
-        model.addAttribute("list", xmlList);
+    public String search(String keyword, Model model, String contentType, int page) throws IOException{
 
         List<Integer> pageList = new ArrayList<Integer>();
+
+
+        String strPage = Integer.toString(page);
+
+        PublicAPI publicAPI = new PublicAPI();
+        List<XmlDTO> xmlList = publicAPI.search(keyword, contentType, strPage);
+        model.addAttribute("list", xmlList);
+
+        model.addAttribute("totalCount", xmlList.get(0).getTotalPage());
+
         for(int i = 0; i<xmlList.get(0).getTotalPage(); i++){
             pageList.add(i+1);
         }
+        model.addAttribute("page", page);
         model.addAttribute("pageList", pageList);
         model.addAttribute("keyword", keyword);
         System.out.println();
         model.addAttribute("contentType", contentType);
         model.addAttribute("page2", page);
+        model.addAttribute("thisPage", Integer.parseInt(strPage));
+        model.addAttribute("startPage", xmlList.get(0).getStartPage());
+        model.addAttribute("endPage", xmlList.get(0).getEndPage());
+        model.addAttribute("pageCount", 10);
+
 
 
 

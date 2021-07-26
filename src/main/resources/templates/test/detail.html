@@ -14,7 +14,7 @@
         <option value="39">맛집</option>
     </select>
     <input type="text" name="keyword">
-    <input type="hidden" name="page" th:value="${page2}">
+    <input type="hidden" name="page" th:value="1">
     <input type="submit" value="검색">
 </form>
 <table border="1">
@@ -36,16 +36,58 @@
 
 
 </table>
-<div th:each="page : ${pageList}" style="float: left">
-
-
-    <th:block th:if="${page.toString().equals(page2)}">
-    [[${page}]]&nbsp;
-    </th:block>
-    <th:block th:unless="${page.toString().equals(page2)}">
-        <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page})}">[[${page}]]</a>&nbsp;
-    </th:block>
+<div th:if="${page > 1 || totalCount == 1}" style="float: left">
+    &nbsp;
+    <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page - 1})}">이전</a>
 </div>
+
+
+<div th:if="${page - 2 > 0}" style="float: left">
+    &nbsp;
+    <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page - 2})}">[[${page-2}]]</a>
+</div>
+
+<div th:if="${page - 1 > 0}" style="float: left">
+    &nbsp;
+    <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page - 1})}">[[${page-1}]]</a>
+</div>
+
+<div style="float: left">
+    &nbsp;
+    <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page})}">[[${page}]]</a>
+</div>
+
+<div th:if="${totalCount>page+1}" style="float: left">
+    &nbsp;
+    <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page+1})}">[[${page+1}]]</a>
+</div>
+
+<div th:if="${totalCount > page +2}" style="float: left">
+    &nbsp;
+    <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 2})}">[[${page+2}]]</a>
+</div>
+
+
+
+<div th:if="${page == 1 && totalCount > 3}" style="float: left">
+    &nbsp;
+    <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 3})}">[[${page+3}]]</a>
+</div>
+
+<div th:if="${page == 1 && totalCount > 3}" style="float: left">
+    &nbsp;
+    <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 4})}">[[${page+4}]]</a>
+</div>
+<div th:if="${page == 2 && totalCount > 3}" style="float:left;">
+    &nbsp;
+    <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 3})}">[[${page+3}]]</a>
+</div>
+
+<div th:if="${totalCount - page > 1}" style="float: left">
+    &nbsp;
+    <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 1})}">다음</a>
+</div>
+
 <br>
 <hr>
 <br>

@@ -26,4 +26,7 @@ public class XmlDTO {
 
     private int totalPage;
 
+    private int startPage;
+    private int endPage;
+
 }
