@@ -1,75 +1,48 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <title>My page</title>
-</head>
+<th:block th:fragment="setMyPageLike(mypagelike)">
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" th:href="@{/dist/css/mypage.css}">
+    <script th:src="@{/dist/js/mypage.js}"></script>
 
-<style>
-    .mypage{
-        border: 1px solid;
-        text-align: center;
-        width: 500px;
-        height: 500px;
-    }
-    .top-toolbar{
-        height: 75px;
-        width: 500px;
-    }
-    .top-toolbar > div{
-        float: left;
-        text-align: center;
-        margin-left: 25%;
-    }
-    .content{
-        background-color: #b9cbee;
-        width: 500px;
-        height: 350px;
-    }
-    .bottom-toolbar{
-        position: fixed;
-        width: 500px;
-        height: 75px;
-        margin-top: 20px;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <title>My page</title>
+    </head>
 
+    <body>
 
-</style>
+    <div class="MyPage">
 
-<body>
-
-<div class="mypage">
-
-    <!--top-->
-    <div class="top-toolbar">
-        <div>
-            <a th:href="@{/member/mypage_myinfo}"><h2>내정보</h2></a>
+        <!--top-->
+        <div class="top-toolbar">
+            <div>
+                <a th:href="@{/member/mypage_myinfo}"><h2>내정보</h2></a>
+            </div>
+            <div>
+                <a th:href="@{/member/mypage_like}"><h2>찜목록</h2></a>
+            </div>
         </div>
-        <div>
-            <a th:href="@{/member/mypage_like}"><h2>찜목록</h2></a>
+
+        <!--Content-->
+        <div class="content-MyPage">
+            <ul>
+                <li>
+                    찜 목록
+                </li>
+
+            </ul>
         </div>
+
+        <!--bottom-->
+        <div class="bottom-toolbar">
+            <a sec:authorize="isAnonymous()" th:href="@{/member/auth/login}">로그인</a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a>
+            <a sec:authorize="isAnonymous()" th:href="@{/member/auth/join}">회원가입</a>
+        </div>
+
+
     </div>
 
-    <!--Content-->
-    <div class="content">
-        <ul>
-            <li>
-                찜목록
-            </li>
-
-        </ul>
-    </div>
-
-    <!--bottom-->
-    <div class="bottom-toolbar">
-        <a sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a>
-        <a sec:authorize="isAuthenticated()" th:href="@{/member/logout}">로그아웃</a>
-        <a sec:authorize="isAnonymous()" th:href="@{/member/join}">회원가입</a>
-    </div>
-
-
-</div>
-
-</body>
-</html>
+    </body>
+    </html>
+</th:block>

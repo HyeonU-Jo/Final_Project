@@ -4,26 +4,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/dist/css/style.css}">
+    <link rel="stylesheet" th:href="@{/dist/css/mypage.css}">
     <script th:src="@{/dist/js/sementic.js}"></script>
+    <script th:src="@{/dist/js/mypage.js}"></script>
     <th:block th:fragment="setMyPage(mypege)"></th:block>
     <th:block th:fragment="setLogin(login)"></th:block>
-
-    <script>
-        function ViewLayerMyPage(){
-            if(document.getElementById("PopMyPage").style.display=="none"){
-                document.getElementById("PopMyPage").style.display='inline'
-            }else{
-                document.getElementById("PopMyPage").style.display='none'
-            }
-        }
-        function ViewLayerLogin(){
-            if(document.getElementById("PopLogin").style.display=="none"){
-                document.getElementById("PopLogin").style.display='inline'
-            }else{
-                document.getElementById("PopLogin").style.display='none'
-            }
-        }
-    </script>
 
     <header>
         <form action="/test/detail">
