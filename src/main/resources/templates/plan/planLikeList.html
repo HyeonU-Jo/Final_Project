@@ -7,17 +7,30 @@
 
 </head>
 <body>
-    <h2>찜페이지이지롱</h2>
-    <fieldset>
-        <legend>찜목록번호</legend>
+<h2>찜페이지이지롱</h2>
 
-        <tr th:each="like:${likeList}">
-            <td>
-                <span th:text="${like.no}"></span>
-                <input type="checkbox" name="likeList" id="likeList" th:value="${like.no}"/>
-            </td>
-        </tr>
-    </fieldset>
-    <button  onclick="run(likeList)">등록하기</button>
+<legend>찜목록번호</legend>
+
+<!--     <tr th:each="like:${likeList}">
+         <td>
+             <span th:text="${like.no}"></span>
+             <input type="checkbox" name="likeList" th:value="${like.no}"/>
+         </td>
+     </tr>-->
+<tr>
+    <td>
+        <input type="checkbox" name="checkboxes" value="1"/>1<br>
+        <input type="checkbox" name="checkboxes" value="2"/>2<br>
+        <input type="checkbox" name="checkboxes" value="3"/>3<br>
+        <input type="checkbox" name="checkboxes" value="4"/>4<br>
+
+    </td>
+
+</tr>
+<div id='result'></div>
+<button onclick="test()">등록하기</button>
+<script>
+
+</script>
 </body>
 </html>

@@ -16,6 +16,8 @@ function createDiv(sDay, eDay) {
         const newDiv = document.createElement('div');
         newDiv.id = "num";
         newDiv.classList.add(i);
+        const newDivList=document.createElement('div');
+        newDivList.id="result"
 
         const newBtn = document.createElement('button');
         newBtn.innerText = "+";
@@ -31,6 +33,7 @@ function createDiv(sDay, eDay) {
         newDiv.appendChild(newText);
         newDiv.appendChild(newBtn);
         plandiv2.appendChild(newDiv);
+
     }
     var targetDiv = document.getElementsByClassName("plandiv1")[0];
     targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);
@@ -42,9 +45,32 @@ function refreshPage() {
     alert("날짜를 다시 선택하여 주세요")
     return;
 }
-/*값전달*/
-function run(test){
- console.log(test.value);
+
+
+/*function test() {
+    const obj_length = document.getElementsByName("likeList").length;
+
+    for (let i=0; i<obj_length; i++) {
+        if (document.getElementsByName("likeList")[i].checked == true) {
+            const listTest=document.getElementsByName("likeList")[i].value;
+            console.log(listTest);
+            /!*  alert(document.getElementsByName("checkboxes")[i].value);*!/
+        }
+    }
+/!*    return listTest;*!/
+}*/
+
+function test()  {
+    // 선택된 목록 가져오기
+    const query = 'input[name="checkboxes"]:checked';
+    const selectedEls = document.querySelectorAll(query);
+
+    let result = '';
+    selectedEls.forEach((el) => {
+        result += el.value + ' ';
+    });
+
+    document.getElementById('result').innerText = result;
 }
 
 
