@@ -5,14 +5,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/dist/css/style.css}">
     <script th:src="@{/dist/js/sementic.js}"></script>
-    <th:block th:fragment="setMypage(mypege)"></th:block>
+    <th:block th:fragment="setMyPage(mypege)"></th:block>
+    <th:block th:fragment="setLogin(login)"></th:block>
 
     <script>
-        function ViewLayer(){
-            if(document.getElementById("Pop").style.display=="none"){
-                document.getElementById("Pop").style.display='inline'
+        function ViewLayerMyPage(){
+            if(document.getElementById("PopMyPage").style.display=="none"){
+                document.getElementById("PopMyPage").style.display='inline'
             }else{
-                document.getElementById("Pop").style.display='none'
+                document.getElementById("PopMyPage").style.display='none'
+            }
+        }
+        function ViewLayerLogin(){
+            if(document.getElementById("PopLogin").style.display=="none"){
+                document.getElementById("PopLogin").style.display='inline'
+            }else{
+                document.getElementById("PopLogin").style.display='none'
             }
         }
     </script>
@@ -31,11 +39,16 @@
                 <ul class="nav">
                     <li><a th:href="@{/}">HOME</a></li>
                     <li><a th:href="@{/plan/plan}">PLAN</a></li>
-                    <li><a th:href="@{/member/auth/login}">LOGIN</a></li>
-                    <li >
-                        <a href="javascript:ViewLayer();">MYPAGE</a>
-                        <div id="Pop" style="position:absolute; right:100px; top:100px; width:500px; height:500px; z-index:1; display: none;">
-                            <th:block th:replace="~{/member/mypage :: setMypage(~{this::mypage} )}"></th:block>
+                    <li>
+                        <a href="javascript:ViewLayerLogin();">LOGIN</a>
+                        <div id="PopLogin" style="position:absolute; right:300px; top:100px; width:500px; height:500px; z-index:1; display: none;">
+                            <th:block th:replace="~{/member/login :: setLogin(~{this::login} )}"></th:block>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:ViewLayerMyPage();">MYPAGE</a>
+                        <div id="PopMyPage" style="position:absolute; right:150px; top:100px; width:500px; height:500px; z-index:1; display: none;">
+                            <th:block th:replace="~{/member/mypage :: setMyPage(~{this::mypage} )}"></th:block>
                         </div>
                     </li>
                 </ul>
