@@ -12,19 +12,10 @@ function ViewLayerMyPage(){
         document.getElementById("PopMyPage").style.display='none'
     }
 }
-
-
-
-$(document).ready(function() {
-
-    $("#openModalPop").click(function() {
-        $("#banner_online").fadeIn();
-        $("#modal").fadeIn();
-    });
-
-    $("#close_button").click(function(){
-        $("#banner_online").fadeOut();
-        $("#modal").fadeOut();
-    });
-
-});
+function ViewLayerLike(){
+    if(document.getElementById("PopLike").style.display=="none"){
+        document.getElementById("PopLike").style.display='inline'
+    }else{
+        document.getElementById("PopLike").style.display='none'
+    }
+}

@@ -7,8 +7,10 @@
     <link rel="stylesheet" th:href="@{/dist/css/mypage.css}">
     <script th:src="@{/dist/js/sementic.js}"></script>
     <script th:src="@{/dist/js/mypage.js}"></script>
-    <th:block th:fragment="setMyPage(mypege)"></th:block>
+
     <th:block th:fragment="setLogin(login)"></th:block>
+    <th:block th:fragment="setMyPageInfo(info)"></th:block>
+    <th:block th:fragment="setMyPageLike(mypagelike)">
 
     <header>
         <form action="/test/detail">
@@ -26,14 +28,20 @@
                     <li><a th:href="@{/plan/plan}">PLAN</a></li>
                     <li>
                         <a href="javascript:ViewLayerLogin();">LOGIN</a>
-                        <div id="PopLogin" style="position:absolute; right:300px; top:100px; width:500px; height:500px; z-index:1; display: none;">
+                        <div id="PopLogin" style="position:absolute; top:100px; width:500px; height:500px; z-index:1; display: none;">
                             <th:block th:replace="~{/member/login :: setLogin(~{this::login} )}"></th:block>
                         </div>
                     </li>
                     <li>
                         <a href="javascript:ViewLayerMyPage();">MYPAGE</a>
-                        <div id="PopMyPage" style="position:absolute; right:150px; top:100px; width:500px; height:500px; z-index:1; display: none;">
-                            <th:block th:replace="~{/member/mypage :: setMyPage(~{this::mypage} )}"></th:block>
+                        <div id="PopMyPage" style="position:absolute; top:100px; width:500px; height:500px; z-index:1; display: none;">
+                            <th:block th:replace="~{/member/mypage_myinfo :: setMyPageInfo(~{this::mypageinfo} )}"></th:block>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:ViewLayerLike();">LIKE</a>
+                        <div id="PopLike" style="position:absolute; top:100px; width:500px; height:500px; z-index:1; display: none;">
+                            <th:block th:replace="~{/member/mypage_like :: setMyPageLike(~{this::mypagelike} )}"></th:block>
                         </div>
                     </li>
                 </ul>
