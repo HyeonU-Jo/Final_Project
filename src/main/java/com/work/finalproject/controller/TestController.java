@@ -3,7 +3,9 @@ package com.work.finalproject.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.querydsl.core.BooleanBuilder;
@@ -97,17 +99,29 @@ public class TestController {
 
     @PostMapping("/reviewWrite")
     public String reviewWrite(ReviewDTO dto, RedirectAttributes redirectAttributes, String contentType, MultipartFile imageFile){
+
+
+
+        Date date = new Date(System.currentTimeMillis());
+
+        System.out.println(date);
+        SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS");
+        String time = format.format(date);
+        System.out.println(time);
         MultipartFile mf = imageFile;
         String path = "c:\\upload\\test\\";
         String uploadPath = "";
-        String original = mf.getOriginalFilename();
+        String original = time+"__"+ mf.getOriginalFilename();
 
         uploadPath = path + original;
-        try {
-            mf.transferTo(new File(uploadPath));
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+        if(mf!=null){
+            try {
+                mf.transferTo(new File(uploadPath));
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
+        dto.setImage(original);
         service.reviewWrite(dto);
         redirectAttributes.addAttribute("content_id", dto.getContent_id());
         redirectAttributes.addAttribute("contentType", contentType);

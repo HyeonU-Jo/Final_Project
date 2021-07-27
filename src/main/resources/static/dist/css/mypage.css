@@ -1,0 +1,26 @@
+.MyPage{
+    border: 1px solid;
+    text-align: center;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+}
+.top-toolbar{
+    height: 75px;
+    width: 500px;
+}
+.top-toolbar > div{
+    float: left;
+    text-align: center;
+    margin-left: 25%;
+}
+.content-MyPage{
+    background-color: #b9cbee;
+    width: 500px;
+    height: 350px;
+}
+.bottom-toolbar{
+    position: fixed;
+    width: 500px;
+    height: 75px;
+}

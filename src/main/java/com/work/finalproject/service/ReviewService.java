@@ -29,6 +29,7 @@ public interface ReviewService {
                 .content_id(dto.getContent_id())
                 .r_content(dto.getR_content())
                 .r_rating(dto.getR_rating())
+                .image(dto.getImage())
                 .build();
         return entity;
     }
@@ -39,6 +40,7 @@ public interface ReviewService {
                 .r_content(entity.getR_content())
                 .r_rating(entity.getR_rating())
                 .content_id(entity.getContent_id())
+                .image(entity.getImage())
                 .build();
         return dto;
     }
