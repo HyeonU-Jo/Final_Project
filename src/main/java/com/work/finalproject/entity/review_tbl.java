@@ -26,6 +26,7 @@ public class review_tbl {
     private int r_rating;
 
 
-
+    public void changeR_content(String r_content){this.r_content = r_content;}
+    public void changeR_rating(int r_rating){this.r_rating = r_rating;}
 
 }

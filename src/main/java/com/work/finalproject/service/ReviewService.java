@@ -18,6 +18,10 @@ public interface ReviewService {
 
     ReviewDTO read(int r_num);
 
+    void reviewModify(ReviewDTO reviewDTO);
+
+    void deleteReview(int r_num);
+
     default review_tbl reviewToEntity(ReviewDTO dto){
         System.out.println("리뷰 투 엔티티 값 확인" + dto.getContent_id());
         review_tbl entity = review_tbl.builder()

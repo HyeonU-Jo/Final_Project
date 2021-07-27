@@ -42,6 +42,23 @@ public class ReviewServiceImpl implements ReviewService{
         return result.isPresent() ? EntityToReview(result.get()): null;
     }
 
+    @Override
+    public void reviewModify(ReviewDTO reviewDTO) {
+        Optional<review_tbl> result = repository.findById(reviewDTO.getR_num());
+
+        if (result.isPresent()){
+            review_tbl entity =result.get();
+            entity.changeR_content(reviewDTO.getR_content());
+            entity.changeR_rating(reviewDTO.getR_rating());
+
+            repository.save(entity);
+        }
+    }
+
+    @Override
+    public void deleteReview(int r_num) {
+        repository.deleteById(r_num);
+    }
 
 
     @Override

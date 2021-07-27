@@ -104,12 +104,32 @@ public class TestController {
     }
 
     @GetMapping("/modifyReview")
-    public String reviewModify(int r_num, Model model){
+    public String reviewModify(int r_num, Model model, XmlDTO xmlDTO){
 
         ReviewDTO dto = service.read(r_num);
         model.addAttribute("dto", dto);
-
+        model.addAttribute("xmlDTO", xmlDTO);
+        model.addAttribute("r_num", r_num);
         return "/test/modifyReview";
+    }
+    @PostMapping("/modifyReview")
+    public String modifyReview(ReviewDTO reviewDTO, XmlDTO dto, RedirectAttributes redirectAttributes){
+
+        service.reviewModify(reviewDTO);
+        redirectAttributes.addAttribute("content_id", dto.getContent_id());
+        redirectAttributes.addAttribute("contentType", dto.getContentType());
+        redirectAttributes.addAttribute("firstimage2", dto.getFirstimage2());
+
+        return "redirect:/test/realDetail";
+    }
+
+    @PostMapping("/deleteReview")
+    public String deleteReview(int r_num, RedirectAttributes redirectAttributes, XmlDTO dto){
+        service.deleteReview(r_num);
+        redirectAttributes.addAttribute("content_id", dto.getContent_id());
+        redirectAttributes.addAttribute("contentType", dto.getContentType());
+        redirectAttributes.addAttribute("firstimage2", dto.getFirstimage2());
+        return "redirect:/test/realDetail";
     }
 
 }

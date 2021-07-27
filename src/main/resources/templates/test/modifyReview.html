@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>리뷰 수정</title>
+  <script th:src="@{/jquery-3.1.1.min.js}"></script>
   <style>
     .r_rating>.input,
     .r_rating>.input>label:hover,
@@ -106,12 +107,16 @@
   </style>
 </head>
 <body>
-<form action="/test/modifyReview">
+<form action="/test/modifyReview" method="post">
   <table border="1">
     <tr>
       <td>리뷰 작성</td>
       <td>
         <input type="text" name="r_content" th:value="${dto.r_content}">
+        <input type="hidden" name="firstimage2" th:value="${xmlDTO.getFirstimage2()}">
+        <input type="hidden" name="contentType" th:value="${xmlDTO.getContentType()}">
+        <input type="hidden" name="content_id" th:value="${xmlDTO.getContent_id()}">
+        <input type="hidden" name="r_num" th:value="${r_num}">
       </td>
     </tr>
     <tr>
@@ -134,9 +139,7 @@
     <tr>
       <td colspan="2">
         <input value="수정" type="submit">
-        <a th:href="@{/test/deleteReview(r_num=${dto.r_num})}">
-          <button type="button">삭제</button>
-        </a>
+        <button type="button" class="deleteBtn">삭제</button>
       </td>
 
     </tr>
@@ -144,6 +147,17 @@
 
 </form>
 
-</body>
 
+
+</body>
+<script th:inline="javascript">
+  var actionForm = $("form");
+
+  $(".deleteBtn").click(function () {
+    if (!confirm("삭제하시겠습니까?")) {
+      return;
+    }
+    actionForm.attr("action", "/test/deleteReview").attr("method", "post").submit();
+  });
+</script>
 </html>
