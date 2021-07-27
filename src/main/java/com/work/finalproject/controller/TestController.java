@@ -1,6 +1,7 @@
 package com.work.finalproject.controller;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -94,8 +96,18 @@ public class TestController {
 
 
     @PostMapping("/reviewWrite")
-    public String reviewWrite(ReviewDTO dto, RedirectAttributes redirectAttributes, String contentType){
+    public String reviewWrite(ReviewDTO dto, RedirectAttributes redirectAttributes, String contentType, MultipartFile imageFile){
+        MultipartFile mf = imageFile;
+        String path = "c:\\upload\\test\\";
+        String uploadPath = "";
+        String original = mf.getOriginalFilename();
 
+        uploadPath = path + original;
+        try {
+            mf.transferTo(new File(uploadPath));
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         service.reviewWrite(dto);
         redirectAttributes.addAttribute("content_id", dto.getContent_id());
         redirectAttributes.addAttribute("contentType", contentType);

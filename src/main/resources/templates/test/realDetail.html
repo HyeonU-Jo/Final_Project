@@ -156,7 +156,7 @@
     </tr>
 </table>
 
-<form action="/test/reviewWrite" method="post">
+<form action="/test/reviewWrite" method="post" enctype="multipart/form-data">
 <table border="2">
     <tr>
         <td>리뷰 작성</td>
@@ -184,6 +184,13 @@
   </span>
   <output for="r_rating"></output>
 </span></td>
+    </tr>
+    <tr>
+        <td>미리보기 나올 예정</td>
+        <td>
+            <input type="text" name="image">
+            <input type="file" name="imageFile" accept="image/png, image/jpg">
+        </td>
     </tr>
     <tr>
         <td colspan="2"><input value="입력" type="submit"></td>

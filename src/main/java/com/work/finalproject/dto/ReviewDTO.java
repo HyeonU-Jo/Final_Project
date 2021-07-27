@@ -15,6 +15,7 @@ public class ReviewDTO {
     private String content_id;
     private String r_content;
     private int r_rating;
+    private String image;
 
 
 }
