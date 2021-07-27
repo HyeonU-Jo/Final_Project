@@ -37,5 +37,11 @@ public class PlanController {
         return "plan/planLikeList";
     }
 
+    @GetMapping({"/test"})
+    public String test(){
+
+        return "test/searchPage";
+    }
+
 
 }

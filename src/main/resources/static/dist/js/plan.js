@@ -7,7 +7,6 @@ function createDiv(sDay, eDay) {
     var day = Math.ceil(day2.getTime() - day1.getTime());
     var dayday = day / (1000 * 3600 * 24) + 1; //일
 
-
     /*plandiv1안으로 들어가짐*/
     const plandiv2 = document.createElement('div');
     plandiv2.classList.add('infobox');
@@ -16,16 +15,25 @@ function createDiv(sDay, eDay) {
         const newDiv = document.createElement('div');
         newDiv.id = "num";
         newDiv.classList.add(i);
-        const newDivList=document.createElement('div');
-        newDivList.id="result"
+        const newDivList = document.createElement('div');
+        newDivList.id = "result"
 
         const newBtn = document.createElement('button');
         newBtn.innerText = "+";
 
+        let newA = document.createElement('a');
+
+        newA.addEventListener("click", function (){
+           window.open("test", "test", "width+600, height=400");
+        });
+
+        newA.id = i;
+        const count = i;
+
         newBtn.addEventListener('click', function () {
-            alert("찜 목록으로 이동하겠습니다.");
-            url = "planLikeList";
-            window.open(url, "get", "width=600,height=400");
+            window.name = "plForm"
+            url = "planLikeList?id=" + count;
+            window.open(url, "liForm", "width=600,height=400");
         });
 
         const newText = document.createTextNode((i + 1) + 'Day');
@@ -33,7 +41,7 @@ function createDiv(sDay, eDay) {
         newDiv.appendChild(newText);
         newDiv.appendChild(newBtn);
         plandiv2.appendChild(newDiv);
-
+        plandiv2.appendChild(newA);
     }
     var targetDiv = document.getElementsByClassName("plandiv1")[0];
     targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);
@@ -46,21 +54,68 @@ function refreshPage() {
     return;
 }
 
+/*파라미터 반환*/
+function getParam(sname) {
 
-/*function test() {
+    var params = location.search.substr(location.search.indexOf("?") + 1);
+
+    var sval = "";
+
+    params = params.split("&");
+
+    for (var i = 0; i < params.length; i++) {
+
+        temp = params[i].split("=");
+
+        if ([temp[0]] == sname) { sval = temp[1]; }
+
+    }
+
+    return sval;
+
+}
+
+/*부모창으로 값 전달*/
+function setParentText() {
+
     const obj_length = document.getElementsByName("likeList").length;
+    let listTest = [];
 
-    for (let i=0; i<obj_length; i++) {
+    for (let i = 0; i < obj_length; i++) {
         if (document.getElementsByName("likeList")[i].checked == true) {
-            const listTest=document.getElementsByName("likeList")[i].value;
-            console.log(listTest);
-            /!*  alert(document.getElementsByName("checkboxes")[i].value);*!/
+            listTest += document.getElementsByName("likeList")[i].value;
+            window.close();
         }
     }
-/!*    return listTest;*!/
-}*/
 
-function test()  {
+    alert(listTest.toString() + " | " + listTest.length);
+    console.log(listTest);
+
+    opener.document.getElementById(getParam("id")).innerText = listTest.toString();
+    window.close();
+}
+
+/*
+
+function test() {
+    const obj_length = document.getElementsByName("likeList").length;
+    let listTest = [];
+
+    for (let i = 0; i < obj_length; i++) {
+        if (document.getElementsByName("likeList")[i].checked == true) {
+            listTest += document.getElementsByName("likeList")[i].value;
+            window.close();
+        }
+    }
+
+    alert(listTest.toString() + " | " + listTest.length);
+    console.log(listTest);
+
+}
+*/
+
+
+/*function test()  {
     // 선택된 목록 가져오기
     const query = 'input[name="checkboxes"]:checked';
     const selectedEls = document.querySelectorAll(query);
@@ -71,10 +126,7 @@ function test()  {
     });
 
     document.getElementById('result').innerText = result;
-}
-
-
-
+}*/
 
 
 /**달력**/
