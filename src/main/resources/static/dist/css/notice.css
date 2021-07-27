@@ -1,10 +1,10 @@
-table{
+table {
     width: 100%;
     margin: auto;
     margin-bottom: 10px;
 }
 
-th{
+th {
 
     font-weight: bold;
     padding: 18px 10px;
@@ -12,16 +12,17 @@ th{
 
 }
 
-td, a{
+td, a {
     padding-bottom: 13px;
     font-weight: 300;
     font-size: 18px;
 }
-a{
+
+a {
     font-weight: bold;
 }
 
-h2{
+h2 {
     margin: 40px 26px;
     font-size: 30px;
     font-weight: 700;
@@ -31,12 +32,13 @@ h2{
 
 }
 
-.list_ul{
-    width: 300px;
+.list_ul {
+    width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
-li{
+
+li {
     margin-top: 10px;
     margin: auto;
     width: 5%;
@@ -44,7 +46,12 @@ li{
     align-content: center;
     font-size: medium;
 }
-.notice_next{
+
+.notice_prev {
+    padding-right: 20px;
+}
+
+.notice_next {
     padding-left: 20px;
 }
 

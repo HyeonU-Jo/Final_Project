@@ -46,10 +46,10 @@
         </table>
 
         <ul class="list_ul">
-            <li  th:if="${result.prev}">
+            <li class="notice_prev" th:if="${result.prev}">
                 <a th:href="@{/notice/list(page= ${result.start -1},
                     type=${pageRequestDTO.type} ,
-                    keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">Previous</a>
+                    keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">Prev</a>
             </li>
             <li th:class="${result.page == page?'active':''} " th:each="page: ${result.pageList}">
                 <a th:href="@{/notice/list(page = ${page} ,
