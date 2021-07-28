@@ -46,11 +46,7 @@
                 <ul class="nav" th:unless="${#authorization.expr('isAuthenticated()')}">
                     <li><a th:href="@{/}">HOME</a></li>
                     <li><a th:href="@{/plan/plan}">PLAN</a></li>
-                    <li><a href="javascript:ViewLayerLogin();">LOGIN</a>
-                        <div id="PopLogin" style="position:absolute; top:100px; width:500px; height:500px; z-index:1; display: none;">
-                            <th:block th:replace="~{/member/login :: setLogin(~{this::login} )}"></th:block>
-                        </div>
-                    </li>
+                    <li><a th:href="@{/member/auth/login}">LOGIN</a></li>
                     <li><a th:href="@{/member/auth/join}">JOIN</a></li>
 
 
