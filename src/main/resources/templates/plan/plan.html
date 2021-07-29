@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
 <th:block th:fragment="setMap(map)"></th:block>
@@ -10,10 +11,10 @@
     <link rel="stylesheet" th:href="@{/dist/css/datepicker.min.css}">
     <link rel="stylesheet" th:href="@{/dist/css/sementic.css}">
     <link rel="stylesheet" th:href="@{/dist/css/style.css}">
-    <!--<script th:src="@{/jquery-3.1.1.min.js}"></script>
+    <script th:src="@{/jquery-3.1.1.min.js}"></script>
     <script th:src="@{/dist/js/datepicker.min.js}"></script>
     <script th:src="@{/dist/js/i18n/datepicker.ko.js}"></script>
-    <script th:src="@{/dist/js/plan.js}"></script>-->
+    <script th:src="@{/dist/js/plan.js}"></script>
 
     <style>
         * {
@@ -29,48 +30,52 @@
 </head>
 
 <body>
-<!--header영역-->
+
+test
+<!--
+
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 
-<!--content영역시작-->
+&lt;!&ndash;content영역시작&ndash;&gt;
 <div class="section">
-    <!--날짜선택 div-->
+    &lt;!&ndash;날짜선택 div&ndash;&gt;
     <div class="content">
         <div class="planday">
             <h3>여행날짜선택</h3>
             <input id="sDay" type="text" name="sDay">&nbsp;-&nbsp;
             <input id="eDay" type="text" name="eDay">
-            <input  type="button" id="reconfirm" name="reconfirm" value=" 날짜 재확인 " onclick="refreshPage()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input  type="button" id="once" name="check" value=" 확인 " onclick="createDiv('${datepicker1}','${datepicker2}'); this.onclick=null;"/>
+            <input type="button" id="reconfirm" name="reconfirm" value=" 날짜 재확인 " onclick="refreshPage()"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" id="once" name="check" value=" 확인 "
+                   onclick="createDiv('${datepicker1}','${datepicker2}'); this.onclick=null;"/>
         </div>
-        <!--div palnday의 날짜에 따라 추가되는 div-->
+        &lt;!&ndash;div palnday의 날짜에 따라 추가되는 div&ndash;&gt;
         <div class="plandiv1">
-            <!--js에서 plandiv2가 들어오게됨-->
+            &lt;!&ndash;js에서 plandiv2가 들어오게됨&ndash;&gt;
         </div>
 
 
-
-      <!--  &lt;!&ndash;jquery:자리이동x&ndash;&gt;
-        <script>
-            $("#datepicker").datepicker({
-                language: 'ko'
-            });
-            datePickerSet($("#sDay"), $("#eDay"), true);
-        </script>-->
+        &lt;!&ndash;  &lt;!&ndash;jquery:자리이동x&ndash;&gt;
+          <script>
+              $("#datepicker").datepicker({
+                  language: 'ko'
+              });
+              datePickerSet($("#sDay"), $("#eDay"), true);
+          </script>&ndash;&gt;
     </div>
 
 
-    <!--Map영역-->
+    &lt;!&ndash;Map영역&ndash;&gt;
     <div class="map">
         <th:block th:replace="~{/test/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
     </div>
 
 </div>
-<!--content영역끝-->
+&lt;!&ndash;content영역끝&ndash;&gt;
 
-<!--footer영역-->
+&lt;!&ndash;footer영역&ndash;&gt;
 <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
+-->
 
 
 </body>
