@@ -48,6 +48,8 @@ public class MemberController {
     }
 
 
+
+
     //마이페이지 페이지
     @GetMapping("/mypage")
     public String mypage(Model model){

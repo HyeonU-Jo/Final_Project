@@ -43,6 +43,8 @@
             <input type="submit" id="btn-login" value="로그인"> <!--"loginCheck()" 를 만들어서 아이디 확인 -->
             <input type="button" value="회원가입" onclick="location.href='/member/auth/join'";>
         </div>
+        <!--/*@thymesVar id="errorMsg" type="java.lang.String"*/-->
+        <span th:text="${errorMsg}" style="color:red"></span>
         <div>
             <ul>
                 <li onclick="kakaoLogin();">

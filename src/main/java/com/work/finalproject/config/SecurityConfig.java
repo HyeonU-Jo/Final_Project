@@ -1,8 +1,11 @@
 package com.work.finalproject.config;
 
+import com.work.finalproject.handler.LoginFailHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.work.finalproject.config.auth.PrincipalDetailService;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @Configuration  // 빈등록 (IoC관리)
 @EnableWebSecurity  // 시큐리티 필터 등록
@@ -20,10 +24,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private PrincipalDetailService principalDetailService;
 
+
     @Bean   //IoC가 됨
     public BCryptPasswordEncoder encodePWD(){
         return new BCryptPasswordEncoder();
     }
+
+
 
     // 시큐리티가 대신 로그인 해준 password가 어떤 값으로 해쉬가 되어 회원가입 되었는지 알아야
     // 같은 해쉬로 암호화해서 DB에 있는 해쉬랑 비교할 수 있음
@@ -47,11 +54,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .loginPage("/member/auth/login")
                 .loginProcessingUrl("/auth/loginProc") //스프링 시큐리티가 해당 주소로 요청오는 로그인을 가로채서 대신 로그인
                 .defaultSuccessUrl("/") //로 이동
-                .failureUrl("/fail")
+                .failureHandler(loginFailHandler())
             .and()
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/");
 
     }
+
+
+        @Bean
+         public AuthenticationFailureHandler loginFailHandler(){
+            return new LoginFailHandler();
+    }
+
 }
