@@ -22,6 +22,10 @@ public interface ReviewService {
 
     void deleteReview(int r_num);
 
+    int reviewAvg(String content_id);
+
+
+
     default review_tbl reviewToEntity(ReviewDTO dto){
         System.out.println("리뷰 투 엔티티 값 확인" + dto.getContent_id());
         review_tbl entity = review_tbl.builder()

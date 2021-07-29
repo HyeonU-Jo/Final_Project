@@ -60,6 +60,27 @@ public class ReviewServiceImpl implements ReviewService{
         repository.deleteById(r_num);
     }
 
+    @Override
+    public int reviewAvg(String content_id) {
+        List<review_tbl> review_tbls = repository.findByContent_id(content_id);
+        int sum = 0;
+        if(review_tbls.size()==0){
+            return 0;
+        }else{
+            for (int i = 0;i<review_tbls.size(); i++){
+                if(review_tbls.size()!=0){
+                    sum += review_tbls.get(i).getR_rating();
+                }else {
+                    return 0;
+                }
+            }
+        }
+
+
+
+        return sum/review_tbls.size();
+    }
+
 
     @Override
     public PageResultDTO<ReviewDTO, review_tbl> rlist2(PageRequestDTO requestDTO) {

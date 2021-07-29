@@ -61,6 +61,12 @@ public class TestController {
         List<XmlDTO> xmlList = publicAPI.search(keyword, contentType, strPage);
         model.addAttribute("list", xmlList);
 
+        for (int i = 0; i<xmlList.size(); i++){
+
+            xmlList.get(i).setReviewAvg(service.reviewAvg(xmlList.get(i).getContent_id()));
+            System.out.println("리뷰 평균 값 확인용 " + xmlList.get(i).getReviewAvg());
+        }
+
         model.addAttribute("totalCount", xmlList.get(0).getTotalPage());
 
         for(int i = 0; i<xmlList.get(0).getTotalPage(); i++){

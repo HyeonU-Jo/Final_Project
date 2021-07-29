@@ -28,6 +28,9 @@ public class review_tbl {
     @Column(length = 500, nullable = true)
     private String image;
 
+    @Transient
+    private int r_rating_avg;
+
     public void changeR_content(String r_content){this.r_content = r_content;}
     public void changeR_rating(int r_rating){this.r_rating = r_rating;}
 

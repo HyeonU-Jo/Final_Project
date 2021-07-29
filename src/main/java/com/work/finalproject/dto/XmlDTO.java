@@ -29,4 +29,6 @@ public class XmlDTO {
     private int startPage;
     private int endPage;
 
+    private int reviewAvg;
+
 }
