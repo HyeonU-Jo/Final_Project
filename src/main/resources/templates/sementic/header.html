@@ -9,10 +9,13 @@
     <script th:src="@{/dist/js/mypage.js}"></script>
 
     <th:block th:fragment="setLogin(login)"></th:block>
+    <th:block th:fragment="setJoin(join)"></th:block>
     <th:block th:fragment="setMyPageInfo(info)"></th:block>
     <th:block th:fragment="setMyPageLike(mypagelike)">
 
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <header>
         <form action="/test/detail">
@@ -46,8 +49,46 @@
                 <ul class="nav" th:unless="${#authorization.expr('isAuthenticated()')}">
                     <li><a th:href="@{/}">HOME</a></li>
                     <li><a th:href="@{/plan/plan}">PLAN</a></li>
-                    <li><a th:href="@{/member/auth/login}">LOGIN</a></li>
-                    <li><a th:href="@{/member/auth/join}">JOIN</a></li>
+                    <li>
+                        <a data-toggle="modal" href="#loginModal">LOGIN</a>
+                        <div class="modal fade" id="loginModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">×</button>
+                                        <h4 class="modal-title" align="center">로그인</h4> <!-- 사용자 지정 부분② : 타이틀 -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <th:block th:replace="~{/member/login :: setLogin(~{this::login} )}"></th:block> <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a data-toggle="modal" href="#joinModal">JOIN</a>
+                        <div class="modal fade" id="joinModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">×</button>
+                                        <h4 class="modal-title" align="center">회원가입</h4> <!-- 사용자 지정 부분② : 타이틀 -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <th:block th:replace="~{/member/join :: setJoin(~{this::join} )}"></th:block> <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
 
 
                 </ul>
