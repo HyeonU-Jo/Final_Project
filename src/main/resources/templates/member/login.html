@@ -1,45 +1,4 @@
-
-<th:block th:fragment="setLogin(login)">
-<body>
-
-<div class="member_login">
-    <form th:action="@{/auth/loginProc}" th:method="POST">
-        <div class="input-box">
-            <input type="text" name="username" placeholder="아이디" >
-        </div>
-        <div class="input-box">
-            <input type="password" name="password" placeholder="비밀번호">
-        </div>
-        <div class="input-box">
-            <input name="remember" class="form-check-input" type="checkbox">아이디 저장
-        </div>
-        <div class="input-box">
-            <input type="submit" id="btn-login" value="로그인"> <!--"loginCheck()" 를 만들어서 아이디 확인 -->
-            <input type="button" value="회원가입" onclick="location.href='/member/auth/join'";>
-        </div>
-        <!--/*@thymesVar id="errorMsg" type="java.lang.String"*/-->
-        <span th:text="${errorMsg}" style="color:red"></span>
-        <div>
-            <ul>
-                <li onclick="kakaoLogin();">
-                    <a href="javascript:void(0)">
-                        <span>카카오 로그인</span>
-                    </a>
-                </li>
-                <li id="GgCustomLogin">
-                    <a href="javascript:void(0)">
-                        <span>구글 로그인</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-    </form>
-
-</div>
-
-</body>
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- 카카오 스크립트 -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
@@ -104,5 +63,46 @@
     }
 </script>
 
-</html>
+<th:block th:fragment="setLogin(login)">
+<body>
+
+<div class="member_login">
+    <form th:action="@{/auth/loginProc}" th:method="POST">
+        <div class="input-box">
+            <input type="text" name="username" placeholder="아이디" >
+        </div>
+        <div class="input-box">
+            <input type="password" name="password" placeholder="비밀번호">
+        </div>
+        <div class="input-box">
+            <input name="remember" class="form-check-input" type="checkbox">아이디 저장
+        </div>
+        <div class="input-box">
+            <input type="submit" id="btn-login" value="로그인"> <!--"loginCheck()" 를 만들어서 아이디 확인 -->
+            <input type="button" value="회원가입" onclick="location.href='/member/auth/join'";>
+        </div>
+        <!--/*@thymesVar id="errorMsg" type="java.lang.String"*/-->
+        <span th:text="${errorMsg}" style="color:red"></span>
+        <div>
+            <ul>
+                <li onclick="kakaoLogin();">
+                    <a href="javascript:void(0)">
+                        <span>카카오 로그인</span>
+                    </a>
+                </li>
+                <li id="GgCustomLogin">
+                    <a href="javascript:void(0)">
+                        <span>구글 로그인</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+
+
 </th:block>
