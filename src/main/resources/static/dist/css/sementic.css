@@ -24,6 +24,9 @@ body {
     float: left;
     margin-top: 100px;
 }
+.content.map {
+    line-height: 240px;
+}
 
 .footer {
     background-color: burlywood;
@@ -35,9 +38,7 @@ body {
     line-height: 100px;
 }
 
-.content.map {
-    line-height: 240px;
-}
+
 
 .user-tag {
     float: left;

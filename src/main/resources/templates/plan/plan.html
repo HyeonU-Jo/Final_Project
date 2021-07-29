@@ -8,13 +8,28 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>여행플랜</title>
-    <link rel="stylesheet" th:href="@{/dist/css/datepicker.min.css}">
-    <link rel="stylesheet" th:href="@{/dist/css/sementic.css}">
+    <!--구글폰트-->
+    <meta name ="google-signin-client_id" content="832265235477-t0424vv7k8bmivu13hibk2tbt3947sql.apps.googleusercontent.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" th:href="@{/dist/css/style.css}">
+    <link rel="stylesheet" th:href="@{/dist/css/mypage.css}">
+    <link rel="stylesheet" th:href="@{/dist/css/datepicker.min.css}">
+
+
+
     <script th:src="@{/jquery-3.1.1.min.js}"></script>
     <script th:src="@{/dist/js/datepicker.min.js}"></script>
     <script th:src="@{/dist/js/i18n/datepicker.ko.js}"></script>
     <script th:src="@{/dist/js/plan.js}"></script>
+    <script th:src="@{/dist/js/sementic.js}"></script>
+
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}">
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js}"></script>
 
     <style>
         * {
@@ -31,15 +46,15 @@
 
 <body>
 
-test
-<!--
+
 
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 
-&lt;!&ndash;content영역시작&ndash;&gt;
-<div class="section">
-    &lt;!&ndash;날짜선택 div&ndash;&gt;
+<!--content영역시작-->
+<div class="section" >
+
+    <!--날짜선택 div-->
     <div class="content">
         <div class="planday">
             <h3>여행날짜선택</h3>
@@ -49,33 +64,32 @@ test
             <input type="button" id="once" name="check" value=" 확인 "
                    onclick="createDiv('${datepicker1}','${datepicker2}'); this.onclick=null;"/>
         </div>
-        &lt;!&ndash;div palnday의 날짜에 따라 추가되는 div&ndash;&gt;
+        <!--div palnday의 날짜에 따라 추가되는 div-->
         <div class="plandiv1">
-            &lt;!&ndash;js에서 plandiv2가 들어오게됨&ndash;&gt;
+            <!--js에서 plandiv2가 들어오게됨-->
         </div>
 
 
-        &lt;!&ndash;  &lt;!&ndash;jquery:자리이동x&ndash;&gt;
+          <!--jquery:자리이동x-->
           <script>
               $("#datepicker").datepicker({
                   language: 'ko'
               });
               datePickerSet($("#sDay"), $("#eDay"), true);
-          </script>&ndash;&gt;
+          </script>
     </div>
 
 
-    &lt;!&ndash;Map영역&ndash;&gt;
+    <!--Map영역-->
+
     <div class="map">
-        <th:block th:replace="~{/test/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
+        <h4>map 파트</h4>
     </div>
-
 </div>
-&lt;!&ndash;content영역끝&ndash;&gt;
+<!--content영역끝-->
 
-&lt;!&ndash;footer영역&ndash;&gt;
+<!--footer영역-->
 <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
--->
 
 
 </body>

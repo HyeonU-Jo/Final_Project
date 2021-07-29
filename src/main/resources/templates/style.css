@@ -270,3 +270,25 @@ footer > div:last-child {
     color: #fff;
 
 }
+
+.section{
+    display: flex;
+}
+.map {
+    min-height: 500px;
+    width: 20%;
+    background-color: #a1a1a1;
+    float: left;
+    margin-top: 100px;
+
+}
+
+.content {
+    min-height: 500px;
+    width: 80%;
+    float: left;
+    margin-top: 100px;
+}
+.content.map {
+    line-height: 240px;
+}
