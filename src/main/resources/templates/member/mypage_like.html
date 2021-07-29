@@ -2,6 +2,7 @@
 <th:block th:fragment="setMyPageLike(mypagelike)">
     <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <link rel="stylesheet" th:href="@{/dist/css/mypage.css}">
+    <link rel="stylesheet" th:href="@{/dist/css/style.css}">
     <script th:src="@{/dist/js/mypage.js}"></script>
 
     <head>
@@ -24,15 +25,34 @@
             </div>
         </div>
         -->
-        <h2>찜목록</h2>
 
         <!--Content-->
         <div class="content-MyPage">
-            <ul>
+            <ul class="icons">
                 <li>
-                    찜 목록
+                    찜 목록 1
+                    <div class="icon_img">
+                        <img th:src="@{/image/logo.png}">
+                    </div>
                 </li>
-
+                <li>
+                    찜 목록 2
+                    <div class="icon_img">
+                        <img th:src="@{/image/logo.png}">
+                    </div>
+                </li>
+                <li>
+                    찜 목록 3
+                    <div class="icon_img">
+                        <img th:src="@{/image/logo.png}">
+                    </div>
+                </li>
+                <li>
+                    찜 목록 4
+                    <div class="icon_img">
+                        <img th:src="@{/image/logo.png}">
+                    </div>
+                </li>
             </ul>
         </div>
 
@@ -42,8 +62,7 @@
             <a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
             <a sec:authorize="isAnonymous()" th:href="@{/member/auth/join}">회원가입</a>
         </div>
-
-
+        
     </div>
 
     </body>
