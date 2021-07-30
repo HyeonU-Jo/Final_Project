@@ -12,7 +12,6 @@ import javax.persistence.*;
 public class plan_tbl {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(length = 20)
     private String id;
 
