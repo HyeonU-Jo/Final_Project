@@ -63,7 +63,7 @@
                 <td th:text="${list.content_id}"></td>
                 <td th:text="${list.r_content}"></td>
                 <td th:text="${list.r_rating}"></td>
-
+                <td><img th:src="@{file:///C:/upload/test/}+${list.image}"></td>
                 <td>
                     <a th:href="@{/test/modifyReview(r_num = ${list.r_num}, content_id = ${list.content_id}, contentType = ${dto.contentType}, firstimage2 = ${dto.firstimage2})}">
                         <button type="button">수정</button>

@@ -29,6 +29,8 @@
             <input type="text" name="keyword">
             <input type="hidden" name="page" th:value="1">
             <input type="submit" value="검색">
+            <input type="button" value="상세히 검색" onclick="searchMore()">
+            <input type="text" id="areaCode" name="areaCode" readonly>
         </form>
         <th:block th:if="${page != null}">
             <table border="1">
@@ -122,6 +124,10 @@
                 alert("키워드를 입력하여 주십시오");
                 return false;
             }
+        }
+        function searchMore(){
+            var url = "http://localhost:9090/test/moreSearch";
+            window.open(url, "", "width=400, height=400, left=600");
         }
     </script>
 </div>
