@@ -1,80 +1,90 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="setHead(head)"></th:block>
+<th:block th:fragment="setFoot(foot)"></th:block>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/dist/css/starCss.css}">
+    <link rel="stylesheet" th:href="@{/dist/css/style.css}">
 </head>
 <body>
-<table border="1">
-
-    <tr>
-        <td>이름</td>
-        <td th:text="${dto.title}"></td>
-    </tr>
-    <tr>
-        <td>설명</td>
-        <td width="400" th:utext="${dto.overview}"></td>
-    </tr>
-    <tr>
-        <td>연락처</td>
-        <td th:text="${dto.tel}"></td>
-    </tr>
-    <tr>
-        <td>홈페이지</td>
-        <td th:utext="${dto.homepage}"></td>
-    </tr>
-    <tr>
-        <td>사진1</td>
-        <td><img th:src="${dto.firstimage2}"></td>
-    </tr>
-    <tr>
-        <td>위치</td>
-        <td>
-            <input type="hidden" name="mapx" id="mapx" th:value="${dto.mapx}">
-            <input type="hidden" name="mapy" id="mapy" th:value="${dto.mapy}">
-            <div id="map" style="width:100%;height:200px;"></div>
-        </td>
-    </tr>
+<!--header영역-->
+<th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 
-</table>
+<div class="section">
+    <div class="content">
 
-<table border="1">
-    <tr>
-        <td>번호</td>
-        <td>컨텐츠아이디</td>
-        <td>내용</td>
-        <td>평점</td>
-    </tr>
-    <tr th:each="list : ${reviewList}">
-        <td th:text="${list.r_num}"></td>
-        <td th:text="${list.content_id}"></td>
-        <td th:text="${list.r_content}"></td>
-        <td th:text="${list.r_rating}"></td>
-        
-        <td>
-            <a th:href="@{/test/modifyReview(r_num = ${list.r_num}, content_id = ${list.content_id}, contentType = ${dto.contentType}, firstimage2 = ${dto.firstimage2})}">
-                <button type="button">수정</button>
-            </a>
-        </td>
-    </tr>
-</table>
+        <table border="1">
 
-<form action="/test/reviewWrite" method="post" enctype="multipart/form-data">
-    <table border="2">
-        <tr>
-            <td>리뷰 작성</td>
-            <td>
-                <input type="text" name="r_content">
-                <input type="hidden" name="content_id" th:value="${dto.content_id}">
-                <input type="hidden" name="contentType" th:value="${dto.contentType}">
-                <input type="hidden" id="title" th:value="${dto.title}">
-            </td>
-        </tr>
-        <tr>
-            <td>평점 입력</td>
-            <td>  <span class="r_rating">
+            <tr>
+                <td>이름</td>
+                <td th:text="${dto.title}"></td>
+            </tr>
+            <tr>
+                <td>설명</td>
+                <td width="400" th:utext="${dto.overview}"></td>
+            </tr>
+            <tr>
+                <td>연락처</td>
+                <td th:text="${dto.tel}"></td>
+            </tr>
+            <tr>
+                <td>홈페이지</td>
+                <td th:utext="${dto.homepage}"></td>
+            </tr>
+            <tr>
+                <td>사진1</td>
+                <td><img th:src="${dto.firstimage2}"></td>
+            </tr>
+            <tr>
+                <td>위치</td>
+                <td>
+                    <input type="hidden" name="mapx" id="mapx" th:value="${dto.mapx}">
+                    <input type="hidden" name="mapy" id="mapy" th:value="${dto.mapy}">
+                    <div id="map" style="width:100%;height:200px;"></div>
+                </td>
+            </tr>
+
+
+        </table>
+
+        <table border="1">
+            <tr>
+                <td>번호</td>
+                <td>컨텐츠아이디</td>
+                <td>내용</td>
+                <td>평점</td>
+            </tr>
+            <tr th:each="list : ${reviewList}">
+                <td th:text="${list.r_num}"></td>
+                <td th:text="${list.content_id}"></td>
+                <td th:text="${list.r_content}"></td>
+                <td th:text="${list.r_rating}"></td>
+
+                <td>
+                    <a th:href="@{/test/modifyReview(r_num = ${list.r_num}, content_id = ${list.content_id}, contentType = ${dto.contentType}, firstimage2 = ${dto.firstimage2})}">
+                        <button type="button">수정</button>
+                    </a>
+                </td>
+            </tr>
+        </table>
+
+        <form action="/test/reviewWrite" method="post" enctype="multipart/form-data">
+            <table border="2">
+                <tr>
+                    <td>리뷰 작성</td>
+                    <td>
+                        <input type="text" name="r_content">
+                        <input type="hidden" name="content_id" th:value="${dto.content_id}">
+                        <input type="hidden" name="contentType" th:value="${dto.contentType}">
+                        <input type="hidden" id="title" th:value="${dto.title}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>평점 입력</td>
+                    <td>  <span class="r_rating">
   <span class="input">
     <input type="radio" name="r_rating" id="p1" value="1"><label for="p1">1</label>
     <input type="radio" name="r_rating" id="p2" value="2"><label for="p2">2</label>
@@ -89,13 +99,16 @@
   </span>
   <output for="r_rating"></output>
 </span></td>
-        </tr>
-        <tr>
-            <td><div id="image_container"></div></td>
-            <td>
-                <input type="file" id="image" name="imageFile" accept="image/*" onchange="setThumbnail(event);"/>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="image_container"></div>
+                    </td>
+                    <td>
+                        <input type="file" id="image" name="imageFile" accept="image/*"
+                               onchange="setThumbnail(event);"/>
 
-                <script> function setThumbnail(event) {
+                        <script> function setThumbnail(event) {
                     var reader = new FileReader();
                     reader.onload = function (event) {
                         var img = document.createElement("img");
@@ -103,16 +116,27 @@
                         document.querySelector("div#image_container").appendChild(img);
                     };
                     reader.readAsDataURL(event.target.files[0]);
-                } </script>
+                }
+                        </script>
 
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2"><input value="입력" type="submit"></td>
-        </tr>
-    </table>
-</form>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input value="입력" type="submit"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
 
+    <!--Map영역-->
+    <div class="map">
+        <h4>map 파트</h4>
+    </div>
+</div>
+<!--content영역끝-->
+
+<!--footer영역-->
+<th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3b7d40e80fb8c0abb9d63a590f43fba0"></script>
 <script>
@@ -148,6 +172,7 @@
         content: iwContent
     });
     infowindow.open(map, marker);
+
 </script>
 </body>
 </html>
