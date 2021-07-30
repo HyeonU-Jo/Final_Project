@@ -4,32 +4,17 @@
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
 <th:block th:fragment="setMap(map)"></th:block>
-
+<th:block th:fragment="setCss(css)"></th:block>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>여행플랜</title>
     <!--구글폰트-->
-    <meta name ="google-signin-client_id" content="832265235477-t0424vv7k8bmivu13hibk2tbt3947sql.apps.googleusercontent.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
-
-
-    <link rel="stylesheet" th:href="@{/dist/css/style.css}">
-    <link rel="stylesheet" th:href="@{/dist/css/mypage.css}">
+    <meta name="google-signin-client_id"
+          content="832265235477-t0424vv7k8bmivu13hibk2tbt3947sql.apps.googleusercontent.com">
     <link rel="stylesheet" th:href="@{/dist/css/datepicker.min.css}">
-
-
-
-    <script th:src="@{/jquery-3.1.1.min.js}"></script>
     <script th:src="@{/dist/js/datepicker.min.js}"></script>
     <script th:src="@{/dist/js/i18n/datepicker.ko.js}"></script>
-    <script th:src="@{/dist/js/plan.js}"></script>
-    <script th:src="@{/dist/js/sementic.js}"></script>
-
-    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}">
-    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js}"></script>
+    <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 
     <style>
         * {
@@ -47,12 +32,11 @@
 <body>
 
 
-
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 
 <!--content영역시작-->
-<div class="section" >
+<div class="section">
 
     <!--날짜선택 div-->
     <div class="content">
@@ -70,13 +54,13 @@
         </div>
 
 
-          <!--jquery:자리이동x-->
-          <script>
-              $("#datepicker").datepicker({
-                  language: 'ko'
-              });
-              datePickerSet($("#sDay"), $("#eDay"), true);
-          </script>
+        <!--jquery:자리이동x-->
+        <script>
+            $("#datepicker").datepicker({
+                language: 'ko'
+            });
+            datePickerSet($("#sDay"), $("#eDay"), true);
+        </script>
     </div>
 
 
