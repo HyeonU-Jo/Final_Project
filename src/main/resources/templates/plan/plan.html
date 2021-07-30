@@ -11,21 +11,10 @@
     <!--구글폰트-->
 
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+    <script th:src="@{/dist/js/plan.js}"></script>
     <link rel="stylesheet" th:href="@{/dist/css/datepicker.min.css}">
     <script th:src="@{/dist/js/datepicker.min.js}"></script>
     <script th:src="@{/dist/js/i18n/datepicker.ko.js}"></script>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .double div {
-            float: left;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -67,6 +56,7 @@
 
     <div class="map">
         <h4>map 파트</h4>
+        <th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
     </div>
 </div>
 <!--content영역끝-->

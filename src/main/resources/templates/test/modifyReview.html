@@ -5,10 +5,10 @@
 <th:block th:fragment="setCss(css)"></th:block>
 
 <head>
-  <meta charset="UTF-8">
-  <title>리뷰 수정</title>
-  <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
-  <link rel="stylesheet" th:href="@{/dist/css/starCss.css}">
+    <meta charset="UTF-8">
+    <title>리뷰 수정</title>
+    <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+    <link rel="stylesheet" th:href="@{/dist/css/starCss.css}">
 </head>
 
 <body>
@@ -16,21 +16,22 @@
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 <div class="section">
-  <div class="content">
-<form action="/test/modifyReview" method="post">
-  <table border="1">
-    <tr>
-      <td>리뷰 작성</td>
-      <td>
-        <input type="text" name="r_content" th:value="${dto.r_content}">
-        <input type="hidden" name="firstimage2" th:value="${xmlDTO.getFirstimage2()}">
-        <input type="hidden" name="contentType" th:value="${xmlDTO.getContentType()}">
-        <input type="hidden" name="content_id" th:value="${xmlDTO.getContent_id()}">
-        <input type="hidden" name="r_num" th:value="${r_num}">
-      </td>
-    </tr>
-    <tr>
-      <td>평점 입력</td><td>  <span class="r_rating">
+    <div class="content">
+        <form action="/test/modifyReview" method="post">
+            <table border="1">
+                <tr>
+                    <td>리뷰 작성</td>
+                    <td>
+                        <input type="text" name="r_content" th:value="${dto.r_content}">
+                        <input type="hidden" name="firstimage2" th:value="${xmlDTO.getFirstimage2()}">
+                        <input type="hidden" name="contentType" th:value="${xmlDTO.getContentType()}">
+                        <input type="hidden" name="content_id" th:value="${xmlDTO.getContent_id()}">
+                        <input type="hidden" name="r_num" th:value="${r_num}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>평점 입력</td>
+                    <td>  <span class="r_rating">
   <span class="input">
     <input type="radio" name="r_rating" id="p1" value="1" th:checked="${dto.r_rating == 1}"><label for="p1">1</label>
     <input type="radio" name="r_rating" id="p2" value="2" th:checked="${dto.r_rating == 2}"><label for="p2">2</label>
@@ -41,43 +42,44 @@
     <input type="radio" name="r_rating" id="p7" value="7" th:checked="${dto.r_rating == 7}"><label for="p7">7</label>
     <input type="radio" name="r_rating" id="p8" value="8" th:checked="${dto.r_rating == 8}"><label for="p8">8</label>
     <input type="radio" name="r_rating" id="p9" value="9" th:checked="${dto.r_rating == 9}"><label for="p9">9</label>
-    <input type="radio" name="r_rating" id="p10" value="10" th:checked="${dto.r_rating == 10}"><label for="p10">10</label>
+    <input type="radio" name="r_rating" id="p10" value="10" th:checked="${dto.r_rating == 10}"><label
+          for="p10">10</label>
   </span>
   <output for="r_rating"></output>
 </span></td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <input value="수정" type="submit">
-        <button type="button" class="deleteBtn">삭제</button>
-      </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input value="수정" type="submit">
+                        <button type="button" class="deleteBtn">삭제</button>
+                    </td>
 
-    </tr>
-  </table>
+                </tr>
+            </table>
 
-</form>
-  </div>
+        </form>
+    </div>
 
-  <!--Map영역-->
-  <div class="map">
-    <h4>map 파트</h4>
-  </div>
+    <!--Map영역-->
+    <div class="map">
+        <h4>map 파트</h4>
+    </div>
 
 </div>
 <!--footer영역-->
 
 <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 
+<script th:inline="javascript">
+    var actionForm = $("form");
+
+    $(".deleteBtn").click(function () {
+        if (!confirm("삭제하시겠습니까?")) {
+            return;
+        }
+        actionForm.attr("action", "/test/deleteReview").attr("method", "post").submit();
+    });
+</script>
 
 </body>
-<script th:inline="javascript">
-  var actionForm = $("form");
-
-  $(".deleteBtn").click(function () {
-    if (!confirm("삭제하시겠습니까?")) {
-      return;
-    }
-    actionForm.attr("action", "/test/deleteReview").attr("method", "post").submit();
-  });
-</script>
 </html>
