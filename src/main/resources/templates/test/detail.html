@@ -8,14 +8,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
-    <script>
-        function checkForm(){
-            if(frm.keyword.value == ""){
-                frm.focus();
-                alert("키워드를 입력하여 주십시오");
-                return false;
-            }
-    </script>
 
 </head>
 
@@ -123,6 +115,15 @@
         <h4>map 파트</h4>
     </div>
 
+    <script>
+        function checkForm(){
+            if(frm.keyword.value == ""){
+                frm.focus();
+                alert("키워드를 입력하여 주십시오");
+                return false;
+            }
+        }
+    </script>
 </div>
 <!--content영역끝-->
 
