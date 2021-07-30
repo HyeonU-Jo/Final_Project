@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
+<th:block th:fragment="setCss(css)"></th:block>
 
 <head>
   <meta charset="UTF-8">
   <title>리뷰 수정</title>
-  <script th:src="@{/jquery-3.1.1.min.js}"></script>
+  <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
   <link rel="stylesheet" th:href="@{/dist/css/style.css}">
   <link rel="stylesheet" th:href="@{/dist/css/starCss.css}">
 </head>
