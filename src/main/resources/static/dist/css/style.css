@@ -54,6 +54,8 @@ header{
     width: 100%;
     margin: auto;
     height: 86px;
+    justify-content: space-around;
+    background-color: rgb(96 165 189 / 0.48);
 }
 
 .searchArea {
@@ -115,13 +117,15 @@ header{
     justify-content: flex-end;
     line-height: 86px;
     color: #fff;
+    margin-right: 20px;
 }
 
 .nav > li {
     margin-left: 84px;
 }
 
-.nav > li > a {
+.header > .nav > li > a {
+    padding: 0px 15px;
     color: #fff;
 }
 

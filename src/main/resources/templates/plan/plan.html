@@ -9,12 +9,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>여행플랜</title>
     <!--구글폰트-->
-    <meta name="google-signin-client_id"
-          content="832265235477-t0424vv7k8bmivu13hibk2tbt3947sql.apps.googleusercontent.com">
+
+    <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
     <link rel="stylesheet" th:href="@{/dist/css/datepicker.min.css}">
     <script th:src="@{/dist/js/datepicker.min.js}"></script>
     <script th:src="@{/dist/js/i18n/datepicker.ko.js}"></script>
-    <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 
     <style>
         * {
