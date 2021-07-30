@@ -165,6 +165,12 @@ public class TestController {
         return "redirect:/test/realDetail";
     }
 
+    @GetMapping("/moreSearch")
+    public String moreSearch(){
+
+        return "/test/moreSearch";
+    }
+
 }
 
 
