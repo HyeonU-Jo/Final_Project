@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+        function checkForm(){
+            if(frm.keyword.value == ""){
+                frm.focus();
+                alert("키워드를 입력하여 주십시오");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
-<form action="/test/detail">
+<form action="/test/detail" name="frm" onsubmit="return checkForm()">
     <select name="contentType">
         <option value="">전체</option>
         <option value="12">관광지</option>
@@ -17,6 +26,7 @@
     <input type="hidden" name="page" th:value="1">
     <input type="submit" value="검색">
 </form>
+<th:block th:if="${page != null}">
 <table border="1">
     <div th:each="list : ${list}">
     <tr>
@@ -90,7 +100,10 @@
     &nbsp;
     <a th:href="@{/test/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 1})}">다음</a>
 </div>
-
+</th:block>
+<th:block th:if="${page==null}">
+    검색된 결과가 없습니다.
+</th:block>
 <br>
 <hr>
 <br>

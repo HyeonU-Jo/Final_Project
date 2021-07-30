@@ -3,12 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+        function checkForm(){
+            if(frm.keyword.value == ""){
+                frm.focus();
+                alert("키워드를 입력하여 주십시오");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 
 <th:block th:fragment="setSearch(search)">
 
-    <form action="/test/detail" class="searchMain">
+    <form action="/test/detail" class="searchMain" name="frm" onsubmit="return checkForm()">
         <select name="contentType">
             <option value="">전체</option>
             <option value="12">관광지</option>

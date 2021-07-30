@@ -60,28 +60,29 @@ public class TestController {
         PublicAPI publicAPI = new PublicAPI();
         List<XmlDTO> xmlList = publicAPI.search(keyword, contentType, strPage);
         model.addAttribute("list", xmlList);
+        if(!xmlList.isEmpty()){
+            System.out.println("검색 결과 확인용 ~~~~~"+xmlList.size());
+            for (int i = 0; i<xmlList.size(); i++){
 
-        for (int i = 0; i<xmlList.size(); i++){
+                xmlList.get(i).setReviewAvg(service.reviewAvg(xmlList.get(i).getContent_id()));
+                System.out.println("리뷰 평균 값 확인용 " + xmlList.get(i).getReviewAvg());
+            }
 
-            xmlList.get(i).setReviewAvg(service.reviewAvg(xmlList.get(i).getContent_id()));
-            System.out.println("리뷰 평균 값 확인용 " + xmlList.get(i).getReviewAvg());
+            model.addAttribute("totalCount", xmlList.get(0).getTotalPage());
+
+            for(int i = 0; i<xmlList.get(0).getTotalPage(); i++){
+                pageList.add(i+1);
+            }
+            model.addAttribute("page", page);
+            model.addAttribute("pageList", pageList);
+            model.addAttribute("keyword", keyword);
+            System.out.println();
+            model.addAttribute("contentType", contentType);
+            model.addAttribute("page2", page);
+            model.addAttribute("thisPage", Integer.parseInt(strPage));
         }
 
-        model.addAttribute("totalCount", xmlList.get(0).getTotalPage());
 
-        for(int i = 0; i<xmlList.get(0).getTotalPage(); i++){
-            pageList.add(i+1);
-        }
-        model.addAttribute("page", page);
-        model.addAttribute("pageList", pageList);
-        model.addAttribute("keyword", keyword);
-        System.out.println();
-        model.addAttribute("contentType", contentType);
-        model.addAttribute("page2", page);
-        model.addAttribute("thisPage", Integer.parseInt(strPage));
-        model.addAttribute("startPage", xmlList.get(0).getStartPage());
-        model.addAttribute("endPage", xmlList.get(0).getEndPage());
-        model.addAttribute("pageCount", 10);
 
 
 

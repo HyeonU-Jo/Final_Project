@@ -80,6 +80,9 @@ public class PublicAPI {
             NodeList nodeList = doc.getElementsByTagName("item");
             NodeList nodeList1 = doc.getElementsByTagName("body");
             System.out.println("파싱할 리스트 수 : " + nodeList.getLength());
+            if(nodeList.getLength() == 0){
+                return xmlList;
+            }
 
 
 
@@ -135,12 +138,13 @@ public class PublicAPI {
         for(int iCount = startPage; iCount <= endPage; iCount++){
             System.out.println("아이 카운트 : "+iCount);
         }
+        if(xmlList.isEmpty()){
+
+        }
         xmlList.get(0).setStartPage(startPage);
         xmlList.get(0).setEndPage(endPage);
-
-
-
         xmlList.get(0).setTotalPage(totalPage);
+
 
         if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
             rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
