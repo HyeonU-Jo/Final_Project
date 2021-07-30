@@ -18,7 +18,6 @@ public class TEST {
     @Autowired
     private like_repository repository;
 
-/*
     @Test
     public void insertDummies(){
         IntStream.rangeClosed(1,300).forEach(i -> {
@@ -30,8 +29,7 @@ public class TEST {
             System.out.println(noticeRepository.save(noticeTbl));
         });
     }
-*/
-
+/*
     @Test
     public void insertDummies(){
         IntStream.rangeClosed(1,5).forEach(i -> {
@@ -42,5 +40,5 @@ public class TEST {
                     .build();
             System.out.println(repository.save(like));
         });
-    }
+    }*/
 }

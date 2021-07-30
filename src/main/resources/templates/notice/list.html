@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>리스트</title>
+    <link rel="stylesheet" th:href="@{/dist/css/notice.css}">
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 </head>
 <body>
@@ -17,20 +18,20 @@
 <div class="section">
     <!--content영역-->
     <div class="content">
-        <h2>놀먹날먹 공지사항</h2>
-        <table>
+        <h2 class="notice_h2">놀먹날먹 공지사항</h2>
+        <table class="notice_tbl">
             <thead>
             <tr>
-                <th scope="col">번호</th>
-                <th scope="col">제목</th>
-                <th scope="col">작성자</th>
-                <th scope="col">날짜</th>
+                <th class="notice_th" scope="col">번호</th>
+                <th class="notice_th"  scope="col">제목</th>
+                <th class="notice_th"  scope="col">작성자</th>
+                <th class="notice_th"  scope="col">날짜</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="dto : ${result.dtoList}">
-                <td scope="row">
-                    <a th:href="@{/notice/read(no = ${dto.no},
+                <td class="notice_td" scope="row">
+                    <a class="notice_a" th:href="@{/notice/read(no = ${dto.no},
                     page= ${result.page},
                     type= ${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}">
@@ -44,7 +45,7 @@
             </tbody>
         </table>
 
-        <ul class="list_ul">
+        <ul class="notice_ul">
             <li class="notice_prev" th:if="${result.prev}">
                 <a th:href="@{/notice/list(page= ${result.start -1},
                     type=${pageRequestDTO.type} ,

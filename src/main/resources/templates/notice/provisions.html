@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="setCss(css)"></th:block>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" th:href="@{/dist/css/sementic.css}">
+    <title>개인정보</title>
+    <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+    <link rel="stylesheet" th:href="@{/dist/css/notice.css}">
 </head>
 <body>
 <!--header영역-->
