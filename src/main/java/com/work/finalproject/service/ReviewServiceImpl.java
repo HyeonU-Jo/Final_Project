@@ -107,6 +107,7 @@ public class ReviewServiceImpl implements ReviewService{
             dto.setContent_id(list.get(i).getContent_id());
             dto.setR_content(list.get(i).getR_content());
             dto.setR_rating(list.get(i).getR_rating());
+            dto.setImage(list.get(i).getImage());
             dtoList.add(dto);
         }
 
