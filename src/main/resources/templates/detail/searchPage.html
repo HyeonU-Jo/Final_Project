@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function checkForm(){
+            if(frm.keyword.value == ""){
+                frm.focus();
+                alert("키워드를 입력하여 주십시오");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+
+<th:block th:fragment="setSearch(search)">
+
+    <form action="/detail/detail" class="searchMain" name="frm" onsubmit="return checkForm()">
+        <select name="contentType">
+            <option value="">전체</option>
+            <option value="12">관광지</option>
+            <option value="14">문화시설</option>
+            <option value="15">축제/공연/행사</option>
+            <option value="39">맛집</option>
+        </select>
+        <input type="text" name="keyword">
+        <input type="hidden" name="page" value="1">
+        <input type="submit" value="검색">
+    </form>
+
+</th:block>
+
+</body>
+</html>
