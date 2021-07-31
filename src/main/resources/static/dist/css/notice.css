@@ -3,6 +3,14 @@
     text-align: center;
 }
 
+.notice_content {
+    min-height: 500px;
+    width: 100%;
+    float: left;
+    margin-top: 100px;
+    text-align: center;
+}
+
 /*list관련 CSS*/
 .notice_list_h2 {
     margin: 40px 26px;
@@ -58,25 +66,32 @@
 .notice_read_content {
     text-align: left;
 }
-.notice_read_content2{
+
+.notice_read_content2 {
     text-align: center;
 }
 
 .notice_read_label {
     width: 30%;
     text-align: center;
-    background:#e5a1a1;
+    background: #e5a1a1;
 }
 
 .notice_read_input {
-    background:#caedf1;
+    background: #caedf1;
     border: none;
 
 
 }
-.notice_read_input_content{
+
+.notice_read_input_content {
     background: #e9b1f33b;
-    width:70%;
+    width: 70%;
     margin-bottom: 30px;
 
+}
+
+.notice_list_btn,
+.notice_read_btn {
+    margin-bottom: 15px;
 }

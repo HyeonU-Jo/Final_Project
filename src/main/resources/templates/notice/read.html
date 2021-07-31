@@ -15,13 +15,11 @@
 
 <div class="section">
     <!--content영역-->
-    <div class="content notice_read_content">
+    <div class="notice_content">
         <div class="notice_read_content2">
             <h2 class="notice_read_h2">새소식</h2>
-
-
             <div>
-                <label class="notice_read_label">제목</label>
+                <label class="notice_read_label">제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목</label>
                 <input class="notice_read_input" type="text" name="n_title" th:value="${dto.n_title}" readonly>
             </div>
             <div class="form-group">
@@ -30,14 +28,15 @@
                        th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
             </div>
             <div>
-                <textarea class="notice_read_input_content" rows="20"  name="n_content" readonly>[[${dto.n_content}]]</textarea>
+                <textarea class="notice_read_input_content" rows="20" name="n_content"
+                          readonly>[[${dto.n_content}]]</textarea>
             </div>
-
-
-            <a th:href="@{/notice/modify(no = ${dto.no}, page=${requestDTO.page})}">
-                <button type="button">수정하기</button>
-            </a>
-            <button type="button" th:onclick="|location.href='/notice/list'|">목록으로</button>
+            <div class="notice_read_btn">
+                <a th:href="@{/notice/modify(no = ${dto.no}, page=${requestDTO.page})}">
+                    <button type="button">수정하기</button>
+                </a>
+                <button type="button" th:onclick="|location.href='/notice/list'|">목록으로</button>
+            </div>
         </div>
     </div>
     <!--content영역끝-->
