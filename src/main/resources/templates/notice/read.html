@@ -5,58 +5,46 @@
 <th:block th:fragment="setCss(css)"></th:block>
 <head>
     <meta charset="UTF-8">
-    <title>상세보기</title>
+    <title>공지사항</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
     <link rel="stylesheet" th:href="@{/dist/css/notice.css}">
 </head>
 <body>
 <!--header영역-->
-    <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
+<th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 <div class="section">
     <!--content영역-->
-    <div class="content">
-    <h1>상세보기</h1>
-        <div>
-            <label>번호</label>
-            <input type="text" name="no" th:value="${dto.no}" readonly>
-        </div>
+    <div class="content notice_read_content">
+        <div class="notice_read_content2">
+            <h2 class="notice_read_h2">새소식</h2>
 
-        <div>
-            <label>제목</label>
-            <input type="text" name="n_title" th:value="${dto.n_title}" readonly>
-        </div>
-        <div>
-            <label>내용</label>
-            <textarea rows="5" name="n_content" readonly>[[${dto.n_content}]]</textarea>
-        </div>
-        <div class="form-group">
-            <label>작성자</label>
-            <input type="text" name="n_writer" th:value="${dto.n_writer}" readonly>
-        </div>
-        <div class="form-group">
-            <label>작성일자</label>
-            <input type="text"  name="regDate"
-                   th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
-        </div>
-        <a th:href="@{/notice/modify(no = ${dto.no}, page=${requestDTO.page})}">
-            <button type="button">수정하기</button>
-        </a>
+
+            <div>
+                <label class="notice_read_label">제목</label>
+                <input class="notice_read_input" type="text" name="n_title" th:value="${dto.n_title}" readonly>
+            </div>
+            <div class="form-group">
+                <label class="notice_read_label">작성일자</label>
+                <input class="notice_read_input" type="text" name="regDate"
+                       th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+            </div>
+            <div>
+                <textarea class="notice_read_input_content" rows="20"  name="n_content" readonly>[[${dto.n_content}]]</textarea>
+            </div>
+
+
+            <a th:href="@{/notice/modify(no = ${dto.no}, page=${requestDTO.page})}">
+                <button type="button">수정하기</button>
+            </a>
             <button type="button" th:onclick="|location.href='/notice/list'|">목록으로</button>
-</div>
-<!--content영역끝-->
-
-
-<!--Map영역-->
-    <div class="map">
-        <h4>map 파트</h4>
+        </div>
     </div>
-
-
+    <!--content영역끝-->
 </div>
 
 <!--footer영역-->
-    <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
+<th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 
 </body>
 </html>
