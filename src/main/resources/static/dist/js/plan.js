@@ -21,6 +21,9 @@ function createDiv(sDay, eDay) {
         const newBtn = document.createElement('button');
         newBtn.innerText = "+";
 
+        const newBr = document.createElement('br');
+        const newBr2 = document.createElement('br');
+
         let newA = document.createElement('a');
 
         newA.addEventListener("click", function (){
@@ -39,9 +42,11 @@ function createDiv(sDay, eDay) {
         const newText = document.createTextNode((i + 1) + 'Day');
 
         newDiv.appendChild(newText);
+        newDiv.appendChild(newBr);
         newDiv.appendChild(newBtn);
+        newDiv.appendChild(newBr2)
         plandiv2.appendChild(newDiv);
-        plandiv2.appendChild(newA);
+        newDiv.appendChild(newA);
     }
     var targetDiv = document.getElementsByClassName("plandiv1")[0];
     targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);

@@ -1,0 +1,22 @@
+.content{
+    text-align: center;
+}
+
+#num{
+    border: solid 1px;
+    border-radius: 5px;
+    background-color: rgba(163, 222, 246, 0.5);
+    width: 70%;
+    margin: 30px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#num > button{
+    width: 30px;
+    height: 30px;
+}
+
+.section{
+    background-color: rgba(212, 182, 243, 0.41);
+}
