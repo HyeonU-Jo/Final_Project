@@ -9,20 +9,19 @@ import java.util.Date;
 import java.util.List;
 
 import com.querydsl.core.BooleanBuilder;
+import com.work.finalproject.dto.LikeDTO;
 import com.work.finalproject.dto.PageRequestDTO;
 import com.work.finalproject.dto.ReviewDTO;
 import com.work.finalproject.dto.XmlDTO;
 import com.work.finalproject.publicApi.PublicAPI;
+import com.work.finalproject.service.LikeService;
 import com.work.finalproject.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -34,6 +33,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class DetailController {
 
     private final ReviewService service;
+    private final LikeService likeService;
 
     @GetMapping("/")
     public String index(){return "redirect:/detail/searchPage";}
@@ -171,6 +171,13 @@ public class DetailController {
         return "/detail/moreSearch";
     }
 
+    @PostMapping("/likeDetail")
+    @ResponseBody
+    public String likeDetail(LikeDTO likeDTO){
+        likeService.like(likeDTO);
+
+        return "";
+    }
 }
 
 

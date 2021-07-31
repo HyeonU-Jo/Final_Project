@@ -15,12 +15,10 @@ public class like_tbl {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int no;
 
-    @Column(length = 10, nullable = true)
-    private int t_like;
+    @Column(length = 80, nullable = true)
+    private String content_id;
 
-    @Column(length = 10, nullable = true)
-    private int s_like;
+    @Column(length = 90, nullable = true)
+    private String username;
 
-    @Column(length = 10, nullable = true)
-    private int f_like;
 }

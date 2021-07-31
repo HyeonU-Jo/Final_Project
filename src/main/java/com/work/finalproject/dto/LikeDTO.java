@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class LikeDTO {
     private int no;
-    private int t_like;
-    private int s_like;
-    private int f_like;
+    private String content_id;
+    private String username;
 }
