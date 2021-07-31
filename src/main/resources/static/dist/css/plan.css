@@ -5,7 +5,7 @@
 #num{
     border: solid 1px;
     border-radius: 5px;
-    background-color: rgba(163, 222, 246, 0.5);
+    background-color: rgba(171, 207, 222, 0.44);
     width: 70%;
     margin: 30px auto;
     padding-top: 10px;
@@ -18,5 +18,5 @@
 }
 
 .section{
-    background-color: rgba(212, 182, 243, 0.41);
+    /*background-color: rgba(212, 182, 243, 0.41);*/
 }
