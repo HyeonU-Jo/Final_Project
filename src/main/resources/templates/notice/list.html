@@ -18,20 +18,20 @@
 <div class="section">
     <!--content영역-->
     <div class="content">
-        <h2 class="notice_h2">놀먹날먹 공지사항</h2>
-        <table class="notice_tbl">
+        <h2 class="notice_list_h2">놀먹날먹 공지사항</h2>
+        <table class="notice_list_tbl">
             <thead>
             <tr>
-                <th class="notice_th" scope="col">번호</th>
-                <th class="notice_th"  scope="col">제목</th>
-                <th class="notice_th"  scope="col">작성자</th>
-                <th class="notice_th"  scope="col">날짜</th>
+                <th class="notice_list_th" scope="col">번호</th>
+                <th class="notice_list_th"  scope="col">제목</th>
+
+                <th class="notice_list_th"  scope="col">날짜</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="dto : ${result.dtoList}">
-                <td class="notice_td" scope="row">
-                    <a class="notice_a" th:href="@{/notice/read(no = ${dto.no},
+                <td class="notice_list_td" scope="row">
+                    <a class="notice_list_a" th:href="@{/notice/read(no = ${dto.no},
                     page= ${result.page},
                     type= ${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}">
@@ -39,14 +39,14 @@
                     </a>
                 </td>
                 <td>[[${dto.n_title}]]</td>
-                <td>[[${dto.n_writer}]]</td>
+
                 <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
             </tr>
             </tbody>
         </table>
 
-        <ul class="notice_ul">
-            <li class="notice_prev" th:if="${result.prev}">
+        <ul class="notice_list_ul">
+            <li th:if="${result.prev}">
                 <a th:href="@{/notice/list(page= ${result.start -1},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">Prev</a>
@@ -58,24 +58,22 @@
                     [[${page}]]
                 </a>
             </li>
-            <li class="notice_next" th:if="${result.next}">
+            <li th:if="${result.next}">
                 <a th:href="@{/notice/list(page= ${result.end + 1} ,
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword} )}">Next</a>
             </li>
 
         </ul>
-        <br/>
 
 
-        <button class="notice_btn" type="button" th:onclick="|location.href='/notice/register'|">글쓰기</button>
+
+
+        <button class="notice_list_btn" type="button" th:onclick="|location.href='/notice/register'|">글쓰기</button>
     </div>
 
 
-    <!--Map영역-->
-    <div class="map">
-        <h4>map 파트</h4>
-    </div>
+
 </div>
 
 

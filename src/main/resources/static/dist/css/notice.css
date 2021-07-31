@@ -1,57 +1,82 @@
-.notice_tbl {
-    width: 100%;
-    margin: auto;
-    margin-bottom: 10px;
+/*section 가운데정렬*/
+.section {
+    text-align: center;
 }
 
-.notice_th {
-
-    font-weight: bold;
-    padding: 18px 10px;
-    font-size: 20px;
-
-}
-
-.notice_td, .notice_a {
-    padding-bottom: 13px;
-    font-weight: 300;
-    font-size: 18px;
-}
-
-.notice_a {
-    font-weight: bold;
-}
-
-notice_h2 {
+/*list관련 CSS*/
+.notice_list_h2 {
     margin: 40px 26px;
     font-size: 30px;
     font-weight: 700;
     text-align: left;
     padding-left: 40px;
     letter-spacing: 3px;
-
 }
 
-.notice_ul {
-    width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.notice_ul > li {
-    margin-top: 10px;
+.notice_list_tbl {
+    width: 100%;
     margin: auto;
-    width: 5%;
-    float: left;
-    align-content: center;
-    font-size: medium;
+    margin-bottom: 10px;
+    text-align: center;
+
 }
 
-.notice_prev {
-    padding-right: 20px;
+.notice_list_th {
+
+    font-weight: bold;
+    padding: 18px 10px;
+    font-size: 20px;
+    text-align: center;
+
 }
 
-.notice_next {
-    padding-left: 20px;
+.notice_list_td, .notice_list_a {
+    padding-bottom: 13px;
+    font-weight: 300;
+    font-size: 18px;
 }
 
+.notice_list_a {
+    font-weight: bold;
+}
+
+.notice_list_ul {
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.notice_list_ul > li {
+    display: inline;
+}
+
+.notice_list_ul > li > a {
+    display: inline-block;
+    padding: 10px;
+}
+
+/*read CSS*/
+.notice_read_content {
+    text-align: left;
+}
+.notice_read_content2{
+    text-align: center;
+}
+
+.notice_read_label {
+    width: 30%;
+    text-align: center;
+    background:#e5a1a1;
+}
+
+.notice_read_input {
+    background:#caedf1;
+    border: none;
+
+
+}
+.notice_read_input_content{
+    background: #e9b1f33b;
+    width:70%;
+    margin-bottom: 30px;
+
+}
