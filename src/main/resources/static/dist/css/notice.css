@@ -1,6 +1,8 @@
 /*section 가운데정렬*/
 .section {
     text-align: center;
+    width: 70%;
+    margin: auto;
 }
 
 .notice_content {
@@ -23,8 +25,6 @@
 
 .notice_list_tbl {
     width: 100%;
-    margin: auto;
-    margin-bottom: 10px;
     text-align: center;
 
 }
@@ -32,24 +32,28 @@
 .notice_list_th {
 
     font-weight: bold;
-    padding: 18px 10px;
-    font-size: 20px;
+    padding: 36px 10px;
+    font-size: 21px;
     text-align: center;
+
 
 }
 
-.notice_list_td, .notice_list_a {
-    padding-bottom: 13px;
-    font-weight: 300;
-    font-size: 18px;
+.notice_list_td,
+.notice_list_a {
+    margin: 10px;
+    padding-bottom: 24px;
+    font-size: 15px;
 }
 
 .notice_list_a {
     font-weight: bold;
 }
 
+
 .notice_list_ul {
-    margin-bottom: 0px;
+    margin-top: 30px;
+    margin-bottom: 18px;
     text-align: center;
 }
 
@@ -63,6 +67,14 @@
 }
 
 /*read CSS*/
+.notice_read_h2 {
+    text-align: center;
+    margin: 50px;
+    letter-spacing: 12px;
+    padding-left: -12px;
+}
+
+
 .notice_read_content {
     text-align: left;
 }
@@ -72,16 +84,19 @@
 }
 
 .notice_read_label {
+    font-size: 16px;
     width: 30%;
     text-align: center;
     background: #e5a1a1;
+    font-weight: 400;
+    margin: 10px;
 }
 
 .notice_read_input {
     background: #caedf1;
     border: none;
-
-
+    width: 41%;
+    letter-spacing: 2.5px;
 }
 
 .notice_read_input_content {
@@ -93,5 +108,10 @@
 
 .notice_list_btn,
 .notice_read_btn {
-    margin-bottom: 15px;
+    margin-bottom: 29px;
+}
+
+.notice_read_btn{
+    width: 84%;
+    text-align: right;
 }

@@ -22,15 +22,14 @@
         <table class="notice_list_tbl">
             <thead>
             <tr>
-                <th class="notice_list_th" scope="col">번호</th>
-                <th class="notice_list_th"  scope="col">제목</th>
-
-                <th class="notice_list_th"  scope="col">날짜</th>
+                <th class="notice_list_th" width="20%" scope="col" style="letter-spacing: 25px; padding-left: 25px;">번호</th>
+                <th class="notice_list_th" width="50%" scope="col" style="letter-spacing: 68px; padding-left: 81px;">제목 </th>
+                <th class="notice_list_th" width="30%" scope="col" style="letter-spacing: 25px; padding-left: 25px;">날짜</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="dto : ${result.dtoList}">
-                <td class="notice_list_td" scope="row">
+                <td class="notice_list_td">
                     <a class="notice_list_a" th:href="@{/notice/read(no = ${dto.no},
                     page= ${result.page},
                     type= ${pageRequestDTO.type} ,
@@ -38,9 +37,9 @@
                         [[${dto.no}]]
                     </a>
                 </td>
-                <td>[[${dto.n_title}]]</td>
+                <td class="notice_list_td">[[${dto.n_title}]]</td>
 
-                <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
+                <td class="notice_list_td">[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
             </tr>
             </tbody>
         </table>
@@ -67,11 +66,8 @@
         </ul>
 
 
-
-
         <button class="notice_list_btn" type="button" th:onclick="|location.href='/notice/register'|">글쓰기</button>
     </div>
-
 
 
 </div>
