@@ -36,18 +36,21 @@ public class Controller {
                 xmlDTO.setTitle(xmlDTOS.get(i).getTitle());
                 xmlDTO.setContent_id(xmlDTOS.get(i).getContent_id());
                 xmlDTO.setFirstimage2(xmlDTOS.get(i).getFirstimage2());
+                xmlDTO.setAreacode(xmlDTOS.get(i).getAreacode());
                 xmlDTOList.add(xmlDTO);
 
                 XmlDTO xmlDTO1 = new XmlDTO();
                 xmlDTO1.setTitle(xmlDTOS1.get(i).getTitle());
                 xmlDTO1.setContent_id(xmlDTOS1.get(i).getContent_id());
                 xmlDTO1.setFirstimage2(xmlDTOS1.get(i).getFirstimage2());
+                xmlDTO1.setAreacode(xmlDTOS1.get(i).getAreacode());
                 xmlDTOList1.add(xmlDTO1);
 
                 XmlDTO xmlDTO2 = new XmlDTO();
                 xmlDTO2.setTitle(xmlDTOS2.get(i).getTitle());
                 xmlDTO2.setContent_id(xmlDTOS2.get(i).getContent_id());
                 xmlDTO2.setFirstimage2(xmlDTOS2.get(i).getFirstimage2());
+                xmlDTO2.setAreacode(xmlDTOS2.get(i).getAreacode());
                 xmlDTOList2.add(xmlDTO2);
 
             }

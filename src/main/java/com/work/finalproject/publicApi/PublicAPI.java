@@ -252,7 +252,7 @@ public class PublicAPI {
         urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
         urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS (아이폰), AND(안드로이드), ETC*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("50", "UTF-8")); /*한 페이지 결과 수*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("500", "UTF-8")); /*한 페이지 결과 수*/
         urlBuilder.append("&" + URLEncoder.encode("listYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")); /*목록 구분 (Y=목록, N=개수)*/
         urlBuilder.append("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("R", "UTF-8")); /*(A=제목순, B=조회순, C=수정일순, D=생성일순) 대표이미지가 반드시 있는 정렬(O=제목순, P=조회순, Q=수정일순, R=생성일순)*/
         urlBuilder.append("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode(contentType, "UTF-8")); /*관광타입(관광지, 숙박 등) ID*/
@@ -278,9 +278,9 @@ public class PublicAPI {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(sUrl);
             doc.getDocumentElement().normalize();
-            System.out.println("element : " + doc.getDocumentElement().getNodeName());
+
             NodeList nodeList = doc.getElementsByTagName("item");
-            System.out.println("파싱할 리스트 수 : " + nodeList.getLength());
+
 
 
             for (int temp = 0; temp<nodeList.getLength(); temp++){
@@ -294,6 +294,44 @@ public class PublicAPI {
                     dto.setContent_id(getTagValue("contentid", element));
                     dto.setContentType(getTagValue("contenttypeid", element));
                     dto.setFirstimage2(getTagValue("firstimage2" ,element));
+                    if(getTagValue("areacode", element).equals("1")){
+                        dto.setAreacode("서울특별시");
+                    }else if(getTagValue("areacode", element).equals("2")){
+                        dto.setAreacode("인천광역시");
+                    }else if(getTagValue("areacode", element).equals("3")){
+                        dto.setAreacode("대전광역시");
+                    }else if(getTagValue("areacode", element).equals("4")){
+                        dto.setAreacode("대구광역시");
+                    }else if(getTagValue("areacode", element).equals("5")){
+                        dto.setAreacode("광주광역시");
+                    }else if(getTagValue("areacode", element).equals("6")){
+                        dto.setAreacode("부산광역시");
+                    }else if(getTagValue("areacode", element).equals("7")){
+                        dto.setAreacode("울산광역시");
+                    }else if(getTagValue("areacode", element).equals("8")){
+                        dto.setAreacode("세종특별시");
+                    }else if(getTagValue("areacode", element).equals("31")){
+                        dto.setAreacode("경기도");
+                    }else if(getTagValue("areacode", element).equals("32")){
+                        dto.setAreacode("강원도");
+                    }else if(getTagValue("areacode", element).equals("33")){
+                        dto.setAreacode("충청북도");
+                    }else if(getTagValue("areacode", element).equals("34")){
+                        dto.setAreacode("충청남도");
+                    }else if(getTagValue("areacode", element).equals("35")){
+                        dto.setAreacode("경상북도");
+                    }else if(getTagValue("areacode", element).equals("36")){
+                        dto.setAreacode("경상남도");
+                    }else if(getTagValue("areacode", element).equals("37")){
+                        dto.setAreacode("전라북도");
+                    }else if(getTagValue("areacode", element).equals("38")){
+                        dto.setAreacode("전라남도");
+                    }else if(getTagValue("areacode", element).equals("39")){
+                        dto.setAreacode("제주특별자치도");
+                    }else {
+                        dto.setAreacode(getTagValue("title", element));
+                    }
+
 
                     xmlList.add(dto);
                 }
@@ -316,7 +354,7 @@ public class PublicAPI {
         }
         rd.close();
         conn.disconnect();
-        System.out.println(sb.toString());
+
 
 
         return xmlList;
