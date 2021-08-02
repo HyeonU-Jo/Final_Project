@@ -26,8 +26,8 @@ function createDiv(sDay, eDay) {
 
         let newA = document.createElement('a');
 
-        newA.addEventListener("click", function (){
-           window.open("test", "test", "width+600, height=400");
+        newA.addEventListener("click", function () {
+            window.open("test", "test", "width+600, height=400");
         });
 
         newA.id = i;
@@ -61,77 +61,35 @@ function refreshPage() {
 
 /*파라미터 반환*/
 function getParam(sname) {
-
     var params = location.search.substr(location.search.indexOf("?") + 1);
-
     var sval = "";
-
     params = params.split("&");
-
     for (var i = 0; i < params.length; i++) {
-
         temp = params[i].split("=");
-
-        if ([temp[0]] == sname) { sval = temp[1]; }
-
+        if ([temp[0]] == sname) {
+            sval = temp[1];
+        }
     }
-
     return sval;
-
 }
 
 /*부모창으로 값 전달*/
 function setParentText() {
-
     const obj_length = document.getElementsByName("likeList").length;
     let listTest = [];
-
     for (let i = 0; i < obj_length; i++) {
         if (document.getElementsByName("likeList")[i].checked == true) {
             listTest += document.getElementsByName("likeList")[i].value;
             window.close();
         }
     }
-
-    alert(listTest.toString() + " | " + listTest.length);
-    console.log(listTest);
+    alert(listTest.toString());
 
     opener.document.getElementById(getParam("id")).innerText = listTest.toString();
     window.close();
 }
 
-/*
 
-function test() {
-    const obj_length = document.getElementsByName("likeList").length;
-    let listTest = [];
-
-    for (let i = 0; i < obj_length; i++) {
-        if (document.getElementsByName("likeList")[i].checked == true) {
-            listTest += document.getElementsByName("likeList")[i].value;
-            window.close();
-        }
-    }
-
-    alert(listTest.toString() + " | " + listTest.length);
-    console.log(listTest);
-
-}
-*/
-
-
-/*function test()  {
-    // 선택된 목록 가져오기
-    const query = 'input[name="checkboxes"]:checked';
-    const selectedEls = document.querySelectorAll(query);
-
-    let result = '';
-    selectedEls.forEach((el) => {
-        result += el.value + ' ';
-    });
-
-    document.getElementById('result').innerText = result;
-}*/
 
 
 /**달력**/

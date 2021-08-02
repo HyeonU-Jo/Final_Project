@@ -13,6 +13,7 @@
     text-align: center;
 }
 
+
 /*list관련 CSS*/
 .notice_list_h2 {
     margin: 40px 26px;
@@ -26,17 +27,13 @@
 .notice_list_tbl {
     width: 100%;
     text-align: center;
-
 }
 
 .notice_list_th {
-
     font-weight: bold;
     padding: 36px 10px;
     font-size: 21px;
     text-align: center;
-
-
 }
 
 .notice_list_td,
@@ -49,7 +46,6 @@
 .notice_list_a {
     font-weight: bold;
 }
-
 
 .notice_list_ul {
     margin-top: 30px;
@@ -66,14 +62,15 @@
     padding: 10px;
 }
 
+
 /*read CSS*/
 .notice_read_h2 {
     text-align: center;
     margin: 50px;
     letter-spacing: 12px;
     padding-left: -12px;
+    font-weight: bold;
 }
-
 
 .notice_read_content {
     text-align: left;
@@ -83,27 +80,25 @@
     text-align: center;
 }
 
-.notice_read_label {
-    font-size: 16px;
-    width: 30%;
-    text-align: center;
-    background: #e5a1a1;
+.notice_read_input_title {
+    font-size: 20px;
     font-weight: 400;
-    margin: 10px;
+    margin-bottom: 7px;
 }
 
 .notice_read_input {
-    background: #caedf1;
+
     border: none;
-    width: 41%;
+    width: 70%;
     letter-spacing: 2.5px;
+    text-align: left;
+    font-size: 10px;
 }
 
 .notice_read_input_content {
-    background: #e9b1f33b;
     width: 70%;
     margin-bottom: 30px;
-
+    padding: 10px 10px 10px 10px;
 }
 
 .notice_list_btn,
@@ -111,7 +106,68 @@
     margin-bottom: 29px;
 }
 
-.notice_read_btn{
+.notice_read_btn {
     width: 84%;
     text-align: right;
+}
+
+
+/*register CSS*/
+.notice_register_h2 {
+    width: 100%;
+    text-align: center;
+    letter-spacing: 10px;
+    padding-left: 10px;
+}
+
+.notice_register_title {
+    width: 70%;
+    margin: 30px 10px;
+}
+
+.notice_register_content {
+    width: 80%;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 20px;
+}
+
+.notice_register_btn1 {
+    margin:30px 7px;
+}
+
+/*modify CSS*/
+.notice_modify_h1{
+    text-align: center;
+    padding-right: 50px;
+    margin: 30px 10px;
+}
+.notice_modify_group{
+    text-align: center;
+    margin-bottom: 1rem;
+    width: 90%;
+    display: flex;
+    flex: 0 0 auto;
+    flex-flow: row wrap;
+    align-items: baseline;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around
+}
+
+
+.notice_modify_controller{
+    width:70%;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    color: #495057;
+}
+
+.notice_modify_group > label{
+    width:10%;
+    text-align:left;
+}
+
+.notice_modify_btn{
+    margin:30px 7px;
+
 }

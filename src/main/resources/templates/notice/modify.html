@@ -8,6 +8,42 @@
     <title>글수정</title>
     <link rel="stylesheet" th:href="@{/dist/css/notice.css}">
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+    <script th:inline="javascript">
+        var actionForm = $("form"); //form 태그 객체
+
+        $(".removeBtn").click(function () {
+            actionForm
+                .attr("action", "/notice/remove")
+                .attr("method", "post");
+            actionForm.submit();
+        });
+
+        $(".modifyBtn").click(function () {
+            if (!confirm("수정하시겠습니까?")) {
+                return;
+            }
+            actionForm
+                .attr("action", "/notice/modify")
+                .attr("method", "post")
+                .submit();
+        });
+
+        $(".listBtn").click(function () {
+            //var pageInfo = $("input[name='page']");
+            var page = $("input[name='page']");
+            var type = $("input[name='type']");
+            var keyword = $("input[name='keyword']");
+
+            actionForm.empty(); //form 태그의 모든 내용을 지우고
+            actionForm.append(page);
+            actionForm.append(type);
+            actionForm.append(keyword);
+            actionForm.attr("action", "/notice/list")
+                .attr("method", "get");
+
+            actionForm.submit();
+        })
+    </script>
 </head>
 <body>
 <!--header영역-->
@@ -17,83 +53,37 @@
 <!--content영역-->
 <div class="section">
     <!--content영역-->
-    <div class="content">
-    <form action="/notice/modify" method="post">
+    <div class="notice_content">
+        <form action="/notice/modify" method="post" style="text-align: center">
 
+            <h1 class="notice_modify_h1">수정페이지</h1>
+            <!--수정페이지-->
+            <div class="notice_modify_group">
+                <label>번 호</label>
+                <input class="notice_modify_controller" type="text" name="no" th:value="${dto.no}" readonly>
+            </div>
+            <div class="notice_modify_group">
+                <label>제 목</label>
+                <input  class="notice_modify_controller" type="text" name="n_title" th:value="${dto.n_title}">
+            </div>
+            <div class="notice_modify_group">
+                <label>내 용</label>
+                <textarea class="notice_modify_controller" rows="20" name="n_content">[[${dto.n_content}]]</textarea>
+            </div>
+            <div class="notice_modify_group">
+                <label>작성일자</label>
+                <input class="notice_modify_controller" type="text" th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+            </div>
 
-        <h1>수정페이지</h1>
-        <!--수정페이지-->
-        <div>
-            <label>번호</label>
-            <input type="text" name="no" th:value="${dto.no}" readonly>
-        </div>
+        </form>
 
-        <div>
-            <label>제목</label>
-            <input type="text" name="n_title" th:value="${dto.n_title}">
-        </div>
-        <div>
-            <label>내용</label>
-            <textarea rows="5" name="n_content">[[${dto.n_content}]]</textarea>
-        </div>
-        <div class="form-group">
-            <label>작성자</label>
-            <input type="text" name="n_writer" th:value="${dto.n_writer}" readonly>
-        </div>
-        <div>
-            <label>작성일자</label>
-            <input type="text" th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
-        </div>
+        <button type="button" class="notice_modify_btn">수정</button>
+        <button type="button" class="notice_modify_btn">목록</button>
+        <button type="button" class="notice_modify_btn">삭제</button>
 
-    </form>
-
-    <button type="button" class="modifyBtn">수정</button>
-    <button type="button" class="listBtn">목록</button>
-    <button type="button" class="removeBtn">삭제</button>
-
+    </div>
 </div>
-<!--content영역끝-->
 
-
-
-
-</div>
-<script th:inline="javascript">
-    var actionForm = $("form"); //form 태그 객체
-
-    $(".removeBtn").click(function () {
-        actionForm
-            .attr("action", "/notice/remove")
-            .attr("method", "post");
-        actionForm.submit();
-    });
-
-    $(".modifyBtn").click(function () {
-        if (!confirm("수정하시겠습니까?")) {
-            return;
-        }
-        actionForm
-            .attr("action", "/notice/modify")
-            .attr("method", "post")
-            .submit();
-    });
-
-    $(".listBtn").click(function () {
-        //var pageInfo = $("input[name='page']");
-        var page = $("input[name='page']");
-        var type = $("input[name='type']");
-        var keyword = $("input[name='keyword']");
-
-        actionForm.empty(); //form 태그의 모든 내용을 지우고
-        actionForm.append(page);
-        actionForm.append(type);
-        actionForm.append(keyword);
-        actionForm.attr("action", "/notice/list")
-            .attr("method", "get");
-
-        actionForm.submit();
-    })
-</script>
 
 <!--footer영역-->
 <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>

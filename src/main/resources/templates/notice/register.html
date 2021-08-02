@@ -6,49 +6,38 @@
 <head>
     <meta charset="UTF-8">
     <title>글쓰기</title>
-    <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
     <link rel="stylesheet" th:href="@{/dist/css/notice.css}">
+    <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 </head>
 <body>
 <!--header영역-->
-    <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
-
+<th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 
 <div class="section">
     <!--content영역-->
-    <div class="content">
-    <h1>글작성</h1>
+    <div class="notice_content">
+        <h2 class="notice_register_h2">글작성</h2>
         <form th:action="@{/notice/register}" th:method="post">
             <div>
-                <label >제목</label>
-                <input type="text" name="n_title">
+                <span style="font-size: 15px;">제 목</span>
+                <input class="notice_register_title" type="text" name="n_title">
             </div>
             <div>
-                <label >내용</label>
-                <textarea  rows="5" name="n_content"></textarea>
+
+                <textarea class="notice_register_content" rows="20" name="n_content" placeholder="내용을 입력하세요."></textarea>
             </div>
-            <div>
-                <label >작성자</label>
-                <input type="text" name="n_writer">
-            </div>
-            <button type="submit">작성하기</button>
-            <button type="reset" >다시쓰기</button>
-            <button type="button" th:onclick="|location.href='/notice/list'|" >목록으로</button>
+
+            <button class="notice_register_btn1" type="submit">작성하기</button>
+            <button class="notice_register_btn1"type="reset">다시쓰기</button>
+            <button class="notice_register_btn1" type="button" th:onclick="|location.href='/notice/list'|">목록으로</button>
         </form>
-</div>
-<!--content영역끝-->
-
-
-
-<!--Map영역-->
-    <div class="map">
-        <h4>map 파트</h4>
     </div>
+    <!--content영역끝-->
 </div>
 
 <!--footer영역-->
-    <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
+<th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 
 
 </body>
