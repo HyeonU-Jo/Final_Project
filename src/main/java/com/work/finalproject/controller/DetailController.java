@@ -174,9 +174,9 @@ public class DetailController {
     @PostMapping("/likeDetail")
     @ResponseBody
     public String likeDetail(LikeDTO likeDTO){
-        likeService.like(likeDTO);
+        String abc = likeService.like(likeDTO);
 
-        return "";
+        return abc;
     }
 }
 
