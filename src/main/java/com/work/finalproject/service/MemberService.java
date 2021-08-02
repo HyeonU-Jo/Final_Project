@@ -28,5 +28,19 @@ public class MemberService{
        member_repository.save(member_tbl);
     }
 
+    @Transactional
+    public void update(member_tbl member_tbl){
+        member_tbl persistance = member_repository.findById(member_tbl.getNum()).orElseThrow(()->{
+            return new IllegalArgumentException("회원 찾기 실패");
+        });
+        String rawPassword = member_tbl.getPassword();
+        String encPassword = encoder.encode(rawPassword);
+        persistance.setPassword(encPassword);
+        persistance.setEmail(member_tbl.getEmail());
+        persistance.setName(member_tbl.getName());
+        // 회원수정 함수 종료시 = 서비스 종료 = 트랜잭션 종료 = commit이 자동으로 된다.
+        // 영속화된 persistance 객체의 변화가 감지되면 더티체킹이 되어 update문을 날려줌
+
+    }
 
 }

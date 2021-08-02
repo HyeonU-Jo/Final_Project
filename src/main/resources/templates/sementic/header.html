@@ -1,5 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.springframework.org/security/tags">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="setLogin(login)"></th:block>
 <th:block th:fragment="setJoin(join)"></th:block>
@@ -7,9 +6,6 @@
 <th:block th:fragment="setMyPageLike(mypagelike)"></th:block>
 <th:block th:fragment="setHead(head)">
 
-    <sec:authorize access="isAuthenticated()">
-        <sec:authentication property="principal" var="principal"/>
-    </sec:authorize>
 
 
     <header>
