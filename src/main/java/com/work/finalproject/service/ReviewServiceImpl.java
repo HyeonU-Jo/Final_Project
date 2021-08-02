@@ -63,6 +63,7 @@ public class ReviewServiceImpl implements ReviewService{
     @Override
     public int reviewAvg(String content_id) {
         List<review_tbl> review_tbls = repository.findByContent_id(content_id);
+        System.out.println("리뷰 합계 확인"+repository.sumR_rating(content_id));
         int sum = 0;
         if(review_tbls.size()==0){
             return 0;
