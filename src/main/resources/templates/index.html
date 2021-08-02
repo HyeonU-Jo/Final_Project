@@ -52,30 +52,16 @@
                 먹을 생각에 벌써 설레죠?
             </div>
             <ul class="icons">
+                <th:block th:each="shop : ${shop}">
                 <li>
                     <div class="icon_img">
-                        <img th:src="@{/image/logo.png}">
+                        <img th:src="${shop.firstimage2}">
                     </div>
-                    <div class="contents1_bold">치밀하게</div>
-                    <div class="contents1">우리는 치밀하고 날렵하게 월급을 루팡합니다.</div>
+                    <div class="contents1_bold">[[${shop.title}]]</div>
+                    <div class="contents1">[[${shop.title}]]</div>
                     <div class="more">MORE</div>
                 </li>
-                <li>
-                    <div class="icon_img">
-                        <img th:src="@{/image/logo.png}">
-                    </div>
-                    <div class="contents1_bold">날렵하게</div>
-                    <div class="contents1">우리는 치밀하고 날렵하게 월급을 루팡합니다.</div>
-                    <div class="more">MORE</div>
-                </li>
-                <li>
-                    <div class="icon_img">
-                        <img th:src="@{/image/logo.png}">
-                    </div>
-                    <div class="contents1_bold">재빠르게</div>
-                    <div class="contents1">우리는 치밀하고 날렵하게 월급을 루팡합니다.</div>
-                    <div class="more">MORE</div>
-                </li>
+                </th:block>
             </ul>
         </div>
         <div class="main_test0">
@@ -84,30 +70,16 @@
                 놀러갈 생각에 벌써 두근대죠?
             </div>
             <ul class="icons">
+                <th:block th:each="tour : ${tour}">
                 <li>
                     <div class="icon_img">
-                        <img th:src="@{/image/logo.png}">
+                        <img th:src="${tour.firstimage2}">
                     </div>
-                    <div class="contents1_bold">치밀하게</div>
-                    <div class="contents1">우리는 치밀하고 날렵하게 월급을 루팡합니다.</div>
+                    <div class="contents1_bold">[[${tour.title}]]</div>
+                    <div class="contents1">[[${tour.title}]]</div>
                     <div class="more">MORE</div>
                 </li>
-                <li>
-                    <div class="icon_img">
-                        <img th:src="@{/image/logo.png}">
-                    </div>
-                    <div class="contents1_bold">날렵하게</div>
-                    <div class="contents1">우리는 치밀하고 날렵하게 월급을 루팡합니다.</div>
-                    <div class="more">MORE</div>
-                </li>
-                <li>
-                    <div class="icon_img">
-                        <img th:src="@{/image/logo.png}">
-                    </div>
-                    <div class="contents1_bold">재빠르게</div>
-                    <div class="contents1">우리는 치밀하고 날렵하게 월급을 루팡합니다.</div>
-                    <div class="more">MORE</div>
-                </li>
+                </th:block>
             </ul>
         </div>
         <div class="main_test0">
@@ -116,30 +88,16 @@
                 신나게 놀 생각에 벌써 떨리죠?
             </div>
             <ul class="icons">
+                <th:block th:each="fest : ${fest}">
                 <li>
                     <div class="icon_img">
-                        <img th:src="@{/image/logo.png}">
+                        <img th:src="${fest.firstimage2}">
                     </div>
-                    <div class="contents1_bold">치밀하게</div>
-                    <div class="contents1">우리는 치밀하고 날렵하게 월급을 루팡합니다.</div>
+                    <div class="contents1_bold">[[${fest.title}]]</div>
+                    <div class="contents1">[[${fest.title}]]</div>
                     <div class="more">MORE</div>
                 </li>
-                <li>
-                    <div class="icon_img">
-                        <img th:src="@{/image/logo.png}">
-                    </div>
-                    <div class="contents1_bold">날렵하게</div>
-                    <div class="contents1">우리는 치밀하고 날렵하게 월급을 루팡합니다.</div>
-                    <div class="more">MORE</div>
-                </li>
-                <li>
-                    <div class="icon_img">
-                        <img th:src="@{/image/logo.png}">
-                    </div>
-                    <div class="contents1_bold">재빠르게</div>
-                    <div class="contents1">우리는 치밀하고 날렵하게 월급을 루팡합니다.</div>
-                    <div class="more">MORE</div>
-                </li>
+                </th:block>
             </ul>
         </div>
         <!-- <div class="main_text1" id="link_main_service">
