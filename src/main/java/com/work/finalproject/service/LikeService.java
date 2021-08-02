@@ -9,7 +9,10 @@ import java.util.List;
 
 public interface LikeService {
     List<LikeDTO> getLikeList();
-    void like(LikeDTO dto);
+    String like(LikeDTO dto);
+
+    String likeBoolean(LikeDTO dto);
+
     default like_tbl dtoToEntity(LikeDTO dto){
         like_tbl entity = like_tbl.builder()
                 .no(dto.getNo())

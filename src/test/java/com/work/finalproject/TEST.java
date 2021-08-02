@@ -18,7 +18,7 @@ public class TEST {
     @Autowired
     private like_repository repository;
 
-    @Test
+   /* @Test
     public void insertDummies(){
         IntStream.rangeClosed(1,300).forEach(i -> {
             notice_tbl noticeTbl = notice_tbl.builder()
@@ -28,17 +28,16 @@ public class TEST {
                     .build();
             System.out.println(noticeRepository.save(noticeTbl));
         });
-    }
-/*
+    }*/
     @Test
     public void insertDummies(){
         IntStream.rangeClosed(1,5).forEach(i -> {
             like_tbl like = like_tbl.builder()
-                    .t_like(i+10)
-                    .s_like(i+20)
-                    .f_like(i+30)
+                    .no(i+10)
+                    .content_id("content_id"+i)
+                    .username("username"+i)
                     .build();
             System.out.println(repository.save(like));
         });
-    }*/
+    }
 }
