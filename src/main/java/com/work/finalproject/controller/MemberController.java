@@ -74,5 +74,9 @@ public class MemberController {
         return "/member/user";
     }
 
+    @GetMapping("/updateForm")
+    public String updateForm(){
+        return "member/updateForm";
+    }
 
 }
