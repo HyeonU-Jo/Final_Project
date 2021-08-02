@@ -3,11 +3,15 @@ package com.work.finalproject.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import ch.qos.logback.core.CoreConstants;
 import com.querydsl.core.BooleanBuilder;
 import com.work.finalproject.dto.LikeDTO;
 import com.work.finalproject.dto.PageRequestDTO;
@@ -17,14 +21,23 @@ import com.work.finalproject.publicApi.PublicAPI;
 import com.work.finalproject.service.LikeService;
 import com.work.finalproject.service.ReviewService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
@@ -104,8 +117,11 @@ public class DetailController {
 
 
 
+    @Autowired
+    private ServletContext servletContext;
+
     @PostMapping("/reviewWrite")
-    public String reviewWrite(ReviewDTO dto, RedirectAttributes redirectAttributes, String contentType, MultipartFile imageFile){
+    public String reviewWrite(HttpServletRequest request, ReviewDTO dto, RedirectAttributes redirectAttributes, String contentType, MultipartFile imageFile){
 
 
 
@@ -116,8 +132,10 @@ public class DetailController {
         String time = format.format(date);
         System.out.println(time);
         MultipartFile mf = imageFile;
+
         String path = "c:\\upload\\test\\";
         String uploadPath = "";
+
         String original = time+"__"+ mf.getOriginalFilename();
 
         uploadPath = path + original;
@@ -134,6 +152,21 @@ public class DetailController {
         redirectAttributes.addAttribute("contentType", contentType);
 
         return "redirect:/detail/realDetail";
+    }
+
+    @GetMapping("download")
+    public ResponseEntity<Resource> download() throws IOException {
+        Path path = Paths.get("C:\\upload\\test\\21-08-02-11-55-27-365__css.png");
+        //이 부분을 파일 이름을 받아와서 그 이름으로 DB에서 찾아올수 있도록 해야함
+
+
+        String contentType = Files.probeContentType(path);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_TYPE, contentType);
+
+        Resource resource = new InputStreamResource(Files.newInputStream(path));
+        return new ResponseEntity<>(resource, headers, HttpStatus.OK);
     }
 
     @GetMapping("/modifyReview")
