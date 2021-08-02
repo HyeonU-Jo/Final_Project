@@ -155,8 +155,8 @@ public class DetailController {
     }
 
     @GetMapping("download")
-    public ResponseEntity<Resource> download() throws IOException {
-        Path path = Paths.get("C:\\upload\\test\\21-08-02-11-55-27-365__css.png");
+    public ResponseEntity<Resource> download(String image) throws IOException {
+        Path path = Paths.get("C:\\upload\\test\\" + image);
         //이 부분을 파일 이름을 받아와서 그 이름으로 DB에서 찾아올수 있도록 해야함
 
 
