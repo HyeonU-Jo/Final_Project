@@ -17,7 +17,7 @@ public class member_tbl {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int num;    // 시퀀스, auto_increment
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 20, nullable = false, unique = true)
     private String username;    // 아이디
 
     @Column(length = 100, nullable = false)

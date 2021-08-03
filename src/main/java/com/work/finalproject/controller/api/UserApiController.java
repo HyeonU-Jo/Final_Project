@@ -6,6 +6,10 @@ import com.work.finalproject.entity.member_tbl;
 import com.work.finalproject.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,6 +25,9 @@ public class UserApiController {
     private MemberService memberService;
 
     @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
     private BCryptPasswordEncoder encoder;
 
     @PostMapping("/auth/joinProc")
@@ -33,6 +40,12 @@ public class UserApiController {
     @PutMapping("/member")
     public ResponseDTO<Integer> update(@RequestBody member_tbl member_tbl) {
         memberService.update(member_tbl);
+
+
+        // DB의 값은 변경이 됐음.직접 세션값을 변경
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(member_tbl.getUsername(), member_tbl.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
         return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
     }
 }
