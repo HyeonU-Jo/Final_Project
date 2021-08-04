@@ -47,14 +47,7 @@
                 <td>사진1</td>
                 <td colspan="2"><img th:src="${dto.firstimage2}"></td>
             </tr>
-            <tr>
 
-                <td>
-                    <input type="hidden" name="mapx" id="mapx" th:value="${dto.mapx}">
-                    <input type="hidden" name="mapy" id="mapy" th:value="${dto.mapy}">
-                    <div id="map"></div>
-                </td>
-            </tr>
 
         </table>
 
@@ -84,6 +77,15 @@
     <!--Map영역-->
     <div class="map">
         <h4>map 파트</h4>
+        <tr>
+            <td>
+                <input type="hidden" name="mapx" id="mapx" th:value="${dto.mapx}">
+                <input type="hidden" name="mapy" id="mapy" th:value="${dto.mapy}">
+                <input type="hidden" id="title" th:value="${dto.title}">
+                <div id="map"></div>
+                
+            </td>
+        </tr>
     </div>
 </div>
 <!--content영역끝-->
