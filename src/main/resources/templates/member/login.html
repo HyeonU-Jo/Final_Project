@@ -78,31 +78,38 @@
             <input name="remember" class="form-check-input" type="checkbox">아이디 저장
         </div>
         <div class="input-box">
-            <input type="submit" id="btn-login" value="로그인"> <!--"loginCheck()" 를 만들어서 아이디 확인 -->
-            <input type="button" value="회원가입" onclick="location.href='/member/auth/join'";>
+            <input type="submit" class="btn btn-secondary" id="btn-login" value="로그인">
+            <input type="button" class="btn btn-secondary" value="회원가입" data-toggle="modal" href="#joinModal">
+                <div class="modal fade" id="joinModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">×</button>
+                                <h1 class="modal-title" align="center">회원가입</h1>
+                            </div>
+                            <div class="modal-body">
+                                <th:block th:replace="~{/member/join :: setJoin(~{this::join} )}"></th:block>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div onclick="kakaoLogin();">
+                <a href="javascript:void(0)">
+                    <span>카카오 로그인</span>
+                </a>
+            </div>
+            <div id="GgCustomLogin">
+                <a href="javascript:void(0)">
+                    <span>구글 로그인</span>
+                </a>
+            </div>
+
         </div>
         <!--/*@thymesVar id="errorMsg" type="java.lang.String"*/-->
         <span th:text="${errorMsg}" style="color:red"></span>
-        <div>
-            <ul>
-                <li onclick="kakaoLogin();">
-                    <a href="javascript:void(0)">
-                        <span>카카오 로그인</span>
-                    </a>
-                </li>
-                <li id="GgCustomLogin">
-                    <a href="javascript:void(0)">
-                        <span>구글 로그인</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
     </form>
-
 </div>
 
 </body>
-
-
 </th:block>
