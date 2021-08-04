@@ -29,6 +29,7 @@
                         <button type="button">리뷰작성</button>
                     </a>
                         <input type="hidden" id="content_id" th:value="${dto.content_id}">
+                        [[${dto.content_id}]]
                     </div>
                 </td>
             </tr>
@@ -137,7 +138,7 @@
             username : "2"
         }
         $.ajax({
-            url: "likeDetail",
+            url: "/detail/likeDetail",
             type : "POST",
             data : form,
             success: function(data){
