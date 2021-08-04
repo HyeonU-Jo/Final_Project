@@ -12,12 +12,22 @@ import javax.persistence.*;
 public class plan_tbl {
 
     @Id
+    @Column(length=20)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int no;
+
     @Column(length = 20)
-    private String id;
+    private String username;
 
-    @Column(length = 10, nullable = true)
-    private int p_date;
+    @Column(length = 10, nullable = false)
+    private String sDay;
 
-    @Column(length = 10, nullable = true)
-    private int all_like;
+    @Column(length = 10, nullable = false)
+    private String eDay;
+
+    @Column(length=10, nullable = false)
+    private int cDay;
+
+    @Column(length = 10, nullable = false)
+    private String content_id;
 }

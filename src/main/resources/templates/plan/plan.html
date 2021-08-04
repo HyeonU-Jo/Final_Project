@@ -28,34 +28,47 @@
 <div class="section">
 
     <!--날짜선택 div-->
-    <div class="content">
-        <div class="planday">
-            <h3>여행날짜선택</h3>
-            <input id="sDay" type="text" name="sDay">&nbsp;-&nbsp;
-            <input id="eDay" type="text" name="eDay">
-            <input type="button" id="reconfirm" name="reconfirm" value=" 날짜 재확인 " onclick="refreshPage()"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="button" id="once" name="check" value=" 확인 "
-                   onclick="createDiv('${datepicker1}','${datepicker2}'); this.onclick=null;"/>
+
+        <div class="content">
+            <form th:action="@{plan/plan}" method="post">
+            <div class="planday">
+
+                <h3>여행날짜선택</h3>
+
+                <input type="text" th:value="${#authentication.principal.username}" id="username" name="username"><br/>
+
+                <input id="sDay" type="text" name="sDay">-&nbsp;
+                <input id="eDay" type="text" name="eDay">
+                <input type="button" id="reconfirm" name="reconfirm" value=" 날짜 재확인 " onclick="refreshPage()"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" id="once" name="check" value=" 확인 "
+                       onclick="createDiv('${datepicker1}','${datepicker2}'); this.onclick=null;"/>
+            </div>
+
+
+            <!--div palnday의 날짜에 따라 추가되는 div-->
+            <div class="plandiv1">
+                <!--js에서 plandiv2가 들어오게됨-->
+            </div>
+
+
+            <!--jquery:자리이동x-->
+            <script>
+                $("#datepicker").datepicker({
+                    language: 'ko'
+                });
+                datePickerSet($("#sDay"), $("#eDay"), true);
+            </script>
+
+                <input type="submit" value="저장좀해주세요....제발.."/>
+            </form>
         </div>
-        <!--div palnday의 날짜에 따라 추가되는 div-->
-        <div class="plandiv1">
-            <!--js에서 plandiv2가 들어오게됨-->
-        </div>
 
 
-        <!--jquery:자리이동x-->
-        <script>
-            $("#datepicker").datepicker({
-                language: 'ko'
-            });
-            datePickerSet($("#sDay"), $("#eDay"), true);
-        </script>
-    </div>
-
-
-    <!--Map영역-->
+        <!--Map영역-->
         <th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
+
 </div>
+
 <!--content영역끝-->
 
 <!--footer영역-->

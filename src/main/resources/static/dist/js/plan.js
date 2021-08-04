@@ -1,20 +1,26 @@
+
+
 /**onclick이벤트 **/
 function createDiv(sDay, eDay) {
     var x = $('#sDay').val();
     var y = $('#eDay').val();
-    day1 = new Date(x);
-    day2 = new Date(y);
+    let day1 = new Date(x);
+    let day2 = new Date(y);
     var day = Math.ceil(day2.getTime() - day1.getTime());
     var dayday = day / (1000 * 3600 * 24) + 1; //일
 
     /*plandiv1안으로 들어가짐*/
     const plandiv2 = document.createElement('div');
+
     plandiv2.classList.add('infobox');
 
     for (var i = 0; i < dayday; i++) {
         const newDiv = document.createElement('div');
+        newDiv.setAttribute("name",'cDay');
         newDiv.id = "num";
         newDiv.classList.add(i);
+
+
         const newDivList = document.createElement('div');
         newDivList.id = "result"
 
