@@ -32,10 +32,33 @@ public class member_tbl {
     @Enumerated(EnumType.STRING)
     private RoleType role;
 
+    public String getEmail() {
+        return email;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    private boolean isEnabled;
 
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
+    public boolean isEnabled() {
+        return isEnabled;
+    }
 
-
+    public void setEnabled(boolean isEnabled) {
+        this.isEnabled = isEnabled;
+    }
 
 }
+
+
+
+
+
+
+
