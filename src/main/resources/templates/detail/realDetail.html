@@ -28,6 +28,7 @@
                     <a th:href="@{/detail/writeReview(content_id=${dto.content_id}, contentType=${dto.contentType}, title=${dto.title})}">
                         <button type="button">리뷰작성</button>
                     </a>
+                        <input type="hidden" id="content_id" th:value="${dto.content_id}">
                     </div>
                 </td>
             </tr>
