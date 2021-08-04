@@ -40,18 +40,31 @@ public class LikeServiceImpl implements LikeService {
         return likeDtoList;
     }
 
+    @Override
+    public String likeCheck(LikeDTO dto){
+        List<like_tbl> likeDTOS = likeRepository.findByContent_idAndUsername(dto.getContent_id(), dto.getUsername());
+        System.out.println("라이크 체크 : " + dto.getContent_id());
+        if (likeDTOS.isEmpty()){
+            return "찜 하기";
+        } else {
+            return "찜 취소";
+        }
+
+    }
+
 
 
     @Override
     public String like(LikeDTO dto) {
         List<like_tbl> likeDTOS = likeRepository.findByContent_idAndUsername(dto.getContent_id(), dto.getUsername());
+        System.out.println("진짜 라이크 : " + dto.getContent_id());
         if (likeDTOS.isEmpty()){
             like_tbl entity = dtoToEntity(dto);
             likeRepository.save(entity);
-            return "찜 완료";
+            return "찜 취소";
         } else {
             likeRepository.deleteByContent_idAndUsername(dto.getContent_id(), dto.getUsername());
-            return "찜 삭제";
+            return "찜 하기";
         }
 
     }

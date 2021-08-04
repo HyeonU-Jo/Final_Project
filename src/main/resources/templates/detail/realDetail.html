@@ -21,41 +21,40 @@
 
             <tr>
                 <td>이름</td>
-                <td th:text="${dto.title}"></td>
+                <td th:text="${dto.title}" style="border-right: none"></td>
+                <td style="border: none">
+                    <div style="float: right">
+                    <button id="btn1">[[${like}]]</button>
+                    <a th:href="@{/detail/writeReview(content_id=${dto.content_id}, contentType=${dto.contentType}, title=${dto.title})}">
+                        <button type="button">리뷰작성</button>
+                    </a>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>설명</td>
-                <td width="400" th:utext="${dto.overview}"></td>
+                <td width="400" th:utext="${dto.overview}" colspan="2"></td>
             </tr>
             <tr>
                 <td>연락처</td>
-                <td th:text="${dto.tel}"></td>
+                <td th:text="${dto.tel}" colspan="2"></td>
             </tr>
             <tr>
                 <td>홈페이지</td>
-                <td th:utext="${dto.homepage}"></td>
+                <td th:utext="${dto.homepage}" colspan="2"></td>
             </tr>
             <tr>
                 <td>사진1</td>
-                <td><img th:src="${dto.firstimage2}"></td>
+                <td colspan="2"><img th:src="${dto.firstimage2}"></td>
             </tr>
             <tr>
-                <td>위치</td>
+
                 <td>
                     <input type="hidden" name="mapx" id="mapx" th:value="${dto.mapx}">
                     <input type="hidden" name="mapy" id="mapy" th:value="${dto.mapy}">
                     <div id="map"></div>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <div>
-                        <button id="btn1">ajax테스트</button>
-                        <div id="result1"></div>
-                    </div>
-                </td>
-            </tr>
-
 
         </table>
 
@@ -80,62 +79,6 @@
                 </td>
             </tr>
         </table>
-
-        <form action="/detail/reviewWrite" method="post" enctype="multipart/form-data">
-            <table border="2">
-                <tr>
-                    <td>리뷰 작성</td>
-                    <td>
-                        <input type="text" name="r_content" required>
-                        <input type="hidden" id="content_id" name="content_id" th:value="${dto.content_id}">
-                        <input type="hidden" name="contentType" th:value="${dto.contentType}">
-                        <input type="hidden" id="title" th:value="${dto.title}">
-                    </td>
-                </tr>
-                <tr>
-                    <td>평점 입력</td>
-                    <td>  <span class="r_rating">
-  <span class="input">
-    <input type="radio" name="r_rating" id="p1" value="1"><label for="p1">1</label>
-    <input type="radio" name="r_rating" id="p2" value="2"><label for="p2">2</label>
-    <input type="radio" name="r_rating" id="p3" value="3"><label for="p3">3</label>
-    <input type="radio" name="r_rating" id="p4" value="4"><label for="p4">4</label>
-    <input type="radio" name="r_rating" id="p5" value="5" checked><label for="p5">5</label>
-    <input type="radio" name="r_rating" id="p6" value="6"><label for="p6">6</label>
-    <input type="radio" name="r_rating" id="p7" value="7"><label for="p7">7</label>
-    <input type="radio" name="r_rating" id="p8" value="8"><label for="p8">8</label>
-    <input type="radio" name="r_rating" id="p9" value="9"><label for="p9">9</label>
-    <input type="radio" name="r_rating" id="p10" value="10"><label for="p10">10</label>
-  </span>
-  <output for="r_rating"></output>
-</span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="image_container"></div>
-                    </td>
-                    <td>
-                        <input type="file" id="image" name="imageFile" accept="image/*"
-                               onchange="setThumbnail(event);"/>
-
-                        <script> function setThumbnail(event) {
-                    var reader = new FileReader();
-                    reader.onload = function (event) {
-                        var img = document.createElement("img");
-                        img.setAttribute("src", event.target.result);
-                        document.querySelector("div#image_container").appendChild(img);
-                    };
-                    reader.readAsDataURL(event.target.files[0]);
-                }
-                        </script>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input value="입력" type="submit"></td>
-                </tr>
-            </table>
-        </form>
     </div>
 
     <!--Map영역-->
@@ -195,7 +138,7 @@
             type : "POST",
             data : form,
             success: function(data){
-                $('#result1').text(data);
+                $('#btn1').text(data);
             },
             error: function (){
                 alert("ajax 에러 떴다.");

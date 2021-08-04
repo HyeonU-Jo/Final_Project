@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="setHead(head)"></th:block>
+<th:block th:fragment="setFoot(foot)"></th:block>
+<th:block th:fragment="setCss(css)"></th:block>
+
+<head>
+    <meta charset="UTF-8">
+    <title>리뷰 수정</title>
+    <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+    <link rel="stylesheet" th:href="@{/dist/css/starCss.css}">
+</head>
+
+<body>
+<!--header영역-->
+<th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
+
+<div class="section">
+    <div class="content">
+        <form action="/detail/reviewWrite" method="post" enctype="multipart/form-data">
+            <table border="2">
+                <tr>
+                    <td>리뷰 작성</td>
+                    <td>
+                        <input type="text" name="r_content" required>
+                        <input type="hidden" id="content_id" name="content_id" th:value="${dto.content_id}">
+                        <input type="hidden" name="contentType" th:value="${dto.contentType}">
+                        <input type="hidden" id="title" th:value="${dto.title}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>평점 입력</td>
+                    <td>  <span class="r_rating">
+  <span class="input">
+    <input type="radio" name="r_rating" id="p1" value="1"><label for="p1">1</label>
+    <input type="radio" name="r_rating" id="p2" value="2"><label for="p2">2</label>
+    <input type="radio" name="r_rating" id="p3" value="3"><label for="p3">3</label>
+    <input type="radio" name="r_rating" id="p4" value="4"><label for="p4">4</label>
+    <input type="radio" name="r_rating" id="p5" value="5" checked><label for="p5">5</label>
+    <input type="radio" name="r_rating" id="p6" value="6"><label for="p6">6</label>
+    <input type="radio" name="r_rating" id="p7" value="7"><label for="p7">7</label>
+    <input type="radio" name="r_rating" id="p8" value="8"><label for="p8">8</label>
+    <input type="radio" name="r_rating" id="p9" value="9"><label for="p9">9</label>
+    <input type="radio" name="r_rating" id="p10" value="10"><label for="p10">10</label>
+  </span>
+  <output for="r_rating"></output>
+</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="image_container"></div>
+                    </td>
+                    <td>
+                        <input type="file" id="image" name="imageFile" accept="image/*"
+                               onchange="setThumbnail(event);"/>
+
+                        <script> function setThumbnail(event) {
+                            var reader = new FileReader();
+                            reader.onload = function (event) {
+                                var img = document.createElement("img");
+                                img.setAttribute("src", event.target.result);
+                                document.querySelector("div#image_container").appendChild(img);
+                            };
+                            reader.readAsDataURL(event.target.files[0]);
+                        }
+                        </script>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input value="입력" type="submit"><input type="button" onclick="history.back()" value="뒤로가기"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <!--Map영역-->
+    <div class="map">
+        <h4>map 파트</h4>
+    </div>
+
+</div>
+<!--footer영역-->
+
+<th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
+
+
+</body>
+</html>

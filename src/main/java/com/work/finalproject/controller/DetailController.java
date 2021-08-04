@@ -107,11 +107,15 @@ public class DetailController {
     public String realDetail(String content_id, Model model, String contentType, String firstimage2, String areaCode) throws IOException{
         List<ReviewDTO> list = service.reviewList(content_id);
         model.addAttribute("reviewList", list);
-
+        LikeDTO likeDTO = new LikeDTO();
+        likeDTO.setContent_id(content_id);
+        likeDTO.setUsername("2");
+        String like = likeService.likeCheck(likeDTO);
         PublicAPI realDetail = new PublicAPI();
         XmlDTO xmlDTO = realDetail.detail(content_id, contentType);
         xmlDTO.setFirstimage2(firstimage2);
         model.addAttribute("dto", xmlDTO);
+        model.addAttribute("like", like);
         return "/detail/realDetail";
     }
 
@@ -120,9 +124,21 @@ public class DetailController {
     @Autowired
     private ServletContext servletContext;
 
+    @GetMapping("/writeReview")
+    public String writeReview(String content_id,String contentType,String title, Model model){
+        XmlDTO dto = new XmlDTO();
+        dto.setContent_id(content_id);
+        dto.setContentType(contentType);
+        dto.setTitle(title);
+        model.addAttribute("dto", dto);
+
+
+        return "/detail/writeReview";
+    }
+
     @PostMapping("/reviewWrite")
     public String reviewWrite(HttpServletRequest request, ReviewDTO dto, RedirectAttributes redirectAttributes, String contentType, MultipartFile imageFile){
-
+        System.out.println("dto 값 확인 : " + dto.getContent_id());
 
 
         Date date = new Date(System.currentTimeMillis());

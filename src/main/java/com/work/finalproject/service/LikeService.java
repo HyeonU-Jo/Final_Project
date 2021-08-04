@@ -10,6 +10,7 @@ import java.util.List;
 public interface LikeService {
     List<LikeDTO> getLikeList();
     String like(LikeDTO dto);
+    String likeCheck(LikeDTO dto);
 
     String likeBoolean(LikeDTO dto);
 
