@@ -33,5 +33,6 @@ public class review_tbl {
 
     public void changeR_content(String r_content){this.r_content = r_content;}
     public void changeR_rating(int r_rating){this.r_rating = r_rating;}
+    public void changeImage(String image){this.image = image;}
 
 }

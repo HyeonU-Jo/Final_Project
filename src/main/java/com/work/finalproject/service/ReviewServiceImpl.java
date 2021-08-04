@@ -50,6 +50,7 @@ public class ReviewServiceImpl implements ReviewService{
             review_tbl entity =result.get();
             entity.changeR_content(reviewDTO.getR_content());
             entity.changeR_rating(reviewDTO.getR_rating());
+            entity.changeImage(reviewDTO.getImage());
 
             repository.save(entity);
         }

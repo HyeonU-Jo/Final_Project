@@ -17,7 +17,7 @@
 
 <div class="section">
     <div class="content">
-        <form action="/detail/modifyReview" method="post">
+        <form action="/detail/modifyReview" method="post" enctype="multipart/form-data">
             <table border="1">
                 <tr>
                     <td>리뷰 작성</td>
@@ -27,6 +27,7 @@
                         <input type="hidden" name="contentType" th:value="${xmlDTO.getContentType()}">
                         <input type="hidden" name="content_id" th:value="${xmlDTO.getContent_id()}">
                         <input type="hidden" name="r_num" th:value="${r_num}">
+                        <input type="hidden" name="nowImage" th:value="${dto.image}">
                     </td>
                 </tr>
                 <tr>
@@ -42,11 +43,35 @@
     <input type="radio" name="r_rating" id="p7" value="7" th:checked="${dto.r_rating == 7}"><label for="p7">7</label>
     <input type="radio" name="r_rating" id="p8" value="8" th:checked="${dto.r_rating == 8}"><label for="p8">8</label>
     <input type="radio" name="r_rating" id="p9" value="9" th:checked="${dto.r_rating == 9}"><label for="p9">9</label>
-    <input type="radio" name="r_rating" id="p10" value="10" th:checked="${dto.r_rating == 10}"><label
-          for="p10">10</label>
+    <input type="radio" name="r_rating" id="p10" value="10" th:checked="${dto.r_rating == 10}"><label for="p10">10</label>
   </span>
   <output for="r_rating"></output>
 </span></td>
+                </tr>
+                <tr id="hideTr">
+                    <td><img id="nowImage" th:src="@{/detail/download(image=${dto.image})}" width="120" height="120"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="image_container"></div>
+                    </td>
+                    <td>
+                        <input type="file" id="image" name="imageFile" accept="image/*"
+                               onchange="setThumbnail(event);"/>
+
+                        <script> function setThumbnail(event) {
+                            var reader = new FileReader();
+                            reader.onload = function (event) {
+                                var img = document.createElement("img");
+                                img.setAttribute("src", event.target.result);
+                                document.querySelector("div#image_container").appendChild(img);
+                                document.getElementById("hideTr").style.display = 'none';
+                            };
+                            reader.readAsDataURL(event.target.files[0]);
+                        }
+                        </script>
+
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">

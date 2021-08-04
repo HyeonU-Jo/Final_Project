@@ -127,10 +127,9 @@ public class DetailController {
 
         Date date = new Date(System.currentTimeMillis());
 
-        System.out.println(date);
         SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS");
         String time = format.format(date);
-        System.out.println(time);
+
         MultipartFile mf = imageFile;
 
         String path = "c:\\upload\\test\\";
@@ -176,15 +175,63 @@ public class DetailController {
         model.addAttribute("dto", dto);
         model.addAttribute("xmlDTO", xmlDTO);
         model.addAttribute("r_num", r_num);
+
         return "/detail/modifyReview";
     }
     @PostMapping("/modifyReview")
-    public String modifyReview(ReviewDTO reviewDTO, XmlDTO dto, RedirectAttributes redirectAttributes){
+    public String modifyReview(String nowImage, ReviewDTO reviewDTO, XmlDTO dto, RedirectAttributes redirectAttributes, MultipartFile imageFile){
+        File file = new File("c:\\upload\\test\\"+nowImage);
+
+        MultipartFile mf2 = imageFile;
+
+        String checkFile = mf2.getOriginalFilename();
+        System.out.println(checkFile + "무야호");
+        if(checkFile.equals("")||checkFile == null){
+            reviewDTO.setImage(nowImage);
+        } else {
+            if(file.exists()){
+                //파일 경로가 존재하는지
+                if(file.delete()){
+                    System.out.println("파일 삭제 완료");
+                }else{
+                    System.out.println("파일 삭제 실패");
+                }
+            }else{
+                System.out.println("파일이 존재하지 않음!");
+            }
+
+            Date date = new Date(System.currentTimeMillis());
+
+            SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS");
+            String time = format.format(date);
+            System.out.println("이미지 파일 확인!" + imageFile);
+            MultipartFile mf = imageFile;
+
+            String path = "c:\\upload\\test\\";
+            String uploadPath = "";
+
+            String original = time+"__"+ mf.getOriginalFilename();
+
+            uploadPath = path + original;
+            if(mf!=null){
+                try {
+                    mf.transferTo(new File(uploadPath));
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
+            reviewDTO.setImage(original);
+        }
+
 
         service.reviewModify(reviewDTO);
         redirectAttributes.addAttribute("content_id", dto.getContent_id());
         redirectAttributes.addAttribute("contentType", dto.getContentType());
         redirectAttributes.addAttribute("firstimage2", dto.getFirstimage2());
+
+
+
+
 
         return "redirect:/detail/realDetail";
     }
@@ -195,6 +242,8 @@ public class DetailController {
         redirectAttributes.addAttribute("content_id", dto.getContent_id());
         redirectAttributes.addAttribute("contentType", dto.getContentType());
         redirectAttributes.addAttribute("firstimage2", dto.getFirstimage2());
+
+
         return "redirect:/detail/realDetail";
     }
 
