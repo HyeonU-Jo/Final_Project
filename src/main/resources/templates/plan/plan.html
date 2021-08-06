@@ -55,11 +55,11 @@
             datePickerSet($("#sDay"), $("#eDay"), true);
         </script>
         <form th:action="@{save}" id="param" method="GET">
-<!--            <input type="text" th:value="${#authentication.principal.username}" name="username"><br/>-->
+            <!--            <input type="text" th:value="${#authentication.principal.username}" name="username"><br/>-->
             <input id="sDay2" type="text" name="sDay">
             <input id="eDay2" type="text" name="eDay">
-            <input type="text" name="username" value="test">
-            <input type="text" name="content_id" value="test">
+            <input type="text" name="username" th:value="${#authentication.principal.username}">
+            <input type="text" name="content_id" id="content_id">
             <input type="text" name="cDay" value="test">
             <input type="submit" value="저장좀해주세요....제발.."/>
         </form>

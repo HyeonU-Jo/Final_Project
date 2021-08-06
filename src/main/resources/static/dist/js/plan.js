@@ -32,11 +32,13 @@ function createDiv(sDay, eDay) {
 
         let newA = document.createElement('a');
 
+
         newA.addEventListener("click", function () {
             window.open("test", "test", "width+600, height=400");
         });
 
-        newA.id = i;
+        newA.id = 'content_id';
+        newA.setAttribute("name","content_id");
         const count = i;
 
         newBtn.addEventListener('click', function () {
@@ -62,6 +64,8 @@ function createDiv(sDay, eDay) {
 function stealName(){
     document.getElementById("sDay2").value = document.getElementById("sDay").value;
     document.getElementById("eDay2").value = document.getElementById("eDay").value;
+    document.getElementById("content_id").value=document.getElementById("content_id").value;
+
 }
 
 /*새로고침기능*/
