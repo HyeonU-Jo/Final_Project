@@ -58,6 +58,12 @@ function createDiv(sDay, eDay) {
     targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);
 }
 
+/*동일 아이디값의 밸류 가져오기*/
+function stealName(){
+    document.getElementById("sDay2").value = document.getElementById("sDay").value;
+    document.getElementById("eDay2").value = document.getElementById("eDay").value;
+}
+
 /*새로고침기능*/
 function refreshPage() {
     window.location.reload();
@@ -85,18 +91,14 @@ function setParentText() {
     let listTest = [];
     for (let i = 0; i < obj_length; i++) {
         if (document.getElementsByName("likeList")[i].checked == true) {
-            listTest += document.getElementsByName("likeList")[i].value;
+            listTest += document.getElementsByName("likeList")[i].value + " ";
             window.close();
         }
     }
-    alert(listTest.toString());
 
     opener.document.getElementById(getParam("id")).innerText = listTest.toString();
     window.close();
 }
-
-
-
 
 /**달력**/
 function datePickerSet(sDate, eDate, flag) {

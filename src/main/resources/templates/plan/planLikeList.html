@@ -13,8 +13,8 @@
 
 <tr th:each="like:${likeList}">
     <td>
-        <span th:text="${like.no}"></span>
-        <input type="checkbox" name="likeList" id="likeList" th:value="${like.no}"/>
+        <span th:text="${like.content_id}"></span>
+        <input type="checkbox" name="likeList" id="likeList" th:value="${like.content_id}"/>
     </td>
 </tr>
 

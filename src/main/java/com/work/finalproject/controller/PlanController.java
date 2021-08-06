@@ -1,6 +1,7 @@
 package com.work.finalproject.controller;
 
 import com.work.finalproject.dto.LikeDTO;
+import com.work.finalproject.dto.PlanDTO;
 import com.work.finalproject.service.LikeService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -41,6 +42,16 @@ public class PlanController {
     public String test(){
         return "test/searchPage";
     }
+//
+//    @GetMapping({"/save"})
+//    public String save(PlanDTO dto){
+//        log.info("dto~~~" + dto);
+//        //새로 추가된 엔티티의 번호
+//        int no = service.register(dto);
+//        redirectAttributes.addFlashAttribute("msg", no);
+//
+//        return "plan/plan";
+//    }
 
 
 }

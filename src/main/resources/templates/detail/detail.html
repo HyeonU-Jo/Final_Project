@@ -3,7 +3,7 @@
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
 <th:block th:fragment="setCss(css)"></th:block>
-
+<link rel="stylesheet" th:href="@{/dist/css/search.css}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -61,7 +61,7 @@
             <input type="hidden" name="page" th:value="1">
             <input type="submit" value="검색">
 
-            <div class="btn">지역 선택</div>
+            <input type="button" value="지역 선택" class="searchBtn"></input>
             <div class="areaText" id="areaText"></div>
             <div class="popup_bg">
                 <div class="popup">
@@ -225,7 +225,7 @@
         }
 
         $(document).ready(function () {
-            $(".btn").click(function () {
+            $(".searchBtn").click(function () {
                 $(".popup_bg").css({"display": "block"});
             })
 
