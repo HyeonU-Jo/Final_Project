@@ -1,5 +1,5 @@
 * {
-    list-style: none;
+    list-style: none !important;
     text-decoration: none;
     border-collapse: collapse;
     margin: 0px;
@@ -225,11 +225,22 @@ header{
 .more {
     width: 100px;
     height: 30px;
-    background: blue;
+    background: #54a0d1a6;
     color: #fff;
     font-size: 12px;
     line-height: 30px;
     margin: 25px auto;
+    border-radius: 5px;
+}
+
+.more:hover{
+    transform: scale(1.1);
+    transition: transform 0.5s;
+}
+
+.main_test0 img:hover{
+    transform: scale(2.5) translate(0, -30px);
+    transition: transform 0.5s;
 }
 
 .main_text1 {
@@ -312,14 +323,14 @@ footer > div:last-child {
 
 }
 
-/*상단으로 가는 버튼*/
+/*Ã¬Æ’ÂÃ«â€¹Â¨Ã¬Å“Â¼Ã«Â¡Å“ ÃªÂ°â‚¬Ã«Å â€ Ã«Â²â€žÃ­Å Â¼*/
 #goingTop {
-    /*위치 지정*/
+    /*Ã¬Å“â€žÃ¬Â¹Ëœ Ã¬Â§â‚¬Ã¬Â â€¢*/
     position: fixed;
     right: 50px;
     bottom: 40px;
 
-    /*수직, 수평 가운데 정렬*/
+    /*Ã¬Ë†ËœÃ¬Â§Â, Ã¬Ë†ËœÃ­Ââ€° ÃªÂ°â‚¬Ã¬Å¡Â´Ã«ÂÂ° Ã¬Â â€¢Ã«Â Â¬*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -335,13 +346,13 @@ footer > div:last-child {
     cursor: pointer;
 }
 
-/*헤더 부분 백그라운드*/
+/*Ã­â€”Â¤Ã«Ââ€ Ã«Â¶â‚¬Ã«Â¶â€ž Ã«Â°Â±ÃªÂ·Â¸Ã«ÂÂ¼Ã¬Å¡Â´Ã«â€œÅ“*/
 .bg {
     box-shadow: 0px 0px 1px;
     background-color: rgba(3, 3, 3, 0.3);
 }
 
-/*버튼 숨기는 코드*/
+/*Ã«Â²â€žÃ­Å Â¼ Ã¬Ë†Â¨ÃªÂ¸Â°Ã«Å â€ Ã¬Â½â€Ã«â€œÅ“*/
 .blind {
     position: absolute;
     clip: rect(0 0 0 0);
@@ -358,7 +369,7 @@ footer > div:last-child {
     display: flex;
 }
 
-#map{ /*MAP 자체*/
+#map{ /*MAP Ã¬Å¾ÂÃ¬Â²Â´*/
     width: 350px;
     height: 80%;
     margin: auto;

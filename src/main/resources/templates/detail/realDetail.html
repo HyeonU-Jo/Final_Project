@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/dist/css/starCss.css}">
+    <link rel="stylesheet" th:href="@{/dist/css/search.css}">
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 </head>
 <body>
@@ -17,7 +18,7 @@
 <div class="section">
     <div class="content">
 
-        <table border="1">
+        <table class="info" border="1">
 
             <tr>
                 <td>이름</td>
@@ -53,7 +54,7 @@
 
         </table>
 
-        <table border="1">
+        <table class="review" border="1">
             <tr>
                 <td>번호</td>
                 <td>컨텐츠아이디</td>
@@ -78,7 +79,6 @@
 
     <!--Map영역-->
     <div class="map">
-        <h4>map 파트</h4>
         <tr>
             <td>
                 <input type="hidden" name="mapx" id="mapx" th:value="${dto.mapx}">

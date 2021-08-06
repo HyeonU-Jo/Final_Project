@@ -7,11 +7,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <meta name ="google-signin-client_id" content="832265235477-t0424vv7k8bmivu13hibk2tbt3947sql.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+          content="832265235477-t0424vv7k8bmivu13hibk2tbt3947sql.apps.googleusercontent.com">
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 </head>
 <style>
-    .header{
+    .header {
         background-color: rgba(0, 0, 0, 0);
     }
 </style>
@@ -55,16 +56,18 @@
             <ul class="icons">
 
                 <th:block th:each="shop : ${shop}">
-                <li>
-                    <div class="icon_img">
-                        <img th:src="${shop.firstimage2}">
-                    </div>
-                    <div class="contents1_bold">[[${shop.title}]]</div>
-                    <div class="contents1">[[${shop.areacode}]]</div>
-                    <a th:href="@{/detail/realDetail/(content_id=${shop.content_id}, contentType=${shop.contentType}, firstimage2=${shop.firstimage2})}">
-                    <div class="more" style="cursor: pointer">MORE</div>
-                    </a>
-                </li>
+                    <li>
+                        <div class="icon_img">
+                            <img th:src="${shop.firstimage2}" onerror="this.src='/image/jeju.png'">
+                        </div>
+                        <div class="contents1_bold">[[${shop.title}]]</div>
+                        <div class="contents1">[[${shop.areacode}]]</div>
+
+                        <div class="more" style="cursor: pointer"><a
+                                th:href="@{/detail/realDetail/(content_id=${shop.content_id}, contentType=${shop.contentType}, firstimage2=${shop.firstimage2})}">MORE</a>
+                        </div>
+
+                    </li>
                 </th:block>
 
             </ul>
@@ -77,16 +80,18 @@
             </div>
             <ul class="icons">
                 <th:block th:each="tour : ${tour}">
-                <li>
-                    <div class="icon_img">
-                        <img th:src="${tour.firstimage2}">
-                    </div>
-                    <div class="contents1_bold">[[${tour.title}]]</div>
-                    <div class="contents1">[[${tour.areacode}]]</div>
-                    <a th:href="@{/detail/realDetail/(content_id=${tour.content_id}, contentType=${tour.contentType}, firstimage2=${tour.firstimage2})}">
-                    <div class="more" style="cursor: pointer">MORE</div>
-                    </a>
-                </li>
+                    <li>
+                        <div class="icon_img">
+                            <img th:src="${tour.firstimage2}" onerror="this.src='/image/jeju.png'">
+                        </div>
+                        <div class="contents1_bold">[[${tour.title}]]</div>
+                        <div class="contents1">[[${tour.areacode}]]</div>
+
+                        <div class="more" style="cursor: pointer"><a
+                                th:href="@{/detail/realDetail/(content_id=${tour.content_id}, contentType=${tour.contentType}, firstimage2=${tour.firstimage2})}">MORE</a>
+                        </div>
+
+                    </li>
                 </th:block>
             </ul>
         </div>
@@ -97,16 +102,18 @@
             </div>
             <ul class="icons">
                 <th:block th:each="fest : ${fest}">
-                <li>
-                    <div class="icon_img">
-                        <img th:src="${fest.firstimage2}">
-                    </div>
-                    <div class="contents1_bold">[[${fest.title}]]</div>
-                    <div class="contents1">[[${fest.areacode}]]</div>
-                    <a th:href="@{/detail/realDetail/(content_id=${fest.content_id}, contentType=${fest.contentType}, firstimage2=${fest.firstimage2})}">
-                    <div class="more" onclick="" style="cursor: pointer">MORE</div>
-                    </a>
-                </li>
+                    <li>
+                        <div class="icon_img">
+                            <img th:src="${fest.firstimage2}" onerror="this.src='image/jeju.png'">
+                        </div>
+                        <div class="contents1_bold">[[${fest.title}]]</div>
+                        <div class="contents1">[[${fest.areacode}]]</div>
+
+                        <div class="more" onclick="" style="cursor: pointer"><a
+                                th:href="@{/detail/realDetail/(content_id=${fest.content_id}, contentType=${fest.contentType}, firstimage2=${fest.firstimage2})}">MORE</a>
+                        </div>
+
+                    </li>
                 </th:block>
             </ul>
         </div>
@@ -148,7 +155,7 @@
 </div>
 </body>
 <script>
-    function ShopClick(){
+    function ShopClick() {
         var form = document.getElementById('shopFrm');
         form.submit();
     }

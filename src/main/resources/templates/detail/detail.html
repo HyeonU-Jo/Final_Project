@@ -48,7 +48,7 @@
 
 
 <div class="section">
-    <div class="content">
+    <div class="contentSearch">
         <form action="/detail/detail" name="frm" onsubmit="return checkForm()">
             <select name="contentType">
                 <option value="">전체</option>
@@ -123,12 +123,12 @@
             </div>
         </form>
         <th:block th:if="${page != null}">
-            <table border="1">
+            <table class="searchTable">
                 <div th:each="list : ${list}">
                     <tr>
                         <td>
                             <a th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2})}">
-                                <img th:src="${list.firstimage2}" width="100" height="100">
+                                <img th:src="${list.firstimage2}">
                             </a>
 
                             <input type="hidden" name="mapx" id="mapx" th:value="${list.mapx}">
@@ -153,55 +153,57 @@
 
 
             </table>
-            <div th:if="${page > 1 || totalCount == 1}" style="float: left">
-                &nbsp;
-                <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page - 1})}">이전</a>
-            </div>
+            <div class="searchPaging">
+                <div th:if="${page > 1 || totalCount == 1}">
+                    &nbsp;
+                    <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page - 1})}">이전</a>
+                </div>
 
 
-            <div th:if="${page - 2 > 0}" style="float: left">
-                &nbsp;
-                <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page - 2})}">[[${page-2}]]</a>
-            </div>
+                <div th:if="${page - 2 > 0}">
+                    &nbsp;
+                    <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page - 2})}">[[${page-2}]]</a>
+                </div>
 
-            <div th:if="${page - 1 > 0}" style="float: left">
-                &nbsp;
-                <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page - 1})}">[[${page-1}]]</a>
-            </div>
+                <div th:if="${page - 1 > 0}">
+                    &nbsp;
+                    <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page - 1})}">[[${page-1}]]</a>
+                </div>
 
-            <div style="float: left">
-                &nbsp;
-                <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page})}">[[${page}]]</a>
-            </div>
+                <div>
+                    &nbsp;
+                    <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page})}">[[${page}]]</a>
+                </div>
 
-            <div th:if="${totalCount>page+1}" style="float: left">
-                &nbsp;
-                <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page+1})}">[[${page+1}]]</a>
-            </div>
+                <div th:if="${totalCount>page+1}">
+                    &nbsp;
+                    <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page+1})}">[[${page+1}]]</a>
+                </div>
 
-            <div th:if="${totalCount > page +2}" style="float: left">
-                &nbsp;
-                <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 2})}">[[${page+2}]]</a>
-            </div>
+                <div th:if="${totalCount > page +2}">
+                    &nbsp;
+                    <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 2})}">[[${page+2}]]</a>
+                </div>
 
 
-            <div th:if="${page == 1 && totalCount > 3}" style="float: left">
-                &nbsp;
-                <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 3})}">[[${page+3}]]</a>
-            </div>
+                <div th:if="${page == 1 && totalCount > 3}">
+                    &nbsp;
+                    <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 3})}">[[${page+3}]]</a>
+                </div>
 
-            <div th:if="${page == 1 && totalCount > 3}" style="float: left">
-                &nbsp;
-                <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 4})}">[[${page+4}]]</a>
-            </div>
-            <div th:if="${page == 2 && totalCount > 3}" style="float:left;">
-                &nbsp;
-                <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 3})}">[[${page+3}]]</a>
-            </div>
+                <div th:if="${page == 1 && totalCount > 3}">
+                    &nbsp;
+                    <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 4})}">[[${page+4}]]</a>
+                </div>
+                <div th:if="${page == 2 && totalCount > 3}" style="float:left;">
+                    &nbsp;
+                    <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 3})}">[[${page+3}]]</a>
+                </div>
 
-            <div th:if="${totalCount - page > 1}" style="float: left">
-                &nbsp;
-                <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 1})}">다음</a>
+                <div th:if="${totalCount - page > 1}">
+                    &nbsp;
+                    <a th:href="@{/detail/detail(keyword=${keyword}, contentType=${contentType}, page=${page + 1})}">다음</a>
+                </div>
             </div>
         </th:block>
         <th:block th:if="${page==null}">
@@ -210,10 +212,6 @@
 
     </div>
 
-    <!--Map영역-->
-    <div class="map">
-        <h4>map 파트</h4>
-    </div>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
         function checkForm() {
