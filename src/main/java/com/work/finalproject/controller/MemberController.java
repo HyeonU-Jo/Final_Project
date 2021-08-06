@@ -2,6 +2,7 @@ package com.work.finalproject.controller;
 
 import com.work.finalproject.config.auth.PrincipalDetail;
 import com.work.finalproject.dto.MemberDTO;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,21 +20,12 @@ public class MemberController {
 
 
 
-
-
     //회원가입 페이지
     @GetMapping("/auth/join")
     public String join(Model model){
 
         return "/member/join";
     }
-    //회원가입 페이지 처리
-    @PostMapping("/join")
-    public String joinPost(MemberDTO memberDTO){
-
-        return "redirect:/";
-    }
-
 
     //로그인 페이지
     @GetMapping("/auth/login")
@@ -41,14 +33,6 @@ public class MemberController {
 
         return "/member/login";
     }
-    //로그인 페이지 처리
-    @PostMapping("/login")
-    public String loginPost(){
-
-        return "index";
-    }
-
-
 
 
     //마이페이지 페이지
@@ -80,5 +64,8 @@ public class MemberController {
     public String updateForm(@AuthenticationPrincipal PrincipalDetail principal){
         return "member/updateForm";
     }
+
+
+
 
 }
