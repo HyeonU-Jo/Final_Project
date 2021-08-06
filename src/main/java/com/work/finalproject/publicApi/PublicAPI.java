@@ -167,6 +167,9 @@ public class PublicAPI {
     }
 
     public XmlDTO detail(String content_id, String contentType) throws IOException{
+        if(contentType == null){
+            contentType = "";
+        }
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=3ZZUBJtpIQHHr7vvwDbAdFN%2Fg7ZaSEr1WTS77fX9RO6N%2B9%2B4HEQnKsYVjbLfMFEiLSTNRljEWTIP3qHzyic9Gg%3D%3D"); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("3ZZUBJtpIQHHr7vvwDbAdFN%2Fg7ZaSEr1WTS77fX9RO6N%2B9%2B4HEQnKsYVjbLfMFEiLSTNRljEWTIP3qHzyic9Gg%3D%3D", "UTF-8")); /*공공데이터포털에서*/
@@ -218,6 +221,7 @@ public class PublicAPI {
                     xmlDTO.setMapy(getTagValue("mapy", element));
                     xmlDTO.setTel(getTagValue("tel", element));
                     xmlDTO.setHomepage(getTagValue("homepage", element));
+                    xmlDTO.setFirstimage(getTagValue("firstimage",element));
 
                 }
             }

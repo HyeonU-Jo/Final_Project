@@ -2,6 +2,8 @@ package com.work.finalproject.controller;
 
 import com.work.finalproject.dto.LikeDTO;
 import com.work.finalproject.dto.PlanDTO;
+import com.work.finalproject.dto.XmlDTO;
+import com.work.finalproject.publicApi.PublicAPI;
 import com.work.finalproject.service.LikeService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -34,7 +37,17 @@ public class PlanController {
     @GetMapping({"/planLikeList"})
     public String planLikeList(Model model) {
         List<LikeDTO> likeDtoList= service.getLikeList();
-        model.addAttribute("likeList",likeDtoList);
+        List<XmlDTO> xmlDTO = new ArrayList<>();
+        PublicAPI api = new PublicAPI();
+        for (int i = 0; i<likeDtoList.size(); i++){
+            try{
+                xmlDTO.add(api.detail(likeDtoList.get(i).getContent_id(), ""));
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+
+        }
+        model.addAttribute("likeList",xmlDTO);
         return "plan/planLikeList";
     }
 
