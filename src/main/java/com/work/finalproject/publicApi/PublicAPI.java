@@ -45,8 +45,8 @@ public class PublicAPI {
             areaCode = "";
         }
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=3ZZUBJtpIQHHr7vvwDbAdFN%2Fg7ZaSEr1WTS77fX9RO6N%2B9%2B4HEQnKsYVjbLfMFEiLSTNRljEWTIP3qHzyic9Gg%3D%3D"); /*Service Key*/
-        urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("3ZZUBJtpIQHHr7vvwDbAdFN%2Fg7ZaSEr1WTS77fX9RO6N%2B9%2B4HEQnKsYVjbLfMFEiLSTNRljEWTIP3qHzyic9Gg%3D%3D", "UTF-8")); /*공공데이터에서 발급받은 인증키*/
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=kAsfAcsBHOiszVV2AJO2rhoJR6fiGx%2F9B5bsygMbcjr0CTsdLaSQEFsM3UduWhVMq%2BohhFuAiAIcexOAX5Gl9g%3D%3D"); /*Service Key*/
+        urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("kAsfAcsBHOiszVV2AJO2rhoJR6fiGx%2F9B5bsygMbcjr0CTsdLaSQEFsM3UduWhVMq%2BohhFuAiAIcexOAX5Gl9g%3D%3D", "UTF-8")); /*공공데이터에서 발급받은 인증키*/
         urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
         urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS (아이폰), AND(안드로이드), ETC*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(page, "UTF-8")); /*현재 페이지 번호*/
@@ -171,8 +171,8 @@ public class PublicAPI {
             contentType = "";
         }
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=3ZZUBJtpIQHHr7vvwDbAdFN%2Fg7ZaSEr1WTS77fX9RO6N%2B9%2B4HEQnKsYVjbLfMFEiLSTNRljEWTIP3qHzyic9Gg%3D%3D"); /*Service Key*/
-        urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("3ZZUBJtpIQHHr7vvwDbAdFN%2Fg7ZaSEr1WTS77fX9RO6N%2B9%2B4HEQnKsYVjbLfMFEiLSTNRljEWTIP3qHzyic9Gg%3D%3D", "UTF-8")); /*공공데이터포털에서*/
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=kAsfAcsBHOiszVV2AJO2rhoJR6fiGx%2F9B5bsygMbcjr0CTsdLaSQEFsM3UduWhVMq%2BohhFuAiAIcexOAX5Gl9g%3D%3D"); /*Service Key*/
+        urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("kAsfAcsBHOiszVV2AJO2rhoJR6fiGx%2F9B5bsygMbcjr0CTsdLaSQEFsM3UduWhVMq%2BohhFuAiAIcexOAX5Gl9g%3D%3D", "UTF-8")); /*공공데이터포털에서*/
         urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
         urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS(아이폰),AND(안드로이드),WIN(원도우폰),ETC*/
@@ -251,8 +251,8 @@ public class PublicAPI {
     public List<XmlDTO> randomSearch(String contentType) throws IOException{
 
         StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=3ZZUBJtpIQHHr7vvwDbAdFN%2Fg7ZaSEr1WTS77fX9RO6N%2B9%2B4HEQnKsYVjbLfMFEiLSTNRljEWTIP3qHzyic9Gg%3D%3D"); /*Service Key*/
-        urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("3ZZUBJtpIQHHr7vvwDbAdFN%2Fg7ZaSEr1WTS77fX9RO6N%2B9%2B4HEQnKsYVjbLfMFEiLSTNRljEWTIP3qHzyic9Gg%3D%3D", "UTF-8")); /*공공데이터에서 발급받은 인증키*/
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=kAsfAcsBHOiszVV2AJO2rhoJR6fiGx%2F9B5bsygMbcjr0CTsdLaSQEFsM3UduWhVMq%2BohhFuAiAIcexOAX5Gl9g%3D%3D"); /*Service Key*/
+        urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("kAsfAcsBHOiszVV2AJO2rhoJR6fiGx%2F9B5bsygMbcjr0CTsdLaSQEFsM3UduWhVMq%2BohhFuAiAIcexOAX5Gl9g%3D%3D", "UTF-8")); /*공공데이터에서 발급받은 인증키*/
         urlBuilder.append("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
         urlBuilder.append("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS (아이폰), AND(안드로이드), ETC*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호*/
