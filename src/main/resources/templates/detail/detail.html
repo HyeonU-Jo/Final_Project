@@ -9,16 +9,6 @@
     <title>Title</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
     <style>
-        .btn {
-            width: 100px;
-            height: 40px;
-            line-height: 40px;
-            background: gray;
-            color: #fff;
-            text-align: center;
-            cursor: pointer;
-        }
-
         .popup_bg {
             display: none;
             position: absolute;
@@ -47,21 +37,23 @@
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 
-<div class="section">
+<section class="section">
     <div class="contentSearch">
         <form action="/detail/detail" name="frm" onsubmit="return checkForm()">
-            <select name="contentType">
-                <option value="">전체</option>
-                <option value="12">관광지</option>
-                <option value="14">문화시설</option>
-                <option value="15">축제/공연/행사</option>
-                <option value="39">맛집</option>
-            </select>
-            <input type="text" name="keyword">
-            <input type="hidden" name="page" th:value="1">
-            <input type="submit" value="검색">
+            <div class="areaSearch">
+                <select name="contentType">
+                    <option value="">전체</option>
+                    <option value="12">관광지</option>
+                    <option value="14">문화시설</option>
+                    <option value="15">축제/공연/행사</option>
+                    <option value="39">맛집</option>
+                </select>
+                <input type="button" value="지역 선택" class="localBtn">
+                <input type="text" name="keyword">
+                <input type="hidden" name="page" th:value="1">
+                <input class="searchBtn" type="submit" value="검색">
+            </div>
 
-            <input type="button" value="지역 선택" class="searchBtn"></input>
             <div class="areaText" id="areaText"></div>
             <div class="popup_bg">
                 <div class="popup">
@@ -136,6 +128,9 @@
                         </td>
                         <td>
                             <a th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2})}">[[${list.keyword}]]</a>
+                        </td>
+                        <td>
+                            [[${list.addr1}]]
                         </td>
                         <td>
                             <th:block th:if="${list.reviewAvg == 0}">
@@ -223,7 +218,7 @@
         }
 
         $(document).ready(function () {
-            $(".searchBtn").click(function () {
+            $(".localBtn").click(function () {
                 $(".popup_bg").css({"display": "block"});
             })
 
@@ -241,7 +236,7 @@
         }
     </script>
 
-</div>
+</section>
 <!--content영역끝-->
 
 <!--footer영역-->

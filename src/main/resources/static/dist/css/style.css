@@ -58,7 +58,7 @@ header{
     background-color: rgba(96, 165, 189, 0.48);
 }
 
-.searchArea {
+/*.searchArea {
     width: 300px;
     height: 40px;
     background: rgba(0, 0, 0, 0.5);
@@ -81,6 +81,57 @@ header{
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+}*/
+
+.searchBox {
+    transform:  translate(-15%,22%);
+    background: #ffffff87;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+    box-sizing: content-box;
+}
+
+.searchBox:hover > .searchInput {
+    width: 240px;
+    padding: 0 6px;
+}
+
+.searchBox:hover > .searchButton {
+    background: #ffffff;
+}
+
+.searchButton {
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffffc4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.searchInput {
+    border:none;
+    background: none;
+    outline:none;
+    float:left;
+    padding: 0;
+    color: #000000bd;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+
+}
+
+@media screen and (max-width: 620px) {
+    .searchBox:hover > .searchInput {
+        width: 150px;
+        padding: 0 6px;
+    }
 }
 
 .searchMain {
@@ -323,14 +374,14 @@ footer > div:last-child {
 
 }
 
-/*Ã¬Æ’ÂÃ«â€¹Â¨Ã¬Å“Â¼Ã«Â¡Å“ ÃªÂ°â‚¬Ã«Å â€ Ã«Â²â€žÃ­Å Â¼*/
+/*ÃƒÂ¬Ã†â€™Ã‚ÂÃƒÂ«Ã¢â‚¬Â¹Ã‚Â¨ÃƒÂ¬Ã…â€œÃ‚Â¼ÃƒÂ«Ã‚Â¡Ã…â€œ ÃƒÂªÃ‚Â°Ã¢â€šÂ¬ÃƒÂ«Ã…Â Ã¢â‚¬Â ÃƒÂ«Ã‚Â²Ã¢â‚¬Å¾ÃƒÂ­Ã…Â Ã‚Â¼*/
 #goingTop {
-    /*Ã¬Å“â€žÃ¬Â¹Ëœ Ã¬Â§â‚¬Ã¬Â â€¢*/
+    /*ÃƒÂ¬Ã…â€œÃ¢â‚¬Å¾ÃƒÂ¬Ã‚Â¹Ã‹Å“ ÃƒÂ¬Ã‚Â§Ã¢â€šÂ¬ÃƒÂ¬Ã‚Â Ã¢â‚¬Â¢*/
     position: fixed;
     right: 50px;
     bottom: 40px;
 
-    /*Ã¬Ë†ËœÃ¬Â§Â, Ã¬Ë†ËœÃ­Ââ€° ÃªÂ°â‚¬Ã¬Å¡Â´Ã«ÂÂ° Ã¬Â â€¢Ã«Â Â¬*/
+    /*ÃƒÂ¬Ã‹â€ Ã‹Å“ÃƒÂ¬Ã‚Â§Ã‚Â, ÃƒÂ¬Ã‹â€ Ã‹Å“ÃƒÂ­Ã‚ÂÃ¢â‚¬Â° ÃƒÂªÃ‚Â°Ã¢â€šÂ¬ÃƒÂ¬Ã…Â¡Ã‚Â´ÃƒÂ«Ã‚ÂÃ‚Â° ÃƒÂ¬Ã‚Â Ã¢â‚¬Â¢ÃƒÂ«Ã‚Â Ã‚Â¬*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -346,13 +397,13 @@ footer > div:last-child {
     cursor: pointer;
 }
 
-/*Ã­â€”Â¤Ã«Ââ€ Ã«Â¶â‚¬Ã«Â¶â€ž Ã«Â°Â±ÃªÂ·Â¸Ã«ÂÂ¼Ã¬Å¡Â´Ã«â€œÅ“*/
+/*ÃƒÂ­Ã¢â‚¬â€Ã‚Â¤ÃƒÂ«Ã‚ÂÃ¢â‚¬Â ÃƒÂ«Ã‚Â¶Ã¢â€šÂ¬ÃƒÂ«Ã‚Â¶Ã¢â‚¬Å¾ ÃƒÂ«Ã‚Â°Ã‚Â±ÃƒÂªÃ‚Â·Ã‚Â¸ÃƒÂ«Ã‚ÂÃ‚Â¼ÃƒÂ¬Ã…Â¡Ã‚Â´ÃƒÂ«Ã¢â‚¬Å“Ã…â€œ*/
 .bg {
     box-shadow: 0px 0px 1px;
     background-color: rgba(3, 3, 3, 0.3);
 }
 
-/*Ã«Â²â€žÃ­Å Â¼ Ã¬Ë†Â¨ÃªÂ¸Â°Ã«Å â€ Ã¬Â½â€Ã«â€œÅ“*/
+/*ÃƒÂ«Ã‚Â²Ã¢â‚¬Å¾ÃƒÂ­Ã…Â Ã‚Â¼ ÃƒÂ¬Ã‹â€ Ã‚Â¨ÃƒÂªÃ‚Â¸Ã‚Â°ÃƒÂ«Ã…Â Ã¢â‚¬Â ÃƒÂ¬Ã‚Â½Ã¢â‚¬ÂÃƒÂ«Ã¢â‚¬Å“Ã…â€œ*/
 .blind {
     position: absolute;
     clip: rect(0 0 0 0);
@@ -369,7 +420,7 @@ footer > div:last-child {
     display: flex;
 }
 
-#map{ /*MAP Ã¬Å¾ÂÃ¬Â²Â´*/
+#map{
     width: 350px;
     height: 80%;
     margin: auto;

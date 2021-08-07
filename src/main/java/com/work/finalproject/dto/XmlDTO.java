@@ -31,5 +31,6 @@ public class XmlDTO {
 
     private int reviewAvg;
     private String areacode;
+    private String addr1;
 
 }

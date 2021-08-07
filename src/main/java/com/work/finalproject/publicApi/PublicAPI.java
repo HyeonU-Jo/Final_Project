@@ -106,6 +106,7 @@ public class PublicAPI {
                     dto.setMapx(getTagValue("mapx",element));
                     dto.setMapy(getTagValue("mapy",element));
                     dto.setTel(getTagValue("tel", element));
+                    dto.setAddr1(getTagValue("addr1", element));
 
 
 
