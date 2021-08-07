@@ -7,34 +7,31 @@
     <title>찜한목록</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
     <script th:src="@{/dist/js/plan.js}"></script>
-    <link rel="stylesheet" th:href="@{/dist/css/datepicker.min.css}">
-    <link rel="stylesheet" th:href="@{/dist/css/plan.css}">
-    <script th:src="@{/dist/js/datepicker.min.js}"></script>
-    <script th:src="@{/dist/js/i18n/datepicker.ko.js}"></script>
 </head>
 <body>
-<h2>찜페이지이지롱</h2>
+<form th:action="@{save}" id="param" method="GET">
+    <h2>찜페이지이지롱</h2>
 
-<legend>찜목록번호</legend>
+    <legend>찜목록번호</legend>
 
-<tr th:each="like:${likeList}">
-    <td>
-        <span th:text="${like.content_id}"></span>
-        <input type="checkbox" name="likeList" id="likeList" th:value="${like.content_id}"/>
-        <input type="hidden" name="mapx" id="mapx" th:value="${like.mapx}">
-        <input type="hidden" name="mapy" id="mapy" th:value="${like.mapy}">
-    </td>
-</tr>
-
-<div id='result'></div>
+    <tr th:each="like:${likeList}">
+        <td>
+            <span th:text="${like.content_id}"></span>
+            <input type="checkbox" name="likeList" id="likeList" th:value="${like.content_id}"/>
+            <input type="hidden" name="mapx" id="mapx" th:value="${like.mapx}">
+            <input type="hidden" name="mapy" id="mapy" th:value="${like.mapy}">
+        </td>
+    </tr>
+    <input type="hidden" id="result" value=""/><br/>
+    <input type="text" id="cDay" value=""><br/>
+    <input type="submit" value="저장좀해주세요....제발.."/>
 <tr>
     <td>
         <th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
     </td>
 </tr>
-<button onclick="setParentText()">등록하기</button>
 
-<script>
-</script>
+<button onclick="setParentText()">등록하기</button>
+</form>
 </body>
 </html>

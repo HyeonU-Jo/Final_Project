@@ -1,4 +1,4 @@
-
+var count;
 
 /**onclick이벤트 **/
 function createDiv(sDay, eDay) {
@@ -11,7 +11,6 @@ function createDiv(sDay, eDay) {
 
     /*plandiv1안으로 들어가짐*/
     const plandiv2 = document.createElement('div');
-
     plandiv2.classList.add('infobox');
 
     for (var i = 0; i < dayday; i++) {
@@ -30,16 +29,16 @@ function createDiv(sDay, eDay) {
         const newBr = document.createElement('br');
         const newBr2 = document.createElement('br');
 
-        let newA = document.createElement('a');
+        let newdiv2 = document.createElement('div');
 
 
-        newA.addEventListener("click", function () {
+       /* newA.addEventListener("click", function () {
             window.open("test", "test", "width+600, height=400");
-        });
+        });*/
 
-        newA.id = 'content_id';
-        newA.setAttribute("name","content_id");
-        const count = i;
+        newdiv2.id = i;
+        newdiv2.setAttribute("name","content_id");
+        count = i;
 
         newBtn.addEventListener('click', function () {
             window.name = "plForm"
@@ -54,7 +53,7 @@ function createDiv(sDay, eDay) {
         newDiv.appendChild(newBtn);
         newDiv.appendChild(newBr2)
         plandiv2.appendChild(newDiv);
-        newDiv.appendChild(newA);
+        newDiv.appendChild(newdiv2);
     }
     var targetDiv = document.getElementsByClassName("plandiv1")[0];
     targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);
@@ -64,7 +63,7 @@ function createDiv(sDay, eDay) {
 function stealName(){
     document.getElementById("sDay2").value = document.getElementById("sDay").value;
     document.getElementById("eDay2").value = document.getElementById("eDay").value;
-    document.getElementById("content_id").value=document.getElementById("content_id").value;
+    // document.getElementById("content_id2").value=document.getElementById("content_id").value;
 
 }
 
@@ -99,10 +98,27 @@ function setParentText() {
             window.close();
         }
     }
-
     opener.document.getElementById(getParam("id")).innerText = listTest.toString();
     window.close();
 }
+
+
+function getCheckBoxValue(){
+    // 선택된 목록 가져오기
+    const query = 'input[name="likeList"]:checked';
+    const selectedEls = document.querySelectorAll(query);
+
+    // 선택된 목록에서 value 찾기
+    let result = '';
+    selectedEls.forEach((el) => {
+        result += el.value + ' ';
+    });
+
+    console.log(count);
+    document.getElementById("result").value = result;
+    document.getElementById("cDay").value=count;
+}
+
 
 /**달력**/
 function datePickerSet(sDate, eDate, flag) {
