@@ -102,7 +102,7 @@ public class PublicAPI {
                     dto.setKeyword(getTagValue("title", element));
                     dto.setContent_id(getTagValue("contentid", element));
                     dto.setContentType(getTagValue("contenttypeid", element));
-                    dto.setFirstimage2(getTagValue("firstimage2" ,element));
+                    dto.setFirstimage2(getTagValue("firstimage" ,element));
                     dto.setMapx(getTagValue("mapx",element));
                     dto.setMapy(getTagValue("mapy",element));
                     dto.setTel(getTagValue("tel", element));

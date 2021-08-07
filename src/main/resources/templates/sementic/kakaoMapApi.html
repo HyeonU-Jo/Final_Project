@@ -7,13 +7,7 @@
         <script type="text/javascript"
                 src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3b7d40e80fb8c0abb9d63a590f43fba0"></script>
         <script>
-            var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-                mapOption = {
-                    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                    level: 3 // 지도의 확대 레벨
-                };
 
-            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 
 
@@ -39,14 +33,23 @@
             var sizze = document.getElementsByName('mapx').length;
             let mmapx = [];
             let mmapy = [];
-
+            let title = [];
             for (var i = 0; i<sizze; i++){
                 mmapx[i] = document.getElementsByName('mapx')[i].value;
                 mmapy[i] = document.getElementsByName('mapy')[i].value;
+                title[i] = document.getElementsByName('title')[i].value;
+
             }
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                mapOption = {
+                    center: new kakao.maps.LatLng(Number(mmapy[0]), Number(mmapx[0])), // 지도의 중심좌표
+                    level: 7 // 지도의 확대 레벨
+                };
+
+            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
             for (var i = 0; i <sizze; i++){
-                positions[i] = {content : '<div>'+i+'</div>',
+                positions[i] = {content : '<div>'+title[i]+'</div>',
                    latlng: new kakao.maps.LatLng(Number(mmapy[i]), Number(mmapx[i]))
                }
 
