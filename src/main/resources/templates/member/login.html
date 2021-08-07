@@ -1,83 +1,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!-- 카카오 스크립트 -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-<script>
-    Kakao.init('b41669c5c4b0ee0b8e672be6a4cb7f24'); //발급받은 키 중 javascript키를 사용해준다.
-    console.log(Kakao.isInitialized()); // sdk초기화여부판단
-    //카카오로그인
-    function kakaoLogin() {
-        Kakao.Auth.login({
-            success: function (response) {
-                Kakao.API.request({
-                    url: '/v2/user/me',
-                    success: function (response) {
-                        console.log(response)
-                    },
-                    fail: function (error) {
-                        console.log(error)
-                    },
-                })
-            },
-            fail: function (error) {
-                console.log(error)
-            },
-        })
-    }
 
-    //구글로그인
-    //처음 실행하는 함수
-    function init() {
-        gapi.load('auth2', function() {
-            gapi.auth2.init();
-            options = new gapi.auth2.SigninOptionsBuilder();
-            options.setPrompt('select_account');
-            // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
-            options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
-            // 인스턴스의 함수 호출 - element에 로그인 기능 추가
-            // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
-            gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
-        })
-    }
-
-    function onSignIn(googleUser) {
-        var access_token = googleUser.getAuthResponse().access_token
-        $.ajax({
-            // people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
-            url: 'https://people.googleapis.com/v1/people/me'
-            // key에 자신의 API 키를 넣습니다.
-            , data: {personFields:'birthdays', key:'AIzaSyCEgbwnllt4AxruhFa_YbZtYBxFIyrJgxA', 'access_token': access_token}
-            , method:'GET'
-        })
-            .done(function(e){
-                //프로필을 가져온다.
-                var profile = googleUser.getBasicProfile();
-                console.log(profile)
-            })
-            .fail(function(e){
-                console.log(e);
-            })
-    }
-    function onSignInFailure(t){
-        console.log(t);
-    }
-</script>
 
 <th:block th:fragment="setLogin(login)">
-<body>
+    <body>
 
-<div class="member_login">
-    <form th:action="@{/auth/loginProc}" th:method="POST">
-        <div class="input-box">
-            <input type="text" name="username" placeholder="아이디" >
-        </div>
-        <div class="input-box">
-            <input type="password" name="password" placeholder="비밀번호">
-        </div>
+    <div class="member_login">
+        <form th:action="@{/auth/loginProc}" th:method="POST">
+            <div class="input-box">
+                <input type="text" name="username" placeholder="아이디" >
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="비밀번호">
+            </div>
 
-        <div class="input-box">
-            <input type="submit" class="btn btn-secondary" id="btn-login" value="로그인">
-            <input type="button" class="btn btn-secondary" value="회원가입" data-toggle="modal" href="#joinModal">
+            <div class="input-box">
+                <input type="submit" class="btn btn-secondary" id="btn-login" value="로그인">
+                <input type="button" class="btn btn-secondary" value="회원가입" data-toggle="modal" href="#joinModal">
                 <div class="modal fade" id="joinModal" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -92,25 +30,13 @@
                         </div>
                     </div>
                 </div>
-            <div>
-            <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
-            </div>
-            <div onclick="kakaoLogin();">
-                <a href="javascript:void(0)">
-                    <span>카카오 로그인</span>
-                </a>
-            </div>
-            <div id="GgCustomLogin">
-                <a href="javascript:void(0)">
-                    <span>구글 로그인</span>
-                </a>
-            </div>
+                <div>
+                    <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
+                </div>
+                <a href="https://kauth.kakao.com/oauth/authorize?client_id=d860d38c992ca8bf5f07dcc3fd5122b9&redirect_uri=http://localhost:9090/member/auth/kakao/callback&response_type=code"><img src="/image/kakao_login_button.png"></a>
 
-        </div>
-        <!--/*@thymesVar id="errorMsg" type="java.lang.String"*/-->
-        <span th:text="${errorMsg}" style="color:red"></span>
-    </form>
-</div>
-
-</body>
+            </div>
+        </form>
+    </div>
+    </body>
 </th:block>

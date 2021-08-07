@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/member")
@@ -65,7 +66,12 @@ public class MemberController {
         return "member/updateForm";
     }
 
+    @GetMapping("/auth/kakao/callback")
+    public @ResponseBody String kakaoCallback(String code){ //Data를 리턴해주는 컨트롤러 함수
+        return "카카오 인증 완료 : 코드값 : " + code;
 
+
+    }
 
 
 }
