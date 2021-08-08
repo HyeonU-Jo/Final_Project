@@ -34,11 +34,12 @@
         <div class="planday">
 
             <h3>여행날짜선택</h3>
-            <input id="sDay" type="text">-&nbsp;
+            <input id="sDay" type="text"> -&nbsp;
             <input id="eDay" type="text">
             <input type="button" id="reconfirm" name="reconfirm" value=" 날짜 재확인 " onclick="refreshPage()"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="button" id="once" name="check" value=" 확인 "
-                   onclick="createDiv('${datepicker1}','${datepicker2}'); this.onclick=null; onclick(stealName())"/>
+                   onclick="createDiv('${datepicker1}','${datepicker2}'); this.onclick=null;stealName();  "/>
+           <!--stealName();-->
         </div>
 
         <!--div palnday의 날짜에 따라 추가되는 div-->
@@ -55,13 +56,12 @@
             datePickerSet($("#sDay"), $("#eDay"), true);
         </script>
 
-
-        <form th:action="@{save}" id="param" method="GET">
-            <!--            <input type="text" th:value="${#authentication.principal.username}" name="username"><br/>-->
-            <input type="text" id="sDay2"  name="sDay">
-            <input type="text" id="eDay2" name="eDay">
-       <!--     <input type="text" name="username" th:value="${#authentication.principal.username}"> -->
-            <input type="submit" value="저장좀해주세요....제발.."/>
+        <form th:action="${save}" method="GET">
+            <!--<input type="text" th:value="${#authentication.principal.username}" name="username"><br/>-->
+            <input type="text" id="sDay2" th:name="sDay2" value="">
+            <input type="text" id="eDay2" th:name="eDay2" value="">
+            <input type="text" name="username" value="username"><br>
+            <input type="submit" value=" 저 장 "/>
         </form>
 
 

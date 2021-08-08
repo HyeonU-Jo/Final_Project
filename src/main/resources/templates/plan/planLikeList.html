@@ -9,22 +9,29 @@
     <script th:src="@{/dist/js/plan.js}"></script>
 </head>
 <body>
-<form th:action="@{save}" id="param" method="GET">
-    <h2>찜페이지이지롱</h2>
 
-    <legend>찜목록번호</legend>
+<h2>찜페이지이지롱</h2>
 
-    <tr th:each="like:${likeList}">
-        <td>
-            <span th:text="${like.content_id}"></span>
-            <input type="checkbox" name="likeList" id="likeList" th:value="${like.content_id}"/>
-            <input type="hidden" name="mapx" id="mapx" th:value="${like.mapx}">
-            <input type="hidden" name="mapy" id="mapy" th:value="${like.mapy}">
-        </td>
-    </tr>
-    <input type="hidden" id="result" value=""/><br/>
-    <input type="text" id="cDay" value=""><br/>
-    <input type="submit" value="저장좀해주세요....제발.."/>
+<legend>찜목록번호</legend>
+
+<tr th:each="like:${likeList}">
+    <td>
+        <input type="checkbox" name="likeList" id="likeList" th:value="${like.content_id}"
+               onclick="getCheckBoxValue();"/>
+        <span th:text="${like.content_id}"></span>
+        <input type="hidden" name="mapx" id="mapx" th:value="${like.mapx}">
+        <input type="hidden" name="mapy" id="mapy" th:value="${like.mapy}">
+    </td>
+</tr>
+<div>
+    <form th:action="@{save}" id="param" method="GET">
+        <input type="text" id="sDay2" value="${sDay}"><br/>
+        <input type="text" id="eDay2" value=""><br/>
+        <input type="text" name="username" value="username"><br/>
+        <input type="text" id="result" value=""/><br/>
+        <input type="text" id="cDay" value=""><br/>
+    </form>
+</div>
 <tr>
     <td>
         <th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
@@ -32,6 +39,7 @@
 </tr>
 
 <button onclick="setParentText()">등록하기</button>
-</form>
+
+
 </body>
 </html>

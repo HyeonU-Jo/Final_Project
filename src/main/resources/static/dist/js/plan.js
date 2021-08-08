@@ -1,13 +1,16 @@
-var count;
+var x='';
+var y='';
 
 /**onclick이벤트 **/
 function createDiv(sDay, eDay) {
-    var x = $('#sDay').val();
-    var y = $('#eDay').val();
+    x = $('#sDay').val();
+    y = $('#eDay').val();
     let day1 = new Date(x);
     let day2 = new Date(y);
     var day = Math.ceil(day2.getTime() - day1.getTime());
     var dayday = day / (1000 * 3600 * 24) + 1; //일
+
+    console.log(x);
 
     /*plandiv1안으로 들어가짐*/
     const plandiv2 = document.createElement('div');
@@ -15,7 +18,7 @@ function createDiv(sDay, eDay) {
 
     for (var i = 0; i < dayday; i++) {
         const newDiv = document.createElement('div');
-        newDiv.setAttribute("name",'cDay');
+        newDiv.setAttribute("name", 'cDay');
         newDiv.id = "num";
         newDiv.classList.add(i);
 
@@ -31,14 +34,13 @@ function createDiv(sDay, eDay) {
 
         let newdiv2 = document.createElement('div');
 
-
-       /* newA.addEventListener("click", function () {
-            window.open("test", "test", "width+600, height=400");
-        });*/
+        /* newA.addEventListener("click", function () {
+             window.open("test", "test", "width+600, height=400");
+         });*/
 
         newdiv2.id = i;
-        newdiv2.setAttribute("name","content_id");
-        count = i;
+        newdiv2.setAttribute("name", "content_id");
+        const count = i;
 
         newBtn.addEventListener('click', function () {
             window.name = "plForm"
@@ -57,24 +59,34 @@ function createDiv(sDay, eDay) {
     }
     var targetDiv = document.getElementsByClassName("plandiv1")[0];
     targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);
+
+}
+
+/**선택목록저장하기**/
+function getCheckBoxValue() {
+    console.log(x);
+    // 선택된 목록 가져오기
+    const query = 'input[name="likeList"]:checked';
+    const selectedEls = document.querySelectorAll(query);
+
+    // 선택된 목록에서 value 찾기
+    let result = '';
+    selectedEls.forEach((el) => {
+        result += el.value + ' ';
+    });
+
+    document.getElementById("sDay2").value=
+    document.getElementById("result").value = result;
+    document.getElementById("cDay").value = getParam("id");
+
 }
 
 /*동일 아이디값의 밸류 가져오기*/
 function stealName(){
     document.getElementById("sDay2").value = document.getElementById("sDay").value;
     document.getElementById("eDay2").value = document.getElementById("eDay").value;
-    // document.getElementById("content_id2").value=document.getElementById("content_id").value;
-
 }
-
-/*새로고침기능*/
-function refreshPage() {
-    window.location.reload();
-    alert("날짜를 다시 선택하여 주세요")
-    return;
-}
-
-/*파라미터 반환*/
+/**파라미터 반환**/
 function getParam(sname) {
     var params = location.search.substr(location.search.indexOf("?") + 1);
     var sval = "";
@@ -88,7 +100,7 @@ function getParam(sname) {
     return sval;
 }
 
-/*부모창으로 값 전달*/
+/**부모창으로 값 전달**/
 function setParentText() {
     const obj_length = document.getElementsByName("likeList").length;
     let listTest = [];
@@ -100,23 +112,6 @@ function setParentText() {
     }
     opener.document.getElementById(getParam("id")).innerText = listTest.toString();
     window.close();
-}
-
-
-function getCheckBoxValue(){
-    // 선택된 목록 가져오기
-    const query = 'input[name="likeList"]:checked';
-    const selectedEls = document.querySelectorAll(query);
-
-    // 선택된 목록에서 value 찾기
-    let result = '';
-    selectedEls.forEach((el) => {
-        result += el.value + ' ';
-    });
-
-    console.log(count);
-    document.getElementById("result").value = result;
-    document.getElementById("cDay").value=count;
 }
 
 
@@ -177,4 +172,11 @@ function datePickerSet(sDate, eDate, flag) {
         else
             return false;
     }
+}
+
+/**새로고침기능**/
+function refreshPage() {
+    window.location.reload();
+    alert("날짜를 다시 선택하여 주세요")
+    return;
 }

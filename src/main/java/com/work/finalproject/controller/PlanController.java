@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class PlanController {
     @GetMapping({"/planLikeList"})
     public String planLikeList(Model model) {
         List<LikeDTO> likeDtoList= service.getLikeList();
+
         List<XmlDTO> xmlDTO = new ArrayList<>();
         PublicAPI api = new PublicAPI();
         for (int i = 0; i<likeDtoList.size(); i++){
@@ -55,16 +57,12 @@ public class PlanController {
     public String test(){
         return "test/searchPage";
     }
-//
-//    @GetMapping({"/save"})
-//    public String save(PlanDTO dto){
-//        log.info("dto~~~" + dto);
-//        //새로 추가된 엔티티의 번호
-//        int no = service.register(dto);
-//        redirectAttributes.addFlashAttribute("msg", no);
-//
-//        return "plan/plan";
-//    }
+/*
+    @GetMapping({"/save"})
+    public String save(){
+
+        return "plan/plan";
+    }*/
 
 
 }
