@@ -13,5 +13,8 @@ public interface member_repository extends JpaRepository<member_tbl, Integer>{
     //SELECT * FROM member_tbl WHERE id=1?
     Optional<member_tbl> findByUsername(String username);
 
+
+
+    member_tbl findByEmail(String email);
 }
 
