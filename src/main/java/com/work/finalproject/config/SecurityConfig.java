@@ -1,5 +1,6 @@
 package com.work.finalproject.config;
 
+import com.work.finalproject.config.auth.PrincipalOauth2UserService;
 import com.work.finalproject.handler.LoginFailHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,9 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 @EnableWebSecurity  // 시큐리티 필터 등록
 @EnableGlobalMethodSecurity(prePostEnabled = true)  //특정주소로 접근시 권한 및 인증을 미리 체크
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
+
+    @Autowired
+    private PrincipalOauth2UserService principalOauth2Userservice;
 
     @Autowired
     private PrincipalDetailService principalDetailService;
@@ -61,7 +65,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .loginProcessingUrl("/auth/loginProc") //스프링 시큐리티가 해당 주소로 요청오는 로그인을 가로채서 대신 로그인
                 .defaultSuccessUrl("/") //로 이동
                 .failureHandler(loginFailHandler())
-            .and()
+                .and()
+                .oauth2Login()
+                .loginPage("/member/auth/login")
+                .and()
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/");

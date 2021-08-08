@@ -29,9 +29,16 @@ public class member_tbl {
     @Column(length = 50)
     private String name;
 
+    @Column
+    private String provider;
+    @Column
+    private String providerId;
+
     @Enumerated(EnumType.STRING)
+
     private RoleType role;
 
+    @Column
     private String oauth;  // kakao, google
 
     public String getEmail() {
@@ -55,6 +62,7 @@ public class member_tbl {
     public void setEnabled(boolean isEnabled) {
         this.isEnabled = isEnabled;
     }
+
 
 }
 

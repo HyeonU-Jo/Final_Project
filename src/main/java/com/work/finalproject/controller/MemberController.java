@@ -8,6 +8,7 @@ import com.work.finalproject.config.auth.PrincipalDetail;
 import com.work.finalproject.entity.KakaoProfile;
 import com.work.finalproject.entity.OAuthToken;
 import com.work.finalproject.entity.member_tbl;
+import com.work.finalproject.repository.member_repository;
 import com.work.finalproject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -22,6 +23,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 
 
@@ -49,9 +54,14 @@ public class MemberController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private member_repository member_repository;
 
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
 
@@ -202,7 +212,6 @@ public class MemberController {
 
         return "redirect:/";
     }
-
 
 
 }
