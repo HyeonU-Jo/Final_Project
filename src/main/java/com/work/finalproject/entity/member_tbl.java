@@ -17,7 +17,7 @@ public class member_tbl {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int num;    // 시퀀스, auto_increment
 
-    @Column(length = 20, nullable = false, unique = true)
+    @Column(length = 100, nullable = false, unique = true)
     private String username;    // 아이디
 
     @Column(length = 100, nullable = false)
@@ -26,11 +26,13 @@ public class member_tbl {
     @Column(length = 50, nullable = false)
     private String email;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String name;
 
     @Enumerated(EnumType.STRING)
     private RoleType role;
+
+    private String oauth;  // kakao, google
 
     public String getEmail() {
         return email;

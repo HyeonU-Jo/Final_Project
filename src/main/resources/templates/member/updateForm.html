@@ -14,19 +14,23 @@
               <input type="username" th:value="${#authentication.principal.username}" placeholder="아이디" id="username" readonly="readonly">
           </div>
 
+          <div th:if="${#authentication.principal.member_tbl.oauth.isEmpty}">
           <th:block class="input-box">
               <label for="Password">비밀번호</label>
               <input type="password" placeholder="비밀번호" id="password">
           </th:block>
-          <div class="input-box">
-              <label for="Email">이메일</label>
-              <input type="email" th:value="${#authentication.principal.member_tbl.email}" placeholder="이메일" id="email">
+              <div class="input-box">
+                  <label for="Email">이메일</label>
+                  <input type="email" th:value="${#authentication.principal.member_tbl.email}" placeholder="이메일" id="email">
+              </div>
+
+              <div class="input-box">
+                  <label for="Name">이름</label>
+                  <input type="text" th:value="${#authentication.principal.member_tbl.name}" placeholder="이름" id="name">
+              </div>
+          </th:if>
           </div>
 
-          <div class="input-box">
-              <label for="Name">이름</label>
-              <input type="text" th:value="${#authentication.principal.member_tbl.name}" placeholder="이름" id="name">
-          </div>
       </form>
 
           <div class="input-box">
