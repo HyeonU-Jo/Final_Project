@@ -6,9 +6,11 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.work.finalproject.config.auth.PrincipalDetail;
 import com.work.finalproject.dto.LikeDTO;
+import com.work.finalproject.dto.XmlDTO;
 import com.work.finalproject.entity.KakaoProfile;
 import com.work.finalproject.entity.OAuthToken;
 import com.work.finalproject.entity.member_tbl;
+import com.work.finalproject.publicApi.PublicAPI;
 import com.work.finalproject.repository.member_repository;
 import com.work.finalproject.service.LikeService;
 import com.work.finalproject.service.MemberService;
@@ -37,6 +39,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -99,7 +102,18 @@ public class MemberController {
     public String myPage(LikeDTO likeDTO, Model model) {
         likeDTO.setUsername("2");
         List<LikeDTO>likeDTOS = likeService.likeList(likeDTO);
-        model.addAttribute("likeList", likeDTOS);
+        PublicAPI api = new PublicAPI();
+        List<XmlDTO> xmlDTOS = new ArrayList<>();
+        for (int i = 0; i<likeDTOS.size(); i++){
+            try {
+                XmlDTO xmlDTO = api.detail(likeDTOS.get(i).getContent_id(), "");
+                xmlDTOS.add(xmlDTO);
+            }catch (Exception e){
+                e.getMessage();
+            }
+        }
+        model.addAttribute("likeList", xmlDTOS);
+
         return "/member/myPage";
 
     }

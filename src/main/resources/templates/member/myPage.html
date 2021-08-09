@@ -21,9 +21,13 @@
     </div>
     <div class="myPageLikeList">
         <span>찜목록</span>
-        <ol th:each="list : ${likeList}">
-            <li th:text="${list.content_id}"></li>
-        </ol>
+        <hr>
+        <table border="1">
+            <tr th:each="list : ${likeList}">
+                <td><img th:src="${list.firstimage}" width="50" height="50"> </td>
+                <td th:text="${list.title}"></td>
+            </tr>
+        </table>
 
     </div>
 </section>
