@@ -20,7 +20,7 @@ public class PlanDTO {
     private String content_id;
 
 
-    public plan_tbl toEntity(){
+ /*   public plan_tbl toEntity(){
         return plan_tbl.builder()
                 .no(no)
                 .username(username)
@@ -29,5 +29,5 @@ public class PlanDTO {
                 .p_cday(p_cday)
                 .content_id(content_id)
                 .build();
-    }
+    }*/
 }

@@ -64,13 +64,13 @@ public class PlanController {
         return "test/searchPage";
     }*/
 
-    @GetMapping({"/planlikesave"})
+   /* @GetMapping({"/planlikesave"})
     public int planlikesave(PlanDTO dto) {
         log.info(dto.toString());
         plan_tbl plantbl=dto.toEntity();
         plan_tbl saved = plan_repository.
         log.info(saved.toString());
-    }
+    }*/
 
 
 }
