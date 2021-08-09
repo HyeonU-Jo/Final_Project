@@ -27,3 +27,23 @@
     border-bottom: solid 1px #ccc;
     line-height: 20px;
 }
+
+.myPageSection{
+    width: 50%;
+    height: 500px;
+    border: solid 1px;
+    border-radius: 10px;
+    margin: 10% auto;
+}
+
+.myPageIntro{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10%;
+}
+
+.myPageLikeList{
+    display: flex;
+    justify-content: center;
+
+}

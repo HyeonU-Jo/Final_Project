@@ -24,9 +24,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
-import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 
 
@@ -36,10 +33,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.UUID;
 
 
 @Controller
@@ -64,49 +58,54 @@ public class MemberController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-
     //회원가입 페이지
     @GetMapping("/auth/join")
-    public String join(Model model){
+    public String join(Model model) {
 
         return "/member/join";
     }
 
     //로그인 페이지
     @GetMapping("/auth/login")
-    public String login(Model model){
+    public String login(Model model) {
 
         return "/member/login";
     }
 
 
     //마이페이지 페이지
-    @GetMapping("/mypage")
+    /*@GetMapping("/mypage")
     public String mypage(Model model){
 
-        return "/member/mypage";
-    }
+        return "mypage_2";
+    }*/
     @GetMapping("/mypage_myinfo")
-    public String mypage_myinfo(Model model){
+    public String mypage_myinfo(Model model) {
 
         return "/member/mypage_myinfo";
     }
+
     @GetMapping("/mypage_like")
-    public String mypage_like(Model model){
+    public String mypage_like(Model model) {
 
         return "/member/mypage_like";
+    }
+
+    @GetMapping("/myPage")
+    public void myPage() {
+
     }
 
 
     //유저페이지 (테스트용)
     @GetMapping("/user")
-    public String user(Model model){
+    public String user(Model model) {
 
         return "/member/user";
     }
 
     @GetMapping("/updateForm")
-    public String updateForm(@AuthenticationPrincipal PrincipalDetail principal){
+    public String updateForm(@AuthenticationPrincipal PrincipalDetail principal) {
         return "member/updateForm";
     }
 
@@ -145,22 +144,22 @@ public class MemberController {
             oauthToken = objectMapper.readValue(response.getBody(), OAuthToken.class);
         } catch (JsonMappingException e) {
             e.printStackTrace();
-        } catch(JsonProcessingException e){
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
-        System.out.println("카카오 엑세스 토큰:"+oauthToken.getAccess_token());
+        System.out.println("카카오 엑세스 토큰:" + oauthToken.getAccess_token());
 
         RestTemplate rt2 = new RestTemplate();
 
         //HttpHeader 오브젝트 생성
         HttpHeaders headers2 = new HttpHeaders();
-        headers2.add("Authorization", "Bearer "+oauthToken.getAccess_token());
+        headers2.add("Authorization", "Bearer " + oauthToken.getAccess_token());
         headers2.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 
 
         //HttpHeader와 HttpBody를 하나의 오브젝트에 담기
-        HttpEntity<MultiValueMap<String, String>> kakaoProfileRequest2  =
+        HttpEntity<MultiValueMap<String, String>> kakaoProfileRequest2 =
                 new HttpEntity<>(headers2);
 
         //Http 요청하기 - Post방식으로 - 그리고 response변수의 응답 받음
@@ -177,20 +176,20 @@ public class MemberController {
             kakaoProfile = objectMapper2.readValue(response2.getBody(), KakaoProfile.class);
         } catch (JsonMappingException e) {
             e.printStackTrace();
-        } catch(JsonProcessingException e){
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
         //member 오브젝트 : username, password, email
-        System.out.println("카카오 아이디(번호)"+kakaoProfile.getId());
-        System.out.println("카카오 이메일"+kakaoProfile.getKakao_account().getEmail());
+        System.out.println("카카오 아이디(번호)" + kakaoProfile.getId());
+        System.out.println("카카오 이메일" + kakaoProfile.getKakao_account().getEmail());
 
-        System.out.println("놀먹 유저네임"+kakaoProfile.getKakao_account().getEmail()+"_"+kakaoProfile.getId());
-        System.out.println("놀먹 이메일"+kakaoProfile.getKakao_account().getEmail());
-        System.out.println("블로그서버 패스워드:" +key);
+        System.out.println("놀먹 유저네임" + kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId());
+        System.out.println("놀먹 이메일" + kakaoProfile.getKakao_account().getEmail());
+        System.out.println("블로그서버 패스워드:" + key);
 
         member_tbl kakaoMember = member_tbl.builder()
-                .username(kakaoProfile.getKakao_account().getEmail()+"_"+kakaoProfile.getId())
+                .username(kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId())
                 .password(key)
                 .email(kakaoProfile.getKakao_account().getEmail())
                 .oauth("kakao")
@@ -200,7 +199,7 @@ public class MemberController {
         // 가입자 혹은 비가입자 체크 해서 처리
         member_tbl originMember = memberService.findMember(kakaoMember.getUsername());
 
-        if(originMember.getUsername() == null){
+        if (originMember.getUsername() == null) {
             System.out.println("기존 회원이 아닙니다!");
             memberService.join(kakaoMember);
         }
