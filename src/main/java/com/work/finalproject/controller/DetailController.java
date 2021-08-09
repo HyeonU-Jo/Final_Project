@@ -125,10 +125,11 @@ public class DetailController {
     private ServletContext servletContext;
 
     @GetMapping("/writeReview")
-    public String writeReview(String content_id,String contentType,String title, Model model){
+    public String writeReview(String content_id,String contentType,String title, Model model, String firstimage2){
         XmlDTO dto = new XmlDTO();
         dto.setContent_id(content_id);
         dto.setContentType(contentType);
+        dto.setFirstimage(firstimage2);
         dto.setTitle(title);
         model.addAttribute("dto", dto);
 
@@ -137,7 +138,7 @@ public class DetailController {
     }
 
     @PostMapping("/reviewWrite")
-    public String reviewWrite(HttpServletRequest request, ReviewDTO dto, RedirectAttributes redirectAttributes, String contentType, MultipartFile imageFile){
+    public String reviewWrite(HttpServletRequest request, ReviewDTO dto, RedirectAttributes redirectAttributes, String contentType, MultipartFile imageFile, String firstimage2){
         System.out.println("dto 값 확인 : " + dto.getContent_id());
 
 
@@ -165,6 +166,7 @@ public class DetailController {
         service.reviewWrite(dto);
         redirectAttributes.addAttribute("content_id", dto.getContent_id());
         redirectAttributes.addAttribute("contentType", contentType);
+        redirectAttributes.addAttribute("firstimage2", firstimage2);
 
         return "redirect:/detail/realDetail";
     }

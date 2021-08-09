@@ -26,7 +26,7 @@
                 <td style="border: none">
                     <div style="float: right">
                     <button id="btn1">[[${like}]]</button>
-                    <a th:href="@{/detail/writeReview(content_id=${dto.content_id}, contentType=${dto.contentType}, title=${dto.title})}">
+                    <a th:href="@{/detail/writeReview(content_id=${dto.content_id}, contentType=${dto.contentType}, title=${dto.title}, firstimage=${dto.firstimage2})}">
                         <button type="button">리뷰작성</button>
                     </a>
                         <input type="hidden" id="content_id" th:value="${dto.content_id}">
@@ -48,7 +48,7 @@
             </tr>
             <tr>
                 <td>사진1</td>
-                <td colspan="2"><img th:src="${dto.firstimage2}"></td>
+                <td colspan="2"><img th:src="${dto.firstimage}"></td>
             </tr>
 
 
