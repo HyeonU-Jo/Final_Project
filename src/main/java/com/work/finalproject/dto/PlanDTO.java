@@ -17,7 +17,4 @@ public class PlanDTO {
     private String eDay;
     private int cDay;
     private String content_id;
-    
-
-
 }

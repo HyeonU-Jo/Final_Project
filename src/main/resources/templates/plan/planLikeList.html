@@ -7,38 +7,47 @@
     <title>찜한목록</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
     <script th:src="@{/dist/js/plan.js}"></script>
+    <script type="text/javascript">
+        function getParentText() {
+            document.getElementById("sDayResult").value = opener.document.getElementById("sDay2").value;
+            document.getElementById("eDayResult").value = opener.document.getElementById("eDay2").value;
+            // document.getElementById("usernameResult").value=opener.document.getElementById("username").value;
+
+        }
+    </script>
 </head>
 <body>
 
 <h2>찜페이지이지롱</h2>
-
 <legend>찜목록번호</legend>
 
 <tr th:each="like:${likeList}">
     <td>
         <input type="checkbox" name="likeList" id="likeList" th:value="${like.content_id}"
-               onclick="getCheckBoxValue();"/>
-        <span th:text="${like.content_id}"></span>
+               onclick="getCheckBoxValue(); getParentText();"/>
+        <img th:src="${like.firstimage}" th:width="50px" th:height="50px">
+        <span th:text="${like.title}"></span>
         <input type="hidden" name="mapx" id="mapx" th:value="${like.mapx}">
         <input type="hidden" name="mapy" id="mapy" th:value="${like.mapy}">
     </td>
 </tr>
-<div>
-    <form th:action="@{save}" id="param" method="GET">
-        <input type="text" id="sDay2" value="${sDay}"><br/>
-        <input type="text" id="eDay2" value=""><br/>
-        <input type="text" name="username" value="username"><br/>
-        <input type="text" id="result" value=""/><br/>
-        <input type="text" id="cDay" value=""><br/>
+
+    <form th:action="@{save}" id="param"  method="GET">
+        <input type="hidden" id="sDayResult"  value=""><br/>
+        <input type="hidden" id="eDayResult"  value=""><br/>
+        <input type="hidden" name="usernameResult" value="username"><br/>
+        <input type="hidden" id="result"  value=""/><br/>
+        <input type="hidden" id="cDay"  value=""><br/>
+        <button onclick="setParentText()" type="submit">등록하기</button>
     </form>
-</div>
+
 <tr>
     <td>
         <th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
     </td>
 </tr>
 
-<button onclick="setParentText()">등록하기</button>
+
 
 
 </body>

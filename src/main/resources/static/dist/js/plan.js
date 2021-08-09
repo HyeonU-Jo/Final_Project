@@ -1,10 +1,8 @@
-var x='';
-var y='';
 
 /**onclick이벤트 **/
 function createDiv(sDay, eDay) {
-    x = $('#sDay').val();
-    y = $('#eDay').val();
+    let x = $('#sDay').val();
+    let y = $('#eDay').val();
     let day1 = new Date(x);
     let day2 = new Date(y);
     var day = Math.ceil(day2.getTime() - day1.getTime());
@@ -22,7 +20,6 @@ function createDiv(sDay, eDay) {
         newDiv.id = "num";
         newDiv.classList.add(i);
 
-
         const newDivList = document.createElement('div');
         newDivList.id = "result"
 
@@ -31,7 +28,6 @@ function createDiv(sDay, eDay) {
 
         const newBr = document.createElement('br');
         const newBr2 = document.createElement('br');
-
         let newdiv2 = document.createElement('div');
 
         /* newA.addEventListener("click", function () {
@@ -42,29 +38,30 @@ function createDiv(sDay, eDay) {
         newdiv2.setAttribute("name", "content_id");
         const count = i;
 
+        /**자식창열기**/
         newBtn.addEventListener('click', function () {
-            window.name = "plForm"
+            window.name = "plForm" //부모창이름
             url = "planLikeList?id=" + count;
-            window.open(url, "liForm", "width=600,height=400");
+            // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+           window.open(url, "liForm", "width=600,height=400");
         });
 
         const newText = document.createTextNode((i + 1) + 'Day');
-
         newDiv.appendChild(newText);
         newDiv.appendChild(newBr);
         newDiv.appendChild(newBtn);
-        newDiv.appendChild(newBr2)
+        newDiv.appendChild(newBr2);
         plandiv2.appendChild(newDiv);
         newDiv.appendChild(newdiv2);
     }
     var targetDiv = document.getElementsByClassName("plandiv1")[0];
     targetDiv.insertBefore(plandiv2, targetDiv.childNodes[1]);
-
 }
+
 
 /**선택목록저장하기**/
 function getCheckBoxValue() {
-    console.log(x);
+
     // 선택된 목록 가져오기
     const query = 'input[name="likeList"]:checked';
     const selectedEls = document.querySelectorAll(query);
@@ -74,11 +71,8 @@ function getCheckBoxValue() {
     selectedEls.forEach((el) => {
         result += el.value + ' ';
     });
-
-    document.getElementById("sDay2").value=
     document.getElementById("result").value = result;
     document.getElementById("cDay").value = getParam("id");
-
 }
 
 /*동일 아이디값의 밸류 가져오기*/

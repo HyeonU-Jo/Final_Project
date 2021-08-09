@@ -1,36 +1,38 @@
 package com.work.finalproject.service;
 
 import com.work.finalproject.dto.NoticeDTO;
+import com.work.finalproject.dto.PlanDTO;
 import com.work.finalproject.entity.notice_tbl;
+import com.work.finalproject.entity.plan_tbl;
 
 public interface PlanService {
 
-    int register(NoticeDTO dto);
+    int register(PlanDTO dto);
 
 
     //DTO => Entity
-    default notice_tbl dtoToEntity(NoticeDTO dto) {
-        notice_tbl entity = notice_tbl.builder()
+    default plan_tbl dtoToEntity(PlanDTO dto) {
+        plan_tbl entity = plan_tbl.builder()
                 .no(dto.getNo())
-                .n_title(dto.getN_title())
-                .n_content(dto.getN_content())
-                .n_writer(dto.getN_writer())
+                .username(dto.getUsername())
+                .sDay(dto.getSDay())
+                .eDay(dto.getEDay())
+                .cDay(dto.getCDay())
+                .content_id(dto.getContent_id())
                 .build();
-
         return entity;
     }
 
     //Entity => DTO
-    default NoticeDTO entityToDto(notice_tbl entity) {
-        NoticeDTO dto = NoticeDTO.builder()
+    default PlanDTO entityToDto(plan_tbl entity) {
+        PlanDTO dto = PlanDTO.builder()
                 .no(entity.getNo())
-                .n_title(entity.getN_title())
-                .n_content(entity.getN_content())
-                .n_writer(entity.getN_writer())
-                .regDate(entity.getRegDate())
-                .modDate(entity.getModDate())
+                .username(entity.getUsername())
+                .sDay(entity.getSDay())
+                .eDay(entity.getEDay())
+                .cDay(entity.getCDay())
+                .content_id(entity.getContent_id())
                 .build();
-
         return dto;
     }
 }
