@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<th:block th:fragment="setHead(head)"></th:block>
+<th:block th:fragment="setFoot(Foot)"></th:block>
+<th:block th:fragment="setCss(css)"></th:block>
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+</head>
+<body>
+
+<!--Header-->
+<th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
+
+<!--Content-->
+<section class="myPageSection">
+    <div class="myPageIntro">
+        <span>사용자이름</span>
+        <a th:href="@{/member/updateForm}">회원정보수정</a>
+    </div>
+    <div class="myPageLikeList">
+        <span>찜목록</span>
+        <!--여기에 찜목록 출력햊쉐욤-->
+
+    </div>
+</section>
+
+<!--Footer-->
+<th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
+
+
+</body>
+</html>
