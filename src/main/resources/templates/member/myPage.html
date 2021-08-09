@@ -21,7 +21,9 @@
     </div>
     <div class="myPageLikeList">
         <span>찜목록</span>
-        <!--여기에 찜목록 출력햊쉐욤-->
+        <ol th:each="list : ${likeList}">
+            <li th:text="${list.content_id}"></li>
+        </ol>
 
     </div>
 </section>

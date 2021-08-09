@@ -5,10 +5,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.work.finalproject.config.auth.PrincipalDetail;
+import com.work.finalproject.dto.LikeDTO;
 import com.work.finalproject.entity.KakaoProfile;
 import com.work.finalproject.entity.OAuthToken;
 import com.work.finalproject.entity.member_tbl;
 import com.work.finalproject.repository.member_repository;
+import com.work.finalproject.service.LikeService;
 import com.work.finalproject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -35,13 +37,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/member")
 @Log4j2
 @RequiredArgsConstructor
 public class MemberController {
-
+    private final LikeService likeService;
     @Value("${key}")
     private String key;
 
@@ -92,7 +96,11 @@ public class MemberController {
     }
 
     @GetMapping("/myPage")
-    public void myPage() {
+    public String myPage(LikeDTO likeDTO, Model model) {
+        likeDTO.setUsername("2");
+        List<LikeDTO>likeDTOS = likeService.likeList(likeDTO);
+        model.addAttribute("likeList", likeDTOS);
+        return "/member/myPage";
 
     }
 

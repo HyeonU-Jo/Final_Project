@@ -18,5 +18,7 @@ public interface like_repository extends JpaRepository<like_tbl, Integer> {
     @Query("delete from like_tbl l where l.content_id = ?1 and l.username = ?2")
     void deleteByContent_idAndUsername(String content_id, String username);
 
+    @Query("select l from like_tbl l where l.username =?1")
+    List<like_tbl> findByUsername(String username);
 
 }

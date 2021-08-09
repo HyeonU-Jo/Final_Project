@@ -14,6 +14,8 @@ public interface LikeService {
 
     String likeBoolean(LikeDTO dto);
 
+    List<LikeDTO> likeList(LikeDTO dto);
+
     default like_tbl dtoToEntity(LikeDTO dto){
         like_tbl entity = like_tbl.builder()
                 .no(dto.getNo())
