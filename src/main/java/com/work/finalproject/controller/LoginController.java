@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginController {
     @PostMapping("/login/fail")
     public String initPost() {
-        return "/member/login";
+        return "/member/loginFail";
     }
 }
