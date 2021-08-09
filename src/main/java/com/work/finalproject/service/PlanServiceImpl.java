@@ -28,5 +28,4 @@ public class PlanServiceImpl implements PlanService{
         return entity.getNo();
     }
 
-
 }

@@ -20,13 +20,13 @@ public class plan_tbl {
     private String username;
 
     @Column(length = 10, nullable = false)
-    private String sDay;
+    private String p_sday;
 
     @Column(length = 10, nullable = false)
-    private String eDay;
+    private String p_eday;
 
     @Column(length=10, nullable = false)
-    private int cDay;
+    private int p_cday;
 
     @Column(length = 10, nullable = false)
     private String content_id;

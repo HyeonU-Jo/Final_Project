@@ -9,9 +9,9 @@
     <script th:src="@{/dist/js/plan.js}"></script>
     <script type="text/javascript">
         function getParentText() {
-            document.getElementById("sDayResult").value = opener.document.getElementById("sDay2").value;
-            document.getElementById("eDayResult").value = opener.document.getElementById("eDay2").value;
-            // document.getElementById("usernameResult").value=opener.document.getElementById("username").value;
+            document.getElementById("sDay").value = opener.document.getElementById("sDay2").value;
+            document.getElementById("eDay").value = opener.document.getElementById("eDay2").value;
+            document.getElementById("username").value=opener.document.getElementById("username").value;
 
         }
     </script>
@@ -31,16 +31,14 @@
         <input type="hidden" name="mapy" id="mapy" th:value="${like.mapy}">
     </td>
 </tr>
-
-    <form th:action="@{save}" id="param"  method="GET">
-        <input type="hidden" id="sDayResult"  value=""><br/>
-        <input type="hidden" id="eDayResult"  value=""><br/>
-        <input type="hidden" name="usernameResult" value="username"><br/>
-        <input type="hidden" id="result"  value=""/><br/>
-        <input type="hidden" id="cDay"  value=""><br/>
-        <button onclick="setParentText()" type="submit">등록하기</button>
+    <form th:action="@{save}" id="param" method="post">
+        <input type="hidden" id="sDay" name="sDay" value=""><br/>
+        <input type="hidden" id="eDay" name="eDay" value=""><br/>
+        <input type="hidden" id="username" name="username" value="username"><br/>
+        <input type="hidden" id="result" name="result" value=""/><br/>
+        <input type="hidden" id="cDay" name="cDay" value=""><br/>
+        <button type="submit" onclick="setParentText()" >등록하기</button>
     </form>
-
 <tr>
     <td>
         <th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>

@@ -62,13 +62,12 @@ public class PlanController {
         return "test/searchPage";
     }*/
 
-/*    @GetMapping({"/save"})
-    public String save(PlanDTO dto, RedirectAttributes redirectAttributes) {
+    @GetMapping({"/save"})
+    public void save(PlanDTO dto, RedirectAttributes redirectAttributes) {
     log.info("dto~~"+dto);
         int no = pService.register(dto);
         redirectAttributes.addFlashAttribute("msg", no);
-        return "redirect:plan/plan";
-    }*/
+    }
 
 
 }
