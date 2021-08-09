@@ -26,8 +26,20 @@ public class plan_tbl {
     private String p_eday;
 
     @Column(length=10, nullable = false)
-    private int p_cday;
+    private String p_cday;
 
     @Column(length = 10, nullable = false)
     private String content_id;
+
+    @Builder
+    public plan_tbl(int no, String p_sday, String p_eday, String p_cday, String username, String content_id){
+        this.no=no;
+        this.p_sday=p_sday;
+        this.p_eday=p_eday;
+        this.p_cday=p_cday;
+        this.username=username;
+        this.content_id=content_id;
+
+    }
+
 }

@@ -3,7 +3,9 @@ package com.work.finalproject.controller;
 import com.work.finalproject.dto.LikeDTO;
 import com.work.finalproject.dto.PlanDTO;
 import com.work.finalproject.dto.XmlDTO;
+import com.work.finalproject.entity.plan_tbl;
 import com.work.finalproject.publicApi.PublicAPI;
+import com.work.finalproject.repository.plan_repository;
 import com.work.finalproject.service.LikeService;
 import com.work.finalproject.service.PlanService;
 import lombok.extern.log4j.Log4j2;
@@ -62,11 +64,12 @@ public class PlanController {
         return "test/searchPage";
     }*/
 
-    @GetMapping({"/save"})
-    public void save(PlanDTO dto, RedirectAttributes redirectAttributes) {
-    log.info("dto~~"+dto);
-        int no = pService.register(dto);
-        redirectAttributes.addFlashAttribute("msg", no);
+    @GetMapping({"/planlikesave"})
+    public int planlikesave(PlanDTO dto) {
+        log.info(dto.toString());
+        plan_tbl plantbl=dto.toEntity();
+        plan_tbl saved = plan_repository.
+        log.info(saved.toString());
     }
 
 

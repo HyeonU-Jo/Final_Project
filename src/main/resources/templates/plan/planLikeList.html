@@ -31,13 +31,13 @@
         <input type="hidden" name="mapy" id="mapy" th:value="${like.mapy}">
     </td>
 </tr>
-    <form th:action="@{save}" id="param" method="post">
-        <input type="hidden" id="sDay" name="sDay" value=""><br/>
-        <input type="hidden" id="eDay" name="eDay" value=""><br/>
+    <form th:action="@{/plan/planlikesave}" id="param" method="get">
+        <input type="hidden" id="sDay" name="p_sday" value=""><br/>
+        <input type="hidden" id="eDay" name="p_eday" value=""><br/>
         <input type="hidden" id="username" name="username" value="username"><br/>
-        <input type="hidden" id="result" name="result" value=""/><br/>
-        <input type="hidden" id="cDay" name="cDay" value=""><br/>
-        <button type="submit" onclick="setParentText()" >등록하기</button>
+        <input type="hidden" id="result" name="content_id" value=""/><br/>
+        <input type="hidden" id="cDay" name="p_cday" value=""><br/>
+        <button type="submit" onclick="setParentText(); alert('submit') ">등록하기</button>
     </form>
 <tr>
     <td>
