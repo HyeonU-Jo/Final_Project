@@ -15,9 +15,9 @@ public interface PlanService {
         plan_tbl entity = plan_tbl.builder()
                 .no(dto.getNo())
                 .username(dto.getUsername())
-                .sDay(dto.getSDay())
-                .eDay(dto.getEDay())
-                .cDay(dto.getCDay())
+                .p_sday(dto.getP_sday())
+                .p_eday(dto.getP_eday())
+                .p_cday(dto.getP_cday())
                 .content_id(dto.getContent_id())
                 .build();
         return entity;
@@ -28,9 +28,9 @@ public interface PlanService {
         PlanDTO dto = PlanDTO.builder()
                 .no(entity.getNo())
                 .username(entity.getUsername())
-                .sDay(entity.getSDay())
-                .eDay(entity.getEDay())
-                .cDay(entity.getCDay())
+                .p_sday(entity.getP_sday())
+                .p_eday(entity.getP_eday())
+                .p_cday(entity.getP_cday())
                 .content_id(entity.getContent_id())
                 .build();
         return dto;
