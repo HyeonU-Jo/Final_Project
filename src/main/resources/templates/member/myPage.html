@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>마이페이지</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+    <script src="https://kit.fontawesome.com/9e919a258e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -18,18 +19,21 @@
     <div class="myPageIntro">
         <span>사용자이름</span>
         <a th:href="@{/member/updateForm}">회원정보수정</a>
+        <div class="cover">
+            <i class="profile far fa-user"></i>
+        </div>
     </div>
-    <div class="myPageLikeList">
-        <span>찜목록</span>
-        <ul class="myPageBtn">
-            <li>
-                <a th:href="@{/member/myPage_bucketList}">BucketList</a>
-            </li>
-            <li>
-                <a th:href="@{/member/myPage_traveledList}">TraveledList</a>
-            </li>
-        </ul>
-    </div>
+    <ul class="myPageLike">
+
+        <a th:href="@{/member/myPage_bucketList}">
+            <img th:src="@{/image/bucket.png}">
+
+        </a>
+        <a th:href="@{/member/myPage_traveledList}">
+            <img th:src="@{/image/travel.png}">
+        </a>
+
+    </ul>
 </section>
 
 <!--Footer-->
