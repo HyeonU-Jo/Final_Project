@@ -55,13 +55,25 @@ public class LikeServiceImpl implements LikeService {
 
     @Override
     public String likeCheck(LikeDTO dto){
-        List<like_tbl> likeDTOS = likeRepository.findByContent_idAndUsername(dto.getContent_id(), dto.getUsername());
+        dto.setLike_type("1");
+        List<like_tbl> likeDTOS = likeRepository.findByContent_idAndUsername(dto.getContent_id(), dto.getUsername(), dto.getLike_type());
+
         System.out.println("라이크 체크 : " + dto.getContent_id());
-        if (likeDTOS.isEmpty()){
+
+
+            if(likeDTOS.isEmpty()){
+                return "찜 하기";
+            }else if(likeDTOS.get(0).getLike_type().equals("1")){
+                return "찜 취소";
+            }else {
+                return "오류";
+            }
+
+       /* if (likeDTOS.isEmpty()){
             return "찜 하기";
-        } else {
+        } else{
             return "찜 취소";
-        }
+        }*/
 
     }
 
@@ -69,22 +81,39 @@ public class LikeServiceImpl implements LikeService {
 
     @Override
     public String like(LikeDTO dto) {
-        List<like_tbl> likeDTOS = likeRepository.findByContent_idAndUsername(dto.getContent_id(), dto.getUsername());
+        List<like_tbl> likeDTOS = likeRepository.findByContent_idAndUsername(dto.getContent_id(), dto.getUsername(), dto.getLike_type());
         System.out.println("진짜 라이크 : " + dto.getContent_id());
-        if (likeDTOS.isEmpty()){
+
+
+            if(likeDTOS.isEmpty()){
+                dto.setLike_type("1");
+                like_tbl entity = dtoToEntity(dto);
+                likeRepository.save(entity);
+                return "찜 취소";
+            }else if(likeDTOS.get(0).getLike_type().equals("1")){
+                likeRepository.deleteByContent_idAndUsername(dto.getContent_id(), dto.getUsername(), dto.getLike_type());
+                return "찜 하기";
+            }else {
+                return "오류다";
+            }
+
+
+        /*if (likeDTOS.isEmpty()){
             like_tbl entity = dtoToEntity(dto);
             likeRepository.save(entity);
             return "찜 취소";
         } else {
             likeRepository.deleteByContent_idAndUsername(dto.getContent_id(), dto.getUsername());
             return "찜 하기";
-        }
+        }*/
 
     }
 
     @Override
     public void deleteLike(LikeDTO dto){
-        likeRepository.deleteByContent_idAndUsername(dto.getContent_id(), dto.getUsername());
+        System.out.println(dto.getLike_type() + "Ssssssssssssssssssssssssss");
+        dto.setLike_type("1");
+        likeRepository.deleteByContent_idAndUsername(dto.getContent_id(), dto.getUsername(), dto.getLike_type());
     }
 
     @Override

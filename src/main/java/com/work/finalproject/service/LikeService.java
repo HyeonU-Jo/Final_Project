@@ -23,6 +23,7 @@ public interface LikeService {
                 .no(dto.getNo())
                 .content_id(dto.getContent_id())
                 .username(dto.getUsername())
+                .like_type(dto.getLike_type())
                 .build();
         return entity;
     }

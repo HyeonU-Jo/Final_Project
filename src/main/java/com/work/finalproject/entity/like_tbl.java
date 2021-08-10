@@ -21,6 +21,7 @@ public class like_tbl {
     @Column(length = 90, nullable = true)
     private String username;
 
-    @Column
+    @Column(length = 10, nullable = true)
     private String like_type;
+
 }
