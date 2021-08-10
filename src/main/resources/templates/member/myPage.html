@@ -23,10 +23,13 @@
         <span>찜목록</span>
         <hr>
         <table border="1">
-            <tr th:each="list : ${likeList}">
-                <td><img th:src="${list.firstimage}" width="50" height="50"> </td>
+            <th:block th:each="list : ${likeList}">
+            <tr th:id="${list.content_id}">
+                <td><img th:src="${list.firstimage}" width="50" height="50"></td>
                 <td th:text="${list.title}"></td>
+                <td><button type="button" th:attr="onclick=|deleteLike('${list.content_id}')|">버튼</button></td>
             </tr>
+            </th:block>
         </table>
 
     </div>
@@ -37,4 +40,31 @@
 
 
 </body>
+<script th:inline="javascript">
+    function deleteLike(content_id){
+        let conf = confirm("정말로 삭제하시겠습니까?");
+
+        if(conf == true){
+            $.ajax({
+                url : "/member/deleteLike",
+                data : "content_id=" + content_id,
+                type : "POST",
+                success : function (data){
+                    let abc = document.getElementById(data);
+                    abc.style.display = 'none';
+
+                    alert(data)
+                },
+                error : function (){
+                    alert("에러")
+                }
+            });
+        }else if(conf == false){
+            alert("취소하셨습니다.");
+        }
+
+
+
+    }
+</script>
 </html>

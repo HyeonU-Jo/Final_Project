@@ -83,6 +83,11 @@ public class LikeServiceImpl implements LikeService {
     }
 
     @Override
+    public void deleteLike(LikeDTO dto){
+        likeRepository.deleteByContent_idAndUsername(dto.getContent_id(), dto.getUsername());
+    }
+
+    @Override
     public String likeBoolean(LikeDTO dto) {
 
         return null;

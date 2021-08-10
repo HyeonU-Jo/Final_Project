@@ -16,6 +16,8 @@ public interface LikeService {
 
     List<LikeDTO> likeList(LikeDTO dto);
 
+    void deleteLike(LikeDTO dto);
+
     default like_tbl dtoToEntity(LikeDTO dto){
         like_tbl entity = like_tbl.builder()
                 .no(dto.getNo())

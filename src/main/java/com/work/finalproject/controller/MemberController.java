@@ -36,7 +36,9 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -232,6 +234,15 @@ public class MemberController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         return "redirect:/";
+    }
+
+    @PostMapping("/deleteLike")
+    @ResponseBody
+    public String deleteLike(LikeDTO dto){
+        dto.setUsername("2");
+        likeService.deleteLike(dto);
+        
+        return dto.getContent_id();
     }
 
 
