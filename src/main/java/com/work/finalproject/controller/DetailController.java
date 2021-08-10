@@ -110,12 +110,16 @@ public class DetailController {
         LikeDTO likeDTO = new LikeDTO();
         likeDTO.setContent_id(content_id);
         likeDTO.setUsername("2");
+        likeDTO.setLike_type("1");
         String like = likeService.likeCheck(likeDTO);
+        likeDTO.setLike_type("2");
+        String like2 = likeService.likeCheck(likeDTO);
         PublicAPI realDetail = new PublicAPI();
         XmlDTO xmlDTO = realDetail.detail(content_id, contentType);
         xmlDTO.setFirstimage2(firstimage2);
         model.addAttribute("dto", xmlDTO);
         model.addAttribute("like", like);
+        model.addAttribute("like2", like2);
         return "/detail/realDetail";
     }
 

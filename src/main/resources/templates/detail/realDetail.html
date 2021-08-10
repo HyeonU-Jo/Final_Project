@@ -26,6 +26,7 @@
                 <td style="border: none">
                     <div style="float: right">
                     <button id="btn1">[[${like}]]</button>
+                    <button id="btn2">[[${like2}]]</button>
                     <a th:href="@{/detail/writeReview(content_id=${dto.content_id}, contentType=${dto.contentType}, title=${dto.title}, firstimage=${dto.firstimage2})}">
                         <button type="button">리뷰작성</button>
                     </a>
@@ -144,6 +145,25 @@
             data : form,
             success: function(data){
                 $('#btn1').text(data);
+            },
+            error: function (){
+                alert("ajax 에러 떴다.");
+            }
+        });
+    });
+
+    $('#btn2').on('click', function (){
+        var form = {
+            content_id : document.getElementById('content_id').value,
+            like_type : "2",
+            username : "2"
+        }
+        $.ajax({
+            url: "/detail/likeDetail",
+            type : "POST",
+            data : form,
+            success: function(data){
+                $('#btn2').text(data);
             },
             error: function (){
                 alert("ajax 에러 떴다.");
