@@ -7,7 +7,7 @@ import com.work.finalproject.entity.plan_tbl;
 
 public interface PlanService {
 
-    int register(PlanDTO dto);
+//    int register(PlanDTO dto);
 
 
     //DTO => Entity

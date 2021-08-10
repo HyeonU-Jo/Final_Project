@@ -1,4 +1,3 @@
-
 /**onclick이벤트 **/
 function createDiv(sDay, eDay) {
     let x = $('#sDay').val();
@@ -24,6 +23,7 @@ function createDiv(sDay, eDay) {
         newDivList.id = "result"
 
         const newBtn = document.createElement('button');
+        newBtn.id = "planbtn";
         newBtn.innerText = "+";
 
         const newBr = document.createElement('br');
@@ -43,7 +43,7 @@ function createDiv(sDay, eDay) {
             window.name = "plForm" //부모창이름
             url = "planLikeList?id=" + count;
             // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-           window.open(url, "liForm", "width=600,height=400");
+            window.open(url, "liForm", "width=600,height=400");
         });
 
         const newText = document.createTextNode((i + 1) + 'Day');
@@ -76,10 +76,11 @@ function getCheckBoxValue() {
 }
 
 /*동일 아이디값의 밸류 가져오기*/
-function stealName(){
+function stealName() {
     document.getElementById("sDay2").value = document.getElementById("sDay").value;
     document.getElementById("eDay2").value = document.getElementById("eDay").value;
 }
+
 /**파라미터 반환**/
 function getParam(sname) {
     var params = location.search.substr(location.search.indexOf("?") + 1);
@@ -94,7 +95,38 @@ function getParam(sname) {
     return sval;
 }
 
+/*$('#planbtn').on('click', function () {
+    let data = {
+        p_sday: document.getElementById('p_sday').value,
+        p_eday: document.getElementById('p_eday').value,
+        username: document.getElementById('username').value,
+        content_id: document.getElementById('content_id').value,
+        p_cday: document.getElementById('p_cday').value
+    }
+    $.ajax({
+        url: "/save/planlikesave",
+        type: "GET",
+        data: data,
+        success: function setParentText() {
+            const obj_length = document.getElementsByName("likeList").length;
+            let listTest = [];
+            for (let i = 0; i < obj_length; i++) {
+                if (document.getElementsByName("likeList")[i].checked == true) {
+                    listTest += document.getElementsByName("likeList")[i].value + " ";
+
+                }
+            }
+            opener.document.getElementById(getParam("id")).innerText = listTest.toString();
+
+
+        },
+        error: function () {
+            alert("ajax 에러 떴다.");
+        }
+    });
+});*/
 /**부모창으로 값 전달**/
+
 function setParentText() {
     const obj_length = document.getElementsByName("likeList").length;
     let listTest = [];
@@ -104,10 +136,30 @@ function setParentText() {
             window.close();
         }
     }
-    opener.document.getElementById(getParam("id")).innerText = listTest.toString();
-    window.close();
-}
+    $('#planbtn').on('click', function () {
+        let data = {
+            p_sday: document.getElementById('p_sday').value,
+            p_eday: document.getElementById('p_eday').value,
+            username: document.getElementById('username').value,
+            content_id: document.getElementById('content_id').value,
+            p_cday: document.getElementById('p_cday').value
+        }
+        $.ajax({
+            url: "/save/planlikesave",
+            type: "GET",
+            data: data,
+            success: function () {
 
+                opener.document.getElementById(getParam("id")).innerText = listTest.toString();
+                window.close();
+
+            },
+            error: function () {
+                alert("ajax 에러 떴다.");
+            }
+        });
+    });
+}
 
 /**달력**/
 function datePickerSet(sDate, eDate, flag) {

@@ -12,20 +12,6 @@ import org.springframework.stereotype.Service;
 @Log4j2
 public class PlanServiceImpl implements PlanService{
 
-    private final plan_repository repository;
 
-    public PlanServiceImpl(plan_repository repository) {
-        this.repository = repository;
-    }
-
-    @Override
-    public int register(PlanDTO dto) {
-        log.info("dto~~");
-        log.info(dto);
-        plan_tbl entity = dtoToEntity(dto);
-        log.info(entity);
-        repository.save(entity);
-        return entity.getNo();
-    }
 
 }

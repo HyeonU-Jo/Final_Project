@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
 public class PlanDTO {
     private int no;
     private String username;
@@ -18,16 +17,4 @@ public class PlanDTO {
     private String p_eday;
     private String p_cday;
     private String content_id;
-
-
- /*   public plan_tbl toEntity(){
-        return plan_tbl.builder()
-                .no(no)
-                .username(username)
-                .p_sday(p_sday)
-                .p_eday(p_eday)
-                .p_cday(p_cday)
-                .content_id(content_id)
-                .build();
-    }*/
 }

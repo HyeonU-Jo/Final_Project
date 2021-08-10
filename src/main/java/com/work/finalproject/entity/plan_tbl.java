@@ -12,7 +12,6 @@ import javax.persistence.*;
 public class plan_tbl {
 
     @Id
-    @Column(length=20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int no;
 
@@ -30,16 +29,5 @@ public class plan_tbl {
 
     @Column(length = 10, nullable = false)
     private String content_id;
-
-/*    @Builder
-    public plan_tbl(int no, String p_sday, String p_eday, String p_cday, String username, String content_id){
-        this.no=no;
-        this.p_sday=p_sday;
-        this.p_eday=p_eday;
-        this.p_cday=p_cday;
-        this.username=username;
-        this.content_id=content_id;
-
-    }*/
 
 }

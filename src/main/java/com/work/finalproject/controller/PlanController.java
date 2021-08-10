@@ -12,6 +12,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -26,13 +28,13 @@ public class PlanController {
 
     private final LikeService service;
     private final PlanService pService;
+    private final plan_repository pRepository;
 
-    public PlanController(LikeService service, PlanService pService) {
+    public PlanController(LikeService service, PlanService pService, plan_repository pRepository) {
         this.service = service;
         this.pService = pService;
+        this.pRepository = pRepository;
     }
-
-
 
     /*plan화면*/
     @GetMapping({"/plan"})
@@ -64,13 +66,14 @@ public class PlanController {
         return "test/searchPage";
     }*/
 
-   /* @GetMapping({"/planlikesave"})
-    public int planlikesave(PlanDTO dto) {
-        log.info(dto.toString());
-        plan_tbl plantbl=dto.toEntity();
-        plan_tbl saved = plan_repository.
-        log.info(saved.toString());
-    }*/
+    @GetMapping({ "/planlikesave"})
+    public void planlikesave(PlanDTO dto) {
+        System.out.println("호출 테스트" + dto);
+        System.out.println("값 확인 중 ------------------"+dto.getContent_id());
+        System.out.println("dto = " + dto.getUsername());
+        plan_tbl entity = pService.dtoToEntity(dto);
+        pRepository.save(entity);
+    }
 
 
 }
