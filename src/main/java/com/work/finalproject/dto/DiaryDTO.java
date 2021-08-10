@@ -18,4 +18,5 @@ public class DiaryDTO {
     private String d_username;
     private String d_content;
     private LocalDateTime regDate, modDate;
+    private String d_image;
 }
