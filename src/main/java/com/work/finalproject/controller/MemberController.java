@@ -135,7 +135,7 @@ public class MemberController {
 
         return "/member/user";
     }
-
+    //테스트
     @GetMapping("/updateForm")
     public String updateForm(@AuthenticationPrincipal PrincipalDetail principal) {
         return "member/updateForm";
