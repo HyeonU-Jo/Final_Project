@@ -29,7 +29,18 @@
 
                 <textarea  rows="20" name="d_content" placeholder="내용을 입력하세요."></textarea>
             </div>
+            <input type="file" id="diaryimage" name="diaryimage" accept="image/*" onchange="setThumbnail();"/>
 
+            <script> function setThumbnail(event) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    var img = document.createElement("img");
+                    img.setAttribute("src", event.target.result);
+                    document.querySelector("div#image_container").appendChild(img);
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+            </script>
             <button  type="submit">작성하기</button>
             <button  type="reset">다시쓰기</button>
             <button  type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>

@@ -62,6 +62,7 @@ public class DiaryServiceImpl implements DiaryService {
             diary_tbl entity = result.get();
             entity.changeTitle(dto.getD_title());
             entity.changeContent(dto.getD_content());
+            entity.changeImage(dto.getD_image());
             repository.save(entity);
 
         }

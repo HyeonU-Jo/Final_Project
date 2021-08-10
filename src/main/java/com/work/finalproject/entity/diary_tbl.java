@@ -23,12 +23,16 @@ public class diary_tbl extends BaseEntity{
     @Column(length = 4000, nullable = false)
     private String d_content;
 
+    @Column(length = 500, nullable = true)
+    private String d_image;
+
+
     public void changeTitle(String title){
         this.d_title=title;
     }
     public void changeContent(String content){
         this.d_content=content;
     }
-
+    public void changeImage(String image){this.d_image = image;}
 
 }

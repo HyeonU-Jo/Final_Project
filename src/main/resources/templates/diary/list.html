@@ -39,8 +39,8 @@
                 </div>
                 <input name="keyword" th:value="${pageRequestDTO.keyword}"/>
                 <div id="button-addon4">
-                    <button type="button">찾기</button>
-                    <button type="button">지우기</button>
+                    <button type="button" class="btn-search">찾기</button>
+                    <button type="button" class="btn-clear">지우기</button>
                 </div>
             </div>
         </form>
@@ -91,7 +91,23 @@
             </li>
 
         </ul>
+        <script th:inline="javascript">
+            var msg = [[${msg}]];
+            console.log(msg);
 
+            if(msg){
+                $(".modal").modal();
+            }
+            var searchForm = $("#searchForm");
+
+            $('.btn-search').click(function(e){
+                searchForm.submit();
+            });
+
+            $('.btn-clear').click(function(e){
+                searchForm.empty().submit();
+            });
+        </script>
 
     </div>
 </div>
