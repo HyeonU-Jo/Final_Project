@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="setHead(head)"></th:block>
+<th:block th:fragment="setFoot(foot)"></th:block>
+<th:block th:fragment="setCss(css)"></th:block>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 </head>
 <body>
+<!--header영역-->
+<th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
+<div class="section">
+    <!--content영역-->
+    <div class="content">
+        <h2>글작성</h2>
+        <form th:action="@{/diary/register}" th:method="post">
+            <div>
+                <span>제 목</span>
+                <input type="text" name="d_title">
+            </div>
+            <div>
+                <span  >작성자</span>
+                <input type="text" name="d_username">
+            </div>
+            <div>
+
+                <textarea  rows="20" name="d_content" placeholder="내용을 입력하세요."></textarea>
+            </div>
+
+            <button  type="submit">작성하기</button>
+            <button  type="reset">다시쓰기</button>
+            <button  type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>
+        </form>
+    </div>
+    <!--content영역끝-->
+</div>
+
+
+<!--footer영역-->
+<th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 </body>
 </html>
