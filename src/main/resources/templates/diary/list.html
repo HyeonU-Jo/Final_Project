@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <link rel="stylesheet" th:href="@{/dist/css/diary.css}">
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 </head>
 <body>
@@ -15,7 +15,7 @@
 
 
 <div class="section">
-    <div class="content">
+    <div class="diary_content">
         <!--글등록-->
         <h1>My travel diary
             <span>
