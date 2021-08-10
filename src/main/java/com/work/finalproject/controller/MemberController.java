@@ -94,10 +94,7 @@ public class MemberController {
         return "/member/mypage_myinfo";
     }
 
-    @GetMapping("/myPage_bucketList")
-    public void myPage_bucketList() {
 
-    }
 
     @GetMapping("/myPage_traveledList")
     public void myPage_traveledList() {
@@ -105,7 +102,14 @@ public class MemberController {
     }
 
     @GetMapping("/myPage")
-    public String myPage(LikeDTO likeDTO, Model model) {
+    public String myPage() {
+
+
+        return "/member/myPage";
+
+    }
+    @GetMapping("/myPage_bucketList")
+    public String myPage_bucketList(LikeDTO likeDTO, Model model){
         likeDTO.setUsername("2");
         List<LikeDTO>likeDTOS = likeService.likeList(likeDTO);
         PublicAPI api = new PublicAPI();
@@ -119,9 +123,7 @@ public class MemberController {
             }
         }
         model.addAttribute("likeList", xmlDTOS);
-
-        return "/member/myPage";
-
+        return "/member/myPage_bucketList";
     }
 
 
@@ -247,7 +249,6 @@ public class MemberController {
     public String deleteLike(LikeDTO dto){
         dto.setUsername("2");
         likeService.deleteLike(dto);
-        
         return dto.getContent_id();
     }
 

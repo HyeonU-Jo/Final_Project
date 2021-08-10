@@ -19,10 +19,10 @@
         <span>사용자이름</span>
         <a th:href="@{/member/updateForm}">회원정보수정</a>
     </div>
-    <div class="myPageLikeList">
+    <table class="myPageLikeList">
         <span>찜목록</span>
-        <hr>
-        <div>
+
+
             <th:block th:each="list : ${likeList}">
                 <tr th:id="${list.content_id}">
                     <td><img th:src="${list.firstimage}" width="50" height="50"></td>
@@ -32,9 +32,9 @@
                     </td>
                 </tr>
             </th:block>
-        </div>
 
-    </div>
+
+    </table>
 </section>
 
 <!--Footer-->
