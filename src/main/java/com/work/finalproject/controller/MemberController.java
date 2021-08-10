@@ -94,10 +94,14 @@ public class MemberController {
         return "/member/mypage_myinfo";
     }
 
-    @GetMapping("/mypage_like")
-    public String mypage_like(Model model) {
+    @GetMapping("/myPage_bucketList")
+    public void myPage_bucketList() {
 
-        return "/member/mypage_like";
+    }
+
+    @GetMapping("/myPage_traveledList")
+    public void myPage_traveledList() {
+
     }
 
     @GetMapping("/myPage")
@@ -119,6 +123,8 @@ public class MemberController {
         return "/member/myPage";
 
     }
+
+
 
 
     //유저페이지 (테스트용)

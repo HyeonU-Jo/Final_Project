@@ -13,4 +13,5 @@ public class LikeDTO {
     private int no;
     private String content_id;
     private String username;
+    private String like_type;
 }

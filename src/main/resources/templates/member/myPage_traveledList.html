@@ -21,14 +21,19 @@
     </div>
     <div class="myPageLikeList">
         <span>찜목록</span>
-        <ul class="myPageBtn">
-            <li>
-                <a th:href="@{/member/myPage_bucketList}">BucketList</a>
-            </li>
-            <li>
-                <a th:href="@{/member/myPage_traveledList}">TraveledList</a>
-            </li>
-        </ul>
+        <hr>
+        <div>
+            <th:block th:each="list : ${likeList}">
+                <tr th:id="${list.content_id}">
+                    <td><img th:src="${list.firstimage}" width="50" height="50"></td>
+                    <td th:text="${list.title}"></td>
+                    <td>
+                        <button type="button" th:attr="onclick=|deleteLike('${list.content_id}')|">삭제</button>
+                    </td>
+                </tr>
+            </th:block>
+        </div>
+
     </div>
 </section>
 
