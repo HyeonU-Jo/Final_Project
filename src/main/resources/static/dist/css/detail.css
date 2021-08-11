@@ -1,0 +1,14 @@
+.realDetailLike i:hover {
+    transform: scale(1.5) rotate(1turn);
+    transition: 0.5s;
+}
+
+.realDetailLike {
+    display: flex;
+}
+
+.realDetailLike > div{
+    display: flex;
+    flex-direction: column;
+    margin: 0 5px;
+}
