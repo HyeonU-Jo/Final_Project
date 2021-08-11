@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
 <th:block th:fragment="setCss(css)"></th:block>
@@ -64,8 +65,9 @@
             </li>
         </ul>
 
-
+        <div sec:authorize="hasRole('ADMIN')">
         <button class="notice_list_btn" type="button" th:onclick="|location.href='/notice/register'|">글쓰기</button>
+        </div>
     </div>
 
 
