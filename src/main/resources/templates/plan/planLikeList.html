@@ -23,7 +23,7 @@
 
 <tr th:each="like:${likeList}">
     <td>
-        <input type="checkbox" name="likeList" id="likeList" th:value="${like.content_id}"
+        <input type="checkbox" name="likeList" class="likeList" id="likeList" th:value="${like.content_id}"
                onclick="getCheckBoxValue(); getParentText();"/>
         <img th:src="${like.firstimage}" th:width="50px" th:height="50px">
         <span th:text="${like.title}"></span>
