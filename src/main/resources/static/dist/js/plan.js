@@ -109,7 +109,7 @@ $(document).ready(function(){
             url: "/plan/plan",
             type: "GET",
             data: data,
-            success: function setParentText() {
+            success: function () {
                 const obj_length = document.getElementsByName("likeList").length;
                 let listTest = [];
                 for (let i = 0; i < obj_length; i++) {
@@ -117,7 +117,6 @@ $(document).ready(function(){
                         listTest += document.getElementsByName("likeList")[i].value + " ";
                     }
                 }
-
                 opener.document.getElementById(getParam("id")).innerText = listTest.toString();
                 window.close();
             },
