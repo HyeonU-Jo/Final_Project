@@ -23,7 +23,6 @@ function createDiv(sDay, eDay) {
         newDivList.id = "result"
 
         const newBtn = document.createElement('button');
-        newBtn.id = "planbtn";
         newBtn.innerText = "+";
 
         const newBr = document.createElement('br');
@@ -93,36 +92,45 @@ function getParam(sname) {
     return sval;
 }
 
-$('#planbtn').on('click', function () {
-    let data = {
-        p_sday: document.getElementById('p_sday').value,
-        p_eday: document.getElementById('p_eday').value,
-        username: document.getElementById('username').value,
-        content_id: document.getElementById('content_id').value,
-        p_cday: document.getElementById('p_cday').value
-    }
-    $.ajax({
-        url: "/save/planlikesave",
-        type: "GET",
-        data: data,
-        success: function setParentText() {
-            const obj_length = document.getElementsByName("likeList").length;
-            let listTest = [];
-            for (let i = 0; i < obj_length; i++) {
-                if (document.getElementsByName("likeList")[i].checked == true) {
-                    listTest += document.getElementsByName("likeList")[i].value + " ";
+// 혹시 잠시만요
 
-                }
-            }
-            opener.document.getElementById(getParam("id")).innerText = listTest.toString();
+$(document).ready(function(){
+    $('#planbtn').on('click', function () {
 
 
-        },
-        error: function () {
-            alert("ajax 에러 떴다.");
+        let data = {
+            p_sday: document.getElementById('sDay').value,
+            p_eday: document.getElementById('eDay').value,
+            username: document.getElementById('username').value,
+            content_id: document.getElementById('result').value,
+            p_cday: document.getElementById('cDay').value
         }
+        $.ajax({
+            url: "/plan/plan",
+            type: "GET",
+            data: data,
+            success: function setParentText() {
+                const obj_length = document.getElementsByName("likeList").length;
+                let listTest = [];
+                for (let i = 0; i < obj_length; i++) {
+                    if (document.getElementsByName("likeList")[i].checked == true) {
+                        listTest += document.getElementsByName("likeList")[i].value + " ";
+                    }
+                }
+
+                opener.document.getElementById(getParam("id")).innerText = listTest.toString();
+                window.close();
+            },
+            error: function () {
+                alert("ajax 에러 떴다.");
+            }
+        });
     });
+
+
 });
+
+
 /**부모창으로 값 전달**/
 
 /*
