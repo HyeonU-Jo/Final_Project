@@ -136,7 +136,7 @@ public class LikeServiceImpl implements LikeService {
     @Override
     public void deleteLike(LikeDTO dto){
         System.out.println(dto.getLike_type() + "Ssssssssssssssssssssssssss");
-        dto.setLike_type("1");
+
         likeRepository.deleteByContent_idAndUsername(dto.getContent_id(), dto.getUsername(), dto.getLike_type());
     }
 

@@ -24,6 +24,7 @@
         <hr>
         <div>
             <th:block th:each="list : ${likeList}">
+                <table>
                 <tr th:id="${list.content_id}">
                     <td><img th:src="${list.firstimage}" width="50" height="50"></td>
                     <td th:text="${list.title}"></td>
@@ -31,6 +32,7 @@
                         <button type="button" th:attr="onclick=|deleteLike('${list.content_id}')|">삭제</button>
                     </td>
                 </tr>
+                </table>
             </th:block>
         </div>
 
@@ -49,7 +51,7 @@
         if (conf == true) {
             $.ajax({
                 url: "/member/deleteLike",
-                data: "content_id=" + content_id,
+                data: "content_id=" + content_id + "&like_type=2",
                 type: "POST",
                 success: function (data) {
                     let abc = document.getElementById(data);
