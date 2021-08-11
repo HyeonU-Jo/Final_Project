@@ -27,7 +27,7 @@ public class plan_tbl {
     @Column(length=10, nullable = false)
     private String p_cday;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 100, nullable = false)
     private String content_id;
 
 }

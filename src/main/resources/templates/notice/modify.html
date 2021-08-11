@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" c>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
 <th:block th:fragment="setCss(css)"></th:block>
@@ -41,10 +42,12 @@
             </div>
 
         </form>
-
+        <div sec:authorize="hasRole('ADMIN')">
         <button type="button" class="modifyBtn notice_modify_btn">수정</button>
         <button type="button" class="listBtn notice_modify_btn">목록</button>
         <button type="button" class="removeBtn notice_modify_btn">삭제</button>
+        </div>
+
         <script th:inline="javascript">
             var actionForm = $("form"); //form 태그 객체
 

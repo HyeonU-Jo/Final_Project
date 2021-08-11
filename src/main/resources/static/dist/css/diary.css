@@ -1,35 +1,37 @@
 .section {
     text-align: center;
-    width: 70%;
+    width: 55%;
     margin: auto;
 }
 
 .diary_content {
     min-height: 500px;
-    width: 100%;
-    float: left;
+    width: 80%;
     margin-top: 100px;
     text-align: center;
-
 }
-.diary_list_search{
+
+
+/*listCSS*/
+.diary_list_search {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     margin: 16px;
 }
 
-.diary_list_table{
+.diary_list_table {
     text-align: center;
     width: 100%;
 }
 
-.diary_list_h1{
+.diary_list_h1 {
     display: flex;
     justify-content: space-between;
     margin: 60px 0px;
 }
-.diary_list_span{
+
+.diary_list_span {
     font-size: 19px;
     height: 100%;
     margin: 10px;
@@ -53,4 +55,17 @@
 .diary_list_ul > li > a {
     display: inline-block;
     padding: 10px;
+}
+
+.diary_list_p {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 641px;
+    margin: auto;
+}
+
+.diary_list_td {
+    padding: 18px;
 }

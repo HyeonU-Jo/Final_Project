@@ -29,7 +29,7 @@
         <form action="/diary/list" method="get" id="searchForm">
             <div class="diary_list_search">
                 <input type="hidden" name="page" value="1">
-                <div >
+                <div>
                     <select name="type">
                         <option th:selected="${pageRequestDTO.type == null}">-------</option>
                         <option value="t" th:selected="${pageRequestDTO.type =='t'}">제목</option>
@@ -38,28 +38,30 @@
                     </select>
                 </div>
                 <input name="keyword" th:value="${pageRequestDTO.keyword}"/>
-                <div id="button-addon4">
-                    <button type="button" class="btn-search">찾기</button>
-                    <button type="button" class="btn-clear">지우기</button>
-                </div>
+
+                <span>
+                    <button type="button" class="btn-search">찾 기</button>
+                    <button type="button" class="btn-clear">찾기 취소</button>
+                </span>
             </div>
         </form>
-        <!--목록-->
-        <table class="diary_list_table">
 
+        <table class="diary_list_table">
             <div>
-            <tr th:each="dto : ${result.dtoList}">
-                <th scope="row">
-                    <a th:href="@{/diary/read(dno = ${dto.dno},
+                <tr th:each="dto : ${result.dtoList}">
+                    <th scope="row">
+                        <a class="diary_list_a" th:href="@{/diary/read(dno = ${dto.dno},
                     page= ${result.page},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}">
-                        [[${dto.dno}]]
-                    </a>
-                </th>
-                <td>[[${dto.d_title}]]</td>
-                <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
-            </tr>
+                            [[${dto.dno}]]
+                        </a>
+                    </th>
+                    <td class="diary_list_td">[[${dto.d_title}]]<br>
+                        <p class="diary_list_p">[[${dto.d_content}]]</p>
+                        [[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]
+                    </td>
+                </tr>
             </div>
         </table>
 
@@ -89,16 +91,16 @@
             var msg = [[${msg}]];
             console.log(msg);
 
-            if(msg){
+            if (msg) {
                 $(".modal").modal();
             }
             var searchForm = $("#searchForm");
 
-            $('.btn-search').click(function(e){
+            $('.btn-search').click(function (e) {
                 searchForm.submit();
             });
 
-            $('.btn-clear').click(function(e){
+            $('.btn-clear').click(function (e) {
                 searchForm.empty().submit();
             });
         </script>

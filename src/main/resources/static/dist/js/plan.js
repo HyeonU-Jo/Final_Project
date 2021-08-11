@@ -78,12 +78,6 @@ function getCheckBoxValue() {
 */
 
 
-/*
-    document.getElementById("result").value = result;
-    document.getElementById("cDay").value = getParam("id");
-}
-*/
-
 
 /*동일 아이디값의 밸류 가져오기*/
 function stealName() {
@@ -107,15 +101,31 @@ function getParam(sname) {
 
 // 혹시 잠시만요
 
-/**선택목록저장하기 2실패..**/
+/**선택목록저장하기 성공..**/
 function getCheckBoxValue() {
     let result = []; //배열초기화
     $("input[name='likeList']:checked").each(function () {
         result.push(this.value);
-        console.log(result.toString());
+        document.getElementById("result").value = result;
+        document.getElementById("cDay").value = getParam("id");
     });
-}
 
+}
+/*function getCheckBoxValue() {
+    // 선택된 목록 가져오기
+
+    const query = 'input[name="likeList"]:checked';
+    const selectedEls = document.querySelectorAll(query);
+    // 선택된 목록에서 value 찾기
+    let result = [];
+    selectedEls.forEach((el) => {
+        result += el.value;
+    });
+    console.log(result.toString());
+/!*
+    document.getElementById("result").value = result;
+    document.getElementById("cDay").value = getParam("id");*!/
+}*/
 $(document).ready(function () {
     $('#planbtn').on('click', function () {
         let data = {
