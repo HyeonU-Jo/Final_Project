@@ -6,6 +6,9 @@ let index= {
         $("#btn-update").on("click", ()=>{
             this.update();
         });
+        $("#btn-delete").on("click", ()=>{
+            this.deleteById();
+        });
     },
 
     save: function () {
@@ -37,7 +40,7 @@ let index= {
 
     update: function () {
         let data = {
-            num: $("#num").val(),
+            id: $("#id").val(),
             username: $("#username").val(),
             email: $("#email").val(),
             name: $("#name").val(),
@@ -58,7 +61,20 @@ let index= {
         });   //ajax통신을 이용해서 데이터를 json으로 변경하여 insert요청
     },
 
+    deleteById: function () {
+        let id = $("#id").val();
 
+        $.ajax({
+            type: "DELETE",
+            url: "/auth/member/"+id,
+            dataType: "json"
+        }).done(function (resp) {
+            alert("회원 탈퇴가 완료되었습니다.");
+                location.href = "/logout";
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+    },
 }
 
 index.init();
