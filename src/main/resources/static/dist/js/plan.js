@@ -61,11 +61,9 @@ function createDiv(sDay, eDay) {
 
 /**선택목록저장하기**/
 function getCheckBoxValue() {
-
     // 선택된 목록 가져오기
     const query = 'input[name="likeList"]:checked';
     const selectedEls = document.querySelectorAll(query);
-
     // 선택된 목록에서 value 찾기
     let result = '';
     selectedEls.forEach((el) => {
@@ -95,7 +93,7 @@ function getParam(sname) {
     return sval;
 }
 
-/*$('#planbtn').on('click', function () {
+$('#planbtn').on('click', function () {
     let data = {
         p_sday: document.getElementById('p_sday').value,
         p_eday: document.getElementById('p_eday').value,
@@ -124,9 +122,10 @@ function getParam(sname) {
             alert("ajax 에러 떴다.");
         }
     });
-});*/
+});
 /**부모창으로 값 전달**/
 
+/*
 function setParentText() {
     const obj_length = document.getElementsByName("likeList").length;
     let listTest = [];
@@ -136,30 +135,12 @@ function setParentText() {
             window.close();
         }
     }
-    $('#planbtn').on('click', function () {
-        let data = {
-            p_sday: document.getElementById('p_sday').value,
-            p_eday: document.getElementById('p_eday').value,
-            username: document.getElementById('username').value,
-            content_id: document.getElementById('content_id').value,
-            p_cday: document.getElementById('p_cday').value
-        }
-        $.ajax({
-            url: "/save/planlikesave",
-            type: "GET",
-            data: data,
-            success: function () {
-
-                opener.document.getElementById(getParam("id")).innerText = listTest.toString();
-                window.close();
-
-            },
-            error: function () {
-                alert("ajax 에러 떴다.");
-            }
-        });
-    });
+    document.getElementById(getParam("id")).innerText = listTest.toString();
+    window.close();
 }
+*/
+
+
 
 /**달력**/
 function datePickerSet(sDate, eDate, flag) {

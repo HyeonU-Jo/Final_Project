@@ -37,35 +37,13 @@
         <input type="text" id="username" name="username" value="username"><br/>
         <input type="text" id="result" name="content_id" value=""/><br/>
         <input type="text" id="cDay" name="p_cday" value=""><br/>
-        <button id="planbtn2" onclick="setParentText()">등록하기</button>
+        <button onclick="setParentText()">등록하기</button>
     </form>
 <tr>
     <td>
         <th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
     </td>
 </tr>
-<script>
-  /*  $('#planbtn').on('click', function () {
-        let data = {
-            p_sday: document.getElementById('p_sday').value,
-            p_eday: document.getElementById('p_eday').value,
-            username: document.getElementById('username').value,
-            content_id: document.getElementById('content_id').value,
-            p_cday: document.getElementById('p_cday').value
-        }
-        $.ajax({
-            url: "/save/planlikesave",
-            type: "POST",
-            data: data,
-            success: function(data){
-                $('#planbtn').text(data);
-            },
-            error: function () {
-                alert("ajax 에러 떴다.");
-            }
-        });
-    });*/
 
-</script>
 </body>
 </html>
