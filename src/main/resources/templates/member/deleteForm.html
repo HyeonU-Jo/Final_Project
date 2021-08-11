@@ -1,0 +1,24 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+
+
+<body>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<form>
+<input type="hidden" id="id" th:value="${#authentication.principal.member_tbl.id}">
+</form>
+
+-경고-
+회원 탈퇴 시 게시글 및 댓글을 제외한 모든 정보가 삭제되며 다시 복구할 수 없습니다.
+회원 탈퇴버튼을 누르면 회원 탈퇴가 진행됩니다.
+
+
+<div class="input-box">
+    <input type="button" id="btn-delete" value="회원탈퇴">
+</div>
+
+</body>
+<script th:src="@{/dist/js/user.js}"></script>
+
+</html>
