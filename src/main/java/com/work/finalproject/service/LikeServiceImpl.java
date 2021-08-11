@@ -25,12 +25,13 @@ public class LikeServiceImpl implements LikeService {
 
     @Override
     public List<LikeDTO> likeList(LikeDTO likeDTO){
-        List<like_tbl> like = likeRepository.findByUsername(likeDTO.getUsername());
+        List<like_tbl> like = likeRepository.findByUsername(likeDTO.getUsername(), likeDTO.getLike_type());
         List<LikeDTO> likeList = new ArrayList<>();
         for(int i = 0; i<like.size(); i++){
             LikeDTO likeDTO1 = new LikeDTO();
             likeDTO1.setContent_id(like.get(i).getContent_id());
             likeDTO1.setUsername(like.get(i).getUsername());
+            likeDTO1.setLike_type(like.get(i).getLike_type());
             likeList.add(likeDTO1);
         }
         return likeList;

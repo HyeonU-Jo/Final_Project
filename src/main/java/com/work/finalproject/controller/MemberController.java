@@ -97,8 +97,23 @@ public class MemberController {
 
 
     @GetMapping("/myPage_traveledList")
-    public void myPage_traveledList() {
+    public String myPage_traveledList(LikeDTO likeDTO, Model model) {
 
+        likeDTO.setUsername("2");
+        List<LikeDTO>likeDTOS = likeService.likeList(likeDTO);
+        PublicAPI api = new PublicAPI();
+        List<XmlDTO> xmlDTOS = new ArrayList<>();
+        for (int i = 0; i<likeDTOS.size(); i++){
+            try {
+                XmlDTO xmlDTO = api.detail(likeDTOS.get(i).getContent_id(), "");
+                xmlDTOS.add(xmlDTO);
+            }catch (Exception e){
+                e.getMessage();
+            }
+        }
+        model.addAttribute("likeList", xmlDTOS);
+
+        return "/member/myPage_traveledList";
     }
 
     @GetMapping("/myPage")
