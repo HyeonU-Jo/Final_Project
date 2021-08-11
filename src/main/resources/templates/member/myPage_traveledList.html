@@ -26,7 +26,10 @@
             <th:block th:each="list : ${likeList}">
                 <table>
                 <tr th:id="${list.content_id}">
-                    <td><img th:src="${list.firstimage}" width="50" height="50"></td>
+                    <td><img th:src="${list.firstimage}" width="50" height="50">
+                        <input type="hidden" name="mapx" id="mapx" th:value="${list.mapx}">
+                        <input type="hidden" name="mapy" id="mapy" th:value="${list.mapy}">
+                    </td>
                     <td th:text="${list.title}"></td>
                     <td>
                         <button type="button" th:attr="onclick=|deleteLike('${list.content_id}')|">삭제</button>
@@ -38,7 +41,7 @@
 
     </div>
 </section>
-
+<th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
 <!--Footer-->
 <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 

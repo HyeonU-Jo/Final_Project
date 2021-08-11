@@ -14,29 +14,32 @@
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 <!--Content-->
-<section class="myPageSection">
-    <div class="myPageIntro">
-        <span>사용자이름</span>
-        <a th:href="@{/member/updateForm}">회원정보수정</a>
-    </div>
-    <table class="myPageLikeList">
+<section class="myPageTraveledSection">
+
+<h1>BucketList</h1>
+
+    <table class="myPageTraveledList">
         <span>찜목록</span>
 
 
             <th:block th:each="list : ${likeList}">
                 <tr th:id="${list.content_id}">
-                    <td><img th:src="${list.firstimage}" width="50" height="50"></td>
+                    <td><img th:src="${list.firstimage}" width="50" height="50">
+                        <input type="hidden" name="mapx" id="mapx" th:value="${list.mapx}">
+                        <input type="hidden" name="mapy" id="mapy" th:value="${list.mapy}">
+                    </td>
                     <td th:text="${list.title}"></td>
                     <td>
-                        <button type="button" th:attr="onclick=|deleteLike('${list.content_id}')|">삭제</button>
+                        <button type="button" th:attr="onclick=|deleteLike('${list.content_id}'), |">삭제</button>
                     </td>
                 </tr>
             </th:block>
 
 
     </table>
-</section>
 
+</section>
+<th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
 <!--Footer-->
 <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 
