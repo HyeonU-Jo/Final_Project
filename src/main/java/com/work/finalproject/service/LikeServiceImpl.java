@@ -62,12 +62,14 @@ public class LikeServiceImpl implements LikeService {
         System.out.println("라이크 체크 : " + dto.getContent_id());
 
 
-            if(likeDTOS.isEmpty()){
+            if(likeDTOS.isEmpty()&&dto.getLike_type().equals("1")){
                 return "찜 하기";
+            }else if (likeDTOS.isEmpty()&&dto.getLike_type().equals("2")){
+                return "갔었다";
             }else if(likeDTOS.get(0).getLike_type().equals("1")){
                 return "찜 취소";
             }else if(likeDTOS.get(0).getLike_type().equals("2")){
-                return "찜 취소";
+                return "안갔다";
             }else {
                 return "오류";
             }
@@ -110,10 +112,10 @@ public class LikeServiceImpl implements LikeService {
                 dto.setLike_type("2");
                 like_tbl entity = dtoToEntity(dto);
                 likeRepository.save(entity);
-                return "찜 취소";
+                return "안갔다";
             }else if(likeDTOS.get(0).getLike_type().equals("2")){
                 likeRepository.deleteByContent_idAndUsername(dto.getContent_id(), dto.getUsername(), dto.getLike_type());
-                return "찜 하기";
+                return "갔었다";
             }else {
                 return "오류다";
             }
