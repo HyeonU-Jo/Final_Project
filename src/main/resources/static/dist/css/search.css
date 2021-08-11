@@ -75,8 +75,15 @@
 
 .searchPaging{
     display: flex;
+    font-size: 16px;
+    width: 12%;
     margin: 20px auto;
-    justify-content: center;
+    justify-content: space-around;
+}
+
+.currentPage p{
+    color: #333;
+    font-weight: bold;
 }
 
 .info,

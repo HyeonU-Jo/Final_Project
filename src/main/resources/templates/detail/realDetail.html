@@ -8,6 +8,7 @@
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/dist/css/starCss.css}">
     <link rel="stylesheet" th:href="@{/dist/css/search.css}">
+    <link rel="stylesheet" th:href="@{/dist/css/detail.css}">
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 </head>
 <body>
@@ -93,7 +94,7 @@
                 <input type="hidden" name="mapy" id="mapy" th:value="${dto.mapy}">
                 <input type="hidden" id="title" th:value="${dto.title}">
                 <div id="map"></div>
-                
+
             </td>
         </tr>
     </div>
