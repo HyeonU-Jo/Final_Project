@@ -63,13 +63,13 @@ public class LikeServiceImpl implements LikeService {
 
 
             if(likeDTOS.isEmpty()&&dto.getLike_type().equals("1")){
-                return "찜 하기";
+                return "far fa-star";
             }else if (likeDTOS.isEmpty()&&dto.getLike_type().equals("2")){
-                return "갔었다";
+                return "far fa-star";
             }else if(likeDTOS.get(0).getLike_type().equals("1")){
-                return "찜 취소";
+                return "fas fa-star";
             }else if(likeDTOS.get(0).getLike_type().equals("2")){
-                return "안갔다";
+                return "fas fa-star";
             }else {
                 return "오류";
             }
@@ -96,10 +96,10 @@ public class LikeServiceImpl implements LikeService {
                 dto.setLike_type("1");
                 like_tbl entity = dtoToEntity(dto);
                 likeRepository.save(entity);
-                return "찜 취소";
+                return "fas fa-star";
             }else if(likeDTOS.get(0).getLike_type().equals("1")){
                 likeRepository.deleteByContent_idAndUsername(dto.getContent_id(), dto.getUsername(), dto.getLike_type());
-                return "찜 하기";
+                return "far fa-star";
             }else {
                 return "오류다";
             }
@@ -112,10 +112,10 @@ public class LikeServiceImpl implements LikeService {
                 dto.setLike_type("2");
                 like_tbl entity = dtoToEntity(dto);
                 likeRepository.save(entity);
-                return "안갔다";
+                return "fas fa-star";
             }else if(likeDTOS.get(0).getLike_type().equals("2")){
                 likeRepository.deleteByContent_idAndUsername(dto.getContent_id(), dto.getUsername(), dto.getLike_type());
-                return "갔었다";
+                return "far fa-star";
             }else {
                 return "오류다";
             }

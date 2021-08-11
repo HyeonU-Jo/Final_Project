@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
 <th:block th:fragment="setCss(css)"></th:block>
@@ -25,13 +25,14 @@
                 <td th:text="${dto.title}" style="border-right: none"></td>
                 <td style="border: none">
                     <div style="float: right">
-                    <button id="btn1">[[${like}]]</button>
-                    <button id="btn2">[[${like2}]]</button>
+                    <i th:class="${like}" id="btn1"></i>
+                    <i th:class="${like2}" id="btn2"></i>
                     <a th:href="@{/detail/writeReview(content_id=${dto.content_id}, contentType=${dto.contentType}, title=${dto.title}, firstimage=${dto.firstimage2})}">
-                        <button type="button">리뷰작성</button>
+                        <th:block>
+                        <button type="button" sec:authorize="isAuthenticated()" th:if="${#authentication.principal.member_tbl.username} != null">리뷰작성</button>
+                        </th:block>
                     </a>
                         <input type="hidden" id="content_id" th:value="${dto.content_id}">
-                        [[${dto.content_id}]]
                     </div>
                 </td>
             </tr>
@@ -144,7 +145,7 @@
             type : "POST",
             data : form,
             success: function(data){
-                $('#btn1').text(data);
+                document.getElementById('btn1').className = data
             },
             error: function (){
                 alert("ajax 에러 떴다.");
@@ -163,7 +164,7 @@
             type : "POST",
             data : form,
             success: function(data){
-                $('#btn2').text(data);
+                document.getElementById('btn2').className = data
             },
             error: function (){
                 alert("ajax 에러 떴다.");
