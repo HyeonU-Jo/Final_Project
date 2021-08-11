@@ -1,4 +1,6 @@
-*{
+/*MYPAGE*/
+
+* {
     text-decoration: none;
 }
 
@@ -32,7 +34,7 @@
     line-height: 20px;
 }
 
-.myPageSection{
+.myPageSection {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -44,20 +46,20 @@
     margin: 10% auto;
 }
 
-.myPageIntro{
+.myPageIntro {
     border-radius: 10px 10px 0px 0px;
     background: url(https://d2rlq84xifqisi.cloudfront.net/images/mypagePatternResize.2e73487f09488acbeb2d.jpg);
     background-size: 30%;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     align-items: center;
 }
 
-.myPageIntro > *{
+.myPageIntro > * {
     margin: 3%;
 }
 
-.myPageIntro .cover{
+.myPageIntro .cover {
     display: block;
     border-radius: 50%;
     display: flex;
@@ -67,12 +69,12 @@
     overflow: hidden;
 }
 
-.myPageIntro .profile{
+.myPageIntro .profile {
     position: relative;
     z-index: 1;
-    background-color: rgb(0 0 0 / 21%);
+    background-color: rgba(0, 0, 0, 0.2);
     background-size: cover;
-    border-radius:50%;
+    border-radius: 50%;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -80,24 +82,97 @@
     font-size: 20px;
 }
 
-.myPageLike{
+.myPageLike {
     margin: 0 auto;
     width: 100%;
     display: flex;
     justify-content: space-around;
 }
 
-.myPageLike a{
+.myPageLike a {
     margin: 7%;
     margin-bottom: 5%;
 }
 
-.myPageLike img{
+.myPageLike img {
     width: 100%;
     border-radius: 10px;
 }
 
-.myPageLike img:hover{
+.myPageLike img:hover {
     transform: scale(1.03);
     transition: 0.2s
+}
+
+/*MYPAGE_TRAVELED*/
+
+.myPageTraveledSection {
+    width: 50%;
+    height: auto;
+    border: solid 1px;
+    border-radius: 10px;
+    border-color: #e1e1e1;
+    margin: 10% 10%;
+}
+
+.myPageTraveledSection h1 {
+    text-align: center;
+    margin: 3%;
+}
+
+.myPageTraveledList {
+    width: 90%;
+    margin: 5% 5%;
+}
+
+.myPageTraveledList img {
+    width: 100px;
+    height: 100px;
+}
+
+.myPageTraveledList ul {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.myPageTraveledList ul:nth-child(odd) {
+    background-color: #f5f5f5;
+}
+
+.myPageTraveledList ul:nth-child(even) {
+    background-color: #e3e3e3;
+}
+
+.myPageTraveledList li {
+    display: flex;
+    margin: 10px auto;
+}
+
+.myPageTraveledList li:first-child {
+    width: auto;
+    height: auto;
+    margin-left: 10px;
+}
+
+.myPageTraveledList li:nth-child(2) {
+    justify-content: center;
+    width: 50%;
+}
+
+.myPageTraveledList li:last-child {
+    width: 50px;
+    height: 50px;
+}
+
+.myPageTraveledList li > button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(0,0,0, 0.1);
+}
+
+.myPageTraveledList li > button:hover{
+    transform: scale(1.05);
 }

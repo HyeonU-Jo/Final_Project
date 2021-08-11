@@ -37,7 +37,7 @@
             for (var i = 0; i<sizze; i++){
                 mmapx[i] = document.getElementsByName('mapx')[i].value;
                 mmapy[i] = document.getElementsByName('mapy')[i].value;
-                /*title[i] = document.getElementsByName('title')[i].value;*/
+                title[i] = document.getElementsByName('title')[i].value;
 
             }
 
@@ -62,7 +62,7 @@
             let map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
             for (let i = 0; i <sizze; i++){
-                positions[i] = {content : '<div>'+i+'</div>',
+                positions[i] = {content : '<div>'+ title[i].value +'</div>',
                    latlng: new kakao.maps.LatLng(Number(mmapy[i]), Number(mmapx[i]))
                }
 

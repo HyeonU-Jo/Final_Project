@@ -16,27 +16,27 @@
 <!--Content-->
 <section class="myPageTraveledSection">
 
-<h1>BucketList</h1>
+    <h1>BucketList</h1>
 
-    <table class="myPageTraveledList">
-        <span>찜목록</span>
+    <div class="myPageTraveledList">
+        <th:block th:each="list : ${likeList}">
+            <ul th:id="${list.content_id}">
+                <li><img th:src="${list.firstimage}" width="50" height="50">
+                    <input type="hidden" name="mapx" id="mapx" th:value="${list.mapx}">
+                    <input type="hidden" name="mapy" id="mapy" th:value="${list.mapy}">
+                    <input type="hidden" name="title" id="title" th:value="${list.title}">
+                </li>
+                <li th:text="${list.title}"></li>
+                <li>
+                    <button type="button" th:attr="onclick=|deleteLike('${list.content_id}')|">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </li>
+            </ul>
+        </th:block>
 
 
-            <th:block th:each="list : ${likeList}">
-                <tr th:id="${list.content_id}">
-                    <td><img th:src="${list.firstimage}" width="50" height="50">
-                        <input type="hidden" name="mapx" id="mapx" th:value="${list.mapx}">
-                        <input type="hidden" name="mapy" id="mapy" th:value="${list.mapy}">
-                    </td>
-                    <td th:text="${list.title}"></td>
-                    <td>
-                        <button type="button" th:attr="onclick=|deleteLike('${list.content_id}'), |">삭제</button>
-                    </td>
-                </tr>
-            </th:block>
-
-
-    </table>
+    </div>
 
 </section>
 <th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
