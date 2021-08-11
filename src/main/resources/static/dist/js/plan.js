@@ -59,8 +59,11 @@ function createDiv(sDay, eDay) {
 
 
 /**선택목록저장하기**/
+
+/*
 function getCheckBoxValue() {
     // 선택된 목록 가져오기
+
     const query = 'input[name="likeList"]:checked';
     const selectedEls = document.querySelectorAll(query);
     // 선택된 목록에서 value 찾기
@@ -68,9 +71,19 @@ function getCheckBoxValue() {
     selectedEls.forEach((el) => {
         result += el.value + ' ';
     });
+
     document.getElementById("result").value = result;
     document.getElementById("cDay").value = getParam("id");
 }
+*/
+
+
+/*
+    document.getElementById("result").value = result;
+    document.getElementById("cDay").value = getParam("id");
+}
+*/
+
 
 /*동일 아이디값의 밸류 가져오기*/
 function stealName() {
@@ -94,10 +107,17 @@ function getParam(sname) {
 
 // 혹시 잠시만요
 
-$(document).ready(function(){
+/**선택목록저장하기 2실패..**/
+function getCheckBoxValue() {
+    let result = []; //배열초기화
+    $("input[name='likeList']:checked").each(function () {
+        result.push(this.value);
+        console.log(result.toString());
+    });
+}
+
+$(document).ready(function () {
     $('#planbtn').on('click', function () {
-
-
         let data = {
             p_sday: document.getElementById('sDay').value,
             p_eday: document.getElementById('eDay').value,
@@ -125,8 +145,6 @@ $(document).ready(function(){
             }
         });
     });
-
-
 });
 
 
@@ -146,7 +164,6 @@ function setParentText() {
     window.close();
 }
 */
-
 
 
 /**달력**/

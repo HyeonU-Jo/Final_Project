@@ -24,14 +24,22 @@
                 <td>이름</td>
                 <td th:text="${dto.title}" style="border-right: none"></td>
                 <td style="border: none">
-                    <div style="float: right">
-                    <i th:class="${like}" id="btn1"></i>
-                    <i th:class="${like2}" id="btn2"></i>
-                    <a th:href="@{/detail/writeReview(content_id=${dto.content_id}, contentType=${dto.contentType}, title=${dto.title}, firstimage=${dto.firstimage2})}">
-                        <th:block>
-                        <button type="button" sec:authorize="isAuthenticated()" th:if="${#authentication.principal.member_tbl.username} != null">리뷰작성</button>
-                        </th:block>
-                    </a>
+                    <div class="realDetailLike" style="float: right">
+                        <div>
+                            <i th:class="${like}" id="btn1"></i>
+                            <span>Bucket!</span>
+                        </div>
+                        <div>
+                            <i th:class="${like2}" id="btn2"></i>
+                            <span>Traveled!</span>
+                        </div>
+                        <a th:href="@{/detail/writeReview(content_id=${dto.content_id}, contentType=${dto.contentType}, title=${dto.title}, firstimage=${dto.firstimage2})}">
+                            <th:block>
+                                <button type="button" sec:authorize="isAuthenticated()"
+                                        th:if="${#authentication.principal.member_tbl.username} != null">리뷰작성
+                                </button>
+                            </th:block>
+                        </a>
                         <input type="hidden" id="content_id" th:value="${dto.content_id}">
                     </div>
                 </td>
@@ -58,20 +66,18 @@
 
         <table class="review" border="1">
             <tr>
-                <td>번호</td>
-                <td>컨텐츠아이디</td>
+                <td>아이디</td>
                 <td>내용</td>
                 <td>평점</td>
             </tr>
             <tr th:each="list : ${reviewList}">
-                <td th:text="${list.r_num}"></td>
-                <td th:text="${list.content_id}"></td>
+                <td th:text="${list.username}"></td>
                 <td th:text="${list.r_content}"></td>
                 <td th:text="${list.r_rating}"></td>
                 <!--<td><img th:src="@{file:///C:/upload/test/}+${list.image}"></td> -->
                 <td><img th:src="@{/detail/download(image=${list.image})}" width="120" height="120"></td>
                 <td>
-                    <a th:href="@{/detail/modifyReview(r_num = ${list.r_num}, content_id = ${list.content_id}, contentType = ${dto.contentType}, firstimage2 = ${dto.firstimage2})}">
+                    <a sec:authorize="isAuthenticated()" th:if="${#authentication.principal.member_tbl.username} == ${list.username}" th:href="@{/detail/modifyReview(r_num = ${list.r_num}, content_id = ${list.content_id}, contentType = ${dto.contentType}, firstimage2 = ${dto.firstimage2})}">
                         <button type="button">수정</button>
                     </a>
                 </td>

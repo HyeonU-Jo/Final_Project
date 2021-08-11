@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
 <th:block th:fragment="setCss(css)"></th:block>
@@ -26,6 +26,8 @@
                         <input type="hidden" id="content_id" name="content_id" th:value="${dto.content_id}">
                         <input type="hidden" name="contentType" th:value="${dto.contentType}">
                         <input type="hidden" id="title" th:value="${dto.title}">
+                        <input sec:authorize="isAuthenticated()" type="hidden" name="username" id="username" th:value="${#authentication.principal.member_tbl.username}">
+<!--                        <input sec:authorize="isAuthenticated()" type="text" th:value="${#authentication.principal.member_tbl.username}">-->
                     </td>
                 </tr>
                 <tr>

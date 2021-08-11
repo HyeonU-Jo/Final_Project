@@ -84,19 +84,6 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
 
-    @Override
-    public PageResultDTO<ReviewDTO, review_tbl> rlist2(PageRequestDTO requestDTO) {
-        Pageable pageable = requestDTO.getPageable(Sort.by("r_num"));
-
-        BooleanBuilder booleanBuilder = getSearch(requestDTO);
-
-        Page<review_tbl> result = repository.findAll(booleanBuilder, pageable);
-        Function<review_tbl, ReviewDTO> fn = (entity -> EntityToReview(entity));
-
-
-
-        return new PageResultDTO<>(result, fn);
-    }
 
     @Override
     public List<ReviewDTO> reviewList(String content_id) {
@@ -110,6 +97,7 @@ public class ReviewServiceImpl implements ReviewService{
             dto.setR_content(list.get(i).getR_content());
             dto.setR_rating(list.get(i).getR_rating());
             dto.setImage(list.get(i).getImage());
+            dto.setUsername(list.get(i).getUsername());
             dtoList.add(dto);
         }
 
@@ -117,23 +105,6 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
 
-    private BooleanBuilder getSearch(PageRequestDTO requestDTO){
-
-        BooleanBuilder booleanBuilder = new BooleanBuilder();
-        Qreview_tbl qreview_tbl = Qreview_tbl.review_tbl;
-
-        String content_id = requestDTO.getContent_id();
-
-
-        BooleanExpression expression = qreview_tbl.r_num.gt(0L);
-        booleanBuilder.and(expression);
-
-        BooleanBuilder conditionBuilder = new BooleanBuilder();
-
-        conditionBuilder.or(qreview_tbl.content_id.contains(content_id));
-
-        return booleanBuilder;
-    }
 
 
 }
