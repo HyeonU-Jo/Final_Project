@@ -46,7 +46,7 @@ public class MemberService{
 
     @Transactional
     public void update(member_tbl member_tbl){
-        member_tbl persistance = member_repository.findById(member_tbl.getNum()).orElseThrow(()->{
+        member_tbl persistance = member_repository.findById(member_tbl.getId()).orElseThrow(()->{
             return new IllegalArgumentException("회원 찾기 실패");
         });
 
@@ -63,6 +63,12 @@ public class MemberService{
 
 
 
+    }
+
+    //회원탈퇴
+    @Transactional
+    public void delete(int id){
+        member_repository.deleteById(id);
     }
 
 }

@@ -81,6 +81,11 @@ public class MemberController {
         return "/member/login";
     }
 
+    @PostMapping("/delete")
+    public String delete(Model model){
+
+        return "/member/deleteForm";
+    }
 
     //마이페이지 페이지
     /*@GetMapping("/mypage")

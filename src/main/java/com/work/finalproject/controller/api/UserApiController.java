@@ -69,6 +69,14 @@ public class UserApiController {
         return modelAndView;
     }
 
+    //회원탈퇴
+    @DeleteMapping("/auth/member/{id}")
+    public ResponseDTO<Integer> deleteById(@PathVariable int id){
+        memberService.delete(id);
+        return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
+    }
+
+
 
     @RequestMapping(value="/forgot-password", method=RequestMethod.POST)
     public ModelAndView forgotUserPassword(ModelAndView modelAndView, member_tbl member_tbl) {
