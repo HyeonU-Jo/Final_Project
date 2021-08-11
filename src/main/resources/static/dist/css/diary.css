@@ -11,3 +11,45 @@
     margin-top: 100px;
     text-align: center;
 }
+.diary_list_search{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 16px;
+}
+
+.diary_list_table{
+    text-align: center;
+    width: 100%;
+}
+
+.diary_list_h1{
+    display: flex;
+    justify-content: space-between;
+    margin: 60px 0px;
+}
+.diary_list_span{
+    font-size: 19px;
+    height: 100%;
+    margin: 10px;
+}
+
+
+.diary_list_a {
+    font-weight: bold;
+}
+
+.diary_list_ul {
+    margin-top: 30px;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.diary_list_ul > li {
+    display: inline;
+}
+
+.diary_list_ul > li > a {
+    display: inline-block;
+    padding: 10px;
+}

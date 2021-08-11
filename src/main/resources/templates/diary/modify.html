@@ -5,8 +5,10 @@
 <th:block th:fragment="setCss(css)"></th:block>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>diarymodify</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+    <link rel="stylesheet" th:href="@{/dist/css/diary.css}">
+
 </head>
 <body>
 <!--header영역-->
@@ -17,7 +19,7 @@
 <div class="section">
     <!--content영역-->
 
-    <div class="content">
+    <div class="diary_content">
         <form action="/diary/modify" method="post">
 
             <!--페이지 번호  -->

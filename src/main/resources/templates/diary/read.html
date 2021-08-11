@@ -5,8 +5,10 @@
 <th:block th:fragment="setCss(css)"></th:block>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>diaryread</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+    <link rel="stylesheet" th:href="@{/dist/css/diary.css}">
+
 </head>
 <body>
 <!--header영역-->
@@ -15,7 +17,7 @@
 
 <div class="section">
     <!--content영역-->
-    <div class="content">
+    <div class="diary_content">
         <h1>My Travel Record</h1>
         <div>
             <label>번호</label>
@@ -32,8 +34,12 @@
                    th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
         </div>
         <div>
+            <label>사진</label>
+            <div>사진나올곳</div>
+        </div>
+        <div>
             <label>내용</label>
-            <textarea rows="5" name="d_content">[[${dto.d_content}]]</textarea>
+            <textarea rows="5" name="d_content" readonly>[[${dto.d_content}]]</textarea>
 
         </div>
 
