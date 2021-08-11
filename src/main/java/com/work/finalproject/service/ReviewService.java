@@ -12,8 +12,6 @@ public interface ReviewService {
 
     void reviewWrite(ReviewDTO dto);
 
-    PageResultDTO<ReviewDTO, review_tbl> rlist2(PageRequestDTO requestDTO);
-
     List<ReviewDTO> reviewList(String content_id);
 
     ReviewDTO read(int r_num);
@@ -34,6 +32,7 @@ public interface ReviewService {
                 .r_content(dto.getR_content())
                 .r_rating(dto.getR_rating())
                 .image(dto.getImage())
+                .username(dto.getUsername())
                 .build();
         return entity;
     }
@@ -45,6 +44,7 @@ public interface ReviewService {
                 .r_rating(entity.getR_rating())
                 .content_id(entity.getContent_id())
                 .image(entity.getImage())
+                .username(entity.getUsername())
                 .build();
         return dto;
     }
