@@ -1,16 +1,211 @@
+/* ----------------- 공용----------------- */
 
+.whole_page_cover{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* ----------------- 로그인 ----------------- */
+.member_login {
+    width: 100%;
+    text-align: center;
+}
+
+.member_login_input > input {
+    width: 60%;
+    height: 50px;
+    border-radius: 30px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+}
+
+.member_login_btn{
+    width: 100%;
+    height: 50px;
+}
+
+.login_api > a > img{
+    border-radius: 10px;
+    margin-top: -30px;
+}
+
+/* ----------------- 회원가입 ----------------- */
 .member_insert {
     text-align: center;
     background-color: white;
 }
 
-.member_login {
+
+/* ----------------- 안내 문구----------------- */
+.direction{
+    width: 500px;
+    height: 220px;
+    background: white;
+    border-radius: 20px;
     text-align: center;
-    background-color: white;
 }
 
-.input-box > input {
-    border: none;
-    border-bottom: solid 1px #ccc;
-    line-height: 20px;
+.direction_btn > input{
+    width: 60%;
+    height: 30px;
+    border: 0;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(131, 218, 172), rgb(181, 212, 239));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
 }
+
+.small_direction{
+    text-align: center;
+    padding-top: 80px;
+}
+
+/* ----------------- 회원정보 수정 ----------------- */
+.member_update {
+    width: 500px;
+    height: 600px;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.member_update > form {
+    width: 80%;
+}
+.member_update_input{
+    width: 100%;
+}
+.member_update > h2{
+    color: #3f81d7;
+    font-size: 2em;
+}
+
+.member_update_input > input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+}
+
+.member_update_submit{
+    margin-top: 40px;
+    width: 80%;
+}
+
+.member_update_submit > input{
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(131, 218, 172), rgb(181, 212, 239));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
+.member_update_delete{
+    width: 80%;
+}
+
+.member_update_delete > form > div > input {
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(131, 218, 172), rgb(181, 212, 239));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
+/* ----------------- 비밀번호 재등록 ----------------- */
+.member_resetPassword{
+    width: 500px;
+    height: 500px;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.member_resetPassword > form {
+    width: 60%;
+}
+.member_resetPassword_input{
+    width: 100%;
+}
+
+.member_resetPassword_input > input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+}
+.member_resetPassword_submit > input{
+    margin-top: 50px;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(131, 218, 172), rgb(181, 212, 239));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
+/* ----------------- 비밀번호 찾기 ----------------- */
+.member_forgetPassword{
+    width: 500px;
+    height: 400px;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.member_forgetPassword >form {
+    width: 80%;
+}
+
+.member_forgetPassword_input {
+    width: 100%;
+}
+
+
+.member_forgetPassword_input > input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+}
+
+.member_forgetPassword_submit > input{
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(131, 218, 172), rgb(181, 212, 239));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+

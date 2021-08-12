@@ -8,24 +8,24 @@
   <div class="member_insert">
       <form th:action="@{/member/join}" th:method="POST">
           <div class="input-box">
-              <label for="username">아이디</label>
+              <label for="username"></label>
               <input type="text" placeholder="아이디" id="username">
           </div>
           <div class="input-box">
-              <label for="Password">비밀번호</label>
+              <label for="Password"></label>
               <input type="password" placeholder="비밀번호" id="password">
           </div>
           <div class="input-box">
-              <label for="Email">이메일</label>
+              <label for="Email"></label>
               <input type="email" placeholder="이메일" id="email">
           </div>
           <div class="input-box">
-              <label for="Name">이름</label>
+              <label for="Name"></label>
               <input type="text" placeholder="이름" id="name">
           </div>
       </form>
 
-          <div class="input-box">
+          <div>
             <input type="button" id="btn-save" class="btn btn-secondary" value="회원가입">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
           </div>
