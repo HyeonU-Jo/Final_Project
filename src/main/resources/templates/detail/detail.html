@@ -119,16 +119,14 @@
                 <div th:each="list : ${list}">
                     <tr>
                         <td>
-                            <a sec:authorize="isAuthenticated()" th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2}, username=${#authentication.principal.member_tbl.username})}">
-                                <img th:src="${list.firstimage2}">
-                            </a>
+                            <a th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2})}"><img th:src="${list.firstimage2}"></a>
+
 
                             <input type="hidden" name="mapx" id="mapx" th:value="${list.mapx}">
                             <input type="hidden" name="mapy" id="mapy" th:value="${list.mapy}">
                         </td>
                         <td>
-                            <a sec:authorize="isAuthenticated()" th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2}, username=${#authentication.principal.member_tbl.username})}">[[${list.keyword}]]</a>
-                        </td>
+                            <a th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2})}">[[${list.keyword}]]</a>                        </td>
                         <td>
                             [[${list.addr1}]]
                         </td>

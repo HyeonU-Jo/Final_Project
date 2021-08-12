@@ -30,6 +30,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,13 +40,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 @Controller
 @RequestMapping("/detail")
 @RequiredArgsConstructor
 public class DetailController {
-
+    HttpSession session;
     private final ReviewService service;
     private final LikeService likeService;
 
@@ -104,11 +107,22 @@ public class DetailController {
     }
 
     @GetMapping("/realDetail")
-    public String realDetail(String content_id, Model model, String contentType, String firstimage2, String username) throws IOException{
+    public String realDetail(String content_id, Model model, String contentType, String firstimage2, Authentication authentication) throws IOException{
+        String username = null;
+        try {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            System.out.println("확인해보자 ~~~~~~~ " + userDetails.getUsername());
+            username = userDetails.getUsername();
+        }catch (Exception e){
+            System.out.println("없어!!!!!!!!!!!!!!!!!!!");
+
+        }
+
         List<ReviewDTO> list = service.reviewList(content_id);
         model.addAttribute("reviewList", list);
         LikeDTO likeDTO = new LikeDTO();
         likeDTO.setContent_id(content_id);
+        likeDTO.setUsername(username);
         likeDTO.setLike_type("1");
         String like = likeService.likeCheck(likeDTO);
         likeDTO.setLike_type("2");

@@ -26,6 +26,7 @@
                 <li th:text="${dto.title}" style="border-right: none"></li>
                 <li style="border: none">
                     <div class="realDetailLike" style="float: right">
+                        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.member_tbl.username} != null">
                         <div>
                             <i th:class="${like}" id="btn1"></i>
                             <span>Bucket!</span>
@@ -36,11 +37,11 @@
                         </div>
                         <a th:href="@{/detail/writeReview(content_id=${dto.content_id}, contentType=${dto.contentType}, title=${dto.title}, firstimage=${dto.firstimage2})}">
                             <th:block>
-                                <button type="button" sec:authorize="isAuthenticated()"
-                                        th:if="${#authentication.principal.member_tbl.username} != null">리뷰작성
+                                <button type="button">리뷰작성
                                 </button>
                             </th:block>
                         </a>
+                        </th:block>
                         <input type="hidden" id="content_id" th:value="${dto.content_id}">
                         <input type="hidden" id="username" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.member_tbl.username}">
                     </div>
