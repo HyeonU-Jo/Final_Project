@@ -19,6 +19,7 @@
     <h1>BucketList</h1>
 
     <div class="myPageTraveledList">
+        <input type="hidden" id="username" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.member_tbl.username}">
         <th:block th:each="list : ${likeList}">
             <ul th:id="${list.content_id}">
                 <li>
@@ -54,11 +55,11 @@
 <script th:inline="javascript">
     function deleteLike(content_id) {
         let conf = confirm("정말로 삭제하시겠습니까?");
-
+        let username = document.getElementById('username').value;
         if (conf == true) {
             $.ajax({
                 url: "/member/deleteLike",
-                data: "content_id=" + content_id + "&like_type=1",
+                data: "content_id=" + content_id + "&like_type=1&username="+username,
                 type: "POST",
                 success: function (data) {
                     let abc = document.getElementById(data);

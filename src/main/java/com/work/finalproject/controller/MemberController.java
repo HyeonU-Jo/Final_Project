@@ -264,7 +264,6 @@ public class MemberController {
     @PostMapping("/deleteLike")
     @ResponseBody
     public String deleteLike(LikeDTO dto){
-        dto.setUsername("2");
         likeService.deleteLike(dto);
         return dto.getContent_id();
     }
