@@ -12,3 +12,25 @@
     flex-direction: column;
     margin: 0 5px;
 }
+
+.info{
+    border: solid 1px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+}
+
+.info li{
+    min-height: 30px;
+    margin: 20px;
+}
+
+.info li:nth-child(odd){
+    background-color : #d3d3d3c4;
+}
+
+.info li:nth-child(even){
+    background-color : #d6d6d630;
+}
