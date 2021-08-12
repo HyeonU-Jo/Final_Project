@@ -196,7 +196,7 @@ header{
 
 .amount {
     position: relative;
-    top: -35px;
+    top: 75px;
     display: flex;
     width: 1280px;
     background: #fff;

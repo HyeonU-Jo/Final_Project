@@ -11,11 +11,6 @@
           content="832265235477-t0424vv7k8bmivu13hibk2tbt3947sql.apps.googleusercontent.com">
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 </head>
-<style>
-    .header {
-        background-color: rgba(0, 0, 0, 0);
-    }
-</style>
 <body>
 
 <div class="wrap">
@@ -46,6 +41,34 @@
                 </div>
             </li>
         </ul>
+
+        <!--테스트-->
+        <div class="container">
+            <div class="box">
+                <a href="detail/detail?contentType=12&keyword=+&page=1">
+                    <img src="https://source.unsplash.com/1000x800">
+                </a>
+                <span>관광지</span>
+            </div>
+            <div class="box">
+                <a href="detail/detail?contentType=14&keyword=+&page=1">
+                    <img src="https://source.unsplash.com/1000x802">
+                </a>
+                <span>문화시설</span>
+            </div>
+            <div class="box">
+                <a href="detail/detail?contentType=15&keyword=+&page=1">
+                    <img src="https://source.unsplash.com/1000x804">
+                </a>
+                <span>축제/공연/행사</span>
+            </div>
+            <div class="box">
+                <a href="detail/detail?contentType=39&keyword=+&page=1">
+                    <img src="https://source.unsplash.com/1000x806">
+                </a>
+                <span>맛집</span>
+            </div>
+        </div>
 
         <div class="main_test0">
             <h1>맛집</h1>
@@ -117,23 +140,6 @@
                 </th:block>
             </ul>
         </div>
-        <!-- <div class="main_text1" id="link_main_service">
-             <h1>관광지</h1>
-             <div class="contents1">놀러갈 생각에 벌써 두근대죠?</div>
-             <div class="service">
-
-                 <div class="food_photo">
-                     <img src="image/food.png">
-                 </div>
-                 <div class="contents1">
-                     <h2>이것이 놀먹이야 날먹이야 ?</h2>
-
-                     TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1v
-                     TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1
-                     TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1TEST1
-                 </div>
-             </div>-->
-
         <div class="main_text2" id="link_main_contact">
             <ul>
                 <li>
@@ -142,8 +148,8 @@
                     <div class="more2">더 알아보기</div>
                 </li>
             </ul>
-
         </div>
+
         <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 
     </div>
