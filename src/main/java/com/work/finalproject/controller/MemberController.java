@@ -103,8 +103,6 @@ public class MemberController {
 
     @GetMapping("/myPage_traveledList")
     public String myPage_traveledList(LikeDTO likeDTO, Model model) {
-
-        likeDTO.setUsername("2");
         List<LikeDTO>likeDTOS = likeService.likeList(likeDTO);
         PublicAPI api = new PublicAPI();
         List<XmlDTO> xmlDTOS = new ArrayList<>();
@@ -130,7 +128,6 @@ public class MemberController {
     }
     @GetMapping("/myPage_bucketList")
     public String myPage_bucketList(LikeDTO likeDTO, Model model){
-        likeDTO.setUsername("2");
         List<LikeDTO>likeDTOS = likeService.likeList(likeDTO);
         PublicAPI api = new PublicAPI();
         List<XmlDTO> xmlDTOS = new ArrayList<>();

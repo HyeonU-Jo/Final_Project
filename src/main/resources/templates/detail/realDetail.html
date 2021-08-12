@@ -42,6 +42,7 @@
                             </th:block>
                         </a>
                         <input type="hidden" id="content_id" th:value="${dto.content_id}">
+                        <input type="hidden" id="username" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.member_tbl.username}">
                     </div>
                 </td>
             </tr>
@@ -145,7 +146,7 @@
         var form = {
             content_id : document.getElementById('content_id').value,
             like_type : "1",
-            username : "2"
+            username : document.getElementById('username').value
         }
         $.ajax({
             url: "/detail/likeDetail",
@@ -164,7 +165,7 @@
         var form = {
             content_id : document.getElementById('content_id').value,
             like_type : "2",
-            username : "2"
+            username : document.getElementById('username').value
         }
         $.ajax({
             url: "/detail/likeDetail",
