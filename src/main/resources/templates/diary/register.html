@@ -30,8 +30,11 @@
             <div>
                 <textarea rows="20" name="d_content" placeholder="내용을 입력하세요."></textarea>
             </div>
-            <input type="file" id="d_image" name="d_image" class="d_image" accept="image/*"
-                   onchange="setThumbnail();"/>
+
+
+            <input type="file" name="d_image" class="d_image" accept="image/*" />
+
+
             <button type="submit">작성하기</button>
             <button type="reset">다시쓰기</button>
             <button type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>
@@ -61,26 +64,28 @@
     }
 
     $("#d_image").on("click", function (e) {
-            var formData = new FormData();
-            var inputFile = $("input[name='d_image']");
-            var files = inputFile[0].files;
-            console.log(files);
-            for (var i = 0; i < files.length; i++) {
-                if (!chechExtension(files[i].name, files[i].size)) {
-                    return false;
-                }
-                formData.append("d_image", files[i]);
+        var formData = new FormData();
+        var inputFile = $("input[name='d_image']");
+        var files = inputFile[0].files;
+        console.log(files);
+        for (var i = 0; i < files.length; i++) {
+            if (!chechExtension(files[i].name, files[i].size)) {
+                return false;
             }
-            $.ajax({
-                url: '/diary/regisster',
-                processData: false,
-                contentType: files,
-                data: formData,
-                type: 'POST',
-                success: function (result) {
-                    alert("파일을 업로드하였스빈다.")
-                }
-            });
+            formData.append("d_image", files[i]);
+        }
+        $.ajax({
+            url: '/diary/regisster',
+            processData: false,
+            contentType: false,
+            data: formData,
+            type: 'POST',
+            success: function (result) {
+                alert("파일을 업로드하였습니다.")
+            }, error: function () {
+                alert("에러다!")
+            }
+        });
     });
 
 </script>

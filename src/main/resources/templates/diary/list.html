@@ -14,7 +14,7 @@
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 
-<div class="section">
+<div class="diary_section">
     <div class="diary_content">
         <!--글등록-->
         <h1 class="diary_list_h1">My travel diary
@@ -57,9 +57,10 @@
                             [[${dto.dno}]]
                         </a>
                     </th>
-                    <td class="diary_list_td">[[${dto.d_title}]]<br>
+                    <td class="diary_list_td">
+                        <span class="diary_list_span2">[[${dto.d_title}]]</span><br>
                         <p class="diary_list_p">[[${dto.d_content}]]</p>
-                        [[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]
+                        <span class="diary_list_span3">[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</span><br>
                     </td>
                 </tr>
             </div>

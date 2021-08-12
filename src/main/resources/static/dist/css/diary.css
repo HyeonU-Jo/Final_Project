@@ -1,13 +1,13 @@
-.section {
+.diary_section {
     text-align: center;
-    width: 55%;
+    width: 70%;
     margin: auto;
 }
 
 .diary_content {
     min-height: 500px;
-    width: 80%;
-    margin-top: 100px;
+    width: 100%;
+    margin-top: 150px;
     text-align: center;
 }
 
@@ -40,6 +40,7 @@
 
 .diary_list_a {
     font-weight: bold;
+    margin: 20px;
 }
 
 .diary_list_ul {
@@ -63,9 +64,102 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 641px;
-    margin: auto;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
 }
 
 .diary_list_td {
     padding: 18px;
+    text-align: left;
+}
+.diary_list_span2{
+    font-size: 25px;
+}
+.diary_list_span3{
+    font-size: 12px;
+    font-weight: 200;
+}
+
+
+
+/*read CSS*/
+.diary_read_h2 {
+    text-align: center;
+    margin: 50px;
+    letter-spacing: 12px;
+    padding-left: -12px;
+    font-weight: bold;
+}
+
+.diary_read_content {
+    text-align: left;
+}
+
+.diary_read_content2 {
+    text-align: center;
+}
+
+.diary_read_input_title {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 7px;
+}
+
+.diary_read_input {
+
+    border: none;
+    width: 70%;
+    letter-spacing: 2.5px;
+    text-align: left;
+    font-size: 10px;
+}
+
+.diary_read_input_content {
+    width: 70%;
+    margin-bottom: 30px;
+    padding: 10px 10px 10px 10px;
+}
+
+.diary_list_btn,
+.diary_read_btn {
+    margin-bottom: 29px;
+}
+
+.diary_read_btn {
+    width: 84%;
+    text-align: right;
+}
+
+
+/*modify CSS*/
+.diary_modify_h1{
+    text-align: center;
+    padding-right: 50px;
+    margin: 30px 10px;
+}
+.diary_modify_group{
+    text-align: center;
+    margin-bottom: 1rem;
+    width: 90%;
+    display: flex;
+    flex: 0 0 auto;
+    flex-flow: row wrap;
+    align-items: baseline;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around
+}
+
+
+.diary_modify_controller{
+    width:70%;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    color: #495057;
+}
+
+.diary_modify_group > label{
+    width:10%;
+    text-align:left;
 }

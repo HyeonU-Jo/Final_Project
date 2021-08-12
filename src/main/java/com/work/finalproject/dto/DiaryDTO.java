@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -19,4 +20,6 @@ public class DiaryDTO {
     private String d_content;
     private LocalDateTime regDate, modDate;
     private String d_image;
+    private byte[] d_imageByte;
+    private MultipartFile d_imageFile;
 }

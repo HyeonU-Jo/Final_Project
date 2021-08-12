@@ -21,6 +21,8 @@ public interface DiaryService{
     //삭제관련
     void remove(int dno);
 
+
+
     //DTO => Entity
     default diary_tbl dtoToEntity(DiaryDTO dto) {
         diary_tbl entity = diary_tbl.builder()

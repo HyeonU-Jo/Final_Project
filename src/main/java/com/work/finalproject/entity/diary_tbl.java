@@ -1,6 +1,8 @@
 package com.work.finalproject.entity;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 
 @Entity
@@ -26,6 +28,11 @@ public class diary_tbl extends BaseEntity{
     @Column(length = 500, nullable = true)
     private String d_image;
 
+    @Column(length = 500, nullable = true)
+    private byte[] d_imageByte;
+
+    @Column(length = 500, nullable = true)
+    private String d_imageFile;
 
     public void changeTitle(String title){
         this.d_title=title;
@@ -33,6 +40,8 @@ public class diary_tbl extends BaseEntity{
     public void changeContent(String content){
         this.d_content=content;
     }
-    public void changeImage(String image){this.d_image = image;}
+    public void changeImage(String image){
+        this.d_image = image;
+    }
 
 }
