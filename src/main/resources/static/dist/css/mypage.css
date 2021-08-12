@@ -4,36 +4,6 @@
     text-decoration: none;
 }
 
-.MyPage {
-    background-color: white;
-    height: 500px;
-}
-
-.content-MyPage {
-    background-color: #b9cbee;
-    height: 400px;
-}
-
-.bottom-toolbar {
-    text-align: center;
-}
-
-.member_insert {
-    text-align: center;
-    background-color: white;
-}
-
-.member_login {
-    text-align: center;
-    background-color: white;
-}
-
-.input-box > input {
-    border: none;
-    border-bottom: solid 1px #ccc;
-    line-height: 20px;
-}
-
 .myPageSection {
     display: flex;
     flex-direction: column;

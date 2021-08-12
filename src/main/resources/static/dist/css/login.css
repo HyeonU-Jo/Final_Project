@@ -1,0 +1,16 @@
+
+.member_insert {
+    text-align: center;
+    background-color: white;
+}
+
+.member_login {
+    text-align: center;
+    background-color: white;
+}
+
+.input-box > input {
+    border: none;
+    border-bottom: solid 1px #ccc;
+    line-height: 20px;
+}
