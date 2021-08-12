@@ -44,10 +44,11 @@ dependencies {
     compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.0.4.RELEASE'
     compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time'
     compile "org.springframework.boot:spring-boot-starter-security"
-
-
+    compile 'commons-fileupload:commons-fileupload:1.4'
 
     implementation 'com.querydsl:querydsl-jpa'
+    implementation 'commons-io:commons-io:2.6'
+
 }
 
 test {

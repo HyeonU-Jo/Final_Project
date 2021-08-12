@@ -15,46 +15,42 @@
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 
-<div class="section">
+<div class="diary_section">
     <!--content영역-->
     <div class="diary_content">
-        <h1>My Travel Record</h1>
-        <div>
-            <label>번호</label>
-            <input type="text" name="dno" th:value="${dto.dno}" readonly>
-        </div>
+        <h2 class="diary_read_h2">My Travel Record</h2>
+
 
         <div>
-            <label>제목</label>
-            <input type="text" name="d_title" th:value="${dto.d_title}" readonly>
+            <input class="diary_read_input diary_read_input_title" type="text" name="d_title" th:value="${dto.d_title}"
+                   readonly>
         </div>
         <div>
-            <label>작성일자</label>
-            <input type="text" name="regDate"
+            <input class="diary_read_input" type="text" name="regDate"
                    th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
         </div>
         <div>
             <label>사진</label>
-            <div>사진나올곳</div>
-        </div>
-        <div>
-            <label>내용</label>
-            <textarea rows="5" name="d_content" readonly>[[${dto.d_content}]]</textarea>
+            <img alt="" scr="">
+            diary
+            <div>
+                <textarea class="diary_read_input_content" rows="5" name="d_content"
+                          readonly>[[${dto.d_content}]]</textarea>
 
-        </div>
+            </div>
 
-        <div>
-            <a th:href="@{/diary/modify(dno = ${dto.dno}, page=${requestDTO.page})}">
-                <button type="button">수정하기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </a>
-            <button type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>
-        </div>
+            <div class="diary_read_btn">
+                <a th:href="@{/diary/modify(dno = ${dto.dno}, page=${requestDTO.page})}">
+                    <button type="button">수정하기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </a>
+                <button type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>
+            </div>
 
-        <!--content영역끝-->
+            <!--content영역끝-->
+        </div>
     </div>
+
 </div>
-
-
 <!--footer영역-->
 <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 </body>

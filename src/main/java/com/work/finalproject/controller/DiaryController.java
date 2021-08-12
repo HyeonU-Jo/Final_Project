@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
+
 @Controller
 @RequestMapping("/diary")
 @Log4j2
@@ -46,6 +48,9 @@ public class DiaryController {
     public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes) {
         log.info("dto~~~" + dto);
         //새로 추가된 엔티티의 번호
+
+        service.dtoToEntity(dto);
+
         int dno = service.register(dto);
         redirectAttributes.addFlashAttribute("msg", dno);
         return "redirect:/diary/list";

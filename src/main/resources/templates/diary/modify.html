@@ -20,7 +20,7 @@
     <!--content영역-->
 
     <div class="diary_content">
-        <form action="/diary/modify" method="post">
+        <form action="/diary/modify" method="post" style="text-align: center">
 
             <!--페이지 번호  -->
             <input type="hidden" name="page" th:value="${requestDTO.page}">
@@ -30,27 +30,26 @@
             <h1>수정페이지</h1>
             <!--수정페이지-->
             <div>
-                <label>번 호</label>
-                <input type="text" name="dno" th:value="${dto.dno}" readonly>
+                <input type="hidden" name="dno" th:value="${dto.dno}" readonly>
             </div>
-            <div>
+            <div class="diary_modify_group">
                 <label>제 목</label>
-                <input  type="text" name="d_title" th:value="${dto.d_title}">
-            </div>
-            <div >
+                <input class="diary_modify_controller" type="text" name="d_title" th:value="${dto.d_title}">
+            </div >
+            <div class="diary_modify_group">
                 <label>내 용</label>
-                <textarea rows="20" name="d_content">[[${dto.d_content}]]</textarea>
+                <textarea class="diary_modify_controller" rows="20" name="d_content">[[${dto.d_content}]]</textarea>
             </div>
-            <div>
+            <div class="diary_modify_group">
                 <label>작성일자</label>
-                <input type="text" th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+                <input class="diary_modify_controller" type="text" th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
             </div>
 
         </form>
 
-        <button type="button" class="modifyBtn">수정</button>
-        <button type="button" class="listBtn">목록</button>
-        <button type="button" class="removeBtn">삭제</button>
+        <button type="button" class="modifyBtn diary_modify_btn">수정</button>
+        <button type="button" class="listBtn diary_modify_btn">목록</button>
+        <button type="button" class="removeBtn diary_modify_btn">삭제</button>
 
         <script th:inline="javascript">
             var actionForm = $("form"); //form 태그 객체
