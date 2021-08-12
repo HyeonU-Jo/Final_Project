@@ -18,8 +18,8 @@
 
 .myPageIntro {
     border-radius: 10px 10px 0px 0px;
-    background: url(https://d2rlq84xifqisi.cloudfront.net/images/mypagePatternResize.2e73487f09488acbeb2d.jpg);
-    background-size: 30%;
+    background: url(/image/pattern.jpg);
+    background-size: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
