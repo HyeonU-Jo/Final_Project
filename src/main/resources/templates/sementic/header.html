@@ -33,8 +33,8 @@
 
                 <ul class="nav" th:if="${#authorization.expr('isAuthenticated()')}">
                     <li><a th:href="@{/}">HOME</a></li>
-                    <li><a th:href="@{/plan/plan}">PLAN</a></li>
-                    <li><a th:href="@{/diary/list}">DIARY</a></li>
+                    <!--<li><a th:href="@{/plan/plan}">PLAN</a></li>
+                    <li><a th:href="@{/diary/list}">DIARY</a></li>-->
                     <li><a th:href="@{/member/myPage}">MYPAGE</a>
                         <!--<a data-toggle="modal" href="#mypageModal">MYPAGE</a>
                         <div class="modal fade" id="mypageModal" role="dialog">
@@ -78,8 +78,8 @@
 
                 <ul class="nav" th:unless="${#authorization.expr('isAuthenticated()')}">
                     <li><a th:href="@{/}">HOME</a></li>
-                    <li><a th:href="@{/plan/plan}">PLAN</a></li>
-                    <li><a th:href="@{/diary/list}">DIARY</a></li>
+                    <!--<li><a th:href="@{/plan/plan}">PLAN</a></li>
+                    <li><a th:href="@{/diary/list}">DIARY</a></li>-->
 
                     <li>
                         <a data-toggle="modal" href="#loginModal">LOGIN</a>
