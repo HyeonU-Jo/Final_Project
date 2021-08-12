@@ -16,15 +16,15 @@
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 
-<div class="section">
-    <div class="content">
+<main class="section">
+    <section class="content">
 
-        <table class="info" border="1">
+        <div class="info" border="1">
 
-            <tr>
-                <td>이름</td>
-                <td th:text="${dto.title}" style="border-right: none"></td>
-                <td style="border: none">
+            <ul class="name">
+                <li>이름</li>
+                <li th:text="${dto.title}" style="border-right: none"></li>
+                <li style="border: none">
                     <div class="realDetailLike" style="float: right">
                         <div>
                             <i th:class="${like}" id="btn1"></i>
@@ -42,63 +42,64 @@
                             </th:block>
                         </a>
                         <input type="hidden" id="content_id" th:value="${dto.content_id}">
+                        <input type="hidden" id="username" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.member_tbl.username}">
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td>설명</td>
-                <td width="400" th:utext="${dto.overview}" colspan="2"></td>
-            </tr>
-            <tr>
-                <td>연락처</td>
-                <td th:text="${dto.tel}" colspan="2"></td>
-            </tr>
-            <tr>
-                <td>홈페이지</td>
-                <td th:utext="${dto.homepage}" colspan="2"></td>
-            </tr>
-            <tr>
-                <td>사진1</td>
+                </li>
+            </ul>
+            <ul class="intro">
+                <li>설명</li>
+                <li width="400" th:utext="${dto.overview}" colspan="2"></li>
+            </ul>
+            <ul class="tel">
+                <li>연락처</li>
+                <li th:text="${dto.tel}" colspan="2"></li>
+            </ul>
+            <ul class="homepage">
+                <li>홈페이지</li>
+                <li th:utext="${dto.homepage}" colspan="2"></li>
+            </ul>
+            <ul class="image">
+                <li>사진1</li>
                 <td colspan="2"><img th:src="${dto.firstimage}"></td>
-            </tr>
+            </ul>
 
 
-        </table>
+        </div>
 
-        <table class="review" border="1">
-            <tr>
-                <td>아이디</td>
-                <td>내용</td>
-                <td>평점</td>
-            </tr>
-            <tr th:each="list : ${reviewList}">
-                <td th:text="${list.username}"></td>
-                <td th:text="${list.r_content}"></td>
-                <td th:text="${list.r_rating}"></td>
+        <div class="review" border="1">
+            <ul>
+                <li>아이디</li>
+                <li>내용</li>
+                <li>평점</li>
+            </ul>
+            <ul th:each="list : ${reviewList}">
+                <li th:text="${list.username}"></li>
+                <li th:text="${list.r_content}"></li>
+                <li th:text="${list.r_rating}"></li>
                 <!--<td><img th:src="@{file:///C:/upload/test/}+${list.image}"></td> -->
-                <td><img th:src="@{/detail/download(image=${list.image})}" width="120" height="120"></td>
-                <td>
+                <li><img th:src="@{/detail/download(image=${list.image})}" width="120" height="120"></li>
+                <li>
                     <a sec:authorize="isAuthenticated()" th:if="${#authentication.principal.member_tbl.username} == ${list.username}" th:href="@{/detail/modifyReview(r_num = ${list.r_num}, content_id = ${list.content_id}, contentType = ${dto.contentType}, firstimage2 = ${dto.firstimage2})}">
                         <button type="button">수정</button>
                     </a>
-                </td>
-            </tr>
-        </table>
-    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
 
     <!--Map영역-->
-    <div class="map">
-        <tr>
-            <td>
-                <input type="hidden" name="mapx" id="mapx" th:value="${dto.mapx}">
-                <input type="hidden" name="mapy" id="mapy" th:value="${dto.mapy}">
-                <input type="hidden" id="title" th:value="${dto.title}">
-                <div id="map"></div>
+<!--    <div class="map">-->
+<!--        <ul>-->
+<!--            <li>-->
+<!--                <input type="hidden" name="mapx" id="mapx" th:value="${dto.mapx}">-->
+<!--                <input type="hidden" name="mapy" id="mapy" th:value="${dto.mapy}">-->
+<!--                <input type="hidden" id="title" th:value="${dto.title}">-->
+<!--                <div id="map"></div>-->
 
-            </td>
-        </tr>
-    </div>
-</div>
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+</main>
 <!--content영역끝-->
 
 <!--footer영역-->
@@ -145,7 +146,7 @@
         var form = {
             content_id : document.getElementById('content_id').value,
             like_type : "1",
-            username : "2"
+            username : document.getElementById('username').value
         }
         $.ajax({
             url: "/detail/likeDetail",
@@ -164,7 +165,7 @@
         var form = {
             content_id : document.getElementById('content_id').value,
             like_type : "2",
-            username : "2"
+            username : document.getElementById('username').value
         }
         $.ajax({
             url: "/detail/likeDetail",

@@ -104,12 +104,11 @@ public class DetailController {
     }
 
     @GetMapping("/realDetail")
-    public String realDetail(String content_id, Model model, String contentType, String firstimage2, String areaCode) throws IOException{
+    public String realDetail(String content_id, Model model, String contentType, String firstimage2, String username) throws IOException{
         List<ReviewDTO> list = service.reviewList(content_id);
         model.addAttribute("reviewList", list);
         LikeDTO likeDTO = new LikeDTO();
         likeDTO.setContent_id(content_id);
-        likeDTO.setUsername("2");
         likeDTO.setLike_type("1");
         String like = likeService.likeCheck(likeDTO);
         likeDTO.setLike_type("2");

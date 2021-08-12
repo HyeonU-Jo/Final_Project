@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
 <th:block th:fragment="setCss(css)"></th:block>
@@ -119,7 +119,7 @@
                 <div th:each="list : ${list}">
                     <tr>
                         <td>
-                            <a th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2})}">
+                            <a sec:authorize="isAuthenticated()" th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2}, username=${#authentication.principal.member_tbl.username})}">
                                 <img th:src="${list.firstimage2}">
                             </a>
 
@@ -127,7 +127,7 @@
                             <input type="hidden" name="mapy" id="mapy" th:value="${list.mapy}">
                         </td>
                         <td>
-                            <a th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2})}">[[${list.keyword}]]</a>
+                            <a sec:authorize="isAuthenticated()" th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2}, username=${#authentication.principal.member_tbl.username})}">[[${list.keyword}]]</a>
                         </td>
                         <td>
                             [[${list.addr1}]]
