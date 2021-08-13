@@ -68,7 +68,7 @@ public class MemberController {
 
 
     //회원가입 페이지
-    @GetMapping("/auth/join")
+    @GetMapping("/join")
     public String join(Model model) {
 
         return "/member/join";
