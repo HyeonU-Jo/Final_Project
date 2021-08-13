@@ -1,27 +1,32 @@
 /*section 가운데정렬*/
 .section {
     text-align: center;
-    width: 60%;
-    margin: auto;
+    width: 1200px;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 7% auto ;
 }
 
 .notice_content {
     min-height: 500px;
     width: 100%;
     float: left;
-    margin-top: 100px;
+    margin-top: 30px;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 
 /*list관련 CSS*/
 .notice_list_h2 {
-    margin: 40px 26px;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 700;
-    text-align: left;
-    padding-left: 40px;
-    letter-spacing: 3px;
+    text-align: center;
+    letter-spacing: 10px;
+    margin-bottom: 40px;
 }
 
 .notice_list_tbl {
@@ -99,16 +104,25 @@
     width: 70%;
     margin-bottom: 30px;
     padding: 10px 10px 10px 10px;
+    border-radius: 10px
 }
 
-.notice_list_btn,
-.notice_read_btn {
-    margin-bottom: 29px;
+.notice_list_btn {
+    width: 30%;
+    height: 50px;
+    border: 0;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(131, 218, 172), rgb(181, 212, 239));
+    font-size: 1.2em;
+    letter-spacing: 2px;
 }
 
 .notice_read_btn {
-    width: 84%;
-    text-align: right;
+    margin:30px 20px;
+    border-radius: 10px;
+    border: none;
+    line-height:10px;
+    padding:20px;
 }
 
 
@@ -123,17 +137,27 @@
 .notice_register_title {
     width: 70%;
     margin: 30px 10px;
+    line-height: 40px;
+    border-radius: 10px;
+    padding-left: 20px;
+
 }
 
 .notice_register_content {
     width: 80%;
-    padding: 10px 10px 10px 10px;
+    padding: 20px;
     margin-bottom: 20px;
+    border-radius: 10px;
 }
 
 .notice_register_btn1 {
-    margin:30px 7px;
+    margin:30px 20px;
+    border-radius: 10px;
+    border: none;
+    line-height:10px;
+    padding:20px;
 }
+
 
 /*modify CSS*/
 .notice_modify_h1{
@@ -158,8 +182,10 @@
 .notice_modify_controller{
     width:70%;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
     color: #495057;
+    line-height: 30px;
+    border-radius: 8px;
+    padding-left: 15px;
 }
 
 .notice_modify_group > label{
@@ -168,6 +194,9 @@
 }
 
 .notice_modify_btn{
-    margin:30px 7px;
-
+    margin:30px 20px;
+    border-radius: 10px;
+    border: none;
+    line-height:10px;
+    padding:20px;
 }

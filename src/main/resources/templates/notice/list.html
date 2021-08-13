@@ -20,6 +20,7 @@
     <!--content영역-->
     <div class="notice_content">
         <h2 class="notice_list_h2">놀먹날먹 공지사항</h2>
+        <hr>
         <table class="notice_list_tbl">
             <thead>
             <tr>
@@ -38,7 +39,15 @@
                         [[${dto.no}]]
                     </a>
                 </td>
-                <td class="notice_list_td">[[${dto.n_title}]]</td>
+
+                <td class="notice_list_td">
+                    <a class="notice_list_a" th:href="@{/notice/read(no = ${dto.no},
+                    page= ${result.page},
+                    type= ${pageRequestDTO.type} ,
+                    keyword = ${pageRequestDTO.keyword})}">
+                        [[${dto.n_title}]]
+                    </a>
+                </td>
 
                 <td class="notice_list_td">[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
             </tr>

@@ -34,13 +34,13 @@
                 <textarea class="notice_read_input_content" rows="20" name="n_content"
                           readonly>[[${dto.n_content}]]</textarea>
             </div>
-            <div class="notice_read_btn">
+            <div>
                 <div sec:authorize="hasRole('ADMIN')">
                     <a th:href="@{/notice/modify(no = ${dto.no}, page=${requestDTO.page})}">
-                        <button type="button">수정하기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="notice_read_btn" type="button">수정하기</button>
                     </a>
+                    <button class="notice_read_btn" type="button" th:onclick="|location.href='/notice/list'|">목록으로</button>
                 </div>
-                <button type="button" th:onclick="|location.href='/notice/list'|">목록으로</button>
             </div>
         </div>
     </div>
