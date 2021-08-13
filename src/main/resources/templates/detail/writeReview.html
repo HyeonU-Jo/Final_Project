@@ -24,7 +24,8 @@
                 <ul>
                     <h2>리뷰 작성</h2>
                     <li>
-                        <input type="text" name="r_content" required>
+
+                        <textarea id="r_content" name="r_content" style="resize: none" cols="60" rows="15"></textarea>
                         <input type="hidden" id="content_id" name="content_id" th:value="${dto.content_id}">
                         <input type="hidden" name="contentType" th:value="${dto.contentType}">
                         <input type="hidden" id="title" th:value="${dto.title}">
@@ -72,8 +73,8 @@
                     </li>
                 </ul>
                 <ul>
-                    <li colspan="2"><input value="입력" type="submit"><input type="button" onclick="history.back()"
-                                                                           value="뒤로가기"></li>
+                    <li colspan="2"><input value="입력" id="subtn" type="submit"><input id="subtn" type="button" onclick="history.back()"
+                                                                           value="뒤로가기" style="float: right"></li>
                 </ul>
             </div>
         </form>
