@@ -1,36 +1,55 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>회원가입</title>
+    <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+    <th:block th:fragment="setHead(head)"></th:block>
+    <th:block th:fragment="setFoot(foot)"></th:block>
+</head>
 
 
-
-<th:block th:fragment="setJoin(join)">
 <body>
 
+<th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
+<div class="whole_page_cover">
   <div class="member_insert">
+      <h2>회원가입</h2>
       <form th:action="@{/member/join}" th:method="POST">
-          <div class="input-box">
+          <div class="member_insert_input">
               <label for="username"></label>
               <input type="text" placeholder="아이디" id="username">
           </div>
-          <div class="input-box">
+          <div class="member_insert_input">
               <label for="Password"></label>
               <input type="password" placeholder="비밀번호" id="password">
           </div>
-          <div class="input-box">
+          <div class="member_insert_input">
               <label for="Email"></label>
               <input type="email" placeholder="이메일" id="email">
           </div>
-          <div class="input-box">
+          <div class="member_insert_input">
               <label for="Name"></label>
               <input type="text" placeholder="이름" id="name">
           </div>
+
+          <div class="member_insert_btn">
+              <input type="button" id="btn-save" value="회원가입">
+          </div>
+
+          <div class="member_insert_btn">
+              <input type="reset" value="다시쓰기">
+          </div>
+
       </form>
 
-          <div>
-            <input type="button" id="btn-save" class="btn btn-secondary" value="회원가입">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-          </div>
+
+
   </div>
+</div>
+
   <script th:src="@{/dist/js/user.js}"></script>
 
+<th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
+
 </body>
-</th:block>
