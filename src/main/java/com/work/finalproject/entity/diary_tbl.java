@@ -26,13 +26,7 @@ public class diary_tbl extends BaseEntity{
     private String d_content;
 
     @Column(length = 500, nullable = true)
-    private String d_image;
-
-    @Column(length = 500, nullable = true)
-    private byte[] d_imageByte;
-
-    @Column(length = 500, nullable = true)
-    private String d_imageFile;
+    private String uploadFile;
 
     public void changeTitle(String title){
         this.d_title=title;
@@ -41,7 +35,7 @@ public class diary_tbl extends BaseEntity{
         this.d_content=content;
     }
     public void changeImage(String image){
-        this.d_image = image;
+        this.uploadFile = uploadFile;
     }
 
 }

@@ -30,7 +30,7 @@ public interface DiaryService{
                 .d_title(dto.getD_title())
                 .d_username(dto.getD_username())
                 .d_content(dto.getD_content())
-                .d_image(dto.getD_image())
+                .uploadFile(dto.getUploadFile())
                 .build();
         return entity;
     }
@@ -42,7 +42,7 @@ public interface DiaryService{
                 .d_title(entity.getD_title())
                 .d_username(entity.getD_username())
                 .d_content(entity.getD_content())
-                .d_image(entity.getD_image())
+                .uploadFile(entity.getUploadFile())
                 .regDate(entity.getRegDate())
                 .modDate(entity.getModDate())
                 .build();

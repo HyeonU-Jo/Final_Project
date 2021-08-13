@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
 <th:block th:fragment="setCss(css)"></th:block>
@@ -7,6 +7,9 @@
     <meta charset="UTF-8">
     <title>diaryregister</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" th:href="@{/dist/css/diary.css}">
 
 </head>
@@ -18,27 +21,26 @@
     <!--content영역-->
     <div class="diary_content">
         <h2>글작성</h2>
-        <form th:action="@{/diary/register}" th:method="post">
-            <div>
-                <span>제 목</span>
-                <input type="text" name="d_title">
-            </div>
-            <div>
-                <span>작성자</span>
-                <input type="text" name="d_username">
-            </div>
-            <div>
-                <textarea rows="20" name="d_content" placeholder="내용을 입력하세요."></textarea>
-            </div>
 
+        <div>
+            <span>제 목</span>
+            <input type="text" name="d_title" id="d_title" th:value="제목">
+        </div>
+        <div>
+            <span>작성자</span>
+            <input type="text" name="d_username" id="d_username" th:value="작성자">
+        </div>
+        <div>
+            <textarea rows="20" name="d_content" id="d_content">내용입니다.</textarea>
+        </div>
+        <div>
+            <input type="file" name="uploadFile" id="uploadFile" multiple/>
 
-            <input type="file" name="d_image" class="d_image" accept="image/*" />
+        </div>
+        <button id="uploadBtn">uploadFile</button>
+        <!--         <button type="reset">다시쓰기</button>
+                 <button type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>-->
 
-
-            <button type="submit">작성하기</button>
-            <button type="reset">다시쓰기</button>
-            <button type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>
-        </form>
     </div>
     <!--content영역끝-->
 </div>
@@ -47,44 +49,40 @@
 <!--footer영역-->
 <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 
-
+<!--
+            d_title: document.getElementById('sDay').value,
+            p_eday: document.getElementById('eDay').value,
+            username: document.getElementById('username').value,
+            content_id: document.getElementById('result').value,
+            p_cday: document.getElementById('cDay').value-->
 <script>
-    var regex = new RegExp("(.*?)\.(exe|sh|aip|alz)$");
-    var maxSize = 5242880; //5MB
-    function chechExtension(fileName, fileSize) {
-        if (fileSize >= maxSize) {
-            alert("파일사이즈가 초과하셨습니다. 5MB이하로가능합니다.");
-            return false;
-        }
-        if (regex.test(fileName)) {
-            alert("해당 종류의 파일은 업로드할 수 없습니다!");
-            return false;
-        }
-        return true;
-    }
+    $(document).ready(function () {
 
-    $("#d_image").on("click", function (e) {
-        var formData = new FormData();
-        var inputFile = $("input[name='d_image']");
-        var files = inputFile[0].files;
-        console.log(files);
-        for (var i = 0; i < files.length; i++) {
-            if (!chechExtension(files[i].name, files[i].size)) {
-                return false;
+
+        $("#uploadBtn").on("click", function (e) {
+            console.log("호출되는가?");
+            var formData = new FormData();
+            var inputFile = $("input[name='uploadFile']");
+            let files = inputFile[0].files;
+            console.log(files);
+
+            formData.append("d_title",$("#d_title").val());
+            formData.append("d_username",$("#d_username").val());
+            formData.append("d_content", $("#d_content").val());
+            for (var i = 0; i < files.length; i++) {
+                formData.append("uploadFile", files[i]);
             }
-            formData.append("d_image", files[i]);
-        }
-        $.ajax({
-            url: '/diary/regisster',
-            processData: false,
-            contentType: false,
-            data: formData,
-            type: 'POST',
-            success: function (result) {
-                alert("파일을 업로드하였습니다.")
-            }, error: function () {
-                alert("에러다!")
-            }
+            console.log("호출되는가?");
+            $.ajax({
+                url: '/diary/register',
+                processData: false,
+                contentType: false,
+                data: formData,
+                type: 'POST',
+                success: function (result) {
+                    alert("파일을 업로드하였습니다.");
+                }
+            });
         });
     });
 

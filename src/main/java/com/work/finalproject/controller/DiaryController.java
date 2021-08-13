@@ -6,12 +6,22 @@ import com.work.finalproject.dto.PageRequestDTO;
 import com.work.finalproject.service.DiaryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 @RequestMapping("/diary")
@@ -24,15 +34,16 @@ public class DiaryController {
         this.service = service;
     }
 
-    @GetMapping("/")
-    public String index(){
-        return "redirect:/diary/list";
+    @GetMapping({"/uploadAjax"})
+    public void uploadAjax(){
+        log.info("test");
     }
 
-    /*TEST*/
-    @GetMapping({"/flip"})
-    public void flip(){
 
+    @GetMapping("/")
+    public String index() {
+
+        return "redirect:/diary/list";
     }
 
     /*리스트*/
@@ -45,23 +56,56 @@ public class DiaryController {
 
     /*글쓰기*/
     @GetMapping({"/register"})
-    public void register(){
-        log.info("register....");
+    public void registerGet(){
+        log.info("registerGet....");
     }
 
     /*등록처리*/
-    @PostMapping("/register")
-    public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes) {
+    @PostMapping({"/register"})
+    @ResponseBody
+    public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes, MultipartFile[] uploadFile) {
         log.info("dto~~~" + dto);
+
         //새로 추가된 엔티티의 번호
+        log.info("uploadFile =========================================== ");
+        String uploadFolder = "C:\\image";
+
+        System.out.println("uploadFile크기!!!"+uploadFile.length);
+        for (MultipartFile multipartFile : uploadFile) {
+            log.info("multipartFile = " + multipartFile.getOriginalFilename());
+            log.info("multipartFile size= " + multipartFile.getSize());
+            String uploadFileName = multipartFile.getOriginalFilename();
+            uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+            log.info("uploadFileName = " + uploadFileName);
+            File saveFile = new File(uploadFolder, uploadFileName);
+            try{
+                multipartFile.transferTo(saveFile);
+            }catch (Exception e){
+                log.error(e.getMessage());
+            }
+            dto.setUploadFile(uploadFileName);
+        }
 
         service.dtoToEntity(dto);
-
         int dno = service.register(dto);
         redirectAttributes.addFlashAttribute("msg", dno);
         return "redirect:/diary/list";
     }
 
+    @GetMapping("download")
+    public ResponseEntity<Resource> download(String image) throws IOException {
+        Path path = Paths.get("C:\\image" + image);
+        //이 부분을 파일 이름을 받아와서 그 이름으로 DB에서 찾아올수 있도록 해야함
+
+
+        String contentType = Files.probeContentType(path);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_TYPE, contentType);
+
+        Resource resource = new InputStreamResource(Files.newInputStream(path));
+        return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+    }
 
     /*글수정*/
     @PostMapping("/modify")
@@ -94,5 +138,26 @@ public class DiaryController {
         return "redirect:/diary/list";
     }
 
+
+   /* @PostMapping("/uploadAjaxAction")
+    @ResponseBody
+    public void uploadAjaxPost(MultipartFile[] uploadFile){
+        log.info("uploadFile =========================================== ");
+        String uploadFolder = "C:\\upload";
+
+        for (MultipartFile multipartFile : uploadFile) {
+            log.info("multipartFile = " + multipartFile.getOriginalFilename());
+            log.info("multipartFile size= " + multipartFile.getSize());
+            String uploadFileName = multipartFile.getOriginalFilename();
+            uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+            log.info("uploadFileName = " + uploadFileName);
+            File saveFile = new File(uploadFolder, uploadFileName);
+            try{
+                multipartFile.transferTo(saveFile);
+            }catch (Exception e){
+                log.error(e.getMessage());
+            }
+        }
+    }*/
 
 }

@@ -49,6 +49,11 @@ dependencies {
     implementation 'com.querydsl:querydsl-jpa'
     implementation 'commons-io:commons-io:2.6'
 
+
+        compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+        compile group: 'commons-io', name: 'commons-io', version: '1.4'
+
+
 }
 
 test {

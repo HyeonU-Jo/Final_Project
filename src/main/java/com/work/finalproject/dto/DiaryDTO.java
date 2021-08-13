@@ -19,7 +19,6 @@ public class DiaryDTO {
     private String d_username;
     private String d_content;
     private LocalDateTime regDate, modDate;
-    private String d_image;
-    private byte[] d_imageByte;
-    private MultipartFile d_imageFile;
+    private String uploadFile;
+
 }
