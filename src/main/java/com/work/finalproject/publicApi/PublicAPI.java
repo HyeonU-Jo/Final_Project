@@ -223,6 +223,7 @@ public class PublicAPI {
                     xmlDTO.setTel(getTagValue("tel", element));
                     xmlDTO.setHomepage(getTagValue("homepage", element));
                     xmlDTO.setFirstimage(getTagValue("firstimage",element));
+                    xmlDTO.setAddr1(getTagValue("addr1", element));
 
                 }
             }
