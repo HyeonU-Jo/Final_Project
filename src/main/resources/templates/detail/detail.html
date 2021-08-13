@@ -48,71 +48,33 @@
                     <option value="15">축제/공연/행사</option>
                     <option value="39">맛집</option>
                 </select>
-                <input type="button" value="지역 선택" class="localBtn">
+                <select name="areaCode" id="areaCode" >
+                    <option value="">전국</option>
+                    <option value="1">서울</option>
+                    <option value="2">인천</option>
+                    <option value="3">대전</option>
+                    <option value="4">대구</option>
+                    <option value="5">광주</option>
+                    <option value="6">부산</option>
+                    <option value="7">울산</option>
+                    <option value="8">세종특별시</option>
+                    <option value="31">경기도</option>
+                    <option value="32">강원도</option>
+                    <option value="33">충청북도</option>
+                    <option value="34">충청남도</option>
+                    <option value="35">경상북도</option>
+                    <option value="36">경상남도</option>
+                    <option value="37">전라남도</option>
+                    <option value="38">전라북도</option>
+                    <option value="39">제주도</option>
+                </select>
                 <input type="text" name="keyword">
                 <input type="hidden" name="page" th:value="1">
                 <input class="searchBtn" type="submit" value="검색">
             </div>
 
             <div class="areaText" id="areaText"></div>
-            <div class="popup_bg">
-                <div class="popup">
-                    <div>
-                        <input type="radio" value="" name="areaCode" title="전국" onclick="getAreaCode(event)">전국
-                    </div>
-                    <div>
-                        <input type="radio" value="1" name="areaCode" title="서울" onclick="getAreaCode(event)">서울
-                    </div>
-                    <div>
-                        <input type="radio" value="2" name="areaCode" title="인천" onclick="getAreaCode(event)">인천
-                    </div>
-                    <div>
-                        <input type="radio" value="3" name="areaCode" title="대전" onclick="getAreaCode(event)">대전
-                    </div>
-                    <div>
-                        <input type="radio" value="4" name="areaCode" title="대구" onclick="getAreaCode(event)">대구
-                    </div>
-                    <div>
-                        <input type="radio" value="5" name="areaCode" title="광주" onclick="getAreaCode(event)">광주
-                    </div>
-                    <div>
-                        <input type="radio" value="6" name="areaCode" title="부산" onclick="getAreaCode(event)">부산
-                    </div>
-                    <div>
-                        <input type="radio" value="7" name="areaCode" title="울산" onclick="getAreaCode(event)">울산
-                    </div>
-                    <div>
-                        <input type="radio" value="8" name="areaCode" title="세종" onclick="getAreaCode(event)">세종
-                    </div>
-                    <div>
-                        <input type="radio" value="31" name="areaCode" title="경기" onclick="getAreaCode(event)">경기
-                    </div>
-                    <div>
-                        <input type="radio" value="32" name="areaCode" title="강원" onclick="getAreaCode(event)">강원
-                    </div>
-                    <div>
-                        <input type="radio" value="33" name="areaCode" title="충북" onclick="getAreaCode(event)">충북
-                    </div>
-                    <div>
-                        <input type="radio" value="34" name="areaCode" title="충남" onclick="getAreaCode(event)">충남
-                    </div>
-                    <div>
-                        <input type="radio" value="35" name="areaCode" title="경북" onclick="getAreaCode(event)">경북
-                    </div>
-                    <div>
-                        <input type="radio" value="36" name="areaCode" title="경남" onclick="getAreaCode(event)">경남
-                    </div>
-                    <div>
-                        <input type="radio" value="37" name="areaCode" title="전북" onclick="getAreaCode(event)">전북
-                    </div>
-                    <div>
-                        <input type="radio" value="38" name="areaCode" title="전남" onclick="getAreaCode(event)">전남
-                    </div>
-                    <div>
-                        <input type="radio" value="39" name="areaCode" title="제주" onclick="getAreaCode(event)">제주
-                    </div>
-                </div>
-            </div>
+
         </form>
         <th:block th:if="${page != null}">
             <table class="searchTable">
