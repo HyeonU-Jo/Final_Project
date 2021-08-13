@@ -29,6 +29,12 @@ public class DiaryController {
         return "redirect:/diary/list";
     }
 
+    /*TEST*/
+    @GetMapping({"/flip"})
+    public void flip(){
+
+    }
+
     /*리스트*/
     @GetMapping({"/list"})
     public void list(PageRequestDTO pageRequestDTO, Model model) {
