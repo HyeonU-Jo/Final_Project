@@ -1,4 +1,107 @@
-    .realDetailLike i:hover {
+/*Ã¬Æ’ÂÃ¬â€žÂ¸Ã«Â³Â´ÃªÂ¸Â°*/
+
+.info,
+.review{
+    width: 80%;
+    margin-bottom: 10%;
+}
+
+.info{
+    height: auto;
+}
+
+.info > ul > li:first-child{
+    color: #44444494;
+    width:7%;
+}
+
+.realDetailContent{
+    width: 70%;
+    margin: 10% 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.realDetailContent ul{
+    margin-bottom: 5%;
+    display: flex;
+}
+
+.info ul > li:first-child{
+    margin-right: 50px;
+}
+
+.intro li:nth-child(2){
+    max-width: 80%;
+    letter-spacing: 1px;
+}
+
+.image{
+    text-align: center;
+}
+
+.image img{
+    width: 80%;
+    margin: 10px auto;
+}
+
+.name{
+    height: 70px;
+    border-bottom : #e1e1e1 1px solid;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name i,
+.name a{
+    text-align: center;
+}
+
+.review{
+    border-top : solid 1px #e1e1e1;
+}
+
+.review > h2 {
+    margin-top : 20px;
+}
+
+.review > ul{
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    border-bottom: solid 1px #e1e1e1;
+}
+
+.review > ul:hover{
+    background-color: #e1e1e1b3;
+    border-radius: 10px;
+}
+
+.review > ul > li{
+    display: flex;
+    flex-direction: column;
+}
+
+.realDetailLike> div{
+    display: flex;
+}
+
+.realDetailLike> div > div{
+    display:flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+.review2{
+    height: 13.6px;
+}
+
+/*
+.realDetailLike i:hover {
     transform: scale(1.5) rotate(1turn);
     transition: 0.5s;
 }
@@ -7,13 +110,13 @@
     display: flex;
 }
 
-.realDetailLike > div{
+.realDetailLike > div {
     display: flex;
     flex-direction: column;
     margin: 0 5px;
 }
 
-.info{
+.info {
     border: solid 1px;
     border-radius: 10px;
     display: flex;
@@ -22,61 +125,75 @@
     height: auto;
 }
 
-.info li{
+.info li {
     min-height: 30px;
     margin: 20px;
 }
 
-.info li:nth-child(odd){
-    background-color : #d3d3d3c4;
+.info li:nth-child(odd) {
+    background-color: #d3d3d3c4;
 }
 
-.info li:nth-child(even){
-    background-color : #d6d6d630;
+.info li:nth-child(even) {
+    background-color: #d6d6d630;
+}
+*/
+
+/* ---------------- Ã«Â¦Â¬Ã«Â·Â°Ã¬Å¾â€˜Ã¬â€žÂ± ----------------*/
+
+
+
+.review_cover{
+    margin: 10% 20%;
 }
 
-/* ---------------- 리뷰작성 ----------------*/
-    .whole_page_cover{
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0, 0, 0, 0.1);
-    }
+.review_content h2,
+#image{
+    margin-left: 20px;
+}
 
-    .review_section{
-        border: solid 1px;
-        border-radius: 10px;
-        display: flex;
-        background-color: white;
-        flex-direction: column;
-        justify-content: space-between;
-        height: auto;
-    }
-    #r_content{
+#r_content{
+    width: 100%;
+    min-height: 240px;
+    border: none;
+    padding: 10px;
+    outline: none;
+}
 
-    }
+.review_text{
+    border: solid 1px;
+    border-radius: 3px;
+    border-color: #e1e1e1;
+    margin: 15px;
+    background-color: white;
+    padding: 10px;
+}
 
-    #subtn {
-        display: inline-block;
-        padding: 15px 25px;
-        font-size: 24px;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        outline: none;
-        color: #fff;
-        background-color: #aee4ff;
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0 9px #999;
-    }
+.review_btn{
+    text-align: right;
+    margin-right: 20px;
+}
 
-    #subtn:hover {background-color: #c4f4fe}
+.review_btn input{
+    background-color: white;
+    border: solid 1px;
+    border-radius: 30px;
+    width: 120px;
+    height: 40px;
+    margin: 10px;
+}
 
-    #subtn:active {
-        background-color: #b5c7ed;
-        box-shadow: 0 5px #666;
-        transform: translateY(4px);
-    }
+.review_btn input:last-child{
+    background-color: #e1e1e1;
+    border: none;
+    color: white;
+}
+
+#image_container{
+    text-align: center;
+    margin: 20px 0;
+}
+
+#image_container > img{
+    width: 50%
+}

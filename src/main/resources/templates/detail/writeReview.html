@@ -17,45 +17,45 @@
 <!--header영역-->
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
-<main class="whole_page_cover">
+<main class="review_cover">
     <section class="review_section">
         <form action="/detail/reviewWrite" method="post" enctype="multipart/form-data">
-            <div border="2">
+            <div class="review_content">
                 <ul>
                     <h2>리뷰 작성</h2>
-                    <li>
+                    <li class="review_text">
+                        <span class="r_rating">
+                            <span class="input">
+                                <input type="radio" name="r_rating" id="p1" value="1"><label for="p1">1</label>
+                                <input type="radio" name="r_rating" id="p2" value="2"><label for="p2">2</label>
+                                <input type="radio" name="r_rating" id="p3" value="3"><label for="p3">3</label>
+                                <input type="radio" name="r_rating" id="p4" value="4"><label for="p4">4</label>
+                                <input type="radio" name="r_rating" id="p5" value="5" checked><label for="p5">5</label>
+                                <input type="radio" name="r_rating" id="p6" value="6"><label for="p6">6</label>
+                                <input type="radio" name="r_rating" id="p7" value="7"><label for="p7">7</label>
+                                <input type="radio" name="r_rating" id="p8" value="8"><label for="p8">8</label>
+                                <input type="radio" name="r_rating" id="p9" value="9"><label for="p9">9</label>
+                                <input type="radio" name="r_rating" id="p10" value="10"><label for="p10">10</label>
+                            </span>
+                            <br>
+                            <textarea id="r_content" name="r_content" style="resize: none"></textarea>
 
-                        <textarea id="r_content" name="r_content" style="resize: none" cols="60" rows="15"></textarea>
+                            <!--                            <output for="r_rating"></output>-->
+                        </span>
                         <input type="hidden" id="content_id" name="content_id" th:value="${dto.content_id}">
                         <input type="hidden" name="contentType" th:value="${dto.contentType}">
                         <input type="hidden" id="title" th:value="${dto.title}">
-                        <input sec:authorize="isAuthenticated()" type="hidden" name="username" id="username" th:value="${#authentication.principal.member_tbl.username}">
-<!--                        <input sec:authorize="isAuthenticated()" type="text" th:value="${#authentication.principal.member_tbl.username}">-->
+                        <input sec:authorize="isAuthenticated()" type="hidden" name="username" id="username"
+                               th:value="${#authentication.principal.member_tbl.username}">
+                        <!--                        <input sec:authorize="isAuthenticated()" type="text" th:value="${#authentication.principal.member_tbl.username}">-->
                     </li>
                 </ul>
-                <ul>
-                    <h2>평점 입력</h2>
-                    <li>  <span class="r_rating">
-  <span class="input">
-    <input type="radio" name="r_rating" id="p1" value="1"><label for="p1">1</label>
-    <input type="radio" name="r_rating" id="p2" value="2"><label for="p2">2</label>
-    <input type="radio" name="r_rating" id="p3" value="3"><label for="p3">3</label>
-    <input type="radio" name="r_rating" id="p4" value="4"><label for="p4">4</label>
-    <input type="radio" name="r_rating" id="p5" value="5" checked><label for="p5">5</label>
-    <input type="radio" name="r_rating" id="p6" value="6"><label for="p6">6</label>
-    <input type="radio" name="r_rating" id="p7" value="7"><label for="p7">7</label>
-    <input type="radio" name="r_rating" id="p8" value="8"><label for="p8">8</label>
-    <input type="radio" name="r_rating" id="p9" value="9"><label for="p9">9</label>
-    <input type="radio" name="r_rating" id="p10" value="10"><label for="p10">10</label>
-  </span>
-  <output for="r_rating"></output>
-</span></li>
-                </ul>
+
                 <ul>
                     <li>
                         <div id="image_container"></div>
                     </li>
-                    <li>
+                    <li class="select_file">
                         <input type="file" id="image" name="imageFile" accept="image/*"
                                onchange="setThumbnail(event);"/>
 
@@ -72,9 +72,10 @@
 
                     </li>
                 </ul>
-                <ul>
-                    <li colspan="2"><input value="입력" id="subtn" type="submit"><input id="subtn" type="button" onclick="history.back()"
-                                                                           value="뒤로가기" style="float: right"></li>
+                <ul class="review_btn">
+                    <li colspan="2"><input value="입력" class="subtn" type="submit">
+                        <input class="subtn" type="button" onclick="history.back()" value="뒤로가기">
+                    </li>
                 </ul>
             </div>
         </form>

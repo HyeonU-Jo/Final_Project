@@ -17,93 +17,94 @@
 
 
 <main class="section">
-    <section class="content">
+    <section class="realDetailContent">
 
-        <div class="info" border="1">
+        <div class="info">
 
             <ul class="name">
-                <li>이름</li>
-                <li th:text="${dto.title}" style="border-right: none"></li>
-                <li style="border: none">
-                    <div class="realDetailLike" style="float: right">
-                        <th:block sec:authorize="isAuthenticated()" th:if="${#authentication.principal.member_tbl.username} != null">
-                        <div>
-                            <i th:class="${like}" id="btn1"></i>
-                            <span>Bucket!</span>
-                        </div>
-                        <div>
-                            <i th:class="${like2}" id="btn2"></i>
-                            <span>Traveled!</span>
-                        </div>
-                        <a th:href="@{/detail/writeReview(content_id=${dto.content_id}, contentType=${dto.contentType}, title=${dto.title}, firstimage=${dto.firstimage2})}">
-                            <th:block>
-                                <button type="button">리뷰작성
-                                </button>
+                <h2 th:text="${dto.title}"></h2>
+                <li>
+                    <div class="realDetailLike">
+                        <div sec:authorize="isAuthenticated()"
+                             th:if="${#authentication.principal.member_tbl.username} != null">
+                            <div>
+                                <i th:class="${like}" id="btn1"></i>
+                                <span>Bucket!</span>
+                            </div>
+                            <div>
+                                <i th:class="${like2}" id="btn2"></i>
+                                <span>Traveled!</span>
+                            </div>
+                            <div>
+                                <a class="review2"
+                                   th:href="@{/detail/writeReview(content_id=${dto.content_id}, contentType=${dto.contentType}, title=${dto.title}, firstimage=${dto.firstimage2})}">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <span>Review!</span>
+                            </div>
                             </th:block>
-                        </a>
-                        </th:block>
-                        <input type="hidden" id="content_id" th:value="${dto.content_id}">
-                        <input type="hidden" id="username" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.member_tbl.username}">
+                            <input type="hidden" id="content_id" th:value="${dto.content_id}">
+                            <input type="hidden" id="username" sec:authorize="isAuthenticated()"
+                                   th:value="${#authentication.principal.member_tbl.username}">
+                        </div>
                     </div>
                 </li>
             </ul>
-            <ul class="intro">
+            <ul class="image">
+                <img th:src="${dto.firstimage}">
+            </ul>
+            <ul class="addr">
                 <li>위치</li>
-                <li th:text="${dto.addr1}" colspan="2"></li>
+                <li th:text="${dto.addr1}"></li>
             </ul>
             <ul class="intro">
                 <li>설명</li>
-                <li width="400" th:utext="${dto.overview}" colspan="2"></li>
+                <li th:utext="${dto.overview}"></li>
             </ul>
             <ul class="tel">
                 <li>연락처</li>
-                <li th:text="${dto.tel}" colspan="2"></li>
+                <li th:text="${dto.tel}"></li>
             </ul>
             <ul class="homepage">
                 <li>홈페이지</li>
-                <li th:utext="${dto.homepage}" colspan="2"></li>
-            </ul>
-            <ul class="image">
-                <li>사진1</li>
-                <td colspan="2"><img th:src="${dto.firstimage}"></td>
+                <li th:utext="${dto.homepage}"></li>
             </ul>
 
 
         </div>
 
-        <div class="review" border="1">
-            <ul>
-                <li>아이디</li>
-                <li>내용</li>
-                <li>평점</li>
-            </ul>
+        <div class="review">
+            <h2>리뷰</h2>
             <ul th:each="list : ${reviewList}">
-                <li th:text="${list.username}"></li>
-                <li th:text="${list.r_content}"></li>
-                <li th:text="${list.r_rating}"></li>
-                <!--<td><img th:src="@{file:///C:/upload/test/}+${list.image}"></td> -->
-                <li><img th:src="@{/detail/download(image=${list.image})}" width="120" height="120"></li>
                 <li>
-                    <a sec:authorize="isAuthenticated()" th:if="${#authentication.principal.member_tbl.username} == ${list.username}" th:href="@{/detail/modifyReview(r_num = ${list.r_num}, content_id = ${list.content_id}, contentType = ${dto.contentType}, firstimage2 = ${dto.firstimage2})}">
+                    [[${list.username}]]
+                    <a sec:authorize="isAuthenticated()"
+                       th:if="${#authentication.principal.member_tbl.username} == ${list.username}"
+                       th:href="@{/detail/modifyReview(r_num = ${list.r_num}, content_id = ${list.content_id}, contentType = ${dto.contentType}, firstimage2 = ${dto.firstimage2})}">
                         <button type="button">수정</button>
                     </a>
                 </li>
+                <li>
+                    [[${list.r_content}]]
+                    <img th:src="@{/detail/download(image=${list.image})}" width="120" height="120">
+                </li>
+                <li th:text="${list.r_rating}"></li>
+                <!--<td><img th:src="@{file:///C:/upload/test/}+${list.image}"></td> -->
             </ul>
         </div>
     </section>
 
-    <!--Map영역-->
-<!--    <div class="map">-->
-<!--        <ul>-->
-<!--            <li>-->
-<!--                <input type="hidden" name="mapx" id="mapx" th:value="${dto.mapx}">-->
-<!--                <input type="hidden" name="mapy" id="mapy" th:value="${dto.mapy}">-->
-<!--                <input type="hidden" id="title" th:value="${dto.title}">-->
-<!--                <div id="map"></div>-->
+    <div class="map">
+        <ul>
+            <li>
+                <input type="hidden" name="mapx" id="mapx" th:value="${dto.mapx}">
+                <input type="hidden" name="mapy" id="mapy" th:value="${dto.mapy}">
+                <input type="hidden" id="title" th:value="${dto.title}">
+                <div id="map"></div>
 
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
+            </li>
+        </ul>
+    </div>
 </main>
 <!--content영역끝-->
 
@@ -147,39 +148,39 @@
 
 </script>
 <script>
-    $('#btn1').on('click', function (){
+    $('#btn1').on('click', function () {
         var form = {
-            content_id : document.getElementById('content_id').value,
-            like_type : "1",
-            username : document.getElementById('username').value
+            content_id: document.getElementById('content_id').value,
+            like_type: "1",
+            username: document.getElementById('username').value
         }
         $.ajax({
             url: "/detail/likeDetail",
-            type : "POST",
-            data : form,
-            success: function(data){
+            type: "POST",
+            data: form,
+            success: function (data) {
                 document.getElementById('btn1').className = data
             },
-            error: function (){
+            error: function () {
                 alert("ajax 에러 떴다.");
             }
         });
     });
 
-    $('#btn2').on('click', function (){
+    $('#btn2').on('click', function () {
         var form = {
-            content_id : document.getElementById('content_id').value,
-            like_type : "2",
-            username : document.getElementById('username').value
+            content_id: document.getElementById('content_id').value,
+            like_type: "2",
+            username: document.getElementById('username').value
         }
         $.ajax({
             url: "/detail/likeDetail",
-            type : "POST",
-            data : form,
-            success: function(data){
+            type: "POST",
+            data: form,
+            success: function (data) {
                 document.getElementById('btn2').className = data
             },
-            error: function (){
+            error: function () {
                 alert("ajax 에러 떴다.");
             }
         });
