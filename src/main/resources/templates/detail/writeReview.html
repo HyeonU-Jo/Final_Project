@@ -9,30 +9,32 @@
     <title>리뷰 수정</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
     <link rel="stylesheet" th:href="@{/dist/css/starCss.css}">
+    <link rel="stylesheet" th:href="@{/dist/css/detail.css}">
+
 </head>
 
 <body>
 <!--header영역-->
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
-<div class="section">
-    <div class="content">
+<main class="whole_page_cover">
+    <section class="review_section">
         <form action="/detail/reviewWrite" method="post" enctype="multipart/form-data">
-            <table border="2">
-                <tr>
-                    <td>리뷰 작성</td>
-                    <td>
+            <div border="2">
+                <ul>
+                    <h2>리뷰 작성</h2>
+                    <li>
                         <input type="text" name="r_content" required>
                         <input type="hidden" id="content_id" name="content_id" th:value="${dto.content_id}">
                         <input type="hidden" name="contentType" th:value="${dto.contentType}">
                         <input type="hidden" id="title" th:value="${dto.title}">
                         <input sec:authorize="isAuthenticated()" type="hidden" name="username" id="username" th:value="${#authentication.principal.member_tbl.username}">
 <!--                        <input sec:authorize="isAuthenticated()" type="text" th:value="${#authentication.principal.member_tbl.username}">-->
-                    </td>
-                </tr>
-                <tr>
-                    <td>평점 입력</td>
-                    <td>  <span class="r_rating">
+                    </li>
+                </ul>
+                <ul>
+                    <h2>평점 입력</h2>
+                    <li>  <span class="r_rating">
   <span class="input">
     <input type="radio" name="r_rating" id="p1" value="1"><label for="p1">1</label>
     <input type="radio" name="r_rating" id="p2" value="2"><label for="p2">2</label>
@@ -46,13 +48,13 @@
     <input type="radio" name="r_rating" id="p10" value="10"><label for="p10">10</label>
   </span>
   <output for="r_rating"></output>
-</span></td>
-                </tr>
-                <tr>
-                    <td>
+</span></li>
+                </ul>
+                <ul>
+                    <li>
                         <div id="image_container"></div>
-                    </td>
-                    <td>
+                    </li>
+                    <li>
                         <input type="file" id="image" name="imageFile" accept="image/*"
                                onchange="setThumbnail(event);"/>
 
@@ -67,22 +69,17 @@
                         }
                         </script>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input value="입력" type="submit"><input type="button" onclick="history.back()"
-                                                                           value="뒤로가기"></td>
-                </tr>
-            </table>
+                    </li>
+                </ul>
+                <ul>
+                    <li colspan="2"><input value="입력" type="submit"><input type="button" onclick="history.back()"
+                                                                           value="뒤로가기"></li>
+                </ul>
+            </div>
         </form>
-    </div>
+    </section>
 
-    <!--Map영역-->
-    <div class="map">
-        <h4>map 파트</h4>
-    </div>
-
-</div>
+</main>
 <!--footer영역-->
 
 <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>

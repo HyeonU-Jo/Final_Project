@@ -1,4 +1,4 @@
-.realDetailLike i:hover {
+    .realDetailLike i:hover {
     transform: scale(1.5) rotate(1turn);
     transition: 0.5s;
 }
@@ -34,3 +34,23 @@
 .info li:nth-child(even){
     background-color : #d6d6d630;
 }
+
+/* ---------------- 리뷰작성 ----------------*/
+    .whole_page_cover{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .review_section{
+        border: solid 1px;
+        border-radius: 10px;
+        display: flex;
+        background-color: white;
+        flex-direction: column;
+        justify-content: space-between;
+        height: auto;
+    }
