@@ -59,7 +59,6 @@ public class DiaryController {
     }
 
 
-
     @GetMapping("/")
     public String index() {
         return "redirect:/diary/list";
@@ -80,45 +79,39 @@ public class DiaryController {
     }
 
     /*등록처리*/
+
     @PostMapping({"/register"})
     @ResponseBody
-    public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes, MultipartFile uploadfile) throws Exception {
-        log.info("update ajax post..........");
-        String uploadFolder = "c:\\upload";
-        File uploadPath = new File(uploadFolder, getFolder());
-        if(uploadPath.exists()==false){
-            uploadPath.mkdirs();
-        }
-        MultipartFile mf = uploadfile;
-        log.info("-------------------------------------------------------");
-        log.info("upload file Name:" + mf.getOriginalFilename());
-        log.info("upload file Size:" + mf.getSize());
+    public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes, MultipartFile[] uploadfile) {
+        log.info("dto~~~" + dto);
 
-        String uploadFileName = mf.getOriginalFilename();
-        uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
-        log.info("only file name:" + uploadFileName);
+        //새로 추가된 엔티티의 번호
+        log.info("uploadFile =========================================== ");
+        String uploadFolder = "C:\\image";
 
-        UUID uuid = UUID.randomUUID();
-
-        uploadFileName = uuid.toString() + "_" + uploadFileName;
-
-        try {
+        System.out.println("uploadFile크기!!!" + uploadfile.length);
+        for (MultipartFile multipartFile : uploadfile) {
+            log.info("multipartFile = " + multipartFile.getOriginalFilename());
+            log.info("multipartFile size= " + multipartFile.getSize());
+            String uploadFileName = multipartFile.getOriginalFilename();
+            uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+            log.info("uploadFileName = " + uploadFileName);
             File saveFile = new File(uploadFolder, uploadFileName);
-            mf.transferTo(saveFile);
-            if (checkImageType(saveFile)) {
-                FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, uploadFileName));
-                Thumbnailator.createThumbnail(mf.getInputStream(), thumbnail, 100, 100);
-                thumbnail.close();
+            try {
+                multipartFile.transferTo(saveFile);
+            } catch (Exception e) {
+                log.error(e.getMessage());
             }
-        } catch (Exception e) {
-            log.error(e.getMessage());
-
+            dto.setUploadfile(uploadFileName);
         }
+
         service.dtoToEntity(dto);
+
         int dno = service.register(dto);
         redirectAttributes.addFlashAttribute("msg", dno);
         return "redirect:/diary/list";
     }
+
 
    /* @GetMapping("download")
     public ResponseEntity<Resource> download(String image) throws IOException {
