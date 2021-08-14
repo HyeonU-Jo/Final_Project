@@ -6,6 +6,8 @@ import com.work.finalproject.dto.PageRequestDTO;
 import com.work.finalproject.service.DiaryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import net.coobird.thumbnailator.Thumbnailator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -18,31 +20,48 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/diary")
 @Log4j2
 public class DiaryController {
 
+    @Autowired
     private final DiaryService service;
 
     public DiaryController(DiaryService service) {
         this.service = service;
     }
 
-    @GetMapping({"/uploadAjax"})
-    public void uploadAjax(){
-        log.info("test");
+    private String getFolder() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String str = sdf.format(date);
+        return str.replace("-", File.separator);
     }
+
+    private boolean checkImageType(File file) {
+        try {
+            String contentType = Files.probeContentType(file.toPath());
+            return contentType.startsWith("image");
+        } catch (IOException e) {
+            System.err.println("checkImageType err = " + e.getMessage());
+        }
+        return false;
+    }
+
 
 
     @GetMapping("/")
     public String index() {
-
         return "redirect:/diary/list";
     }
 
@@ -56,43 +75,52 @@ public class DiaryController {
 
     /*글쓰기*/
     @GetMapping({"/register"})
-    public void registerGet(){
+    public void registerGet() {
         log.info("registerGet....");
     }
 
     /*등록처리*/
     @PostMapping({"/register"})
     @ResponseBody
-    public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes, MultipartFile[] uploadFile) {
-        log.info("dto~~~" + dto);
-
-        //새로 추가된 엔티티의 번호
-        log.info("uploadFile =========================================== ");
-        String uploadFolder = "C:\\image";
-
-        System.out.println("uploadFile크기!!!"+uploadFile.length);
-        for (MultipartFile multipartFile : uploadFile) {
-            log.info("multipartFile = " + multipartFile.getOriginalFilename());
-            log.info("multipartFile size= " + multipartFile.getSize());
-            String uploadFileName = multipartFile.getOriginalFilename();
-            uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
-            log.info("uploadFileName = " + uploadFileName);
-            File saveFile = new File(uploadFolder, uploadFileName);
-            try{
-                multipartFile.transferTo(saveFile);
-            }catch (Exception e){
-                log.error(e.getMessage());
-            }
-            dto.setUploadFile(uploadFileName);
+    public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes, MultipartFile uploadfile) throws Exception {
+        log.info("update ajax post..........");
+        String uploadFolder = "c:\\upload";
+        File uploadPath = new File(uploadFolder, getFolder());
+        if(uploadPath.exists()==false){
+            uploadPath.mkdirs();
         }
+        MultipartFile mf = uploadfile;
+        log.info("-------------------------------------------------------");
+        log.info("upload file Name:" + mf.getOriginalFilename());
+        log.info("upload file Size:" + mf.getSize());
 
+        String uploadFileName = mf.getOriginalFilename();
+        uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+        log.info("only file name:" + uploadFileName);
+
+        UUID uuid = UUID.randomUUID();
+
+        uploadFileName = uuid.toString() + "_" + uploadFileName;
+
+        try {
+            File saveFile = new File(uploadFolder, uploadFileName);
+            mf.transferTo(saveFile);
+            if (checkImageType(saveFile)) {
+                FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, uploadFileName));
+                Thumbnailator.createThumbnail(mf.getInputStream(), thumbnail, 100, 100);
+                thumbnail.close();
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage());
+
+        }
         service.dtoToEntity(dto);
         int dno = service.register(dto);
         redirectAttributes.addFlashAttribute("msg", dno);
         return "redirect:/diary/list";
     }
 
-    @GetMapping("download")
+   /* @GetMapping("download")
     public ResponseEntity<Resource> download(String image) throws IOException {
         Path path = Paths.get("C:\\image" + image);
         //이 부분을 파일 이름을 받아와서 그 이름으로 DB에서 찾아올수 있도록 해야함
@@ -105,7 +133,7 @@ public class DiaryController {
 
         Resource resource = new InputStreamResource(Files.newInputStream(path));
         return new ResponseEntity<>(resource, headers, HttpStatus.OK);
-    }
+    }*/
 
     /*글수정*/
     @PostMapping("/modify")

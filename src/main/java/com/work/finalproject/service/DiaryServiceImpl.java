@@ -30,10 +30,7 @@ public class DiaryServiceImpl implements DiaryService {
 
     @Override
     public int register(DiaryDTO dto) {
-        log.info("=======================DiaryDTO =================================");
-        log.info(dto);
         diary_tbl entity = dtoToEntity(dto);
-        log.info(entity);
         repository.save(entity);
         return entity.getDno();
     }
@@ -62,7 +59,7 @@ public class DiaryServiceImpl implements DiaryService {
             diary_tbl entity = result.get();
             entity.changeTitle(dto.getD_title());
             entity.changeContent(dto.getD_content());
-            entity.changeImage(dto.getUploadFile());
+            entity.changeuploadfile(dto.getUploadfile());
             repository.save(entity);
 
         }

@@ -16,17 +16,17 @@ public class diary_tbl extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int dno;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 4000, nullable = true)
     private String d_title;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 4000, nullable = true)
     private String d_username;
 
-    @Column(length = 4000, nullable = false)
+    @Column(length = 4000, nullable = true)
     private String d_content;
 
-    @Column(length = 500, nullable = true)
-    private String uploadFile;
+    @Column(length = 4000, nullable = true)
+    private String uploadfile;
 
     public void changeTitle(String title){
         this.d_title=title;
@@ -34,8 +34,8 @@ public class diary_tbl extends BaseEntity{
     public void changeContent(String content){
         this.d_content=content;
     }
-    public void changeImage(String image){
-        this.uploadFile = uploadFile;
+    public void changeuploadfile(String uploadfile){
+        this.uploadfile= uploadfile;
     }
 
 }

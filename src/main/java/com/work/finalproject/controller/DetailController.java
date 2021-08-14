@@ -62,7 +62,6 @@ public class DetailController {
     @GetMapping("/searchPage")
     public String searchPage(){
         return "/detail/searchPage";
-
     }
 
     @GetMapping("/detail")
