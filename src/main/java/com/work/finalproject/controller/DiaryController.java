@@ -93,6 +93,7 @@ public class DiaryController {
         for (MultipartFile multipartFile : image) {
             log.info("multipartFile = " + multipartFile.getOriginalFilename());
             log.info("multipartFile size= " + multipartFile.getSize());
+            System.out.println(multipartFile.getOriginalFilename());
             String uploadFileName = multipartFile.getOriginalFilename();
             uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
             log.info("uploadFileName = " + uploadFileName);
