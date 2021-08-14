@@ -77,7 +77,7 @@
             <h2>리뷰</h2>
             <ul th:each="list : ${reviewList}">
                 <li class="review_user">
-                    [[${list.username}]]
+                    [[${list.name}]]
                     <a sec:authorize="isAuthenticated()"
                        th:if="${#authentication.principal.member_tbl.username} == ${list.username}"
                        th:href="@{/detail/modifyReview(r_num = ${list.r_num}, content_id = ${list.content_id}, contentType = ${dto.contentType}, firstimage2 = ${dto.firstimage2})}">
