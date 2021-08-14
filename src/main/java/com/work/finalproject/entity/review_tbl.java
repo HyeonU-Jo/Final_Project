@@ -31,6 +31,9 @@ public class review_tbl {
     @Column(length = 500, nullable = true)
     private String username;
 
+    @Column(length = 500, nullable = true)
+    private String name;
+
     @Transient
     private int r_rating_avg;
 

@@ -33,6 +33,7 @@ public interface ReviewService {
                 .r_rating(dto.getR_rating())
                 .image(dto.getImage())
                 .username(dto.getUsername())
+                .name(dto.getName())
                 .build();
         return entity;
     }
@@ -45,6 +46,7 @@ public interface ReviewService {
                 .content_id(entity.getContent_id())
                 .image(entity.getImage())
                 .username(entity.getUsername())
+                .name(entity.getName())
                 .build();
         return dto;
     }
