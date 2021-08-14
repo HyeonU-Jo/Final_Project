@@ -76,7 +76,7 @@
         <div class="review">
             <h2>리뷰</h2>
             <ul th:each="list : ${reviewList}">
-                <li>
+                <li class="review_user">
                     [[${list.username}]]
                     <a sec:authorize="isAuthenticated()"
                        th:if="${#authentication.principal.member_tbl.username} == ${list.username}"
@@ -84,11 +84,11 @@
                         <button type="button">수정</button>
                     </a>
                 </li>
-                <li>
+                <li class="review_content">
                     [[${list.r_content}]]
                     <img th:src="@{/detail/download(image=${list.image})}" width="120" height="120">
                 </li>
-                <li th:text="${list.r_rating}"></li>
+                <li class="review_rate" th:text="${list.r_rating} + 점"></li>
                 <!--<td><img th:src="@{file:///C:/upload/test/}+${list.image}"></td> -->
             </ul>
         </div>

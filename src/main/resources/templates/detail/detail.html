@@ -48,7 +48,7 @@
                     <option value="15">축제/공연/행사</option>
                     <option value="39">맛집</option>
                 </select>
-                <select name="areaCode" id="areaCode" >
+                <select name="areaCode" id="areaCode">
                     <option value="">전국</option>
                     <option value="1">서울</option>
                     <option value="2">인천</option>
@@ -81,14 +81,16 @@
                 <div th:each="list : ${list}">
                     <tr>
                         <td>
-                            <a th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2})}"><img th:src="${list.firstimage2}"></a>
+                            <a th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2})}"><img
+                                    th:src="${list.firstimage2}"></a>
 
 
                             <input type="hidden" name="mapx" id="mapx" th:value="${list.mapx}">
                             <input type="hidden" name="mapy" id="mapy" th:value="${list.mapy}">
                         </td>
                         <td>
-                            <a th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2})}">[[${list.keyword}]]</a>                        </td>
+                            <a th:href="@{/detail/realDetail(content_id=${list.content_id}, contentType=${list.contentType}, firstimage2=${list.firstimage2})}">[[${list.keyword}]]</a>
+                        </td>
                         <td>
                             [[${list.addr1}]]
                         </td>
@@ -151,7 +153,9 @@
             </div>
         </th:block>
         <th:block th:if="${page==null}">
-            검색된 결과가 없습니다.
+            <div class="nullText">
+                검색된 결과가 없습니다.
+            </div>
         </th:block>
 
     </div>
