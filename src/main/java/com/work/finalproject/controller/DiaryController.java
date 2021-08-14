@@ -82,15 +82,15 @@ public class DiaryController {
 
     @PostMapping({"/register"})
     @ResponseBody
-    public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes, MultipartFile[] uploadfile) {
+    public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes, MultipartFile[] image) {
         log.info("dto~~~" + dto);
 
         //새로 추가된 엔티티의 번호
         log.info("uploadFile =========================================== ");
         String uploadFolder = "C:\\image";
 
-        System.out.println("uploadFile크기!!!" + uploadfile.length);
-        for (MultipartFile multipartFile : uploadfile) {
+        System.out.println("uploadFile크기!!!" + image.length);
+        for (MultipartFile multipartFile : image) {
             log.info("multipartFile = " + multipartFile.getOriginalFilename());
             log.info("multipartFile size= " + multipartFile.getSize());
             String uploadFileName = multipartFile.getOriginalFilename();

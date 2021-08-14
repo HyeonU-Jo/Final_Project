@@ -33,7 +33,7 @@
             <textarea rows="20" name="d_content" id="d_content">내용입니다.</textarea>
         </div>
         <div>
-            <input type="file" name="uploadfile" id="uploadfile" accept="image/*" multiple/>
+            <input type="file" name="image" id="image" accept="image/*" multiple/>
 
         </div>
         <button id="uploadBtn">uploadFile</button>
@@ -57,7 +57,7 @@
         $("#uploadBtn").on("click", function (e) {
             console.log("호출되는가?");
             var formData = new FormData();
-            var inputFile = $("input[name='uploadfile']");
+            var inputFile = $("input[name='image']");
             let files = inputFile[0].files;
             console.log(files);
 
@@ -65,7 +65,7 @@
             formData.append("d_username",$("#d_username").val());
             formData.append("d_content", $("#d_content").val());
             for (var i = 0; i < files.length; i++) {
-                formData.append("uploadfile", files[i]);
+                formData.append("image", files[i]);
             }
             console.log("호출되는가?");
             $.ajax({
