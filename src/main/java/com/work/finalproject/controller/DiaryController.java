@@ -80,39 +80,51 @@ public class DiaryController {
 
     /*등록처리*/
 
-    @PostMapping({"/register"})
+    @PostMapping({"/register2"})
     @ResponseBody
     public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes, MultipartFile[] image) {
         log.info("dto~~~" + dto);
-
         //새로 추가된 엔티티의 번호
         log.info("uploadFile =========================================== ");
-        String uploadFolder = "C:\\image";
-
-        System.out.println("uploadFile크기!!!" + image.length);
-        for (MultipartFile multipartFile : image) {
-            log.info("multipartFile = " + multipartFile.getOriginalFilename());
-            log.info("multipartFile size= " + multipartFile.getSize());
-            System.out.println(multipartFile.getOriginalFilename());
-            String uploadFileName = multipartFile.getOriginalFilename();
-            uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
-            log.info("uploadFileName = " + uploadFileName);
-            File saveFile = new File(uploadFolder, uploadFileName);
-            try {
-                multipartFile.transferTo(saveFile);
-            } catch (Exception e) {
-                log.error(e.getMessage());
-            }
-            dto.setUploadfile(uploadFileName);
+        String uploadFolder = "C:\\asdfqwerwqer";
+        File uploadPath = new File(uploadFolder, getFolder());
+        if (uploadPath.exists() == false) {
+            uploadPath.mkdirs();
         }
+        String uploadFileName;
 
+        if (image != null) {
+            for (MultipartFile multipartFile : image) {
+                log.info("multipartFile = " + multipartFile.getOriginalFilename());
+                log.info("multipartFile size= " + multipartFile.getSize());
+                uploadFileName = multipartFile.getOriginalFilename();
+                uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+                log.info("uploadFileName = " + uploadFileName);
+                UUID uuid = UUID.randomUUID();
+                uploadFileName = uuid.toString() + "_" + uploadFileName;
+
+
+                try {
+                    File saveFile = new File(uploadFolder, uploadFileName);
+                    multipartFile.transferTo(saveFile);
+                    if (checkImageType(saveFile)) {
+                        FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, uploadFileName));
+                        Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
+                        thumbnail.close();
+                    }
+                } catch (Exception e) {
+                    log.error(e.getMessage());
+                }
+                dto.setUploadfile(uploadFileName);
+            }
+        } else {
+            dto.setUploadfile(null);
+        }
         service.dtoToEntity(dto);
-
         int dno = service.register(dto);
         redirectAttributes.addFlashAttribute("msg", dno);
         return "redirect:/diary/list";
     }
-
 
    /* @GetMapping("download")
     public ResponseEntity<Resource> download(String image) throws IOException {
