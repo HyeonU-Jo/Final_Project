@@ -48,6 +48,7 @@
                         <input sec:authorize="isAuthenticated()" type="hidden" name="username" id="username"
                                th:value="${#authentication.principal.member_tbl.username}">
                         <!--                        <input sec:authorize="isAuthenticated()" type="text" th:value="${#authentication.principal.member_tbl.username}">-->
+                        <input sec:authorize="isAuthenticated()" type="hidden" name="name" id="name" th:value="${#authentication.principal.member_tbl.name}">
                     </li>
                 </ul>
 
