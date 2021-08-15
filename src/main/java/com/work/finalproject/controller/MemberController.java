@@ -34,13 +34,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,9 +68,19 @@ public class MemberController {
 
     //회원가입 페이지
     @GetMapping("/join")
-    public String join(Model model) {
+    public String join(member_tbl member_tbl) {
 
         return "/member/join";
+    }
+
+    @PostMapping("/join") // 2
+    public String addUser(@Valid member_tbl member_tbl, BindingResult result){
+
+        if(result.hasErrors()){
+            return "/member/join";
+        }
+
+        return "/member/success";
     }
 
     //로그인 페이지
@@ -267,6 +276,7 @@ public class MemberController {
         likeService.deleteLike(dto);
         return dto.getContent_id();
     }
+
 
 
 }
