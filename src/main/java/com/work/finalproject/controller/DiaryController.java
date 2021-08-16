@@ -80,66 +80,18 @@ public class DiaryController {
 
     /*등록처리*/
 
-    @PostMapping({"/register2"})
-    @ResponseBody
-    public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes, MultipartFile[] image) {
+    /*등록처리*/
+    @PostMapping("/register")
+    public String registerPost(DiaryDTO dto, RedirectAttributes redirectAttributes) {
         log.info("dto~~~" + dto);
         //새로 추가된 엔티티의 번호
-        log.info("uploadFile =========================================== ");
-        String uploadFolder = "C:\\asdfqwerwqer";
-        File uploadPath = new File(uploadFolder, getFolder());
-        if (uploadPath.exists() == false) {
-            uploadPath.mkdirs();
-        }
-        String uploadFileName;
 
-        if (image != null) {
-            for (MultipartFile multipartFile : image) {
-                log.info("multipartFile = " + multipartFile.getOriginalFilename());
-                log.info("multipartFile size= " + multipartFile.getSize());
-                uploadFileName = multipartFile.getOriginalFilename();
-                uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
-                log.info("uploadFileName = " + uploadFileName);
-                UUID uuid = UUID.randomUUID();
-                uploadFileName = uuid.toString() + "_" + uploadFileName;
-
-
-                try {
-                    File saveFile = new File(uploadFolder, uploadFileName);
-                    multipartFile.transferTo(saveFile);
-                    if (checkImageType(saveFile)) {
-                        FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, uploadFileName));
-                        Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
-                        thumbnail.close();
-                    }
-                } catch (Exception e) {
-                    log.error(e.getMessage());
-                }
-                dto.setUploadfile(uploadFileName);
-            }
-        } else {
-            dto.setUploadfile(null);
-        }
         service.dtoToEntity(dto);
+
         int dno = service.register(dto);
         redirectAttributes.addFlashAttribute("msg", dno);
         return "redirect:/diary/list";
     }
-
-   /* @GetMapping("download")
-    public ResponseEntity<Resource> download(String image) throws IOException {
-        Path path = Paths.get("C:\\image" + image);
-        //이 부분을 파일 이름을 받아와서 그 이름으로 DB에서 찾아올수 있도록 해야함
-
-
-        String contentType = Files.probeContentType(path);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_TYPE, contentType);
-
-        Resource resource = new InputStreamResource(Files.newInputStream(path));
-        return new ResponseEntity<>(resource, headers, HttpStatus.OK);
-    }*/
 
     /*글수정*/
     @PostMapping("/modify")

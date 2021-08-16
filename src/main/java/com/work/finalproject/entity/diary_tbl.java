@@ -25,17 +25,11 @@ public class diary_tbl extends BaseEntity{
     @Column(length = 4000, nullable = true)
     private String d_content;
 
-    @Column(length = 4000, nullable = true)
-    private String uploadfile;
-
     public void changeTitle(String title){
         this.d_title=title;
     }
     public void changeContent(String content){
         this.d_content=content;
-    }
-    public void changeuploadfile(String uploadfile){
-        this.uploadfile= uploadfile;
     }
 
 }

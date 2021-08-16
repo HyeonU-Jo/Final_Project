@@ -16,25 +16,22 @@
 <th:block th:replace="~{/sementic/header :: setHead(~{this::head} )}"></th:block>
 
 
-<form id="form">
+<form th:action="@{/diary/register}" th:method="post">
     <div class="section">
         <div class="diary_content">
             <h2>글작성</h2>
             <div>
                 <span>제 목</span>
-                <input type="text" name="d_title" id="d_title" th:value="제목">
+                <input type="text" name="d_title" id="d_title" >
             </div>
             <div>
                 <span>작성자</span>
-                <input type="text" name="d_username" id="d_username" th:value="작성자">
+                <input type="text" name="d_username" id="d_username">
             </div>
             <div>
-                <textarea rows="20" name="d_content" id="d_content">내용입니다.</textarea>
+                <textarea rows="20" name="d_content" id="d_content"></textarea>
             </div>
-            <div>
-                <input type="file" name="image" id="image" accept="image/*" multiple/>
 
-            </div>
             <button id="uploadBtn">uploadFile</button>
             <button type="reset">다시쓰기</button>
             <button type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>
@@ -46,40 +43,6 @@
 
 <th:block th:replace="~{/sementic/footer :: setFoot(~{this::foot} )}"></th:block>
 
-<!--
-           formData.append("d_title",$("#d_title").val());
-            formData.append("d_username",$("#d_username").val());
-            formData.append("d_content", $("#d_content").val());
-            -->
-<script>
-    $(document).ready(function () {
-        $("#uploadBtn").on("click", function (e) {
-            console.log("호출되는가?");
-            var formData = new FormData();
-            var inputFile = $("input[name='image']");
-            let files = inputFile[0].files;
-            console.log(files);
-            formData.append("d_title", $("#d_title").val());
-            formData.append("d_username", $("#d_username").val());
-            formData.append("d_content", $("#d_content").val());
-            for (var i = 0; i < files.length; i++) {
-                formData.append("image", files[i]);
-            }
-            console.log("호출되는가?");
-            $.ajax({
-                url: '/diary/register2',
-                processData: false,
-                contentType: false,
-                data: formData,
-                type: 'POST',
-                success: function (data) {
-                    alert("파일을 업로드하였습니다.");
-                }, error: function () {
-                    alert("하..오류");
-                }
-            });
-        });
-    });
-</script>
+
 </body>
 </html>
