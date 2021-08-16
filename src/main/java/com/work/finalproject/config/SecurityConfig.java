@@ -55,13 +55,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http
             .csrf().disable()
             .authorizeRequests()
-                .antMatchers("/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
+                .antMatchers("/diary/**").authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/member/auth/login")
+                .loginPage("/loginPlz")
                 .loginProcessingUrl("/auth/loginProc") //스프링 시큐리티가 해당 주소로 요청오는 로그인을 가로채서 대신 로그인
                 .defaultSuccessUrl("/") //로 이동
                 .failureHandler(loginFailHandler())

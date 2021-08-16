@@ -18,4 +18,9 @@ public class LoginController {
     public String logout() {
         return "/member/logoutPage";
     }
+
+    @GetMapping("/loginPlz")
+    public String loginplz() {
+        return "/member/loginPlz";
+    }
 }
