@@ -19,21 +19,21 @@
 <form th:action="@{/diary/register}" th:method="post">
     <div class="section">
         <div class="diary_content">
-            <h2>글작성</h2>
+            <h2 class="diary_register_h2">글작성</h2>
             <div>
-                <span>제 목</span>
-                <input type="text" name="d_title" id="d_title">
+                <span style="font-size: 15px;">제 목</span>
+                <input class="diary_register_title" type="text" name="d_title" id="d_title">
             </div>
             <div>
                 <input type="hidden" th:value="${#authentication.principal.username}" name="d_username"><br/>
             </div>
             <div>
-                <textarea rows="20" name="d_content" id="d_content"></textarea>
+                <textarea class="diary_register_content" rows="20" name="d_content" id="d_content"></textarea>
             </div>
 
-            <button id="uploadBtn">작성하기</button>
-            <button type="reset">다시쓰기</button>
-            <button type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>
+            <button class="diary_register_btn1" id="uploadBtn">작성하기</button>
+            <button class="diary_register_btn1" type="reset">다시쓰기</button>
+            <button class="diary_register_btn1" type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>
 
         </div>
     </div>

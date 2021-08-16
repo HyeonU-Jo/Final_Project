@@ -163,3 +163,36 @@
     width:10%;
     text-align:left;
 }
+
+
+/*register CSS*/
+.diary_register_h2 {
+    width: 100%;
+    text-align: center;
+    letter-spacing: 10px;
+    padding-left: 10px;
+}
+
+.diary_register_title {
+    width: 70%;
+    margin: 30px 10px;
+    line-height: 40px;
+    border-radius: 10px;
+    padding-left: 20px;
+
+}
+
+.diary_register_content {
+    width: 80%;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.diary_register_btn1 {
+    margin:30px 20px;
+    border-radius: 10px;
+    border: none;
+    line-height:10px;
+    padding:20px;
+}
