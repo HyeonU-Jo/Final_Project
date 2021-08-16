@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <th:block th:fragment="setHead(head)"></th:block>
 <th:block th:fragment="setFoot(foot)"></th:block>
 <th:block th:fragment="setCss(css)"></th:block>
@@ -18,7 +19,7 @@
     <div class="diary_content">
         <!--글등록-->
         <h1 class="diary_list_h1">My travel diary
-            <span class="diary_list_span">
+            <span class="diary_list_span" sec:authorize="isAuthenticated()">
                 <a th:href="@{/diary/register}">
                      <button type="button">기록하기</button>
                 </a>
