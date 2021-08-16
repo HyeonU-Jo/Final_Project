@@ -59,7 +59,7 @@
                 </ul>
 
                 <ul id="hideTr">
-                    <li><img id="nowImage" th:src="@{/detail/download(image=${dto.image})}" width="120" height="120">
+                    <li><img id="nowImage" th:src="@{/detail/download(image=${dto.image})}" width="120" height="120" onerror="this.style.display='none'">
                     </li>
                 </ul>
                 <ul>

@@ -86,7 +86,7 @@
                 </li>
                 <li class="review_content">
                     [[${list.r_content}]]
-                    <img th:src="@{/detail/download(image=${list.image})}" width="120" height="120">
+                    <img th:src="@{/detail/download(image=${list.image})}" width="120" height="120" onerror="this.style.display='none'">
                 </li>
                 <li class="review_rate" th:text="${list.r_rating} + 점"></li>
                 <!--<td><img th:src="@{file:///C:/upload/test/}+${list.image}"></td> -->
