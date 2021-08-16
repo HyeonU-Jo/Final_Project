@@ -22,17 +22,16 @@
             <h2>글작성</h2>
             <div>
                 <span>제 목</span>
-                <input type="text" name="d_title" id="d_title" >
+                <input type="text" name="d_title" id="d_title">
             </div>
             <div>
-                <span>작성자</span>
-                <input type="text" name="d_username" id="d_username">
+                <input type="hidden" th:value="${#authentication.principal.username}" name="d_username"><br/>
             </div>
             <div>
                 <textarea rows="20" name="d_content" id="d_content"></textarea>
             </div>
 
-            <button id="uploadBtn">uploadFile</button>
+            <button id="uploadBtn">작성하기</button>
             <button type="reset">다시쓰기</button>
             <button type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>
 
