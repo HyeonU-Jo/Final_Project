@@ -1,3 +1,8 @@
+a:link { color: #000000; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: #b2b2f5; text-decoration: underline;}
+
+
 /* ----------------- 공용----------------- */
 
 .whole_page_cover{

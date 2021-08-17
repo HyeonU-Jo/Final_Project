@@ -32,12 +32,7 @@
             <tbody>
             <tr th:each="dto : ${result.dtoList}">
                 <td class="notice_list_td">
-                    <a class="notice_list_a" th:href="@{/notice/read(no = ${dto.no},
-                    page= ${result.page},
-                    type= ${pageRequestDTO.type} ,
-                    keyword = ${pageRequestDTO.keyword})}">
                         [[${dto.no}]]
-                    </a>
                 </td>
 
                 <td class="notice_list_td">

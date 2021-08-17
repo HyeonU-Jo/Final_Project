@@ -1,3 +1,7 @@
+a:link { color: #000000; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: #b2b2f5; text-decoration: underline;}
+
 .diary_section {
     text-align: center;
     width: 70%;
@@ -119,6 +123,7 @@
     width: 70%;
     margin-bottom: 30px;
     padding: 10px 10px 10px 10px;
+    border-radius: 20px;
 }
 
 .diary_list_btn,
@@ -127,7 +132,7 @@
 }
 
 .diary_read_btn {
-    width: 84%;
+    width: 87%;
     text-align: right;
 }
 
@@ -155,8 +160,9 @@
 .diary_modify_controller{
     width:70%;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: .5rem;
     color: #495057;
+    padding-left: 10px;
 }
 
 .diary_modify_group > label{
@@ -195,4 +201,11 @@
     border: none;
     line-height:10px;
     padding:20px;
+}
+
+.diary_search_btn {
+    margin:0px 5px;
+    border-radius: 10px;
+    border: none;
+    padding:2px;
 }

@@ -81,7 +81,7 @@
                     <a sec:authorize="isAuthenticated()"
                        th:if="${#authentication.principal.member_tbl.username} == ${list.username}"
                        th:href="@{/detail/modifyReview(r_num = ${list.r_num}, content_id = ${list.content_id}, contentType = ${dto.contentType}, firstimage2 = ${dto.firstimage2})}">
-                        <button type="button">수정</button>
+                        <button type="button" class="review_btn" >수정</button>
                     </a>
                 </li>
                 <li class="review_content">

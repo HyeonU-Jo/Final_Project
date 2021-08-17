@@ -21,7 +21,7 @@
         <h1 class="diary_list_h1">My travel diary
             <span class="diary_list_span" sec:authorize="isAuthenticated()">
                 <a th:href="@{/diary/register}">
-                     <button type="button">기록하기</button>
+                     <button type="button" class="diary_register_btn1">기록하기</button>
                 </a>
             </span>
         </h1>
@@ -41,8 +41,8 @@
                 <input name="keyword" th:value="${pageRequestDTO.keyword}"/>
 
                 <span>
-                    <button type="button" class="btn-search">찾 기</button>
-                    <button type="button" class="btn-clear">찾기 취소</button>
+                    <button type="button" class="btn-search diary_search_btn">찾 기</button>
+                    <button type="button" class="btn-clear diary_search_btn">찾기 취소</button>
                 </span>
             </div>
         </form>
@@ -51,15 +51,19 @@
             <div>
                 <tr th:each="dto : ${result.dtoList}">
                     <th scope="row">
-                        <a class="diary_list_a" th:href="@{/diary/read(dno = ${dto.dno},
+                            [[${dto.dno}]]
+                    </th>
+
+                    <td class="diary_list_td">
+                        <span class="diary_list_span2">
+                         <a class="diary_list_a" th:href="@{/diary/read(dno = ${dto.dno},
                     page= ${result.page},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword})}">
-                            [[${dto.dno}]]
+                            [[${dto.d_title}]]
                         </a>
-                    </th>
-                    <td class="diary_list_td">
-                        <span class="diary_list_span2">[[${dto.d_title}]]</span><br>
+
+                        </span><br>
                         <p class="diary_list_p">[[${dto.d_content}]]</p>
                         <span class="diary_list_span3">[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</span><br>
                     </td>

@@ -38,9 +38,9 @@
 
             <div class="diary_read_btn">
                 <a th:href="@{/diary/modify(dno = ${dto.dno}, page=${requestDTO.page})}">
-                    <button type="button">수정하기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="diary_register_btn1">수정하기</button>
                 </a>
-                <button type="button" th:onclick="|location.href='/diary/list'|">목록으로</button>
+                <button type="button" class="diary_register_btn1" th:onclick="|location.href='/diary/list'|">목록으로</button>
             </div>
 
             <!--content영역끝-->
