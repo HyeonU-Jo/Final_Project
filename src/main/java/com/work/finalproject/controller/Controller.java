@@ -22,13 +22,13 @@ public class Controller {
         List<XmlDTO> xmlDTOList2 = new ArrayList<>();
         try{
 
-            /*List<XmlDTO> xmlDTOS =api.randomSearch("15");
+            List<XmlDTO> xmlDTOS =api.randomSearch("15");
             List<XmlDTO> xmlDTOS1 = api.randomSearch("12");
-            List<XmlDTO> xmlDTOS2 = api.randomSearch("39");*/
+            List<XmlDTO> xmlDTOS2 = api.randomSearch("39");
 
-            List<XmlDTO> xmlDTOS = new ArrayList<>();
+            /*List<XmlDTO> xmlDTOS = new ArrayList<>();
             List<XmlDTO> xmlDTOS1 = new ArrayList<>();
-            List<XmlDTO> xmlDTOS2 = new ArrayList<>();
+            List<XmlDTO> xmlDTOS2 = new ArrayList<>();*/
 
             Collections.shuffle(xmlDTOS);
             Collections.shuffle(xmlDTOS1);
