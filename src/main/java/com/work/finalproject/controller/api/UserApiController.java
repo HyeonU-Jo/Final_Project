@@ -116,7 +116,6 @@ public class UserApiController {
 
         if(token != null) {
             member_tbl member_tbl = email_repository.findByEmailIgnoreCase(token.getMember().getEmail());
-            member_tbl.setEnabled(true);
             email_repository.save(member_tbl);
             modelAndView.addObject("member_tbl", member_tbl);
             modelAndView.addObject("email", member_tbl.getEmail());
@@ -136,7 +135,6 @@ public class UserApiController {
         if(member_tbl.getEmail() != null) {
             // use email to find user
             member_tbl tokenUser = email_repository.findByEmailIgnoreCase(member_tbl.getEmail());
-            tokenUser.setEnabled(true);
             tokenUser.setPassword(encoder.encode(member_tbl.getPassword()));
             email_repository.save(tokenUser);
             modelAndView.addObject("message", "비밀번호가 재설정되었습니다.");

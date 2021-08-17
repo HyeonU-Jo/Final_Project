@@ -73,15 +73,7 @@ public class MemberController {
         return "/member/join";
     }
 
-    @PostMapping("/join") // 2
-    public String addUser(@Valid member_tbl member_tbl, BindingResult result){
 
-        if(result.hasErrors()){
-            return "/member/join";
-        }
-
-        return "/member/success";
-    }
 
     //로그인 페이지
     @GetMapping("/auth/login")

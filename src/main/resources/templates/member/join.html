@@ -16,35 +16,29 @@
 <div class="whole_page_cover">
   <div class="member_insert">
       <h2>회원가입</h2>
-      <form th:action="@{/member/join}" th:object="${member_tbl}" th:method="POST">
+      <form th:action="@{/member/join}" th:method="POST">
           <div class="member_insert_input">
               <label for="username"></label>
-              <input type="text" th:field="*{username}" th:class="${#fields.hasErrors('username')} ? 'error'" placeholder="아이디" id="username"/>
-              <div th:each="msg : ${#fields.errors('username')}">
-                  <p th:style="${'color: red;'}" th:text="${msg}"></p>
-              </div>
+              <input type="text" placeholder="아이디" id="username"/>
+
           </div>
           <div class="member_insert_input">
               <label for="Password"></label>
-              <input type="password" placeholder="비밀번호" id="password"  th:field="*{password}" th:class="${#fields.hasErrors('password')} ? 'error'">
-              <div th:each="msg : ${#fields.errors('password')}">
-                  <p th:style="${'color: red;'}" th:text="${msg}"></p>
-              </div>
+              <input type="password" placeholder="비밀번호" id="password">
+
           </div>
           <div class="member_insert_input">
               <label for="Email"></label>
-              <input type="email" placeholder="이메일" id="email" th:field="*{email}" th:class="${#fields.hasErrors('email')} ? 'error'">
-              <div th:each="msg : ${#fields.errors('email')}">
-                  <p th:style="${'color: red;'}" th:text="${msg}"></p>
-              </div>
+              <input type="email" placeholder="이메일" id="email" >
+
           </div>
           <div class="member_insert_input">
               <label for="Name"></label>
-              <input type="text" placeholder="이름" id="name" th:field="*{name}" th:class="${#fields.hasErrors('name')} ? 'error'">
-              <div th:each="msg : ${#fields.errors('name')}">
-                  <p th:style="${'color: red;'}" th:text="${msg}"></p>
-              </div>
+              <input type="text" placeholder="이름" id="name" >
+
           </div>
+      </form>
+
 
           <div class="member_insert_btn">
               <input type="submit" id="btn-save" value="회원가입">
@@ -54,7 +48,8 @@
               <input type="reset" value="다시쓰기">
           </div>
 
-      </form>
+
+
 
 
 
