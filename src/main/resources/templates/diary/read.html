@@ -5,7 +5,7 @@
 <th:block th:fragment="setCss(css)"></th:block>
 <head>
     <meta charset="UTF-8">
-    <title>diaryread</title>
+    <title>마이 다이어리</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
     <link rel="stylesheet" th:href="@{/dist/css/diary.css}">
 
@@ -31,7 +31,7 @@
         </div>
         <div>
             <div>
-                <textarea class="diary_read_input_content" rows="5" name="d_content"
+                <textarea class="diary_read_input_content" rows="20" name="d_content"
                           readonly>[[${dto.d_content}]]</textarea>
 
             </div>

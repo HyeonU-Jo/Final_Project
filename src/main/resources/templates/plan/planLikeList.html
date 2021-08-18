@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>찜한목록</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
+    <link rel="stylesheet" th:href="@{/dist/css/plan.css}">
     <script th:src="@{/dist/js/plan.js}"></script>
     <script type="text/javascript">
         function getParentText() {
@@ -16,9 +17,9 @@
         }
     </script>
 </head>
-<body>
+<body class="like_body">
 
-<h2>찜페이지이지롱</h2>
+<h2>찜페이지</h2>
 <legend>찜목록번호</legend>
 
 <tr th:each="like:${likeList}">
@@ -37,11 +38,11 @@
         <input type="hidden" id="username" name="username" value="username"><br/>
         <input type="hidden" id="result" name="content_id" value=""/><br/>
         <input type="hidden" id="cDay" name="p_cday" value=""><br/>
-        <button id="planbtn">등록하기</button>
+        <button class="plan_btn">등록하기</button>
 
     </form>
 <tr>
-    <td>
+    <td class="like_map">
         <th:block th:replace="~{/sementic/kakaoMapApi :: setMap(~{this::map} )}"></th:block>
     </td>
 </tr>

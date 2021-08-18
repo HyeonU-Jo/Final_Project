@@ -6,7 +6,7 @@
 <th:block th:fragment="setCss(css)"></th:block>
 <head>
     <meta charset="UTF-8">
-    <title>diarylist</title>
+    <title>마이 다이어리</title>
     <link rel="stylesheet" th:href="@{/dist/css/diary.css}">
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 </head>
@@ -20,6 +20,7 @@
         <!--글등록-->
         <h1 class="diary_list_h1">My travel diary
             <span class="diary_list_span" sec:authorize="isAuthenticated()">
+                <img class="diary_img" th:src="@{/image/diary.png}">
                 <a th:href="@{/diary/register}">
                      <button type="button" class="diary_register_btn1">기록하기</button>
                 </a>

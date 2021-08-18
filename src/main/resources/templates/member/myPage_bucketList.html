@@ -5,7 +5,7 @@
 <th:block th:fragment="setCss(css)"></th:block>
 <head>
     <meta charset="UTF-8">
-    <title>마이페이지</title>
+    <title>버킷리스트</title>
     <th:block th:replace="~{/css :: setCss(~{this::css} )}"></th:block>
 </head>
 <body>
@@ -65,7 +65,7 @@
                     let abc = document.getElementById(data);
                     abc.style.display = 'none';
 
-                    alert("삭제했지롱")
+                    alert("삭제하였습니다.")
                 },
                 error: function () {
                     alert("에러")

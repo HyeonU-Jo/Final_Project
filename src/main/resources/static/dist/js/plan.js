@@ -42,7 +42,7 @@ function createDiv(sDay, eDay) {
             window.name = "plForm" //부모창이름
             url = "planLikeList?id=" + count;
             // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-            window.open(url, "liForm", "width=600,height=400");
+            window.open(url, "liForm", "width=800,height=500");
         });
 
         const newText = document.createTextNode((i + 1) + 'Day');
